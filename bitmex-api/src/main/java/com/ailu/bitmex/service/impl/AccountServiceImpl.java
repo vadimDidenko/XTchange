@@ -5,7 +5,6 @@ import com.ailu.bitmex.client.BitmexClient;
 import com.ailu.bitmex.service.AccountService;
 import com.ailu.bitmex.service.BaseService;
 
-
 /** NOTE: @Version 1.0 @Since JDK1.8 @Author mr.wang @Company Henan ailu @Date 2018/12/15 15:02 */
 public class AccountServiceImpl implements AccountService, BaseService {
 

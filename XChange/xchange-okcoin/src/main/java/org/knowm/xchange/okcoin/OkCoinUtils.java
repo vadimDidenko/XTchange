@@ -101,7 +101,7 @@ public class OkCoinUtils {
         return "Index information does not exist";
       case (20022):
         return "Wrong API interface (Cross margin mode shall call cross margin API, fixed margin"
-                   + " mode shall call fixed margin API)";
+            + " mode shall call fixed margin API)";
       case (20023):
         return "Account in fixed-margin mode";
       case (20024):

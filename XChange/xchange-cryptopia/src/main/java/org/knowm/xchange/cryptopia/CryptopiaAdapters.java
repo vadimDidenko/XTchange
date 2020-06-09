@@ -6,7 +6,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-
 import org.knowm.xchange.cryptopia.dto.marketdata.CryptopiaCurrency;
 import org.knowm.xchange.cryptopia.dto.marketdata.CryptopiaMarketHistory;
 import org.knowm.xchange.cryptopia.dto.marketdata.CryptopiaOrder;

@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-
 public class SwapAPITests extends SwapAPIBaseTests {
 
   private static final Logger LOG = LoggerFactory.getLogger(SwapAPITests.class);

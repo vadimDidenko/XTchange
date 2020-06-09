@@ -3,7 +3,6 @@ package org.knowm.xchange.btcmarkets.dto.marketdata;
 import java.math.BigDecimal;
 import java.util.Date;
 
-
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 

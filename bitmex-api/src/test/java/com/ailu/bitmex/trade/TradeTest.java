@@ -10,7 +10,6 @@ import com.alibaba.fastjson.JSONObject;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.Test;
 
-
 /** NOTE: @Version 1.0 @Since JDK1.8 @Author mr.wang @Company Henan ailu @Date 2018/12/15 15:27 */
 @Slf4j
 public class TradeTest extends BaseTests {

@@ -1,6 +1,5 @@
 package com.okcoin.okex.open.api.bean.spot.result;
 
-
 public class Account {
 
   private String id;

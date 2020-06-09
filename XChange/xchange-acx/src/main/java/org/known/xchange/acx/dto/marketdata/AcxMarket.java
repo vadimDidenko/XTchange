@@ -2,7 +2,6 @@ package org.known.xchange.acx.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-
 public class AcxMarket {
   /** A timestamp in seconds since Epoch */
   public final long at;

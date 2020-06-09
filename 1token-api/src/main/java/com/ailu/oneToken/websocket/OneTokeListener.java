@@ -10,7 +10,6 @@ import okhttp3.Request;
 import retrofit2.Retrofit;
 import retrofit2.converter.scalars.ScalarsConverterFactory;
 
-
 import static com.ailu.oneToken.websocket.OneTokenPrivateListener.OneTokenApi.*;
 
 /** NOTE: @Version 1.0 @Since JDK1.8 @Author mr.wang @Company Henan ailu @Date 2018/12/14 10:17 */

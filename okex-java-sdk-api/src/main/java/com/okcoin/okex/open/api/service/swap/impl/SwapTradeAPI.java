@@ -7,7 +7,6 @@ import retrofit2.http.GET;
 import retrofit2.http.Path;
 import retrofit2.http.Query;
 
-
 /**
  * NOTE: @Version 1.0 @Since JDK1.8.191 @Author mr.wang @Company Henan ailu @Date 2019-01-08 14:02
  */
