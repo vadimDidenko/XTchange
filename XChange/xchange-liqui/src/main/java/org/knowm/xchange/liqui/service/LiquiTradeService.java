@@ -40,7 +40,8 @@ public class LiquiTradeService extends LiquiTradeServiceRaw implements TradeServ
   @Override
   public OpenOrders getOpenOrders(final OpenOrdersParams params) throws IOException {
     if (params instanceof OpenOrdersParamCurrencyPair) {
-      return LiquiAdapters.adaptActiveOrders(getActiveOrders(((OpenOrdersParamCurrencyPair) params).getCurrencyPair()));
+      return LiquiAdapters.adaptActiveOrders(
+          getActiveOrders(((OpenOrdersParamCurrencyPair) params).getCurrencyPair()));
     }
 
     throw new LiquiException("Unable to get open orders with the provided params: " + params);
@@ -87,8 +88,10 @@ public class LiquiTradeService extends LiquiTradeServiceRaw implements TradeServ
       if (((LiquiTradeHistoryParams) params).getCurrencyPair() != null) {
         return LiquiAdapters.adaptTradesHistory(getTradeHistory());
       } else {
-        return LiquiAdapters.adaptTradesHistory(getTradeHistory(((LiquiTradeHistoryParams) params).getCurrencyPair(),
-            ((LiquiTradeHistoryParams) params).getAmount()));
+        return LiquiAdapters.adaptTradesHistory(
+            getTradeHistory(
+                ((LiquiTradeHistoryParams) params).getCurrencyPair(),
+                ((LiquiTradeHistoryParams) params).getAmount()));
       }
     }
 
@@ -120,8 +123,7 @@ public class LiquiTradeService extends LiquiTradeServiceRaw implements TradeServ
     private CurrencyPair currencyPair = null;
     private int amount = 1000;
 
-    public LiquiTradeHistoryParams() {
-    }
+    public LiquiTradeHistoryParams() {}
 
     public void setCurrencyPair(final CurrencyPair currencyPair) {
       this.currencyPair = currencyPair;

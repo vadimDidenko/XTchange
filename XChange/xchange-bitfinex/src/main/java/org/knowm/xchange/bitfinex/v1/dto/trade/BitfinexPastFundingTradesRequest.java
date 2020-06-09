@@ -16,9 +16,7 @@ public class BitfinexPastFundingTradesRequest {
   @JsonProperty("symbol")
   protected String symbol;
 
-  /**
-   * Trades made after this timestamp won’t be returned.
-   */
+  /** Trades made after this timestamp won’t be returned. */
   @JsonProperty("until")
   @JsonInclude(JsonInclude.Include.NON_NULL)
   protected Date until;
@@ -27,7 +25,8 @@ public class BitfinexPastFundingTradesRequest {
   @JsonInclude(JsonInclude.Include.NON_NULL)
   protected Integer limitTrades;
 
-  public BitfinexPastFundingTradesRequest(String nonce, String symbol, Date until, Integer limitTrades) {
+  public BitfinexPastFundingTradesRequest(
+      String nonce, String symbol, Date until, Integer limitTrades) {
 
     this.request = "/v1/mytrades_funding";
     this.nonce = nonce;

@@ -13,7 +13,8 @@ public final class BinancePrice implements Comparable<BinancePrice> {
   private final CurrencyPair pair;
   private final BigDecimal price;
 
-  public BinancePrice(@JsonProperty("symbol") String symbol, @JsonProperty("price") BigDecimal price) {
+  public BinancePrice(
+      @JsonProperty("symbol") String symbol, @JsonProperty("price") BigDecimal price) {
     this(CurrencyPairDeserializer.getCurrencyPairFromString(symbol), price);
   }
 
@@ -27,17 +28,17 @@ public final class BinancePrice implements Comparable<BinancePrice> {
   public CurrencyPair getCurrencyPair() {
     return pair;
   }
-  
+
   public BigDecimal getPrice() {
     return price;
   }
-  
+
   @Override
   public int compareTo(BinancePrice o) {
     if (pair.compareTo(o.pair) == 0) return price.compareTo(o.price);
     return pair.compareTo(o.pair);
   }
-  
+
   @Override
   public int hashCode() {
     int result = 1;
@@ -55,6 +56,6 @@ public final class BinancePrice implements Comparable<BinancePrice> {
   }
 
   public String toString() {
-    return  "[" + pair + "] => " + price;
+    return "[" + pair + "] => " + price;
   }
 }

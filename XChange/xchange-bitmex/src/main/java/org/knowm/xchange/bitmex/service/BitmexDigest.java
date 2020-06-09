@@ -19,7 +19,6 @@ public class BitmexDigest extends BaseParamsDigest {
    *
    * @param secretKeyBase64 the secret key to sign requests
    */
-
   private BitmexDigest(byte[] secretKeyBase64) {
 
     super(Base64.getUrlEncoder().withoutPadding().encodeToString(secretKeyBase64), HMAC_SHA_256);
@@ -41,7 +40,13 @@ public class BitmexDigest extends BaseParamsDigest {
     String params = restInvocation.getParamsMap().get(QueryParam.class).toString();
     String query = params.isEmpty() ? "" : "?" + params;
 
-    String payload = restInvocation.getHttpMethod() + "/" + restInvocation.getPath() + query + nonce + restInvocation.getRequestBody();
+    String payload =
+        restInvocation.getHttpMethod()
+            + "/"
+            + restInvocation.getPath()
+            + query
+            + nonce
+            + restInvocation.getRequestBody();
 
     return new String(Hex.encodeHex(getMac().doFinal(payload.getBytes())));
   }
@@ -56,5 +61,4 @@ public class BitmexDigest extends BaseParamsDigest {
 
     return secretKeyBase64 == null ? null : new BitmexDigest(secretKeyBase64, apiKey);
   }
-
 }

@@ -26,27 +26,25 @@ public interface Bitflyer {
   @Path("getmarkets")
   List<BitflyerMarket> getMarkets() throws IOException, BitflyerException;
 
-  /**
-   * return "BTC_JPY" or "BTC_USD" for U.S. accounts.
-   */
+  /** return "BTC_JPY" or "BTC_USD" for U.S. accounts. */
   @GET
   @Path("getticker")
   BitflyerTicker getTicker() throws IOException, BitflyerException;
 
   @GET
   @Path("getticker")
-  BitflyerTicker getTicker(@QueryParam("product_code") String productCode) throws IOException, BitflyerException;
+  BitflyerTicker getTicker(@QueryParam("product_code") String productCode)
+      throws IOException, BitflyerException;
 
-  /**
-   * return "BTC_JPY" or "BTC_USD" for U.S. accounts.
-   */
+  /** return "BTC_JPY" or "BTC_USD" for U.S. accounts. */
   @GET
   @Path("getboard")
   BitflyerOrderbook getBoard() throws IOException, BitflyerException;
 
   @GET
   @Path("getboard")
-  BitflyerOrderbook getBoard(@QueryParam("product_code") String productCode) throws IOException, BitflyerException;
+  BitflyerOrderbook getBoard(@QueryParam("product_code") String productCode)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("getexecutions")
@@ -54,36 +52,47 @@ public interface Bitflyer {
 
   @GET
   @Path("getexecutions")
-  List<BitflyerExecution> getExecutions(@QueryParam("product_code") String productCode) throws IOException, BitflyerException;
+  List<BitflyerExecution> getExecutions(@QueryParam("product_code") String productCode)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("me/getpositions")
-  List<BitflyerPosition> getPositions(@HeaderParam(ACCESS_KEY) String apiKey,
-                                      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
-                                      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest,
-                                      @QueryParam("product_code") String productCode) throws IOException, BitflyerException;
+  List<BitflyerPosition> getPositions(
+      @HeaderParam(ACCESS_KEY) String apiKey,
+      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
+      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest,
+      @QueryParam("product_code") String productCode)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("me/getcollateral")
-  BitflyerMarginStatus getMarginStatus(@HeaderParam(ACCESS_KEY) String apiKey,
-                                       @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
-                                       @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest) throws IOException, BitflyerException;
+  BitflyerMarginStatus getMarginStatus(
+      @HeaderParam(ACCESS_KEY) String apiKey,
+      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
+      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("/me/getbalance")
-  List<BitflyerBalance> getBalances(@HeaderParam(ACCESS_KEY) String apiKey,
-                                    @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
-                                    @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest) throws IOException, BitflyerException;
+  List<BitflyerBalance> getBalances(
+      @HeaderParam(ACCESS_KEY) String apiKey,
+      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
+      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("me/getcollateralaccounts")
-  List<BitflyerMarginAccount> getMarginAccounts(@HeaderParam(ACCESS_KEY) String apiKey,
-                                                @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
-                                                @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest) throws IOException, BitflyerException;
+  List<BitflyerMarginAccount> getMarginAccounts(
+      @HeaderParam(ACCESS_KEY) String apiKey,
+      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
+      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest)
+      throws IOException, BitflyerException;
 
   @GET
   @Path("me/getcollateralhistory")
-  List<BitflyerMarginTransaction> getMarginHistory(@HeaderParam(ACCESS_KEY) String apiKey,
-                                                   @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
-                                                   @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest) throws IOException, BitflyerException;
+  List<BitflyerMarginTransaction> getMarginHistory(
+      @HeaderParam(ACCESS_KEY) String apiKey,
+      @HeaderParam(ACCESS_TIMESTAMP) SynchronizedValueFactory<Long> nonce,
+      @HeaderParam(ACCESS_SIGN) ParamsDigest paramsDigest)
+      throws IOException, BitflyerException;
 }

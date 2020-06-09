@@ -27,18 +27,14 @@ public class BTCTradeAccountService extends BTCTradeAccountServiceRaw implements
     super(exchange);
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
     return new AccountInfo(BTCTradeAdapters.adaptWallet(getBTCTradeBalance()));
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public String withdrawFunds(Currency currency, BigDecimal amount, String address) {
 
@@ -50,9 +46,7 @@ public class BTCTradeAccountService extends BTCTradeAccountServiceRaw implements
     throw new NotAvailableFromExchangeException();
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public String requestDepositAddress(Currency currency, String... args) throws IOException {
 
@@ -65,8 +59,7 @@ public class BTCTradeAccountService extends BTCTradeAccountServiceRaw implements
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

@@ -19,41 +19,34 @@ public class VaultoroCancelOrderData {
 
   @JsonProperty("Order_ID")
   private String OrderID;
+
   @JsonProperty("status")
   private String status;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The OrderID
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The OrderID */
   @JsonProperty("Order_ID")
   public String getOrderID() {
 
     return OrderID;
   }
 
-  /**
-   * @param OrderID The Order_ID
-   */
+  /** @param OrderID The Order_ID */
   @JsonProperty("Order_ID")
   public void setOrderID(String OrderID) {
 
     this.OrderID = OrderID;
   }
 
-  /**
-   * @return The status
-   */
+  /** @return The status */
   @JsonProperty("status")
   public String getStatus() {
 
     return status;
   }
 
-  /**
-   * @param status The status
-   */
+  /** @param status The status */
   @JsonProperty("status")
   public void setStatus(String status) {
 
@@ -71,5 +64,4 @@ public class VaultoroCancelOrderData {
 
     this.additionalProperties.put(name, value);
   }
-
 }

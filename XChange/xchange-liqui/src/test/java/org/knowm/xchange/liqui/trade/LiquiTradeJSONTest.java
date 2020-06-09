@@ -17,7 +17,8 @@ public class LiquiTradeJSONTest {
 
   @Test
   public void testUnmarshall() throws Exception {
-    final InputStream is = LiquiTickerJSONTest.class.getResourceAsStream("/trade/example-trade-data.json");
+    final InputStream is =
+        LiquiTickerJSONTest.class.getResourceAsStream("/trade/example-trade-data.json");
 
     final ObjectMapper mapper = new ObjectMapper();
     final LiquiTradeResult tradeResult = mapper.readValue(is, LiquiTradeResult.class);
@@ -33,7 +34,6 @@ public class LiquiTradeJSONTest {
     final Map<String, BigDecimal> funds = trade.getFunds();
     assertThat(funds.get("trx")).isEqualTo(new BigDecimal("499.0"));
     assertThat(funds.get("btc")).isEqualTo(new BigDecimal("0.0"));
-
   }
 
   @Test

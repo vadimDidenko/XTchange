@@ -19,16 +19,17 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseAddressesDeserializer.class)
 public class CoinbaseAddresses extends CoinbasePagedResult {
 
   private final List<CoinbaseAddress> addresses;
 
-  private CoinbaseAddresses(@JsonProperty("addresses") final List<CoinbaseAddress> addresses, @JsonProperty("total_count") final int totalCount,
-      @JsonProperty("num_pages") final int numPages, @JsonProperty("current_page") final int currentPage) {
+  private CoinbaseAddresses(
+      @JsonProperty("addresses") final List<CoinbaseAddress> addresses,
+      @JsonProperty("total_count") final int totalCount,
+      @JsonProperty("num_pages") final int numPages,
+      @JsonProperty("current_page") final int currentPage) {
 
     super(totalCount, numPages, currentPage);
     this.addresses = addresses;
@@ -48,7 +49,8 @@ public class CoinbaseAddresses extends CoinbasePagedResult {
   static class CoinbaseAddressesDeserializer extends JsonDeserializer<CoinbaseAddresses> {
 
     @Override
-    public CoinbaseAddresses deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseAddresses deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jp.getCodec();
       final JsonNode node = oc.readTree(jp);
@@ -72,7 +74,8 @@ public class CoinbaseAddresses extends CoinbasePagedResult {
       final String address = nestedAddressNode.path("address").asText();
       final String callbackUrl = nestedAddressNode.path("callback_url").asText();
       final String label = nestedAddressNode.path("label").asText();
-      final Date createdAt = DateUtils.fromISO8601DateString(nestedAddressNode.path("created_at").asText());
+      final Date createdAt =
+          DateUtils.fromISO8601DateString(nestedAddressNode.path("created_at").asText());
 
       return new CoinbaseAddress(address, callbackUrl, label, createdAt);
     }

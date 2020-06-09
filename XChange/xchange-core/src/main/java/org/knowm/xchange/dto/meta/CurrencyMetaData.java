@@ -10,9 +10,7 @@ public class CurrencyMetaData implements Serializable {
   @JsonProperty("scale")
   private final int scale;
 
-  /**
-   * Withdrawal fee
-   */
+  /** Withdrawal fee */
   @JsonProperty("withdrawal_fee")
   private BigDecimal withdrawalFee;
 
@@ -21,7 +19,8 @@ public class CurrencyMetaData implements Serializable {
    *
    * @param scale
    */
-  public CurrencyMetaData(@JsonProperty("scale") int scale, @JsonProperty("withdrawal_fee") BigDecimal withdrawalFee) {
+  public CurrencyMetaData(
+      @JsonProperty("scale") int scale, @JsonProperty("withdrawal_fee") BigDecimal withdrawalFee) {
     this.scale = scale;
     this.withdrawalFee = withdrawalFee;
   }

@@ -11,8 +11,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * Order of crypto currency.
- * Instances of this type are immutable, constructed with a dedicated Builder implementation.
+ * Order of crypto currency. Instances of this type are immutable, constructed with a dedicated
+ * Builder implementation.
  *
  * @author Dat Bui
  */
@@ -39,11 +39,8 @@ public class KunaOrder {
   private BigDecimal executedVolume;
   private int tradesCount;
 
-  /**
-   * Hide default constructor.
-   */
-  private KunaOrder() {
-  }
+  /** Hide default constructor. */
+  private KunaOrder() {}
 
   /**
    * Returns order id.

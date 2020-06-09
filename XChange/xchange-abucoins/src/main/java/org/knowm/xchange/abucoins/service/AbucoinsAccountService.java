@@ -21,10 +21,8 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * Author: bryant_harris
- */
-public class AbucoinsAccountService extends AbucoinsAccountServiceRaw implements AccountService {        
+/** Author: bryant_harris */
+public class AbucoinsAccountService extends AbucoinsAccountServiceRaw implements AccountService {
   /**
    * Constructor
    *
@@ -43,35 +41,41 @@ public class AbucoinsAccountService extends AbucoinsAccountServiceRaw implements
   @Override
   public String requestDepositAddress(Currency currency, String... arguments) throws IOException {
     String method = abucoinsPaymentMethodForCurrency(currency.getCurrencyCode());
-    AbucoinsCryptoDeposit cryptoDeposit = abucoinsCryptoDeposit(new AbucoinsCryptoDepositRequest(currency.getCurrencyCode(), method));
-    if ( cryptoDeposit.getMessage() != null )
-      throw new IOException(cryptoDeposit.getMessage());
-          
+    AbucoinsCryptoDeposit cryptoDeposit =
+        abucoinsCryptoDeposit(new AbucoinsCryptoDepositRequest(currency.getCurrencyCode(), method));
+    if (cryptoDeposit.getMessage() != null) throw new IOException(cryptoDeposit.getMessage());
+
     return cryptoDeposit.getAddress();
   }
 
   @Override
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
-    if ( params instanceof DefaultWithdrawFundsParams ) {
+    if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defParams = (DefaultWithdrawFundsParams) params;
-                 
+
       String method = abucoinsPaymentMethodForCurrency(defParams.currency.getCurrencyCode());
-      AbucoinsCryptoWithdrawal withdrawal = abucoinsWithdraw( new AbucoinsCryptoWithdrawalRequest(defParams.amount,
-                                                                                                  defParams.currency.getCurrencyCode(),
-                                                                                                  method,
-                                                                                                  defParams.address,
-                                                                                                  null));
+      AbucoinsCryptoWithdrawal withdrawal =
+          abucoinsWithdraw(
+              new AbucoinsCryptoWithdrawalRequest(
+                  defParams.amount,
+                  defParams.currency.getCurrencyCode(),
+                  method,
+                  defParams.address,
+                  null));
       return withdrawal.getPayoutId();
     }
-         
-    if ( params == null )
-      throw new IllegalArgumentException("Requires a DefaultWithdrawFundsParams object to describe the withdrawal");
-         
-    throw new IOException("Abucoins only understands DefaultWithdrawFundsParams not " + params.getClass().getName());
+
+    if (params == null)
+      throw new IllegalArgumentException(
+          "Requires a DefaultWithdrawFundsParams object to describe the withdrawal");
+
+    throw new IOException(
+        "Abucoins only understands DefaultWithdrawFundsParams not " + params.getClass().getName());
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 

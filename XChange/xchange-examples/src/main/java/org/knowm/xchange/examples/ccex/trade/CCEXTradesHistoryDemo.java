@@ -26,5 +26,4 @@ public class CCEXTradesHistoryDemo {
       System.out.println(temp.toString());
     }
   }
-
 }

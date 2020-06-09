@@ -12,7 +12,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class QuadrigaCxErrorDeserializer extends JsonDeserializer<String> {
 
   @Override
-  public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext) throws IOException, JsonProcessingException {
+  public String deserialize(JsonParser jsonParser, DeserializationContext deserializationContext)
+      throws IOException, JsonProcessingException {
 
     ObjectCodec oc = jsonParser.getCodec();
     JsonNode node = oc.readTree(jsonParser);

@@ -60,12 +60,15 @@ public abstract class BaseExchange implements Exchange {
         exchangeSpecification.setPlainTextUri(defaultSpecification.getPlainTextUri());
       }
       if (exchangeSpecification.getExchangeSpecificParameters() == null) {
-        exchangeSpecification.setExchangeSpecificParameters(defaultSpecification.getExchangeSpecificParameters());
+        exchangeSpecification.setExchangeSpecificParameters(
+            defaultSpecification.getExchangeSpecificParameters());
       } else {
         // add default value unless it is overridden by current spec
-        for (Map.Entry<String, Object> entry : defaultSpecification.getExchangeSpecificParameters().entrySet()) {
+        for (Map.Entry<String, Object> entry :
+            defaultSpecification.getExchangeSpecificParameters().entrySet()) {
           if (exchangeSpecification.getExchangeSpecificParametersItem(entry.getKey()) == null) {
-            exchangeSpecification.setExchangeSpecificParametersItem(entry.getKey(), entry.getValue());
+            exchangeSpecification.setExchangeSpecificParametersItem(
+                entry.getKey(), entry.getValue());
           }
         }
       }
@@ -73,7 +76,8 @@ public abstract class BaseExchange implements Exchange {
       this.exchangeSpecification = exchangeSpecification;
     }
 
-    if (this.exchangeSpecification.getMetaDataJsonFileOverride() != null) { // load the metadata from the file system
+    if (this.exchangeSpecification.getMetaDataJsonFileOverride()
+        != null) { // load the metadata from the file system
 
       InputStream is = null;
       try {
@@ -81,17 +85,23 @@ public abstract class BaseExchange implements Exchange {
         loadExchangeMetaData(is);
       } catch (FileNotFoundException e) {
         logger.warn(
-            "An exception occured while loading the metadata file from the classpath. This is just a warning and can be ignored, but it may lead to unexpected results, so it's better to address it.",
+            "An exception occured while loading the metadata file from the classpath. This is just"
+                + " a warning and can be ignored, but it may lead to unexpected results, so it's"
+                + " better to address it.",
             e);
       } finally {
         IOUtils.closeQuietly(is);
       }
 
-    } else if (this.exchangeSpecification.getExchangeName() != null) { // load the metadata from the classpath
+    } else if (this.exchangeSpecification.getExchangeName()
+        != null) { // load the metadata from the classpath
 
       InputStream is = null;
       try {
-        is = BaseExchangeService.class.getClassLoader().getResourceAsStream(getMetaDataFileName(exchangeSpecification) + ".json");
+        is =
+            BaseExchangeService.class
+                .getClassLoader()
+                .getResourceAsStream(getMetaDataFileName(exchangeSpecification) + ".json");
         loadExchangeMetaData(is);
       } finally {
         IOUtils.closeQuietly(is);
@@ -99,7 +109,8 @@ public abstract class BaseExchange implements Exchange {
 
     } else {
       logger.warn(
-          "No \"exchange name\" found in the ExchangeSpecification. The name is used to load the meta data file from the classpath and may lead to unexpected results.");
+          "No \"exchange name\" found in the ExchangeSpecification. The name is used to load the"
+              + " meta data file from the classpath and may lead to unexpected results.");
     }
 
     initServices();
@@ -118,7 +129,15 @@ public abstract class BaseExchange implements Exchange {
   public void remoteInit() throws IOException, ExchangeException {
 
     logger.info(
-        "No remote initialization implemented for {}. The exchange meta data for this exchange is loaded from a json file containing hard-coded exchange meta-data. This may or may not be OK for you, and you should understand exactly how this works. Each exchange can either 1) rely on the hard-coded json file that comes packaged with XChange's jar, 2) provide your own override json file, 3) properly implement the `remoteInit()` method for the exchange (please submit a pull request so the whole community can benefit) or 4) a combination of hard-coded JSON and remote API calls. For more info see: https://github.com/timmolter/XChange/wiki/Design-Notes#exchange-metadata",
+        "No remote initialization implemented for {}. The exchange meta data for this exchange is"
+            + " loaded from a json file containing hard-coded exchange meta-data. This may or may"
+            + " not be OK for you, and you should understand exactly how this works. Each exchange"
+            + " can either 1) rely on the hard-coded json file that comes packaged with XChange's"
+            + " jar, 2) provide your own override json file, 3) properly implement the"
+            + " `remoteInit()` method for the exchange (please submit a pull request so the whole"
+            + " community can benefit) or 4) a combination of hard-coded JSON and remote API"
+            + " calls. For more info see:"
+            + " https://github.com/timmolter/XChange/wiki/Design-Notes#exchange-metadata",
         exchangeSpecification.getExchangeName());
   }
 
@@ -138,7 +157,9 @@ public abstract class BaseExchange implements Exchange {
       return result;
     } catch (Exception e) {
       logger.warn(
-          "An exception occured while loading the metadata file from the file system. This is just a warning and can be ignored, but it may lead to unexpected results, so it's better to address it.",
+          "An exception occured while loading the metadata file from the file system. This is just"
+              + " a warning and can be ignored, but it may lead to unexpected results, so it's"
+              + " better to address it.",
           e);
       return null;
     }
@@ -152,7 +173,12 @@ public abstract class BaseExchange implements Exchange {
 
   public String getMetaDataFileName(ExchangeSpecification exchangeSpecification) {
 
-    return exchangeSpecification.getExchangeName().toLowerCase().replace(" ", "").replace("-", "").replace(".", "");
+    return exchangeSpecification
+        .getExchangeName()
+        .toLowerCase()
+        .replace(" ", "")
+        .replace("-", "")
+        .replace(".", "");
   }
 
   @Override
@@ -185,7 +211,10 @@ public abstract class BaseExchange implements Exchange {
   @Override
   public String toString() {
 
-    String name = exchangeSpecification != null ? exchangeSpecification.getExchangeName() : getClass().getName();
+    String name =
+        exchangeSpecification != null
+            ? exchangeSpecification.getExchangeName()
+            : getClass().getName();
     return name + "#" + hashCode();
   }
 }

@@ -7,9 +7,7 @@ import com.binance.api.client.exception.BinanceApiException;
 
 import java.util.List;
 
-/**
- * Examples on how to get market data information such as the latest price of a symbol, etc.
- */
+/** Examples on how to get market data information such as the latest price of a symbol, etc. */
 public class MarketDataEndpointsExample {
 
   public static void main(String[] args) {
@@ -33,7 +31,8 @@ public class MarketDataEndpointsExample {
     System.out.println(aggTrades);
 
     // Weekly candlestick bars for a symbol
-    List<Candlestick> candlesticks = client.getCandlestickBars("NEOETH", CandlestickInterval.WEEKLY);
+    List<Candlestick> candlesticks =
+        client.getCandlestickBars("NEOETH", CandlestickInterval.WEEKLY);
     System.out.println(candlesticks);
 
     // Getting all book tickers
@@ -45,7 +44,7 @@ public class MarketDataEndpointsExample {
       client.getOrderBook("UNKNOWN", 10);
     } catch (BinanceApiException e) {
       System.out.println(e.getError().getCode()); // -1121
-      System.out.println(e.getError().getMsg());  // Invalid symbol
+      System.out.println(e.getError().getMsg()); // Invalid symbol
     }
   }
 }

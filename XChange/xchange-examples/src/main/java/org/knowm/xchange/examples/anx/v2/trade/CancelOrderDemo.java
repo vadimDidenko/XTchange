@@ -8,9 +8,7 @@ import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.examples.anx.v2.ANXExamplesUtils;
 import org.knowm.xchange.service.trade.TradeService;
 
-/**
- * Test placing a limit order at ANX
- */
+/** Test placing a limit order at ANX */
 public class CancelOrderDemo {
 
   public static void main(String[] args) throws IOException {

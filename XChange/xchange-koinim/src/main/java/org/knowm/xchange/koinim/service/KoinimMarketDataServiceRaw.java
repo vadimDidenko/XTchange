@@ -8,9 +8,7 @@ import org.knowm.xchange.koinim.dto.marketdata.KoinimTicker;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author ahmet.oz
- */
+/** @author ahmet.oz */
 public class KoinimMarketDataServiceRaw extends KoinimBaseService {
 
   private final Koinim koinim;
@@ -18,7 +16,9 @@ public class KoinimMarketDataServiceRaw extends KoinimBaseService {
   public KoinimMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-    this.koinim = RestProxyFactory.createProxy(Koinim.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.koinim =
+        RestProxyFactory.createProxy(
+            Koinim.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public KoinimTicker getKoinimTicker() throws IOException {

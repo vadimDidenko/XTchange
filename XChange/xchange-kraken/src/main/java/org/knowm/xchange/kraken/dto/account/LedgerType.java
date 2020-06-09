@@ -16,8 +16,13 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = LedgerTypeDeserializer.class)
 public enum LedgerType {
-
-  DEPOSIT, WITHDRAWAL, TRADE, MARGIN, CREDIT, ROLLOVER, TRANSFER;
+  DEPOSIT,
+  WITHDRAWAL,
+  TRADE,
+  MARGIN,
+  CREDIT,
+  ROLLOVER,
+  TRANSFER;
 
   @Override
   public String toString() {
@@ -37,20 +42,19 @@ public enum LedgerType {
   private static final Map<String, LedgerType> fromString = new HashMap<>();
 
   static {
-    for (LedgerType ledgerType : values())
-      fromString.put(ledgerType.toString(), ledgerType);
+    for (LedgerType ledgerType : values()) fromString.put(ledgerType.toString(), ledgerType);
   }
 
   static class LedgerTypeDeserializer extends JsonDeserializer<LedgerType> {
 
     @Override
-    public LedgerType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public LedgerType deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
       String ledgerTypeString = node.textValue();
       return fromString(ledgerTypeString);
     }
-
   }
 }

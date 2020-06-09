@@ -42,7 +42,8 @@ public class AccountInfoDemo {
 
   private static void raw(Exchange exchange) throws IOException {
 
-    BTCTradeAccountServiceRaw accountService = (BTCTradeAccountServiceRaw) exchange.getAccountService();
+    BTCTradeAccountServiceRaw accountService =
+        (BTCTradeAccountServiceRaw) exchange.getAccountService();
     BTCTradeBalance balance = accountService.getBTCTradeBalance();
 
     System.out.println("Balance result: " + balance.getResult());
@@ -55,5 +56,4 @@ public class AccountInfoDemo {
     BTCTradeWallet wallet = accountService.getBTCTradeWallet();
     System.out.println("Wallet address: " + wallet.getAddress());
   }
-
 }

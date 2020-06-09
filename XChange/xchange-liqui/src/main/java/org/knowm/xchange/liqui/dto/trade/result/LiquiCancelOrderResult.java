@@ -13,7 +13,8 @@ public class LiquiCancelOrderResult extends LiquiResult<LiquiCancelOrder> {
   private final boolean success;
   private final LiquiStat stat;
 
-  public LiquiCancelOrderResult(@JsonProperty("success") final boolean success,
+  public LiquiCancelOrderResult(
+      @JsonProperty("success") final boolean success,
       @JsonProperty("return") final LiquiCancelOrder result,
       @JsonProperty("stat") final LiquiStat stat,
       @JsonProperty("error") final String error) {
@@ -32,9 +33,6 @@ public class LiquiCancelOrderResult extends LiquiResult<LiquiCancelOrder> {
 
   @Override
   public String toString() {
-    return "LiquiActiveOrdersResult{" +
-        "success=" + success +
-        ", stat=" + stat +
-        '}';
+    return "LiquiActiveOrdersResult{" + "success=" + success + ", stat=" + stat + '}';
   }
 }

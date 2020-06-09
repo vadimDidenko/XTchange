@@ -12,10 +12,9 @@ import org.knowm.xchange.therock.service.TheRockOpenOrdersParams;
 import org.knowm.xchange.therock.service.TheRockTradeService;
 import org.knowm.xchange.therock.service.TheRockTradeServiceRaw;
 
-/**
- * Remove abstract modifier and read parent class notes in order to run the integration test
- */
-public abstract class TheRockTradeServiceIntegration extends AbstractTheRockTradeServiceIntegration {
+/** Remove abstract modifier and read parent class notes in order to run the integration test */
+public abstract class TheRockTradeServiceIntegration
+    extends AbstractTheRockTradeServiceIntegration {
 
   TheRockTradeServiceRaw unit = createUnit();
 
@@ -28,7 +27,8 @@ public abstract class TheRockTradeServiceIntegration extends AbstractTheRockTrad
     TheRockTradeService unit = createUnit();
     BigDecimal amount = new BigDecimal("0.01");
     BigDecimal price = new BigDecimal("50.0");
-    LimitOrder limitOrder = new LimitOrder(OrderType.BID, amount, CurrencyPair.BTC_EUR, null, null, price);
+    LimitOrder limitOrder =
+        new LimitOrder(OrderType.BID, amount, CurrencyPair.BTC_EUR, null, null, price);
     String id = unit.placeLimitOrder(limitOrder);
     assert id != null;
   }
@@ -43,5 +43,4 @@ public abstract class TheRockTradeServiceIntegration extends AbstractTheRockTrad
     OpenOrders openOrders = unit.getOpenOrders(openOrdersParams);
     assert openOrders != null;
   }
-
 }

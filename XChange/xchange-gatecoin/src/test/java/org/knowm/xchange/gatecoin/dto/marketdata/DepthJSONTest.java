@@ -11,9 +11,7 @@ import org.knowm.xchange.gatecoin.dto.marketdata.Results.GatecoinDepthResult;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test GatecoinTicker JSON parsing
- */
+/** Test GatecoinTicker JSON parsing */
 public class DepthJSONTest {
 
   @Test
@@ -30,7 +28,5 @@ public class DepthJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(gatecoinAsks[0].getPrice()).isEqualTo(new BigDecimal("241.89"));
     assertThat(gatecoinBids[0].getVolume()).isEqualTo(new BigDecimal("10"));
-
   }
-
 }

@@ -11,9 +11,7 @@ import org.knowm.xchange.gatecoin.dto.marketdata.GatecoinTransaction;
 import org.knowm.xchange.gatecoin.service.GatecoinMarketDataServiceRaw;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author sumdeha
- */
+/** @author sumdeha */
 public class GatecoinTradesDemo {
   public static void main(String[] args) throws IOException {
 
@@ -35,13 +33,17 @@ public class GatecoinTradesDemo {
     Trades tradesWithCount = marketDataService.getTrades(CurrencyPair.BTC_EUR, 10);
     System.out.println(tradesWithCount.getTrades().toString());
 
-    Trades tradesWithCountAndTxId = marketDataService.getTrades(CurrencyPair.BTC_HKD, 5, (long) 1386153);
+    Trades tradesWithCountAndTxId =
+        marketDataService.getTrades(CurrencyPair.BTC_HKD, 5, (long) 1386153);
     System.out.println(tradesWithCountAndTxId.getTrades().toString());
   }
 
   private static void raw(GatecoinMarketDataServiceRaw marketDataService) throws IOException {
 
-    GatecoinTransaction[] gatecoinTransactions = marketDataService.getGatecoinTransactions(CurrencyPair.BTC_USD.toString()).getTransactions();
+    GatecoinTransaction[] gatecoinTransactions =
+        marketDataService
+            .getGatecoinTransactions(CurrencyPair.BTC_USD.toString())
+            .getTransactions();
 
     System.out.println(gatecoinTransactions[0].toString());
   }

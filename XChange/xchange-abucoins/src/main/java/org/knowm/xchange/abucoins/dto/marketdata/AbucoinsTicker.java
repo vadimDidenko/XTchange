@@ -5,11 +5,8 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>POJO representing the output JSON for the Abucoins
- * <code>GET /products/&lt;product-id&gt;/ticker</code> endpoint.</p>
- *
- * Example:
- * <code><pre>
+ * POJO representing the output JSON for the Abucoins <code>GET /products/&lt;product-id&gt;/ticker
+ * </code> endpoint. Example: <code><pre>
  * {
  *     "trade_id": "553612",
  *     "price": "14160.85",
@@ -20,12 +17,13 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *     "time": "2017-09-21T10:26:58Z"
  * }
  * </pre></code>
+ *
  * @author bryant_harris
  */
 public class AbucoinsTicker {
-  /** 	identifier of the last trade */
+  /** identifier of the last trade */
   String tradeID;
-    
+
   /** last price */
   BigDecimal price;
 
@@ -34,13 +32,13 @@ public class AbucoinsTicker {
 
   /** the best bid */
   BigDecimal bid;
-    
+
   /** the best ask */
   BigDecimal ask;
-    
+
   /** 24 hour volume */
   BigDecimal volume;
-    
+
   /** time in UTC */
   String time;
 
@@ -55,8 +53,14 @@ public class AbucoinsTicker {
    * @param volume 24 hour volume
    * @param time time in UTC
    */
-  public AbucoinsTicker(@JsonProperty("trade_id") String tradeID, @JsonProperty("price") BigDecimal price, @JsonProperty("size") BigDecimal size, @JsonProperty("bid") BigDecimal bid, @JsonProperty("ask") BigDecimal ask,
-		  @JsonProperty("volume") BigDecimal volume, @JsonProperty("time") String time) {
+  public AbucoinsTicker(
+      @JsonProperty("trade_id") String tradeID,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("time") String time) {
     this.tradeID = tradeID;
     this.price = price;
     this.size = size;
@@ -103,7 +107,20 @@ public class AbucoinsTicker {
 
   @Override
   public String toString() {
-    return "AbucoinsTicker [trade_id=" + tradeID + ", price=" + price + ", size=" + size + ", bid=" + bid + ", ask="
-	+ ask + ", volume=" + volume + ", time=" + time + "]";
+    return "AbucoinsTicker [trade_id="
+        + tradeID
+        + ", price="
+        + price
+        + ", size="
+        + size
+        + ", bid="
+        + bid
+        + ", ask="
+        + ask
+        + ", volume="
+        + volume
+        + ", time="
+        + time
+        + "]";
   }
 }

@@ -7,201 +7,296 @@ import java.math.BigInteger;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public class BitmexTicker {
 
   @JSONField(name = "symbol")
   private String symbol;
+
   @JSONField(name = "rootSymbol")
   private String rootSymbol;
+
   @JSONField(name = "state")
   private String state;
+
   @JSONField(name = "typ")
   private String typ;
+
   @JSONField(name = "listing")
   private String listing;
+
   @JSONField(name = "front")
   private String front;
+
   @JSONField(name = "expiry")
   private String expiry;
+
   @JSONField(name = "settle")
   private String settle;
+
   @JSONField(name = "relistInterval")
   private String relistInterval;
+
   @JSONField(name = "inverseLeg")
   private String inverseLeg;
+
   @JSONField(name = "sellLeg")
   private String sellLeg;
+
   @JSONField(name = "buyLeg")
   private String buyLeg;
+
   @JSONField(name = "positionCurrency")
   private String positionCurrency;
+
   @JSONField(name = "underlying")
   private String underlying;
+
   @JSONField(name = "quoteCurrency")
   private String quoteCurrency;
+
   @JSONField(name = "underlyingSymbol")
   private String underlyingSymbol;
+
   @JSONField(name = "reference")
   private String reference;
+
   @JSONField(name = "referenceSymbol")
   private String referenceSymbol;
+
   @JSONField(name = "calcInterval")
   private String calcInterval;
+
   @JSONField(name = "publishInterval")
   private String publishInterval;
+
   @JSONField(name = "publishTime")
   private String publishTime;
+
   @JSONField(name = "maxOrderQty")
   private BigDecimal maxOrderQty;
+
   @JSONField(name = "maxPrice")
   private BigDecimal maxPrice;
+
   @JSONField(name = "lotSize")
   private BigDecimal lotSize;
+
   @JSONField(name = "tickSize")
   private BigDecimal tickSize;
+
   @JSONField(name = "multiplier")
   private BigDecimal multiplier;
+
   @JSONField(name = "settlCurrency")
   private String settlCurrency;
+
   @JSONField(name = "underlyingToPositionMultiplier")
   private BigDecimal underlyingToPositionMultiplier;
+
   @JSONField(name = "underlyingToSettleMultiplier")
   private BigDecimal underlyingToSettleMultiplier;
+
   @JSONField(name = "quoteToSettleMultiplier")
   private BigDecimal quoteToSettleMultiplier;
+
   @JSONField(name = "isQuanto")
   private Boolean isQuanto;
+
   @JSONField(name = "isInverse")
   private Boolean isInverse;
+
   @JSONField(name = "initMargin")
   private BigDecimal initMargin;
+
   @JSONField(name = "maintMargin")
   private BigDecimal maintMargin;
+
   @JSONField(name = "riskLimit")
   private BigInteger riskLimit;
+
   @JSONField(name = "riskStep")
   private BigInteger riskStep;
+
   @JSONField(name = "limit")
   private BigDecimal limit;
+
   @JSONField(name = "capped")
   private Boolean capped;
+
   @JSONField(name = "taxed")
   private Boolean taxed;
+
   @JSONField(name = "deleverage")
   private Boolean deleverage;
+
   @JSONField(name = "makerFee")
   private BigDecimal makerFee;
+
   @JSONField(name = "takerFee")
   private BigDecimal takerFee;
+
   @JSONField(name = "settlementFee")
   private BigDecimal settlementFee;
+
   @JSONField(name = "insuranceFee")
   private BigDecimal insuranceFee;
+
   @JSONField(name = "fundingBaseSymbol")
   private String fundingBaseSymbol;
+
   @JSONField(name = "fundingQuoteSymbol")
   private String fundingQuoteSymbol;
+
   @JSONField(name = "fundingPremiumSymbol")
   private String fundingPremiumSymbol;
+
   @JSONField(name = "fundingTimestamp")
   private String fundingTimestamp;
+
   @JSONField(name = "fundingInterval")
   private String fundingInterval;
+
   @JSONField(name = "fundingRate")
   private BigDecimal fundingRate;
+
   @JSONField(name = "indicativeFundingRate")
   private BigDecimal indicativeFundingRate;
+
   @JSONField(name = "rebalanceTimestamp")
   private String rebalanceTimestamp;
+
   @JSONField(name = "rebalanceInterval")
   private String rebalanceInterval;
+
   @JSONField(name = "openingTimestamp")
   private String openingTimestamp;
+
   @JSONField(name = "closingTimestamp")
   private String closingTimestamp;
+
   @JSONField(name = "sessionInterval")
   private String sessionInterval;
+
   @JSONField(name = "prevClosePrice")
   private BigDecimal prevClosePrice;
+
   @JSONField(name = "limitDownPrice")
   private BigDecimal limitDownPrice;
+
   @JSONField(name = "limitUpPrice")
   private BigDecimal limitUpPrice;
+
   @JSONField(name = "bankruptLimitDownPrice")
   private BigDecimal bankruptLimitDownPrice;
+
   @JSONField(name = "bankruptLimitUpPrice")
   private BigDecimal bankruptLimitUpPrice;
+
   @JSONField(name = "prevTotalVolume")
   private BigDecimal prevTotalVolume;
+
   @JSONField(name = "totalVolume")
   private BigDecimal totalVolume;
+
   @JSONField(name = "volume")
   private BigDecimal volume;
+
   @JSONField(name = "volume24h")
   private BigDecimal volume24h;
+
   @JSONField(name = "prevTotalTurnover")
   private BigInteger prevTotalTurnover;
+
   @JSONField(name = "totalTurnover")
   private BigInteger totalTurnover;
+
   @JSONField(name = "turnover")
   private BigInteger turnover;
+
   @JSONField(name = "turnover24h")
   private BigInteger turnover24h;
+
   @JSONField(name = "prevPrice24h")
   private BigInteger prevPrice24h;
+
   @JSONField(name = "vwap")
   private BigInteger vwap;
+
   @JSONField(name = "highPrice")
   private BigDecimal highPrice;
+
   @JSONField(name = "lowPrice")
   private BigDecimal lowPrice;
+
   @JSONField(name = "lastPrice")
   private BigDecimal lastPrice;
+
   @JSONField(name = "lastPriceProtected")
   private BigDecimal lastPriceProtected;
+
   @JSONField(name = "lastTickDirection")
   private String lastTickDirection;
+
   @JSONField(name = "lastChangePcnt")
   private BigDecimal lastChangePcnt;
+
   @JSONField(name = "bidPrice")
   private BigDecimal bidPrice;
+
   @JSONField(name = "midPrice")
   private BigDecimal midPrice;
+
   @JSONField(name = "askPrice")
   private BigDecimal askPrice;
+
   @JSONField(name = "impactBidPrice")
   private BigDecimal impactBidPrice;
+
   @JSONField(name = "impactMidPrice")
   private BigDecimal impactMidPrice;
+
   @JSONField(name = "impactAskPrice")
   private BigDecimal impactAskPrice;
+
   @JSONField(name = "hasLiquidity")
   private Boolean hasLiquidity;
+
   @JSONField(name = "openInterest")
   private BigDecimal openInterest;
+
   @JSONField(name = "openValue")
   private BigDecimal openValue;
+
   @JSONField(name = "fairMethod")
   private String fairMethod;
+
   @JSONField(name = "fairBasisRate")
   private BigDecimal fairBasisRate;
+
   @JSONField(name = "fairBasis")
   private BigDecimal fairBasis;
+
   @JSONField(name = "fairPrice")
   private BigDecimal fairPrice;
+
   @JSONField(name = "markMethod")
   private String markMethod;
+
   @JSONField(name = "markPrice")
   private BigDecimal markPrice;
+
   @JSONField(name = "indicativeTaxRate")
   private BigDecimal indicativeTaxRate;
+
   @JSONField(name = "indicativeSettlePrice")
   private BigDecimal indicativeSettlePrice;
+
   @JSONField(name = "settledPrice")
   private BigDecimal settledPrice;
+
   @JSONField(name = "timestamp")
   private String timestamp;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
 

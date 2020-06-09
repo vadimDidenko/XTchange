@@ -20,41 +20,34 @@ public class VaultoroOrder {
 
   @JsonProperty("Gold_Price")
   private BigDecimal GoldPrice;
+
   @JsonProperty("Gold_Amount")
   private BigDecimal GoldAmount;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The GoldPrice
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The GoldPrice */
   @JsonProperty("Gold_Price")
   public BigDecimal getGoldPrice() {
 
     return GoldPrice;
   }
 
-  /**
-   * @param GoldPrice The Gold_Price
-   */
+  /** @param GoldPrice The Gold_Price */
   @JsonProperty("Gold_Price")
   public void setGoldPrice(BigDecimal GoldPrice) {
 
     this.GoldPrice = GoldPrice;
   }
 
-  /**
-   * @return The GoldAmount
-   */
+  /** @return The GoldAmount */
   @JsonProperty("Gold_Amount")
   public BigDecimal getGoldAmount() {
 
     return GoldAmount;
   }
 
-  /**
-   * @param GoldAmount The Gold_Amount
-   */
+  /** @param GoldAmount The Gold_Amount */
   @JsonProperty("Gold_Amount")
   public void setGoldAmount(BigDecimal GoldAmount) {
 
@@ -76,7 +69,12 @@ public class VaultoroOrder {
   @Override
   public String toString() {
 
-    return "VaultoroOrder [GoldPrice=" + GoldPrice + ", GoldAmount=" + GoldAmount + ", additionalProperties=" + additionalProperties + "]";
+    return "VaultoroOrder [GoldPrice="
+        + GoldPrice
+        + ", GoldAmount="
+        + GoldAmount
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

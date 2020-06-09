@@ -4,9 +4,7 @@ import org.knowm.xchange.lakebtc.dto.LakeBTCResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * User: cristian.lucaci Date: 10/3/2014 Time: 5:32 PM
- */
+/** User: cristian.lucaci Date: 10/3/2014 Time: 5:32 PM */
 public class LakeBTCAccountInfoResponse extends LakeBTCResponse<LakeBTCAccount> {
 
   /**
@@ -15,7 +13,8 @@ public class LakeBTCAccountInfoResponse extends LakeBTCResponse<LakeBTCAccount> 
    * @param id
    * @param result
    */
-  public LakeBTCAccountInfoResponse(@JsonProperty("id") String id, @JsonProperty("result") LakeBTCAccount result) {
+  public LakeBTCAccountInfoResponse(
+      @JsonProperty("id") String id, @JsonProperty("result") LakeBTCAccount result) {
     super(id, result);
   }
 }

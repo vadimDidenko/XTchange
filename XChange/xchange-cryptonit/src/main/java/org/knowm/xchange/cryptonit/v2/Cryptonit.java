@@ -12,9 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.cryptonit.v2.dto.marketdata.CryptonitOrders;
 import org.knowm.xchange.cryptonit.v2.dto.marketdata.CryptonitTicker;
 
-/**
- * @author veken0m
- */
+/** @author veken0m */
 @Path("apiv2/rest/public")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Cryptonit {
@@ -25,11 +23,18 @@ public interface Cryptonit {
 
   @GET
   @Path("ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&ticker")
-  CryptonitTicker getTicker(@PathParam("bid_currency") String bid_currency, @PathParam("ask_currency") String ask_currency) throws IOException;
+  CryptonitTicker getTicker(
+      @PathParam("bid_currency") String bid_currency,
+      @PathParam("ask_currency") String ask_currency)
+      throws IOException;
 
   @GET
-  @Path("ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&type={type}&limit={limit}")
-  CryptonitOrders getOrders(@PathParam("bid_currency") String bid_currency, @PathParam("ask_currency") String ask_currency,
-                            @PathParam("type") String type, @PathParam("limit") String limit) throws IOException;
-
+  @Path(
+      "ccorder.json?bid_currency={bid_currency}&ask_currency={ask_currency}&type={type}&limit={limit}")
+  CryptonitOrders getOrders(
+      @PathParam("bid_currency") String bid_currency,
+      @PathParam("ask_currency") String ask_currency,
+      @PathParam("type") String type,
+      @PathParam("limit") String limit)
+      throws IOException;
 }

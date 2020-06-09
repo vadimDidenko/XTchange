@@ -2,15 +2,11 @@ package com.binance.api.client.exception;
 
 import com.binance.api.client.BinanceApiError;
 
-/**
- * An exception which can occur while invoking methods of the Binance API.
- */
+/** An exception which can occur while invoking methods of the Binance API. */
 public class BinanceApiException extends RuntimeException {
 
-    private static final long serialVersionUID = 3788669840036201041L;
-/**
-   * Error response object returned by Binance API.
-   */
+  private static final long serialVersionUID = 3788669840036201041L;
+  /** Error response object returned by Binance API. */
   private BinanceApiError error;
 
   /**
@@ -22,9 +18,7 @@ public class BinanceApiException extends RuntimeException {
     this.error = error;
   }
 
-  /**
-   * Instantiates a new binance api exception.
-   */
+  /** Instantiates a new binance api exception. */
   public BinanceApiException() {
     super();
   }
@@ -58,7 +52,8 @@ public class BinanceApiException extends RuntimeException {
   }
 
   /**
-   * @return the response error object from Binance API, or null if no response object was returned (e.g. server returned 500).
+   * @return the response error object from Binance API, or null if no response object was returned
+   *     (e.g. server returned 500).
    */
   public BinanceApiError getError() {
     return error;

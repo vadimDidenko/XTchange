@@ -21,61 +21,51 @@ public class BleutradeMarketHistoryReturn {
 
   @JsonProperty("success")
   private Boolean success;
+
   @JsonProperty("message")
   private String message;
+
   @JsonProperty("result")
   private List<BleutradeTrade> result = new ArrayList<BleutradeTrade>();
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The success
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The success */
   @JsonProperty("success")
   public Boolean getSuccess() {
 
     return success;
   }
 
-  /**
-   * @param success The success
-   */
+  /** @param success The success */
   @JsonProperty("success")
   public void setSuccess(Boolean success) {
 
     this.success = success;
   }
 
-  /**
-   * @return The message
-   */
+  /** @return The message */
   @JsonProperty("message")
   public String getMessage() {
 
     return message;
   }
 
-  /**
-   * @param message The message
-   */
+  /** @param message The message */
   @JsonProperty("message")
   public void setMessage(String message) {
 
     this.message = message;
   }
 
-  /**
-   * @return The result
-   */
+  /** @return The result */
   @JsonProperty("result")
   public List<BleutradeTrade> getResult() {
 
     return result;
   }
 
-  /**
-   * @param result The result
-   */
+  /** @param result The result */
   @JsonProperty("result")
   public void setResult(List<BleutradeTrade> result) {
 
@@ -97,8 +87,14 @@ public class BleutradeMarketHistoryReturn {
   @Override
   public String toString() {
 
-    return "BleutradeMarketHistoryReturn [success=" + success + ", message=" + message + ", result=" + result + ", additionalProperties="
-        + additionalProperties + "]";
+    return "BleutradeMarketHistoryReturn [success="
+        + success
+        + ", message="
+        + message
+        + ", result="
+        + result
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

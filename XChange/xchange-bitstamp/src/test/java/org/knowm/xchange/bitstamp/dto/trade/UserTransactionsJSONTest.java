@@ -13,16 +13,15 @@ import org.knowm.xchange.bitstamp.dto.trade.BitstampUserTransaction.TransactionT
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test UserTransactions[] JSON parsing
- */
+/** Test UserTransactions[] JSON parsing */
 public class UserTransactionsJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = UserTransactionsJSONTest.class.getResourceAsStream("/trade/example-user-transactions.json");
+    InputStream is =
+        UserTransactionsJSONTest.class.getResourceAsStream("/trade/example-user-transactions.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -46,6 +45,5 @@ public class UserTransactionsJSONTest {
 
     assertThat(transactions[1].getCounterAmount()).isEqualTo(new BigDecimal("11.37"));
     assertThat(transactions[1].getPrice()).isEqualTo(new BigDecimal("-131.50"));
-
   }
 }

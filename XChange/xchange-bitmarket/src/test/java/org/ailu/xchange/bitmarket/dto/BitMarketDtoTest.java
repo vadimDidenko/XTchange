@@ -21,7 +21,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseMarketAccountInfo() throws IOException {
     // when
-    BitMarketAccountInfoResponse response = parse("account/example-info-data", BitMarketAccountInfoResponse.class);
+    BitMarketAccountInfoResponse response =
+        parse("account/example-info-data", BitMarketAccountInfoResponse.class);
 
     // then
     verifySuccessResponse(response);
@@ -37,7 +38,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseCancelOrder() throws IOException {
     // when
-    BitMarketCancelResponse response = parse("trade/example-cancel-order", BitMarketCancelResponse.class);
+    BitMarketCancelResponse response =
+        parse("trade/example-cancel-order", BitMarketCancelResponse.class);
 
     // then
     verifySuccessResponse(response);
@@ -53,7 +55,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseDeposit() throws IOException {
     // when
-    BitMarketDepositResponse response = parse("account/example-deposit-data", BitMarketDepositResponse.class);
+    BitMarketDepositResponse response =
+        parse("account/example-deposit-data", BitMarketDepositResponse.class);
 
     // then
     verifySuccessResponse(response);
@@ -69,7 +72,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseWithdraw() throws IOException {
     // when
-    BitMarketWithdrawResponse response = parse("account/example-withdraw-data", BitMarketWithdrawResponse.class);
+    BitMarketWithdrawResponse response =
+        parse("account/example-withdraw-data", BitMarketWithdrawResponse.class);
 
     // then
     verifySuccessResponse(response);
@@ -85,7 +89,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseMarketTrade() throws IOException {
     // when
-    BitMarketTradeResponse response = parse("trade/example-trade-data", BitMarketTradeResponse.class);
+    BitMarketTradeResponse response =
+        parse("trade/example-trade-data", BitMarketTradeResponse.class);
 
     // then
     verifySuccessResponse(response);
@@ -104,7 +109,8 @@ public class BitMarketDtoTest extends BitMarketTestSupport {
   @Test
   public void shouldParseOrderBook() throws IOException {
     // when
-    BitMarketOrderBook response = parse("marketdata/example-order-book-data", BitMarketOrderBook.class);
+    BitMarketOrderBook response =
+        parse("marketdata/example-order-book-data", BitMarketOrderBook.class);
 
     // then
     BitMarketAssert.assertEquals(response, PARSED_ORDER_BOOK);

@@ -14,20 +14,23 @@ public class KucoinException extends HttpStatusExceptionSupport {
 
   @JsonProperty("code")
   private String code;
+
   @JsonProperty("msg")
   private String msg;
+
   @JsonProperty("success")
   private boolean success;
+
   @JsonProperty("timestamp")
   private long timestamp;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @Override
   public String getMessage() {
     return String.format("%s - %s (HTTP status code: %d)", code, msg, getHttpStatusCode());
   }
-  
+
   @JsonProperty("code")
   public String getCode() {
     return code;

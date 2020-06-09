@@ -8,19 +8,17 @@ import java.util.List;
 
 public interface Binance {
 
-    @GET("/exchange/public/product")
-    Call<Products> products();
+  @GET("/exchange/public/product")
+  Call<Products> products();
 
+  @Data
+  class Products {
+    List<Symbol> data;
+  }
 
-
-    @Data
-    class Products{
-        List<Symbol> data;
-    }
-
-    @Data
-    class Symbol{
-        String status;
-        String symbol;
-    }
+  @Data
+  class Symbol {
+    String status;
+    String symbol;
+  }
 }

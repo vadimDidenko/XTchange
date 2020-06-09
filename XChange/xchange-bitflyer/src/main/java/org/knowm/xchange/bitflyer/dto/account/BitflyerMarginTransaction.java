@@ -10,29 +10,27 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
-@JsonPropertyOrder({
-                       "id",
-                       "currency_code",
-                       "change",
-                       "amount",
-                       "reason_code",
-                       "date"
-                   })
+@JsonPropertyOrder({"id", "currency_code", "change", "amount", "reason_code", "date"})
 public class BitflyerMarginTransaction {
   @JsonProperty("id")
   private Integer id;
+
   @JsonProperty("currency_code")
   private String currencyCode;
+
   @JsonProperty("change")
   private BigDecimal change;
+
   @JsonProperty("amount")
   private BigDecimal amount;
+
   @JsonProperty("reason_code")
   private String reasonCode;
+
   @JsonProperty("date")
   private String date;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
   public Integer getId() {
     return id;
@@ -92,14 +90,24 @@ public class BitflyerMarginTransaction {
 
   @Override
   public String toString() {
-    return "BitflyerMarginTransaction{" +
-        "id=" + id +
-        ", currencyCode='" + currencyCode + '\'' +
-        ", change=" + change +
-        ", amount=" + amount +
-        ", reasonCode='" + reasonCode + '\'' +
-        ", date='" + date + '\'' +
-        ", additionalProperties=" + additionalProperties +
-        '}';
+    return "BitflyerMarginTransaction{"
+        + "id="
+        + id
+        + ", currencyCode='"
+        + currencyCode
+        + '\''
+        + ", change="
+        + change
+        + ", amount="
+        + amount
+        + ", reasonCode='"
+        + reasonCode
+        + '\''
+        + ", date='"
+        + date
+        + '\''
+        + ", additionalProperties="
+        + additionalProperties
+        + '}';
   }
 }

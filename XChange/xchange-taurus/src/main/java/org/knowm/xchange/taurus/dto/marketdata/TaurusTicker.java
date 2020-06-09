@@ -8,9 +8,7 @@ import org.knowm.xchange.utils.jackson.UnixTimestampDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public final class TaurusTicker {
 
   private final BigDecimal last;
@@ -22,9 +20,16 @@ public final class TaurusTicker {
   private final BigDecimal ask;
   private final Date timestamp;
 
-  public TaurusTicker(@JsonProperty("last") BigDecimal last, @JsonProperty("high") BigDecimal high, @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vwap") BigDecimal vwap, @JsonProperty("volume") BigDecimal volume, @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask, @JsonProperty("timestamp") @JsonDeserialize(using = UnixTimestampDeserializer.class) Date timestamp) {
+  public TaurusTicker(
+      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("vwap") BigDecimal vwap,
+      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("timestamp") @JsonDeserialize(using = UnixTimestampDeserializer.class)
+          Date timestamp) {
     this.last = last;
     this.high = high;
     this.low = low;
@@ -69,8 +74,20 @@ public final class TaurusTicker {
 
   @Override
   public String toString() {
-    return "TaurusTicker [last=" + last + ", high=" + high + ", low=" + low + ", vwap=" + vwap + ", volume=" + volume + ", bid=" + bid + ", ask="
-        + ask + "]";
+    return "TaurusTicker [last="
+        + last
+        + ", high="
+        + high
+        + ", low="
+        + low
+        + ", vwap="
+        + vwap
+        + ", volume="
+        + volume
+        + ", bid="
+        + bid
+        + ", ask="
+        + ask
+        + "]";
   }
-
 }

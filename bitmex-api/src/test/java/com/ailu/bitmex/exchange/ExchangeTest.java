@@ -1,13 +1,13 @@
-//package com.ailu.bitmex.exchange;
+// package com.ailu.bitmex.exchange;
 //
-//import com.ailu.bitmex.BaseTests;
-//import com.ailu.bitmex.client.BybitClient;
-//import com.ailu.bitmex.service.ExchangeService;
-//import com.ailu.bitmex.service.impl.ExchangeServiceImpl;
-//import lombok.extern.slf4j.Slf4j;
-//import org.junit.Test;
+// import com.ailu.bitmex.BaseTests;
+// import com.ailu.bitmex.client.BybitClient;
+// import com.ailu.bitmex.service.ExchangeService;
+// import com.ailu.bitmex.service.impl.ExchangeServiceImpl;
+// import lombok.extern.slf4j.Slf4j;
+// import org.junit.Test;
 //
-///**
+/// **
 // * NOTE:
 // *
 // * @Version 1.0
@@ -16,8 +16,8 @@
 // * @Company Henan ailu
 // * @Date 2019年01月08日09:51:43
 // */
-//@Slf4j
-//public class ExchangeTest extends BaseTests {
+// @Slf4j
+// public class ExchangeTest extends BaseTests {
 //
 //    @Test
 //    public void getTicksByExchange(){
@@ -43,4 +43,4 @@
 //        log.info(exchangeService.getContracts("okef").toJSONString());
 //    }
 //
-//}
+// }

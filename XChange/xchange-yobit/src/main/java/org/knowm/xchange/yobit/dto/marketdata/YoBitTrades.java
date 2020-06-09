@@ -36,7 +36,8 @@ public class YoBitTrades {
   static class YoBitTradesDeserializer extends JsonDeserializer<YoBitTrades> {
 
     @Override
-    public YoBitTrades deserialize(JsonParser p, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public YoBitTrades deserialize(JsonParser p, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
       Map<String, List<YoBitTrade>> trades = new HashMap<>();
 
       ObjectCodec oc = p.getCodec();
@@ -64,6 +65,5 @@ public class YoBitTrades {
 
       return new YoBitTrades(trades);
     }
-
   }
 }

@@ -15,10 +15,9 @@ import org.knowm.xchange.service.account.AccountService;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author Felipe Micaroni Lalli
- */
-public class MercadoBitcoinAccountService extends MercadoBitcoinAccountServiceRaw implements AccountService {
+/** @author Felipe Micaroni Lalli */
+public class MercadoBitcoinAccountService extends MercadoBitcoinAccountServiceRaw
+    implements AccountService {
 
   /**
    * Constructor
@@ -33,11 +32,13 @@ public class MercadoBitcoinAccountService extends MercadoBitcoinAccountServiceRa
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
-    return MercadoBitcoinAdapters.adaptAccountInfo(getMercadoBitcoinAccountInfo(), exchange.getExchangeSpecification().getUserName());
+    return MercadoBitcoinAdapters.adaptAccountInfo(
+        getMercadoBitcoinAccountInfo(), exchange.getExchangeSpecification().getUserName());
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }
@@ -51,7 +52,6 @@ public class MercadoBitcoinAccountService extends MercadoBitcoinAccountServiceRa
   public String requestDepositAddress(Currency currency, String... arguments) throws IOException {
 
     throw new NotAvailableFromExchangeException();
-
   }
 
   @Override
@@ -60,8 +60,7 @@ public class MercadoBitcoinAccountService extends MercadoBitcoinAccountServiceRa
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

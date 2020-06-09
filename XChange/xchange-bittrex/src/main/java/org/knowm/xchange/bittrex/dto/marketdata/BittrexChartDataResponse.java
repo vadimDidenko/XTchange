@@ -10,7 +10,9 @@ public class BittrexChartDataResponse {
   private final String message;
   private final ArrayList<BittrexChartData> chartData;
 
-  public BittrexChartDataResponse(@JsonProperty("success") boolean success, @JsonProperty("message") String message,
+  public BittrexChartDataResponse(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("message") String message,
       @JsonProperty("result") ArrayList<BittrexChartData> result) {
     this.success = success;
     this.message = message;
@@ -31,6 +33,12 @@ public class BittrexChartDataResponse {
 
   @Override
   public String toString() {
-    return "BittrexChartDataResponse [success=" + success + ", message=" + message + ", chartData=" + chartData + "]";
+    return "BittrexChartDataResponse [success="
+        + success
+        + ", message="
+        + message
+        + ", chartData="
+        + chartData
+        + "]";
   }
 }

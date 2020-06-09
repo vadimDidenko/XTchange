@@ -15,9 +15,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author timmolter
- */
+/** @author timmolter */
 public class BitmexUtils {
 
   protected static Map<String, CurrencyPair> assetPairMap = new HashMap<String, CurrencyPair>();
@@ -25,12 +23,8 @@ public class BitmexUtils {
   protected static BiMap<Currency, String> bitmexCurrencies = HashBiMap.create();
   protected static final HashBiMap<String, Currency> assetsMap = HashBiMap.create();
 
-  /**
-   * Private Constructor
-   */
-  private BitmexUtils() {
-
-  }
+  /** Private Constructor */
+  private BitmexUtils() {}
 
   public static void setBitmexAssetPairs(List<BitmexTicker> tickers) {
 
@@ -47,9 +41,7 @@ public class BitmexUtils {
         assetsMap.put(quote, quoteCurrencyCode);
       if (!assetsMap.containsKey(base) && !assetsMap.containsValue(baseCurrencyCode))
         assetsMap.put(base, baseCurrencyCode);
-
     }
-
   }
 
   public static String createBitmexContract(BitmexContract contract) {
@@ -60,10 +52,11 @@ public class BitmexUtils {
   public class CustomBitmexContractSerializer extends JsonSerializer<BitmexContract> {
 
     @Override
-    public void serialize(BitmexContract contract, JsonGenerator jsonGenerator, SerializerProvider serializerProvider) throws IOException {
+    public void serialize(
+        BitmexContract contract, JsonGenerator jsonGenerator, SerializerProvider serializerProvider)
+        throws IOException {
 
       jsonGenerator.writeString(contract.toString());
-
     }
   }
 
@@ -82,8 +75,7 @@ public class BitmexUtils {
           counter = counter.getCommonlyUsedCurrency();
         }
         pair = new CurrencyPair(base, counter);
-      }
-      else if (currencyPairIn.length() == 7) {
+      } else if (currencyPairIn.length() == 7) {
         Currency base = new Currency(currencyPairIn.substring(0, 4));
         if (base.getCommonlyUsedCurrency() != null) {
           base = base.getCommonlyUsedCurrency();

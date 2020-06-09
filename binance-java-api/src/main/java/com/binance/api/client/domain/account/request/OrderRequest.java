@@ -4,9 +4,7 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Base request parameters for order-related methods.
- */
+/** Base request parameters for order-related methods. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderRequest {
 

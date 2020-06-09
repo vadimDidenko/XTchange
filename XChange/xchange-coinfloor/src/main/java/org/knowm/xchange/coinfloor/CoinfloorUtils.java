@@ -15,8 +15,7 @@ public final class CoinfloorUtils {
     DATE_FORMAT.setTimeZone(TimeZone.getTimeZone("UTC"));
   }
 
-  private CoinfloorUtils() {
-  }
+  private CoinfloorUtils() {}
 
   public static Date parseDate(final String date) {
     try {

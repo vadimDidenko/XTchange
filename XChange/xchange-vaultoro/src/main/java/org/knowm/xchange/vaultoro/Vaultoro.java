@@ -27,5 +27,4 @@ public interface Vaultoro {
   @GET
   @Path("transactions/month")
   List<VaultoroTrade> getVaultoroTrades(String time) throws IOException, VaultoroException;
-
 }

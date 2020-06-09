@@ -19,10 +19,11 @@ public class BittrexDepositAddress {
 
   @JsonProperty("Currency")
   private String currency;
+
   @JsonProperty("Address")
   private String address;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("Currency")
   public String getCurrency() {
@@ -59,5 +60,4 @@ public class BittrexDepositAddress {
 
     this.additionalProperties.put(name, value);
   }
-
 }

@@ -6,9 +6,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class BitstampOrderBook {
 
   private final Date timestamp;
@@ -22,7 +20,9 @@ public class BitstampOrderBook {
    * @param bids
    * @param asks
    */
-  public BitstampOrderBook(@JsonProperty("timestamp") Long timestamp, @JsonProperty("bids") List<List<BigDecimal>> bids,
+  public BitstampOrderBook(
+      @JsonProperty("timestamp") Long timestamp,
+      @JsonProperty("bids") List<List<BigDecimal>> bids,
       @JsonProperty("asks") List<List<BigDecimal>> asks) {
 
     this.bids = bids;
@@ -30,25 +30,19 @@ public class BitstampOrderBook {
     this.timestamp = new Date(timestamp * 1000);
   }
 
-  /**
-   * @return Timestamp in Unix milliseconds
-   */
+  /** @return Timestamp in Unix milliseconds */
   public Date getTimestamp() {
 
     return timestamp;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getBids() {
 
     return bids;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getAsks() {
 
     return asks;
@@ -59,5 +53,4 @@ public class BitstampOrderBook {
 
     return "BitstampOrderBook [timestamp=" + timestamp + ", bids=" + bids + ", asks=" + asks + "]";
   }
-
 }

@@ -24,5 +24,4 @@ public class QuoineOrdersListDemo {
     QuoineOrdersList quoineOrdersList = tradeServiceRaw.listQuoineOrders();
     System.out.println(quoineOrdersList.toString());
   }
-
 }

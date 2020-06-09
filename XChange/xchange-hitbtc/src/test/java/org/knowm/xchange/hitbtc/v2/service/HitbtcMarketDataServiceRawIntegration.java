@@ -17,7 +17,8 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
 public class HitbtcMarketDataServiceRawIntegration extends BaseServiceTest {
 
   private MarketDataService marketDataService = exchange().getMarketDataService();
-  private HitbtcMarketDataServiceRaw marketDataServiceRaw = (HitbtcMarketDataServiceRaw) marketDataService;
+  private HitbtcMarketDataServiceRaw marketDataServiceRaw =
+      (HitbtcMarketDataServiceRaw) marketDataService;
 
   @Test
   public void testGetHitbtcSymbols() throws IOException {
@@ -36,5 +37,4 @@ public class HitbtcMarketDataServiceRawIntegration extends BaseServiceTest {
     assertThat(tickers).isNotEmpty();
     assertThat(tickers.get("BTCUSD")).isNotNull();
   }
-
 }

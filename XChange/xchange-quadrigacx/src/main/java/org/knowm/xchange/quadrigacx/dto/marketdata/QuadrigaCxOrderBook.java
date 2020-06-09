@@ -20,7 +20,9 @@ public class QuadrigaCxOrderBook {
    * @param bids
    * @param asks
    */
-  public QuadrigaCxOrderBook(@JsonProperty("timestamp") Long timestamp, @JsonProperty("bids") List<List<BigDecimal>> bids,
+  public QuadrigaCxOrderBook(
+      @JsonProperty("timestamp") Long timestamp,
+      @JsonProperty("bids") List<List<BigDecimal>> bids,
       @JsonProperty("asks") List<List<BigDecimal>> asks) {
 
     if (asks == null) {
@@ -31,25 +33,19 @@ public class QuadrigaCxOrderBook {
     this.timestamp = timestamp;
   }
 
-  /**
-   * @return Timestamp in Unix milliseconds
-   */
+  /** @return Timestamp in Unix milliseconds */
   public Long getTimestamp() {
 
     return timestamp;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getBids() {
 
     return bids;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getAsks() {
 
     return asks;
@@ -58,7 +54,12 @@ public class QuadrigaCxOrderBook {
   @Override
   public String toString() {
 
-    return "QuadrigaCxOrderBook [timestamp=" + timestamp + ", bids=" + bids + ", asks=" + asks + "]";
+    return "QuadrigaCxOrderBook [timestamp="
+        + timestamp
+        + ", bids="
+        + bids
+        + ", asks="
+        + asks
+        + "]";
   }
-
 }

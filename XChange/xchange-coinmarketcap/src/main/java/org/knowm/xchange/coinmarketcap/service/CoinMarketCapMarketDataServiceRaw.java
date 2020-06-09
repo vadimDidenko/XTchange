@@ -14,9 +14,7 @@ import org.knowm.xchange.service.BaseService;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author allenday
- */
+/** @author allenday */
 class CoinMarketCapMarketDataServiceRaw extends BaseExchangeService implements BaseService {
 
   private final CoinMarketCap coinmarketcap;
@@ -24,7 +22,11 @@ class CoinMarketCapMarketDataServiceRaw extends BaseExchangeService implements B
   public CoinMarketCapMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-    this.coinmarketcap = RestProxyFactory.createProxy(CoinMarketCap.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.coinmarketcap =
+        RestProxyFactory.createProxy(
+            CoinMarketCap.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
   }
 
   public CoinMarketCapTicker getCoinMarketCapTicker(CurrencyPair pair) {
@@ -42,27 +44,26 @@ class CoinMarketCapMarketDataServiceRaw extends BaseExchangeService implements B
 
     List<CoinMarketCapTicker> tickers = getCoinMarketCapTickers();
     List<CoinMarketCapCurrency> currencies = new ArrayList<>();
-    for (CoinMarketCapTicker ticker : tickers)
-      currencies.add(ticker.getBaseCurrency());
+    for (CoinMarketCapTicker ticker : tickers) currencies.add(ticker.getBaseCurrency());
     return currencies;
   }
 
-  /**
-   * Retrieves all tickers from CoinMarketCap
-   */
+  /** Retrieves all tickers from CoinMarketCap */
   public List<CoinMarketCapTicker> getCoinMarketCapTickers() throws IOException {
     return getCoinMarketCapTickers(0);
   }
 
   /**
    * Retrieves limited amount of tickers from CoinMarketCap
+   *
    * @param limit count of tickers to be retrieved
    */
   public List<CoinMarketCapTicker> getCoinMarketCapTickers(final int limit) throws IOException {
     return coinmarketcap.getTickers(limit);
   }
 
-  public List<CoinMarketCapTicker> getCoinMarketCapTickers(int start, int limit) throws IOException {
+  public List<CoinMarketCapTicker> getCoinMarketCapTickers(int start, int limit)
+      throws IOException {
 
     return coinmarketcap.getTickers(start, limit);
   }

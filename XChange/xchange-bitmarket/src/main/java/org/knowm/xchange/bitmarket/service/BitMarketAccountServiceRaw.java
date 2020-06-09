@@ -14,50 +14,61 @@ import org.knowm.xchange.bitmarket.dto.trade.BitMarketHistoryOperationsResponse;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.exceptions.ExchangeException;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketAccountServiceRaw extends BitMarketBaseService {
 
   public BitMarketAccountServiceRaw(Exchange exchange) {
     super(exchange);
   }
 
-  public BitMarketAccountInfoResponse getBitMarketAccountInfo() throws IOException, ExchangeException {
+  public BitMarketAccountInfoResponse getBitMarketAccountInfo()
+      throws IOException, ExchangeException {
 
-    BitMarketAccountInfoResponse response = bitMarketAuthenticated.info(apiKey, sign, exchange.getNonceFactory());
+    BitMarketAccountInfoResponse response =
+        bitMarketAuthenticated.info(apiKey, sign, exchange.getNonceFactory());
 
     if (!response.getSuccess()) {
-      throw new ExchangeException(String.format("%d: %s", response.getError(), response.getErrorMsg()));
+      throw new ExchangeException(
+          String.format("%d: %s", response.getError(), response.getErrorMsg()));
     }
 
     return response;
   }
 
-  public BitMarketWithdrawResponse withdrawFromBitMarket(String currency, BigDecimal amount, String address) throws IOException, ExchangeException {
+  public BitMarketWithdrawResponse withdrawFromBitMarket(
+      String currency, BigDecimal amount, String address) throws IOException, ExchangeException {
 
-    BitMarketWithdrawResponse response = bitMarketAuthenticated.withdraw(apiKey, sign, exchange.getNonceFactory(), currency, amount, address);
+    BitMarketWithdrawResponse response =
+        bitMarketAuthenticated.withdraw(
+            apiKey, sign, exchange.getNonceFactory(), currency, amount, address);
 
     if (!response.getSuccess()) {
-      throw new ExchangeException(String.format("%d: %s", response.getError(), response.getErrorMsg()));
+      throw new ExchangeException(
+          String.format("%d: %s", response.getError(), response.getErrorMsg()));
     }
 
     return response;
   }
 
-  public BitMarketDepositResponse depositToBitMarket(String currency) throws IOException, ExchangeException {
+  public BitMarketDepositResponse depositToBitMarket(String currency)
+      throws IOException, ExchangeException {
 
-    BitMarketDepositResponse response = bitMarketAuthenticated.deposit(apiKey, sign, exchange.getNonceFactory(), currency);
+    BitMarketDepositResponse response =
+        bitMarketAuthenticated.deposit(apiKey, sign, exchange.getNonceFactory(), currency);
 
     if (!response.getSuccess()) {
-      throw new ExchangeException(String.format("%d: %s", response.getError(), response.getErrorMsg()));
+      throw new ExchangeException(
+          String.format("%d: %s", response.getError(), response.getErrorMsg()));
     }
 
     return response;
   }
 
-  public List<BitMarketHistoryOperation> accountHistory(Currency currency, int count, int offset) throws IOException {
-    BitMarketHistoryOperationsResponse history = bitMarketAuthenticated.history(apiKey, sign, exchange.getNonceFactory(), currency.getCurrencyCode(), count, offset);
+  public List<BitMarketHistoryOperation> accountHistory(Currency currency, int count, int offset)
+      throws IOException {
+    BitMarketHistoryOperationsResponse history =
+        bitMarketAuthenticated.history(
+            apiKey, sign, exchange.getNonceFactory(), currency.getCurrencyCode(), count, offset);
     BitMarketHistoryOperations data = history.getData();
     return data.getOperations();
   }

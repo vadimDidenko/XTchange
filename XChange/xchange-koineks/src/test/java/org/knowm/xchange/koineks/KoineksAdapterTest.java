@@ -10,15 +10,14 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.math.BigDecimal;
 
-/**
- * @author semihunaldi
- */
+/** @author semihunaldi */
 public class KoineksAdapterTest {
 
   @Test
   public void testTickerAdapter() throws IOException {
     // Read in the JSON from the example resources
-    InputStream is = KoineksAdapterTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        KoineksAdapterTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
     KoineksTicker paribuTicker = mapper.readValue(is, KoineksTicker.class);

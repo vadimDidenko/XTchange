@@ -10,7 +10,9 @@ public class CCEXMarkets {
   private final String message;
   private List<CCEXMarket> result = new ArrayList<>();
 
-  public CCEXMarkets(@JsonProperty("success") Boolean success, @JsonProperty("message") String message,
+  public CCEXMarkets(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("message") String message,
       @JsonProperty("result") List<CCEXMarket> result) {
     super();
     this.success = success;
@@ -29,5 +31,4 @@ public class CCEXMarkets {
   public List<CCEXMarket> getResult() {
     return result;
   }
-
 }

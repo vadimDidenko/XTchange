@@ -10,14 +10,19 @@ public final class MyFunds extends CampBXResponse {
 
   @JsonProperty("Total USD")
   private BigDecimal totalUSD;
+
   @JsonProperty("Total BTC")
   private BigDecimal totalBTC;
+
   @JsonProperty("Liquid USD")
   private BigDecimal liquidUSD;
+
   @JsonProperty("Liquid BTC")
   private BigDecimal liquidBTC;
+
   @JsonProperty("Margin Account USD")
   private BigDecimal marginAccountUSD;
+
   @JsonProperty("Margin Account BTC")
   private BigDecimal marginAccountBTC;
 
@@ -84,9 +89,24 @@ public final class MyFunds extends CampBXResponse {
   @Override
   public String toString() {
 
-    return "MyFunds [totalUSD=" + totalUSD + ", totalBTC=" + totalBTC + ", liquidUSD=" + liquidUSD + ", liquidBTC=" + liquidBTC
-        + ", marginAccountUSD=" + marginAccountUSD + ", marginAccountBTC=" + marginAccountBTC + ", getSuccess()=" + getSuccess() + ", getInfo()="
-        + getInfo() + ", getError()=" + getError() + "]";
+    return "MyFunds [totalUSD="
+        + totalUSD
+        + ", totalBTC="
+        + totalBTC
+        + ", liquidUSD="
+        + liquidUSD
+        + ", liquidBTC="
+        + liquidBTC
+        + ", marginAccountUSD="
+        + marginAccountUSD
+        + ", marginAccountBTC="
+        + marginAccountBTC
+        + ", getSuccess()="
+        + getSuccess()
+        + ", getInfo()="
+        + getInfo()
+        + ", getError()="
+        + getError()
+        + "]";
   }
-
 }

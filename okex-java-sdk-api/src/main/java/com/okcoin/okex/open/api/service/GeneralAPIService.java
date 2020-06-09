@@ -11,13 +11,9 @@ import com.okcoin.okex.open.api.bean.futures.result.ServerTime;
  * @date 2018/3/9 16:06
  */
 public interface GeneralAPIService {
-    /**
-     * Time of the server running OKEX's REST API.
-     */
-    ServerTime getServerTime();
+  /** Time of the server running OKEX's REST API. */
+  ServerTime getServerTime();
 
-    /**
-     * The exchange rate of legal tender pairs
-     */
-    ExchangeRate getExchangeRate();
+  /** The exchange rate of legal tender pairs */
+  ExchangeRate getExchangeRate();
 }

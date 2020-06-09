@@ -1,18 +1,18 @@
-//package com.ailu.bitmex.bean.marketdata;
+// package com.ailu.bitmex.bean.marketdata;
 //
-//import com.fasterxml.jackson.core.JsonParser;
-//import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.core.ObjectCodec;
-//import com.fasterxml.jackson.databind.DeserializationContext;
-//import com.fasterxml.jackson.databind.JsonDeserializer;
-//import com.fasterxml.jackson.databind.JsonNode;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-//import org.knowm.xchange.bitmex.dto.marketdata.BitmexFee.BitmexFeeDeserializer;
+// import com.fasterxml.jackson.core.JsonParser;
+// import com.fasterxml.jackson.core.JsonProcessingException;
+// import com.fasterxml.jackson.core.ObjectCodec;
+// import com.fasterxml.jackson.databind.DeserializationContext;
+// import com.fasterxml.jackson.databind.JsonDeserializer;
+// import com.fasterxml.jackson.databind.JsonNode;
+// import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+// import org.knowm.xchange.bitmex.dto.marketdata.BitmexFee.BitmexFeeDeserializer;
 //
-//import java.io.IOException;
-//import java.math.BigDecimal;
+// import java.io.IOException;
+// import java.math.BigDecimal;
 //
-//public class BitmexFee {
+// public class BitmexFee {
 //
 //  private final BigDecimal volume;
 //  private final BigDecimal percentFee;
@@ -42,7 +42,8 @@
 //  static class BitmexFeeDeserializer extends JsonDeserializer<BitmexFee> {
 //
 //    @Override
-//    public BitmexFee deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+//    public BitmexFee deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws
+// IOException, JsonProcessingException {
 //
 //      ObjectCodec oc = jsonParser.getCodec();
 //      JsonNode node = oc.readTree(jsonParser);
@@ -52,4 +53,4 @@
 //      return new BitmexFee(volume, fee);
 //    }
 //  }
-//}
+// }

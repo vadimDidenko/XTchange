@@ -11,15 +11,14 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class DSXTransHistoryJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
-    InputStream is = DSXTransHistoryJSONTest.class.getResourceAsStream("/trade/example-trans-history-data.json");
+    InputStream is =
+        DSXTransHistoryJSONTest.class.getResourceAsStream("/trade/example-trans-history-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     DSXTransHistoryReturn transactions = mapper.readValue(is, DSXTransHistoryReturn.class);

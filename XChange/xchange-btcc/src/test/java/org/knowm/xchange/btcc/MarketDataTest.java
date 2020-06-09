@@ -19,7 +19,8 @@ public class MarketDataTest {
 
     ObjectMapper mapper = new ObjectMapper();
     TypeFactory t = TypeFactory.defaultInstance();
-    Map<String, BTCCTicker> response = mapper.readValue(is, t.constructMapType(Map.class, String.class, BTCCTicker.class));
+    Map<String, BTCCTicker> response =
+        mapper.readValue(is, t.constructMapType(Map.class, String.class, BTCCTicker.class));
     BTCCTicker btccTicker = response.get("ticker");
 
     Ticker ticker = BTCCAdapters.adaptTicker(btccTicker, CurrencyPair.BTC_USD);
@@ -31,5 +32,4 @@ public class MarketDataTest {
     assertThat(ticker.getAsk()).isEqualTo(new BigDecimal("1729"));
     assertThat(ticker.getBid()).isEqualTo(new BigDecimal("1725"));
   }
-
 }

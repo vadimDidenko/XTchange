@@ -15,12 +15,11 @@ import org.knowm.xchange.examples.bitso.BitsoDemoUtils;
 import org.knowm.xchange.service.trade.TradeService;
 
 /**
- * <p>
  * Example showing the following:
- * </p>
+ *
  * <ul>
- * <li>Connect to Bitso exchange with authentication</li>
- * <li>Enter, review and cancel limit orders</li>
+ *   <li>Connect to Bitso exchange with authentication
+ *   <li>Enter, review and cancel limit orders
  * </ul>
  *
  * @author Piotr Ładyżyński
@@ -41,8 +40,14 @@ public class BitsoTradeDemo {
     printOpenOrders(tradeService);
 
     // place a limit buy order
-    LimitOrder limitOrder = new LimitOrder((OrderType.ASK), new BigDecimal("0.01"), new CurrencyPair(Currency.BTC, Currency.MXN), "", null,
-        new BigDecimal("5000.00"));
+    LimitOrder limitOrder =
+        new LimitOrder(
+            (OrderType.ASK),
+            new BigDecimal("0.01"),
+            new CurrencyPair(Currency.BTC, Currency.MXN),
+            "",
+            null,
+            new BigDecimal("5000.00"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 
@@ -66,7 +71,8 @@ public class BitsoTradeDemo {
     printRawOpenOrders(tradeService);
 
     // place a limit buy order
-    BitsoOrder order = tradeService.sellBitsoOrder(new BigDecimal("0.01"), new BigDecimal("5000.00"));
+    BitsoOrder order =
+        tradeService.sellBitsoOrder(new BigDecimal("0.01"), new BigDecimal("5000.00"));
     System.out.println("BitsoOrder return value: " + order);
 
     printRawOpenOrders(tradeService);

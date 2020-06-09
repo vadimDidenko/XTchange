@@ -26,7 +26,8 @@ public class CCEXAccountDemo {
     raw((CCEXAccountServiceRaw) accountService);
   }
 
-  private static void generic(AccountService accountService) throws IOException, InterruptedException {
+  private static void generic(AccountService accountService)
+      throws IOException, InterruptedException {
 
     System.out.println("----------GENERIC---------");
 
@@ -34,10 +35,10 @@ public class CCEXAccountDemo {
     System.out.println(balances);
     TimeUnit.SECONDS.sleep(1);
     System.out.println(accountService.requestDepositAddress(Currency.BTC));
-
   }
 
-  private static void raw(CCEXAccountServiceRaw accountService) throws IOException, InterruptedException {
+  private static void raw(CCEXAccountServiceRaw accountService)
+      throws IOException, InterruptedException {
 
     System.out.println("------------RAW-----------");
 
@@ -45,6 +46,5 @@ public class CCEXAccountDemo {
     System.out.println(wallets);
     TimeUnit.SECONDS.sleep(1);
     System.out.println(accountService.getCCEXDepositAddress("BTC"));
-
   }
 }

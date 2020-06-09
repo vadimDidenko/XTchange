@@ -5,5 +5,5 @@ package com.okcoin.okex.open.api.bean.ett.result;
  * @date 2018/7/5
  */
 public class EttCancelOrderResult {
-    private Boolean result;
+  private Boolean result;
 }

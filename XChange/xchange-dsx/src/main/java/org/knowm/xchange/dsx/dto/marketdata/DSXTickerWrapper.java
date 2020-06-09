@@ -4,10 +4,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXTickerWrapper {
 
   private final Map<String, DSXTicker> tickerMap;
@@ -35,8 +32,6 @@ public class DSXTickerWrapper {
   @Override
   public String toString() {
 
-    return "DSXTickerWrapper{" +
-        "tickerMap=" + tickerMap.toString() +
-        '}';
+    return "DSXTickerWrapper{" + "tickerMap=" + tickerMap.toString() + '}';
   }
 }

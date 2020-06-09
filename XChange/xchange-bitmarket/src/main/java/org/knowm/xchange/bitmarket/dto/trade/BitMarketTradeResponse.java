@@ -5,9 +5,7 @@ import org.knowm.xchange.bitmarket.dto.BitMarketBaseResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketTradeResponse extends BitMarketBaseResponse<BitMarketTrade> {
 
   /**
@@ -19,8 +17,12 @@ public class BitMarketTradeResponse extends BitMarketBaseResponse<BitMarketTrade
    * @param error
    * @param errorMsg
    */
-  public BitMarketTradeResponse(@JsonProperty("success") boolean success, @JsonProperty("data") BitMarketTrade data,
-      @JsonProperty("limit") BitMarketAPILimit limit, @JsonProperty("error") int error, @JsonProperty("errorMsg") String errorMsg) {
+  public BitMarketTradeResponse(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("data") BitMarketTrade data,
+      @JsonProperty("limit") BitMarketAPILimit limit,
+      @JsonProperty("error") int error,
+      @JsonProperty("errorMsg") String errorMsg) {
 
     super(success, data, limit, error, errorMsg);
   }

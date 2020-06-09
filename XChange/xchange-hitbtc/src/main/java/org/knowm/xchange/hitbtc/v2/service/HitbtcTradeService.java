@@ -70,9 +70,7 @@ public class HitbtcTradeService extends HitbtcTradeServiceRaw implements TradeSe
     }
   }
 
-  /**
-   * Required parameters: {@link TradeHistoryParamPaging} {@link TradeHistoryParamCurrencyPair}
-   */
+  /** Required parameters: {@link TradeHistoryParamPaging} {@link TradeHistoryParamCurrencyPair} */
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
 
@@ -110,18 +108,17 @@ public class HitbtcTradeService extends HitbtcTradeServiceRaw implements TradeSe
 
   @Override
   public Collection<Order> getOrder(String... orderIds) throws IOException {
-    if (orderIds == null || orderIds.length == 0){
+    if (orderIds == null || orderIds.length == 0) {
       return new ArrayList<>();
     }
 
     Collection<Order> orders = new ArrayList<>();
     for (String orderId : orderIds) {
       HitbtcOrder rawOrder = getHitbtcOrder("BTCUSD", orderId);
-      
-      if (rawOrder != null)
-        orders.add(HitbtcAdapters.adaptOrder(rawOrder));
+
+      if (rawOrder != null) orders.add(HitbtcAdapters.adaptOrder(rawOrder));
     }
-    
+
     return orders;
   }
 

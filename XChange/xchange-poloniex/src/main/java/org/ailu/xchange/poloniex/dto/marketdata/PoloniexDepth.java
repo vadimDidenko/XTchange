@@ -22,12 +22,14 @@ public class PoloniexDepth {
 
   @JsonProperty("asks")
   private List<List<BigDecimal>> asks = new ArrayList<List<BigDecimal>>();
+
   @JsonProperty("bids")
   private List<List<BigDecimal>> bids = new ArrayList<List<BigDecimal>>();
+
   @JsonProperty("isFrozen")
   private String isFrozen;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("asks")
   public List<List<BigDecimal>> getAsks() {
@@ -80,7 +82,14 @@ public class PoloniexDepth {
   @Override
   public String toString() {
 
-    return "PoloniexDepth [asks=" + asks + ", bids=" + bids + ", isFrozen=" + isFrozen + ", additionalProperties=" + additionalProperties + "]";
+    return "PoloniexDepth [asks="
+        + asks
+        + ", bids="
+        + bids
+        + ", isFrozen="
+        + isFrozen
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

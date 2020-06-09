@@ -10,10 +10,9 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author semihunaldi
- */
-public class BTCTurkMarketDataService extends BTCTurkMarketDataServiceRaw implements MarketDataService {
+/** @author semihunaldi */
+public class BTCTurkMarketDataService extends BTCTurkMarketDataServiceRaw
+    implements MarketDataService {
 
   public BTCTurkMarketDataService(Exchange exchange) {
     super(exchange);
@@ -32,7 +31,7 @@ public class BTCTurkMarketDataService extends BTCTurkMarketDataServiceRaw implem
   @Override
   public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
     Integer last = args.length > 0 ? (Integer) args[0] : null;
-    if (last != null && last > 500) { //Max. value for last parameter is 500)
+    if (last != null && last > 500) { // Max. value for last parameter is 500)
       last = 500;
     }
     return BTCTurkAdapters.adaptTrades(getBTCTurkTrades(currencyPair, last), currencyPair);

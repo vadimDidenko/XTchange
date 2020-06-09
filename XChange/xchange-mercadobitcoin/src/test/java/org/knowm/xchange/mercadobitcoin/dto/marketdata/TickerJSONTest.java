@@ -21,7 +21,8 @@ public class TickerJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     MercadoBitcoinTicker mercadoBitcoinTicker = mapper.readValue(is, MercadoBitcoinTicker.class);
@@ -35,5 +36,4 @@ public class TickerJSONTest {
     assertThat(mercadoBitcoinTicker.getTicker().getSell()).isEqualTo(new BigDecimal("1020"));
     assertThat(mercadoBitcoinTicker.getTicker().getDate()).isEqualTo(1417226432L);
   }
-
 }

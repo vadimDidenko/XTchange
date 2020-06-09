@@ -20,9 +20,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamPaging;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public final class CoinbaseTradeService extends CoinbaseTradeServiceRaw implements TradeService {
 
   /**
@@ -41,16 +39,17 @@ public final class CoinbaseTradeService extends CoinbaseTradeServiceRaw implemen
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
   public String placeMarketOrder(MarketOrder marketOrder) throws ExchangeException, IOException {
 
-    final CoinbaseTransfer transfer = marketOrder.getType().equals(OrderType.BID) ? super.buy(marketOrder.getOriginalAmount())
-        : super.sell(marketOrder.getOriginalAmount());
+    final CoinbaseTransfer transfer =
+        marketOrder.getType().equals(OrderType.BID)
+            ? super.buy(marketOrder.getOriginalAmount())
+            : super.sell(marketOrder.getOriginalAmount());
     return transfer.getId();
   }
 
@@ -77,9 +76,11 @@ public final class CoinbaseTradeService extends CoinbaseTradeServiceRaw implemen
   }
 
   /**
-   * Authenticated resource which returns the user’s Bitcoin purchases and sells. Sorted in descending order by creation date.
+   * Authenticated resource which returns the user’s Bitcoin purchases and sells. Sorted in
+   * descending order by creation date.
    *
-   * @see <a href="https://coinbase.com/api/doc/1.0/transfers/index.html">coinbase.com/api/doc/1.0/transfers/index.html</a>
+   * @see <a
+   *     href="https://coinbase.com/api/doc/1.0/transfers/index.html">coinbase.com/api/doc/1.0/transfers/index.html</a>
    */
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
@@ -96,8 +97,7 @@ public final class CoinbaseTradeService extends CoinbaseTradeServiceRaw implemen
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 
@@ -114,5 +114,4 @@ public final class CoinbaseTradeService extends CoinbaseTradeServiceRaw implemen
   public OpenOrdersParams createOpenOrdersParams() {
     return null;
   }
-
 }

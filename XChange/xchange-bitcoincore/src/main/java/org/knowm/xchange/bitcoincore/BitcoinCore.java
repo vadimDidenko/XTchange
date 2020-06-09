@@ -20,9 +20,11 @@ public interface BitcoinCore {
 
   @POST
   @Path("")
-  BitcoinCoreBalanceResponse getBalance(BitcoinCoreBalanceRequest request) throws IOException, BitcoinCoreException;
+  BitcoinCoreBalanceResponse getBalance(BitcoinCoreBalanceRequest request)
+      throws IOException, BitcoinCoreException;
 
   @POST
   @Path("")
-  BitcoinCoreBalanceResponse getUnconfirmedBalance(BitcoinCoreUnconfirmedBalanceRequest request) throws IOException, BitcoinCoreException;
+  BitcoinCoreBalanceResponse getUnconfirmedBalance(BitcoinCoreUnconfirmedBalanceRequest request)
+      throws IOException, BitcoinCoreException;
 }

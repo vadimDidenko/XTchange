@@ -21,13 +21,14 @@ public class CoinbaseTradeDemo {
     TradeService tradeService = exchange.getTradeService();
 
     // [TODO] generic(tradeService);
-    
+
     raw(exchange, (CoinbaseTradeService) tradeService);
   }
 
   public static void generic(TradeService tradeService) throws IOException {
 
-    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new BigDecimal(".01"), Currency.BTC, Currency.USD);
+    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new BigDecimal(".01"), Currency.BTC,
+    // Currency.USD);
     // String orderId = tradeService.placeMarketOrder(marketOrder);
     // System.out.println("Order Id: " + orderId);
 
@@ -41,7 +42,7 @@ public class CoinbaseTradeDemo {
 
     CoinbaseAccountService accountService = (CoinbaseAccountService) exchange.getAccountService();
     String accountId = accountService.getCoinbaseAccount(Currency.BTC).getId();
-    
+
     BigDecimal amount = new BigDecimal("0.0001");
     CoinbaseSell res = tradeService.sell(accountId, amount, Currency.BTC, false);
     System.out.println(res);

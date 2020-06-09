@@ -30,8 +30,7 @@ public class VircurexTradeService extends VircurexTradeServiceRaw implements Tra
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return getVircurexOpenOrders();
   }
 
@@ -81,9 +80,7 @@ public class VircurexTradeService extends VircurexTradeServiceRaw implements Tra
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

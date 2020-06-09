@@ -11,10 +11,7 @@ import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.bitcoinaverage.dto.marketdata.BitcoinAverageTicker;
 import org.knowm.xchange.bitcoinaverage.dto.marketdata.BitcoinAverageTickers;
 
-/**
- * @author veken0m
- */
-
+/** @author veken0m */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface BitcoinAverage {
@@ -26,5 +23,4 @@ public interface BitcoinAverage {
   @GET
   @Path("indices/global/ticker/short?crypto={crypto}")
   BitcoinAverageTickers getShortTickers(@PathParam("crypto") String crypto) throws IOException;
-
 }

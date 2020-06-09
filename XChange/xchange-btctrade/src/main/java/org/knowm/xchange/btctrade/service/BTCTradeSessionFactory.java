@@ -8,13 +8,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 /**
- * {@link BTCTradeSession} factory to ensure the service instances, which using the same API key, share the same secret data and nonce.
+ * {@link BTCTradeSession} factory to ensure the service instances, which using the same API key,
+ * share the same secret data and nonce.
  */
 public enum BTCTradeSessionFactory {
 
-  /**
-   * Enum Singleton Pattern.
-   */
+  /** Enum Singleton Pattern. */
   INSTANCE;
 
   private final Logger log = LoggerFactory.getLogger(BTCTradeSessionFactory.class);
@@ -43,5 +42,4 @@ public enum BTCTradeSessionFactory {
     }
     return session;
   }
-
 }

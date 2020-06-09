@@ -16,7 +16,8 @@ public class BitcoinAverageTickerDemo {
   public static void main(String[] args) throws IOException {
 
     // Use the factory to get the BitcoinAverage exchange API using default settings
-    Exchange bitcoinAverageExchange = ExchangeFactory.INSTANCE.createExchange(BitcoinAverageExchange.class.getName());
+    Exchange bitcoinAverageExchange =
+        ExchangeFactory.INSTANCE.createExchange(BitcoinAverageExchange.class.getName());
     bitcoinAverageExchange.remoteInit();
     generic(bitcoinAverageExchange);
     raw(bitcoinAverageExchange);
@@ -38,11 +39,12 @@ public class BitcoinAverageTickerDemo {
 
   private static void raw(Exchange bitcoinAverageExchange) throws IOException {
 
-    BitcoinAverageMarketDataServiceRaw bitcoinAverageMarketDataServiceRaw = (BitcoinAverageMarketDataServiceRaw) bitcoinAverageExchange
-        .getMarketDataService();
+    BitcoinAverageMarketDataServiceRaw bitcoinAverageMarketDataServiceRaw =
+        (BitcoinAverageMarketDataServiceRaw) bitcoinAverageExchange.getMarketDataService();
 
     // Get the latest ticker data showing BTC to EUR
-    BitcoinAverageTicker ticker = bitcoinAverageMarketDataServiceRaw.getBitcoinAverageTicker("BTC", "EUR");
+    BitcoinAverageTicker ticker =
+        bitcoinAverageMarketDataServiceRaw.getBitcoinAverageTicker("BTC", "EUR");
 
     System.out.println("Last: " + ticker.getLast());
     System.out.println("Vol: " + ticker.getVolume());

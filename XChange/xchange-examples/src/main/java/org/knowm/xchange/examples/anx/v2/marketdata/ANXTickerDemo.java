@@ -30,7 +30,5 @@ public class ANXTickerDemo {
     // Get the latest ticker data showing BTC to GBP
     ticker = marketDataService.getTicker(CurrencyPair.BTC_GBP);
     System.out.println(ticker.toString());
-
   }
-
 }

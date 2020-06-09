@@ -220,22 +220,30 @@ public class CoinfloorUserTransaction {
   @Override
   public String toString() {
     if (isTrade()) {
-      return String.format("CoinfloorUserTransaction{datetime=%s, id=%d, orderId=%d, type=%s, currencyPair=%s side=%s amount=%s price=%s fee=%s}",
+      return String.format(
+          "CoinfloorUserTransaction{datetime=%s, id=%d, orderId=%d, type=%s, currencyPair=%s"
+              + " side=%s amount=%s price=%s fee=%s}",
           datetime, id, orderId, type, getCurrencyPair(), getSide(), getAmount(), getPrice(), fee);
     } else {
-      return String.format("CoinfloorUserTransaction{datetime=%s, id=%d, type=%s, currency=%s amount=%s }", datetime, id, type, getCurrency(),
-          getAmount());
+      return String.format(
+          "CoinfloorUserTransaction{datetime=%s, id=%d, type=%s, currency=%s amount=%s }",
+          datetime, id, type, getCurrency(), getAmount());
     }
   }
 
   public enum TransactionType {
-    DEPOSIT, WITHDRAWAL, TRADE, UNKNOWN
+    DEPOSIT,
+    WITHDRAWAL,
+    TRADE,
+    UNKNOWN
   }
 
-  public static class CoinfloorTransactionTypeDeserializer extends JsonDeserializer<TransactionType> {
+  public static class CoinfloorTransactionTypeDeserializer
+      extends JsonDeserializer<TransactionType> {
 
     @Override
-    public TransactionType deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public TransactionType deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
       switch (jp.getValueAsInt()) {
         case 0:
           return TransactionType.DEPOSIT;

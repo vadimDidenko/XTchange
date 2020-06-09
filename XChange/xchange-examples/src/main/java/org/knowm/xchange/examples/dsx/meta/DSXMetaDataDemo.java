@@ -14,9 +14,7 @@ import org.knowm.xchange.dto.meta.ExchangeMetaData;
 import org.knowm.xchange.dto.trade.MarketOrder;
 import org.knowm.xchange.examples.dsx.DSXExamplesUtils;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class DSXMetaDataDemo {
 
   public static void main(String[] args) throws IOException {
@@ -32,7 +30,11 @@ public class DSXMetaDataDemo {
   private static void rawLocal(DSXExchange exchange) throws IOException {
 
     DSXMetaData dsxMetaData = exchange.getDsxMetaData();
-    System.out.println("DSX local meta data: amountScale=" + dsxMetaData.amountScale + " public data TTL seconds" + dsxMetaData.publicInfoCacheSeconds);
+    System.out.println(
+        "DSX local meta data: amountScale="
+            + dsxMetaData.amountScale
+            + " public data TTL seconds"
+            + dsxMetaData.publicInfoCacheSeconds);
   }
 
   private static void rawRemote(Exchange dsx) throws IOException {
@@ -45,6 +47,11 @@ public class DSXMetaDataDemo {
     ExchangeMetaData metaData = exchange.getExchangeMetaData();
     System.out.println("DSX generic meta data: " + metaData);
 
-    exchange.getTradeService().verifyOrder(new MarketOrder.Builder(Order.OrderType.ASK, CurrencyPair.BTC_EUR).originalAmount(BigDecimal.ONE).build());
+    exchange
+        .getTradeService()
+        .verifyOrder(
+            new MarketOrder.Builder(Order.OrderType.ASK, CurrencyPair.BTC_EUR)
+                .originalAmount(BigDecimal.ONE)
+                .build());
   }
 }

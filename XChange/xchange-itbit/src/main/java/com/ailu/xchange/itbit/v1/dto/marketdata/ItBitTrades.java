@@ -9,7 +9,8 @@ public class ItBitTrades {
   private final int count;
   private final ItBitTrade[] trades;
 
-  public ItBitTrades(@JsonProperty("count") int count, @JsonProperty("recentTrades") ItBitTrade[] trades) {
+  public ItBitTrades(
+      @JsonProperty("count") int count, @JsonProperty("recentTrades") ItBitTrade[] trades) {
 
     this.count = count;
     this.trades = trades;

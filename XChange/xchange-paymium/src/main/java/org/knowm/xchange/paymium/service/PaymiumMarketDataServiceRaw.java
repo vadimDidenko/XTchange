@@ -33,5 +33,4 @@ public class PaymiumMarketDataServiceRaw extends PaymiumBaseService {
 
     return Paymium.getTrades();
   }
-
 }

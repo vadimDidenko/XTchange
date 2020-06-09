@@ -49,5 +49,4 @@ public class WexUserTradeHistoryDemo {
       System.out.println(e.getMessage());
     }
   }
-
 }

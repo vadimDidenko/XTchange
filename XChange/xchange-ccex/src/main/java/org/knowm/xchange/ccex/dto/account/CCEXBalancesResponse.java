@@ -10,7 +10,9 @@ public class CCEXBalancesResponse {
   private String message;
   private List<CCEXBalance> result;
 
-  public CCEXBalancesResponse(@JsonProperty("success") boolean success, @JsonProperty("message") String message,
+  public CCEXBalancesResponse(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("message") String message,
       @JsonProperty("result") List<CCEXBalance> result) {
     super();
     this.success = success;
@@ -44,6 +46,12 @@ public class CCEXBalancesResponse {
 
   @Override
   public String toString() {
-    return "CCEXBalancesResponse [success=" + success + ", message=" + message + ", result=" + result + "]";
+    return "CCEXBalancesResponse [success="
+        + success
+        + ", message="
+        + message
+        + ", result="
+        + result
+        + "]";
   }
 }

@@ -17,8 +17,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = BitmexTypeDeserializer.class)
 public enum BitmexSide {
-
-  BUY, SELL;
+  BUY,
+  SELL;
 
   @Override
   public String toString() {
@@ -39,8 +39,7 @@ public enum BitmexSide {
   private static final Map<String, BitmexSide> fromString = new HashMap<>();
 
   static {
-    for (BitmexSide type : values())
-      fromString.put(type.toString(), type);
+    for (BitmexSide type : values()) fromString.put(type.toString(), type);
 
     fromString.put("buy", BUY);
     fromString.put("sell", SELL);
@@ -49,7 +48,8 @@ public enum BitmexSide {
   static class BitmexTypeDeserializer extends JsonDeserializer<BitmexSide> {
 
     @Override
-    public BitmexSide deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitmexSide deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

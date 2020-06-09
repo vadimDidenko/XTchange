@@ -24,7 +24,9 @@ public class ItBitMarketDataServiceRaw extends ItBitBaseService {
   public ItBitTicker getItBitTicker(CurrencyPair currencyPair) throws IOException {
 
     CurrencyPair exchangePair = ItBitAdapters.adaptCurrencyPairToExchange(currencyPair);
-    ItBitTicker ticker = itBitAuthenticated.getTicker(exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode());
+    ItBitTicker ticker =
+        itBitAuthenticated.getTicker(
+            exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode());
 
     return ticker;
   }
@@ -32,7 +34,9 @@ public class ItBitMarketDataServiceRaw extends ItBitBaseService {
   public ItBitDepth getItBitDepth(CurrencyPair currencyPair, Object... args) throws IOException {
 
     CurrencyPair exchangePair = ItBitAdapters.adaptCurrencyPairToExchange(currencyPair);
-    ItBitDepth depth = itBitPublic.getDepth(exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode());
+    ItBitDepth depth =
+        itBitPublic.getDepth(
+            exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode());
 
     return depth;
   }
@@ -45,7 +49,9 @@ public class ItBitMarketDataServiceRaw extends ItBitBaseService {
     }
 
     CurrencyPair exchangePair = ItBitAdapters.adaptCurrencyPairToExchange(currencyPair);
-    ItBitTrades trades = itBitPublic.getTrades(exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode(), since);
+    ItBitTrades trades =
+        itBitPublic.getTrades(
+            exchangePair.base.getCurrencyCode(), exchangePair.counter.getCurrencyCode(), since);
     return trades;
   }
 }

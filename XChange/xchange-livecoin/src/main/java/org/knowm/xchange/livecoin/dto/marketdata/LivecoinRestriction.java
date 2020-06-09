@@ -10,7 +10,9 @@ public class LivecoinRestriction {
   private BigDecimal minLimitQuantity;
   private Integer priceScale;
 
-  public LivecoinRestriction(@JsonProperty("currencyPair") String currencyPair, @JsonProperty("minLimitQuantity") BigDecimal minLimitQuantity,
+  public LivecoinRestriction(
+      @JsonProperty("currencyPair") String currencyPair,
+      @JsonProperty("minLimitQuantity") BigDecimal minLimitQuantity,
       @JsonProperty("priceScale") Integer priceScale) {
     super();
     this.currencyPair = currencyPair;
@@ -29,5 +31,4 @@ public class LivecoinRestriction {
   public Integer getPriceScale() {
     return priceScale;
   }
-
 }

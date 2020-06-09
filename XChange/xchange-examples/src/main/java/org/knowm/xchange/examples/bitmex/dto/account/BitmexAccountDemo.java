@@ -33,7 +33,8 @@ public class BitmexAccountDemo {
     System.out.println(xBt);
     BitmexMarginAccount usd = accountServiceRaw.getBitmexMarginAccountStatus(new Currency("USD"));
     System.out.println(usd);
-    List<BitmexMarginAccount> bitmexMarginAccountsStatus = accountServiceRaw.getBitmexMarginAccountsStatus();
+    List<BitmexMarginAccount> bitmexMarginAccountsStatus =
+        accountServiceRaw.getBitmexMarginAccountsStatus();
     System.out.println(bitmexMarginAccountsStatus);
   }
 
@@ -42,11 +43,11 @@ public class BitmexAccountDemo {
     BitmexWallet xBt = accountServiceRaw.getBitmexWallet(new Currency("XBt"));
     System.out.println(xBt);
 
-    List<BitmexWalletTransaction> walletHistory = accountServiceRaw.getBitmexWalletHistory(new Currency("XBt"));
+    List<BitmexWalletTransaction> walletHistory =
+        accountServiceRaw.getBitmexWalletHistory(new Currency("XBt"));
     System.out.println(walletHistory);
-    List<BitmexWalletTransaction> bitmexWalletSummary = accountServiceRaw.getBitmexWalletSummary(new Currency("XBt"));
+    List<BitmexWalletTransaction> bitmexWalletSummary =
+        accountServiceRaw.getBitmexWalletSummary(new Currency("XBt"));
     System.out.println(bitmexWalletSummary);
-
   }
-
 }

@@ -16,14 +16,14 @@ import org.knowm.xchange.vircurex.dto.marketdata.VircurexDepth;
 import org.knowm.xchange.vircurex.dto.marketdata.VircurexLastTrade;
 
 /**
- * <p>
  * Implementation of the market data service for Vircurex
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class VircurexMarketDataService extends VircurexMarketDataServiceRaw implements MarketDataService {
+public class VircurexMarketDataService extends VircurexMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -40,7 +40,10 @@ public class VircurexMarketDataService extends VircurexMarketDataServiceRaw impl
 
     VircurexLastTrade vircurexLastTrade = getVircurexTicker(currencyPair);
 
-    return new Ticker.Builder().currencyPair(currencyPair).last(vircurexLastTrade.getValue()).build();
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(vircurexLastTrade.getValue())
+        .build();
   }
 
   @Override
@@ -49,8 +52,10 @@ public class VircurexMarketDataService extends VircurexMarketDataServiceRaw impl
     VircurexDepth vircurexDepth = getVircurexOrderBook(currencyPair);
 
     // Adapt to XChange DTOs
-    List<LimitOrder> asks = VircurexAdapters.adaptOrders(vircurexDepth.getAsks(), currencyPair, "ask", "");
-    List<LimitOrder> bids = VircurexAdapters.adaptOrders(vircurexDepth.getBids(), currencyPair, "bid", "");
+    List<LimitOrder> asks =
+        VircurexAdapters.adaptOrders(vircurexDepth.getAsks(), currencyPair, "ask", "");
+    List<LimitOrder> bids =
+        VircurexAdapters.adaptOrders(vircurexDepth.getBids(), currencyPair, "bid", "");
 
     return new OrderBook(null, asks, bids);
   }
@@ -60,5 +65,4 @@ public class VircurexMarketDataService extends VircurexMarketDataServiceRaw impl
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

@@ -17,10 +17,16 @@ public class HitbtcOwnTrade {
   private final BigDecimal price;
   private final Date timestamp;
 
-  public HitbtcOwnTrade(@JsonProperty("id") Long id, @JsonProperty("clientOrderId") String clientOrderId, @JsonProperty("orderId") Long orderId,
+  public HitbtcOwnTrade(
+      @JsonProperty("id") Long id,
+      @JsonProperty("clientOrderId") String clientOrderId,
+      @JsonProperty("orderId") Long orderId,
       @JsonProperty("symbol") String symbol,
-      @JsonProperty("side") HitbtcSide side, @JsonProperty("quantity") BigDecimal quantity, @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("price") BigDecimal price, @JsonProperty("timestamp") Date timestamp) {
+      @JsonProperty("side") HitbtcSide side,
+      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("timestamp") Date timestamp) {
     this.id = id;
     this.clientOrderId = clientOrderId;
     this.orderId = orderId;
@@ -66,15 +72,24 @@ public class HitbtcOwnTrade {
 
   @Override
   public String toString() {
-    return "HitbtcOwnTrade{" +
-        "id=" + id +
-        ", clientOrderId='" + clientOrderId + '\'' +
-        ", orderId=" + orderId +
-        ", side=" + side +
-        ", quantity=" + quantity +
-        ", fee=" + fee +
-        ", price=" + price +
-        ", timestamp=" + timestamp +
-        '}';
+    return "HitbtcOwnTrade{"
+        + "id="
+        + id
+        + ", clientOrderId='"
+        + clientOrderId
+        + '\''
+        + ", orderId="
+        + orderId
+        + ", side="
+        + side
+        + ", quantity="
+        + quantity
+        + ", fee="
+        + fee
+        + ", price="
+        + price
+        + ", timestamp="
+        + timestamp
+        + '}';
   }
 }

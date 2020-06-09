@@ -18,7 +18,8 @@ import java.util.List;
 
 public class BitmexExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2013NonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2013NonceFactory();
 
   @Override
   protected void initServices() {
@@ -31,7 +32,8 @@ public class BitmexExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://www.bitmex.com/");
     exchangeSpecification.setHost("bitmex.com");
     exchangeSpecification.setPort(80);
@@ -48,8 +50,10 @@ public class BitmexExchange extends BaseExchange implements Exchange {
 
   @Override
   public void remoteInit() throws IOException {
-    List<BitmexTicker> tickers = ((BitmexMarketDataServiceRaw) marketDataService).getActiveTickers();
-    BiMap<BitmexPrompt, String> contracts = ((BitmexMarketDataServiceRaw) marketDataService).getActivePrompts(tickers);
+    List<BitmexTicker> tickers =
+        ((BitmexMarketDataServiceRaw) marketDataService).getActiveTickers();
+    BiMap<BitmexPrompt, String> contracts =
+        ((BitmexMarketDataServiceRaw) marketDataService).getActivePrompts(tickers);
     exchangeMetaData = BitmexAdapters.adaptToExchangeMetaData(exchangeMetaData, tickers, contracts);
   }
 
@@ -58,9 +62,7 @@ public class BitmexExchange extends BaseExchange implements Exchange {
     return super.getAccountService();
   }
 
-  public BitmexAccountService getAccountService(Exchange exchange){
+  public BitmexAccountService getAccountService(Exchange exchange) {
     return new BitmexAccountService(exchange);
   }
-
-
 }

@@ -21,13 +21,15 @@ public class PoloniexLoansDataTest {
   @Test
   public void testUnmarshallLoans() throws JsonParseException, JsonMappingException, IOException {
 
-    final InputStream is = PoloniexLoansDataTest.class.getResourceAsStream("/marketdata/loans-info.json");
+    final InputStream is =
+        PoloniexLoansDataTest.class.getResourceAsStream("/marketdata/loans-info.json");
 
     final ObjectMapper mapper = new ObjectMapper();
 
     final JavaType stringType = mapper.getTypeFactory().constructType(String.class, String.class);
     final JavaType loanArray = mapper.getTypeFactory().constructArrayType(PoloniexLoan.class);
-    final JavaType currencyInfoType = mapper.getTypeFactory().constructMapType(HashMap.class, stringType, loanArray);
+    final JavaType currencyInfoType =
+        mapper.getTypeFactory().constructMapType(HashMap.class, stringType, loanArray);
     final Map<String, PoloniexLoan[]> loansInfo = mapper.readValue(is, currencyInfoType);
 
     assertThat(loansInfo).hasSize(2);

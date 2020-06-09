@@ -12,14 +12,10 @@ import java.math.BigDecimal;
 import static org.knowm.xchange.currency.Currency.BTC;
 import static org.knowm.xchange.currency.Currency.TRY;
 
-/**
- * @author semihunaldi
- * Various adapters for converting from Paribu DTOs to XChange DTOs
- */
+/** @author semihunaldi Various adapters for converting from Paribu DTOs to XChange DTOs */
 public final class ParibuAdapters {
 
-  private ParibuAdapters() {
-  }
+  private ParibuAdapters() {}
 
   /**
    * Adapts a ParibuTicker to a Ticker Object
@@ -47,7 +43,8 @@ public final class ParibuAdapters {
           .ask(lowestAsk)
           .high(high24hr)
           .low(low24hr)
-          .volume(volume).build();
+          .volume(volume)
+          .build();
     }
     return null;
   }

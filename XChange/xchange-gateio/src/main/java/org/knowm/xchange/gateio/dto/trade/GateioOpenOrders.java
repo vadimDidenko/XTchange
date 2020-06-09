@@ -6,9 +6,7 @@ import org.knowm.xchange.gateio.dto.GateioBaseResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by David Henry on 2/19/14.
- */
+/** Created by David Henry on 2/19/14. */
 public class GateioOpenOrders extends GateioBaseResponse {
 
   private final List<GateioOpenOrder> orders;
@@ -20,7 +18,10 @@ public class GateioOpenOrders extends GateioBaseResponse {
    * @param orders
    * @param msg
    */
-  public GateioOpenOrders(@JsonProperty("result") Boolean result, @JsonProperty("orders") List<GateioOpenOrder> orders, @JsonProperty("msg") String msg) {
+  public GateioOpenOrders(
+      @JsonProperty("result") Boolean result,
+      @JsonProperty("orders") List<GateioOpenOrder> orders,
+      @JsonProperty("msg") String msg) {
 
     super(result, msg);
     this.orders = orders;
@@ -36,5 +37,4 @@ public class GateioOpenOrders extends GateioBaseResponse {
 
     return "BTEROpenOrdersReturn [orders=" + orders + "]";
   }
-
 }

@@ -13,19 +13,22 @@ import java.util.Map.Entry;
 
 public class OkCoinDigest implements ParamsDigest {
 
-  private static final char[] DIGITS_UPPER = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
+  private static final char[] DIGITS_UPPER = {
+    '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'
+  };
 
   private final String apikey;
   private final String secretKey;
   private final MessageDigest md;
-  private final Comparator<Entry<String, String>> comparator = new Comparator<Entry<String, String>>() {
+  private final Comparator<Entry<String, String>> comparator =
+      new Comparator<Entry<String, String>>() {
 
-    @Override
-    public int compare(Entry<String, String> o1, Entry<String, String> o2) {
+        @Override
+        public int compare(Entry<String, String> o1, Entry<String, String> o2) {
 
-      return o1.getKey().compareTo(o2.getKey());
-    }
-  };
+          return o1.getKey().compareTo(o2.getKey());
+        }
+      };
 
   public OkCoinDigest(String apikey, String secretKey) {
 

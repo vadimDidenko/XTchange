@@ -51,5 +51,4 @@ public class TradeHistoryDemo {
     BTCTradeOrder order = tradeService.getBTCTradeOrder(orderId);
     System.out.println("Order status: " + order.getStatus());
   }
-
 }

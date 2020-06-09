@@ -15,21 +15,22 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseButtonTypeDeserializer.class)
 @JsonSerialize(using = EnumLowercaseJsonSerializer.class)
 public enum CoinbaseButtonType {
-
-  BUY_NOW, DONATION, SUBSCRIPTION;
+  BUY_NOW,
+  DONATION,
+  SUBSCRIPTION;
 
   static class CoinbaseButtonTypeDeserializer extends JsonDeserializer<CoinbaseButtonType> {
 
-    private static final EnumFromStringHelper<CoinbaseButtonType> FROM_STRING_HELPER = new EnumFromStringHelper<>(CoinbaseButtonType.class);
+    private static final EnumFromStringHelper<CoinbaseButtonType> FROM_STRING_HELPER =
+        new EnumFromStringHelper<>(CoinbaseButtonType.class);
 
     @Override
-    public CoinbaseButtonType deserialize(JsonParser jsonParser, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseButtonType deserialize(JsonParser jsonParser, final DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

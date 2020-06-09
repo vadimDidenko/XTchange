@@ -15,23 +15,25 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseCategoryDeserializer.class)
 @JsonSerialize(using = EnumLowercaseJsonSerializer.class)
 public enum CoinbaseAccountChangeCategory {
+  TX,
+  REQUEST,
+  TRANSFER,
+  INVOICE;
 
-  TX, REQUEST, TRANSFER, INVOICE;
+  static class CoinbaseCategoryDeserializer
+      extends JsonDeserializer<CoinbaseAccountChangeCategory> {
 
-  static class CoinbaseCategoryDeserializer extends JsonDeserializer<CoinbaseAccountChangeCategory> {
-
-    private static final EnumFromStringHelper<CoinbaseAccountChangeCategory> FROM_STRING_HELPER = new EnumFromStringHelper<>(
-        CoinbaseAccountChangeCategory.class);
+    private static final EnumFromStringHelper<CoinbaseAccountChangeCategory> FROM_STRING_HELPER =
+        new EnumFromStringHelper<>(CoinbaseAccountChangeCategory.class);
 
     @Override
-    public CoinbaseAccountChangeCategory deserialize(JsonParser jsonParser,
-        final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseAccountChangeCategory deserialize(
+        JsonParser jsonParser, final DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

@@ -8,18 +8,13 @@ import org.knowm.xchange.lakebtc.LakeBTC;
 import org.knowm.xchange.lakebtc.dto.marketdata.LakeBTCOrderBook;
 import org.knowm.xchange.lakebtc.dto.marketdata.LakeBTCTickers;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class LakeBTCMarketDataServiceRaw extends LakeBTCBaseService {
 
-  /**
-   * @param exchange
-   */
+  /** @param exchange */
   protected LakeBTCMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-
   }
 
   public LakeBTCTickers getLakeBTCTickers() throws IOException {
@@ -31,5 +26,4 @@ public class LakeBTCMarketDataServiceRaw extends LakeBTCBaseService {
 
     return lakeBTC.getLakeBTCOrderBookUSD(new LakeBTC.Pair(pair));
   }
-
 }

@@ -9,13 +9,11 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Panchen
- */
-
+/** @author Panchen */
 public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
 
-  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+  private static final SimpleDateFormat DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
   private final Date fillTime;
   private final String order_id;
@@ -25,10 +23,17 @@ public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
   private final BigDecimal size;
   private final BigDecimal price;
 
-  public CryptoFacilitiesFill(@JsonProperty("result") String result, @JsonProperty("error") String error,
-      @JsonProperty("fillTime") String strfillTime, @JsonProperty("order_id") String order_id, @JsonProperty("fill_id") String fill_id,
-      @JsonProperty("symbol") String symbol, @JsonProperty("side") String side, @JsonProperty("size") BigDecimal size,
-      @JsonProperty("price") BigDecimal price) throws ParseException {
+  public CryptoFacilitiesFill(
+      @JsonProperty("result") String result,
+      @JsonProperty("error") String error,
+      @JsonProperty("fillTime") String strfillTime,
+      @JsonProperty("order_id") String order_id,
+      @JsonProperty("fill_id") String fill_id,
+      @JsonProperty("symbol") String symbol,
+      @JsonProperty("side") String side,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("price") BigDecimal price)
+      throws ParseException {
 
     super(result, error);
 
@@ -71,7 +76,20 @@ public class CryptoFacilitiesFill extends CryptoFacilitiesResult {
 
   @Override
   public String toString() {
-    return "CryptoFacilitiesFill [order_id=" + order_id + ", fill_id=" + fill_id + ", fillTime=" + DATE_FORMAT.format(fillTime) + ", symbol=" + symbol
-        + ", side=" + side + ", size=" + size + ", price=" + price + " ]";
+    return "CryptoFacilitiesFill [order_id="
+        + order_id
+        + ", fill_id="
+        + fill_id
+        + ", fillTime="
+        + DATE_FORMAT.format(fillTime)
+        + ", symbol="
+        + symbol
+        + ", side="
+        + side
+        + ", size="
+        + size
+        + ", price="
+        + price
+        + " ]";
   }
 }

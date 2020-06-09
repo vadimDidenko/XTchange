@@ -15,15 +15,21 @@ public class LiquiTrade {
   private final Map<String, BigDecimal> funds;
   private final Object trades;
 
-  public LiquiTrade(@JsonProperty("received") final String received, @JsonProperty("remains") final String remains,
-      @JsonProperty("order_id") final long orderId, @JsonProperty("init_order_id") final long initOrderId,
-      @JsonProperty("funds") final Map<String, String> funds, @JsonProperty("trades") final Object trades) {
+  public LiquiTrade(
+      @JsonProperty("received") final String received,
+      @JsonProperty("remains") final String remains,
+      @JsonProperty("order_id") final long orderId,
+      @JsonProperty("init_order_id") final long initOrderId,
+      @JsonProperty("funds") final Map<String, String> funds,
+      @JsonProperty("trades") final Object trades) {
 
     this.received = new BigDecimal(received);
     this.remains = new BigDecimal(remains);
     this.orderId = orderId;
     this.initOrderId = initOrderId;
-    this.funds = funds.entrySet().stream().collect(Collectors.toMap((Map.Entry::getKey), (e -> new BigDecimal(e.getValue()))));
+    this.funds =
+        funds.entrySet().stream()
+            .collect(Collectors.toMap((Map.Entry::getKey), (e -> new BigDecimal(e.getValue()))));
     this.trades = trades;
   }
 
@@ -53,13 +59,21 @@ public class LiquiTrade {
 
   @Override
   public String toString() {
-    return "LiquiTrade{" +
-        "received='" + received + '\'' +
-        ", remains='" + remains + '\'' +
-        ", orderId=" + orderId +
-        ", initOrderId=" + initOrderId +
-        ", funds=" + funds +
-        ", trades=" + trades +
-        '}';
+    return "LiquiTrade{"
+        + "received='"
+        + received
+        + '\''
+        + ", remains='"
+        + remains
+        + '\''
+        + ", orderId="
+        + orderId
+        + ", initOrderId="
+        + initOrderId
+        + ", funds="
+        + funds
+        + ", trades="
+        + trades
+        + '}';
   }
 }

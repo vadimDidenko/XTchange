@@ -1,7 +1,6 @@
 package org.knowm.xchange.kucoin.service;
 
 import org.knowm.xchange.currency.Currency;
-import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.dto.account.FundingRecord.Type;
 import org.knowm.xchange.service.trade.params.HistoryParamsFundingType;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrency;
@@ -9,7 +8,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamPaging;
 
 public class KucoinFundingHistoryParams
     implements TradeHistoryParamPaging, TradeHistoryParamCurrency, HistoryParamsFundingType {
-  
+
   private Integer pageLength;
   private Integer pageNumber;
   private Currency currency;
@@ -17,7 +16,7 @@ public class KucoinFundingHistoryParams
 
   @Override
   public void setPageLength(Integer pageLength) {
-    
+
     this.pageLength = pageLength;
   }
 
@@ -28,13 +27,13 @@ public class KucoinFundingHistoryParams
 
   @Override
   public void setPageNumber(Integer pageNumber) {
-    
+
     this.pageNumber = pageNumber;
   }
 
   @Override
   public Integer getPageNumber() {
-    
+
     return pageNumber;
   }
 
@@ -61,5 +60,4 @@ public class KucoinFundingHistoryParams
 
     return currency;
   }
-
 }

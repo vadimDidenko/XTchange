@@ -20,16 +20,15 @@ import org.knowm.xchange.currency.Currency;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitStamp Full Depth JSON parsing
- */
+/** Test BitStamp Full Depth JSON parsing */
 public class WalletJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = WalletJSONTest.class.getResourceAsStream("/v2/account/example-accountinfo-data.json");
+    InputStream is =
+        WalletJSONTest.class.getResourceAsStream("/v2/account/example-accountinfo-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -40,22 +39,30 @@ public class WalletJSONTest {
     assertThat(anxAccountInfo.getLogin()).isEqualTo("test@anxpro.com");
 
     // Get Balance
-    assertThat(anxAccountInfo.getWallets().get("BTC").getBalance().getValue()).isEqualTo(new BigDecimal("100000.01988000"));
-    assertThat(anxAccountInfo.getWallets().get("USD").getBalance().getValue()).isEqualTo(new BigDecimal("100000.00000"));
-    assertThat(anxAccountInfo.getWallets().get("HKD").getBalance().getValue()).isEqualTo(new BigDecimal("99863.07000"));
+    assertThat(anxAccountInfo.getWallets().get("BTC").getBalance().getValue())
+        .isEqualTo(new BigDecimal("100000.01988000"));
+    assertThat(anxAccountInfo.getWallets().get("USD").getBalance().getValue())
+        .isEqualTo(new BigDecimal("100000.00000"));
+    assertThat(anxAccountInfo.getWallets().get("HKD").getBalance().getValue())
+        .isEqualTo(new BigDecimal("99863.07000"));
 
-    assertThat(anxAccountInfo.getWallets().get("LTC").getBalance().getValue()).isEqualTo(new BigDecimal("100000.00000000"));
-    assertThat(anxAccountInfo.getWallets().get("DOGE").getBalance().getValue()).isEqualTo(new BigDecimal("9999781.09457936"));
+    assertThat(anxAccountInfo.getWallets().get("LTC").getBalance().getValue())
+        .isEqualTo(new BigDecimal("100000.00000000"));
+    assertThat(anxAccountInfo.getWallets().get("DOGE").getBalance().getValue())
+        .isEqualTo(new BigDecimal("9999781.09457936"));
 
     // Get Other Balance
-    assertThat(anxAccountInfo.getWallets().get("BTC").getMaxWithdraw().getValue()).isEqualTo(new BigDecimal("20.00000000"));
-    assertThat(anxAccountInfo.getWallets().get("BTC").getDailyWithdrawLimit().getValue()).isEqualTo(new BigDecimal("20.00000000"));
+    assertThat(anxAccountInfo.getWallets().get("BTC").getMaxWithdraw().getValue())
+        .isEqualTo(new BigDecimal("20.00000000"));
+    assertThat(anxAccountInfo.getWallets().get("BTC").getDailyWithdrawLimit().getValue())
+        .isEqualTo(new BigDecimal("20.00000000"));
   }
 
   @Test
   public void testCurrencies() throws Exception {
     // Read in the JSON from the example resources
-    InputStream is = WalletJSONTest.class.getResourceAsStream("/v2/account/example-accountinfo-data.json");
+    InputStream is =
+        WalletJSONTest.class.getResourceAsStream("/v2/account/example-accountinfo-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -72,6 +79,5 @@ public class WalletJSONTest {
       metadataCurrencyStrings.add(currency.toString());
 
     assertEquals(new TreeSet<>(wallets.keySet()), metadataCurrencyStrings);
-
   }
 }

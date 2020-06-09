@@ -10,9 +10,7 @@ import org.knowm.xchange.utils.nonce.CurrentTime1000NonceFactory;
 
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author Felipe Micaroni Lalli
- */
+/** @author Felipe Micaroni Lalli */
 public class MercadoBitcoinExchange extends BaseExchange implements Exchange {
 
   private SynchronizedValueFactory<Long> nonceFactory = new CurrentTime1000NonceFactory();
@@ -20,12 +18,14 @@ public class MercadoBitcoinExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://www.mercadobitcoin.net");
     exchangeSpecification.setHost("www.mercadobitcoin.net");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Mercado Bitcoin");
-    exchangeSpecification.setExchangeDescription("Mercado Bitcoin is a Bitcoin and Litecoin exchange registered in Brazil.");
+    exchangeSpecification.setExchangeDescription(
+        "Mercado Bitcoin is a Bitcoin and Litecoin exchange registered in Brazil.");
     return exchangeSpecification;
   }
 

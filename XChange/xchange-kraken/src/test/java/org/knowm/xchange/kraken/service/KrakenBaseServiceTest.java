@@ -51,5 +51,4 @@ public class KrakenBaseServiceTest {
       assertThat(flagsAsStrings).contains(flag.toString());
     }
   }
-
 }

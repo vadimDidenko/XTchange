@@ -11,20 +11,19 @@ import java.util.List;
  */
 public interface EttProductAPIService {
 
-    /**
-     * Get ett constituents
-     *
-     * @param ett ett name
-     * @return constituents
-     */
-    EttConstituentsResult getConstituents(String ett);
+  /**
+   * Get ett constituents
+   *
+   * @param ett ett name
+   * @return constituents
+   */
+  EttConstituentsResult getConstituents(String ett);
 
-    /**
-     * Get ett settlement plan define price
-     *
-     * @param ett ett name
-     * @return settlement plan define price list
-     */
-    List<EttSettlementDefinePrice> getDefinePrice(String ett);
-
+  /**
+   * Get ett settlement plan define price
+   *
+   * @param ett ett name
+   * @return settlement plan define price list
+   */
+  List<EttSettlementDefinePrice> getDefinePrice(String ett);
 }

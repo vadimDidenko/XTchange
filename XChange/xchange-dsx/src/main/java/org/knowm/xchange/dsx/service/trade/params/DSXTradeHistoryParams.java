@@ -9,7 +9,12 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamsIdSpan;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
-public class DSXTradeHistoryParams implements TradeHistoryParamsIdSpan, TradeHistoryParamsTimeSpan, TradeHistoryParamCurrencyPair, TradeHistoryParamsSorted, TradeHistoryParamLimit {
+public class DSXTradeHistoryParams
+    implements TradeHistoryParamsIdSpan,
+        TradeHistoryParamsTimeSpan,
+        TradeHistoryParamCurrencyPair,
+        TradeHistoryParamsSorted,
+        TradeHistoryParamLimit {
   private String startId;
   private String endId;
   private Date startTime;

@@ -20,18 +20,23 @@ public class PoloniexOpenOrder {
 
   @JsonProperty("orderNumber")
   private String orderNumber;
+
   @JsonProperty("type")
   private String type;
+
   @JsonProperty("rate")
   private BigDecimal rate;
+
   @JsonProperty("amount")
   private BigDecimal amount;
+
   @JsonProperty("total")
   private BigDecimal total;
+
   @JsonProperty("date")
   private String date;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("orderNumber")
   public String getOrderNumber() {
@@ -120,8 +125,18 @@ public class PoloniexOpenOrder {
   @Override
   public String toString() {
 
-    return "PoloniexOpenOrder [orderNumber=" + orderNumber + ", type=" + type + ", rate=" + rate + ", amount=" + amount + ", total=" + total
-        + ", additionalProperties=" + additionalProperties + "]";
+    return "PoloniexOpenOrder [orderNumber="
+        + orderNumber
+        + ", type="
+        + type
+        + ", rate="
+        + rate
+        + ", amount="
+        + amount
+        + ", total="
+        + total
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

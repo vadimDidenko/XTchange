@@ -14,9 +14,7 @@ import org.knowm.xchange.taurus.TaurusExchange;
 import org.knowm.xchange.taurus.dto.marketdata.TaurusTransaction;
 import org.knowm.xchange.taurus.service.TaurusMarketDataServiceRaw;
 
-/**
- * Demonstrate requesting Trades at Taurus
- */
+/** Demonstrate requesting Trades at Taurus */
 public class TradesDemo {
 
   public static void main(String[] args) throws IOException {

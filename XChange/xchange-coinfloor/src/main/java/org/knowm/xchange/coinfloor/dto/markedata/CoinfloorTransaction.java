@@ -16,7 +16,10 @@ public class CoinfloorTransaction {
    * @param price price
    * @param amount amount
    */
-  public CoinfloorTransaction(@JsonProperty("date") long date, @JsonProperty("tid") long tid, @JsonProperty("price") BigDecimal price,
+  public CoinfloorTransaction(
+      @JsonProperty("date") long date,
+      @JsonProperty("tid") long tid,
+      @JsonProperty("price") BigDecimal price,
       @JsonProperty("amount") BigDecimal amount) {
 
     this.date = date;

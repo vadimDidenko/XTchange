@@ -18,7 +18,7 @@ public class BitmexOrderDescription {
 
   /**
    * Constructor
-   * 
+   *
    * @param assetPair
    * @param type
    * @param orderType
@@ -29,9 +29,16 @@ public class BitmexOrderDescription {
    * @param orderDescription
    * @param closeDescription
    */
-  public BitmexOrderDescription(@JSONField(name = "pair") String assetPair, @JSONField(name = "type") String type, @JSONField(name = "ordertype") String orderType,
-                                @JSONField(name = "price") BigDecimal price, @JSONField(name = "price2") BigDecimal secondaryPrice, @JSONField(name = "leverage") String leverage, @JSONField(name = "position") String positionTxId,
-                                @JSONField(name = "order") String orderDescription, @JSONField(name = "close") String closeDescription) {
+  public BitmexOrderDescription(
+      @JSONField(name = "pair") String assetPair,
+      @JSONField(name = "type") String type,
+      @JSONField(name = "ordertype") String orderType,
+      @JSONField(name = "price") BigDecimal price,
+      @JSONField(name = "price2") BigDecimal secondaryPrice,
+      @JSONField(name = "leverage") String leverage,
+      @JSONField(name = "position") String positionTxId,
+      @JSONField(name = "order") String orderDescription,
+      @JSONField(name = "close") String closeDescription) {
 
     this.assetPair = assetPair;
     this.type = type;
@@ -92,8 +99,24 @@ public class BitmexOrderDescription {
   @Override
   public String toString() {
 
-    return "BitmexOrderDescription [assetPair=" + assetPair + ", type=" + type + ", orderType=" + orderType + ", price=" + price + ", secondaryPrice=" + secondaryPrice + ", leverage=" + leverage
-        + ", positionTxId=" + positionTxId + ", orderDescription=" + orderDescription + ", closeDescription=" + closeDescription + "]";
+    return "BitmexOrderDescription [assetPair="
+        + assetPair
+        + ", type="
+        + type
+        + ", orderType="
+        + orderType
+        + ", price="
+        + price
+        + ", secondaryPrice="
+        + secondaryPrice
+        + ", leverage="
+        + leverage
+        + ", positionTxId="
+        + positionTxId
+        + ", orderDescription="
+        + orderDescription
+        + ", closeDescription="
+        + closeDescription
+        + "]";
   }
-
 }

@@ -19,9 +19,7 @@ import org.knowm.xchange.service.trade.params.CancelOrderParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketTradeService extends BitMarketTradeServiceRaw implements TradeService {
   /**
    * Constructor
@@ -38,22 +36,19 @@ public class BitMarketTradeService extends BitMarketTradeServiceRaw implements T
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     BitMarketOrdersResponse response = getBitMarketOpenOrders();
     return BitMarketAdapters.adaptOpenOrders(response.getData());
   }
 
   @Override
-  public String placeMarketOrder(
-      MarketOrder marketOrder) throws IOException {
+  public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
-  public String placeLimitOrder(
-      LimitOrder limitOrder) throws IOException {
+  public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
 
     BitMarketTradeResponse response = placeBitMarketOrder(limitOrder);
     return String.valueOf(response.getData().getId());
@@ -65,8 +60,7 @@ public class BitMarketTradeService extends BitMarketTradeServiceRaw implements T
   }
 
   @Override
-  public boolean cancelOrder(
-      String id) throws IOException {
+  public boolean cancelOrder(String id) throws IOException {
 
     cancelBitMarketOrder(id);
     return true;
@@ -101,9 +95,7 @@ public class BitMarketTradeService extends BitMarketTradeServiceRaw implements T
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

@@ -4,11 +4,10 @@ import org.knowm.xchange.quadrigacx.dto.trade.QuadrigaCxUserTransaction;
 
 import si.mazi.rescu.serialization.jackson.serializers.EnumIntDeserializer;
 
-public class QuadrigaCxTransactionTypeDeserializer extends EnumIntDeserializer<QuadrigaCxUserTransaction.TransactionType> {
+public class QuadrigaCxTransactionTypeDeserializer
+    extends EnumIntDeserializer<QuadrigaCxUserTransaction.TransactionType> {
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public QuadrigaCxTransactionTypeDeserializer() {
 
     super(QuadrigaCxUserTransaction.TransactionType.class);

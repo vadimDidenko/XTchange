@@ -1,22 +1,24 @@
-//package com.ailu.bitmex.bean.trade;
+// package com.ailu.bitmex.bean.trade;
 //
-//import com.fasterxml.jackson.core.JsonParser;
-//import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.core.ObjectCodec;
-//import com.fasterxml.jackson.databind.DeserializationContext;
-//import com.fasterxml.jackson.databind.JsonDeserializer;
-//import com.fasterxml.jackson.databind.JsonNode;
-//import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-//import org.knowm.xchange.bitmex.dto.trade.BitmexOrderType.BitmexOrderTypeDeserializer;
+// import com.fasterxml.jackson.core.JsonParser;
+// import com.fasterxml.jackson.core.JsonProcessingException;
+// import com.fasterxml.jackson.core.ObjectCodec;
+// import com.fasterxml.jackson.databind.DeserializationContext;
+// import com.fasterxml.jackson.databind.JsonDeserializer;
+// import com.fasterxml.jackson.databind.JsonNode;
+// import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+// import org.knowm.xchange.bitmex.dto.trade.BitmexOrderType.BitmexOrderTypeDeserializer;
 //
-//import java.io.IOException;
-//import java.util.HashMap;
-//import java.util.Map;
+// import java.io.IOException;
+// import java.util.HashMap;
+// import java.util.Map;
 //
-//@JsonDeserialize(using = BitmexOrderTypeDeserializer.class)
-//public enum BitmexOrderType {
+// @JsonDeserialize(using = BitmexOrderTypeDeserializer.class)
+// public enum BitmexOrderType {
 //
-//  MARKET, LIMIT, STOP_LOSS, TAKE_PROFIT, STOP_LOSS_PROFIT, STOP_LOSS_PROFIT_LIMIT, STOP_LOSS_LIMIT, TAKE_PROFIT_LIMIT, TRAILING_STOP, TRAILING_STOP_LIMIT, STOP_LOSS_AND_LIMIT, SETTLE_POSITION;
+//  MARKET, LIMIT, STOP_LOSS, TAKE_PROFIT, STOP_LOSS_PROFIT, STOP_LOSS_PROFIT_LIMIT,
+// STOP_LOSS_LIMIT, TAKE_PROFIT_LIMIT, TRAILING_STOP, TRAILING_STOP_LIMIT, STOP_LOSS_AND_LIMIT,
+// SETTLE_POSITION;
 //
 //  @Override
 //  public String toString() {
@@ -47,7 +49,8 @@
 //  static class BitmexOrderTypeDeserializer extends JsonDeserializer<BitmexOrderType> {
 //
 //    @Override
-//    public BitmexOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+//    public BitmexOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws
+// IOException, JsonProcessingException {
 //
 //      ObjectCodec oc = jsonParser.getCodec();
 //      JsonNode node = oc.readTree(jsonParser);
@@ -55,4 +58,4 @@
 //      return fromString(orderTypeString);
 //    }
 //  }
-//}
+// }

@@ -9,7 +9,9 @@ public class LiquiDepth {
   private final LiquiPublicAsks asks;
   private final LiquiPublicBids bids;
 
-  public LiquiDepth(@JsonProperty("asks") final LiquiPublicAsks asks, @JsonProperty("bids") final LiquiPublicBids bids) {
+  public LiquiDepth(
+      @JsonProperty("asks") final LiquiPublicAsks asks,
+      @JsonProperty("bids") final LiquiPublicBids bids) {
     this.asks = asks;
     this.bids = bids;
   }
@@ -24,9 +26,6 @@ public class LiquiDepth {
 
   @Override
   public String toString() {
-    return "LiquiDepth{" +
-        "asks=" + asks +
-        ", bids=" + bids +
-        '}';
+    return "LiquiDepth{" + "asks=" + asks + ", bids=" + bids + '}';
   }
 }

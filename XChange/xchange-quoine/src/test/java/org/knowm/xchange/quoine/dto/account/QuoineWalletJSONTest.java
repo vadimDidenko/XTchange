@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test QuoineTicker JSON parsing
- */
+/** Test QuoineTicker JSON parsing */
 public class QuoineWalletJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = QuoineWalletJSONTest.class.getResourceAsStream("/account/example-account-data.json");
+    InputStream is =
+        QuoineWalletJSONTest.class.getResourceAsStream("/account/example-account-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -27,7 +26,8 @@ public class QuoineWalletJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(quoineAccountInfo.getBitcoinAccount().getId()).isEqualTo(59);
-    assertThat(quoineAccountInfo.getBitcoinAccount().getBalance()).isEqualTo(new BigDecimal("2.63499784"));
+    assertThat(quoineAccountInfo.getBitcoinAccount().getBalance())
+        .isEqualTo(new BigDecimal("2.63499784"));
     assertThat(quoineAccountInfo.getFiatAccounts()[0].getId()).isEqualTo(52);
   }
 }

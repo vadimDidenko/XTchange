@@ -13,28 +13,27 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.Objects;
 
-/**
- * @author Matija Mazi See https://www.bitstamp.net/api/ for up-to-date docs.
- */
+/** @author Matija Mazi See https://www.bitstamp.net/api/ for up-to-date docs. */
 @Path("api/v2")
 @Produces(MediaType.APPLICATION_JSON)
 public interface BitstampV2 {
 
   @GET
   @Path("order_book/{pair}/")
-  BitstampOrderBook getOrderBook(@PathParam("pair") Pair pair) throws IOException, BitstampException;
+  BitstampOrderBook getOrderBook(@PathParam("pair") Pair pair)
+      throws IOException, BitstampException;
 
   @GET
   @Path("ticker/{pair}/")
   BitstampTicker getTicker(@PathParam("pair") Pair pair) throws IOException, BitstampException;
 
-  /**
-   * Returns descending list of transactions.
-   */
+  /** Returns descending list of transactions. */
   @GET
   @Path("transactions/{pair}/")
-  BitstampTransaction[] getTransactions(@PathParam("pair") Pair pair,
-                                        @QueryParam("time") BitstampMarketDataServiceRaw.BitstampTime time) throws IOException, BitstampException;
+  BitstampTransaction[] getTransactions(
+      @PathParam("pair") Pair pair,
+      @QueryParam("time") BitstampMarketDataServiceRaw.BitstampTime time)
+      throws IOException, BitstampException;
 
   class Pair {
     public final CurrencyPair pair;
@@ -49,7 +48,8 @@ public interface BitstampV2 {
 
     @Override
     public boolean equals(Object o) {
-      return this == o || !(o == null || getClass() != o.getClass()) && Objects.equals(pair, ((Pair) o).pair);
+      return this == o
+          || !(o == null || getClass() != o.getClass()) && Objects.equals(pair, ((Pair) o).pair);
     }
 
     @Override
@@ -59,8 +59,12 @@ public interface BitstampV2 {
 
     @Override
     public String toString() {
-      return pair == null ? "" : String.format("%s%s", pair.base.getCurrencyCode().toLowerCase(), pair.counter.getCurrencyCode().toLowerCase());
+      return pair == null
+          ? ""
+          : String.format(
+              "%s%s",
+              pair.base.getCurrencyCode().toLowerCase(),
+              pair.counter.getCurrencyCode().toLowerCase());
     }
   }
-
 }

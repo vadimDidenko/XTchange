@@ -20,17 +20,11 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Various adapters for converting from Bitcurex DTOs to XChange DTOs
- */
+/** Various adapters for converting from Bitcurex DTOs to XChange DTOs */
 public final class BitcurexAdapters {
 
-  /**
-   * private Constructor
-   */
-  private BitcurexAdapters() {
-
-  }
+  /** private Constructor */
+  private BitcurexAdapters() {}
 
   /**
    * Adapts a List of bitcurexOrders to a List of LimitOrders
@@ -41,7 +35,11 @@ public final class BitcurexAdapters {
    * @param id
    * @return
    */
-  public static List<LimitOrder> adaptOrders(List<BigDecimal[]> bitcurexOrders, CurrencyPair currencyPair, OrderType orderType, String id) {
+  public static List<LimitOrder> adaptOrders(
+      List<BigDecimal[]> bitcurexOrders,
+      CurrencyPair currencyPair,
+      OrderType orderType,
+      String id) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
 
@@ -62,7 +60,12 @@ public final class BitcurexAdapters {
    * @param id
    * @return
    */
-  public static LimitOrder adaptOrder(BigDecimal amount, BigDecimal price, CurrencyPair currencyPair, OrderType orderType, String id) {
+  public static LimitOrder adaptOrder(
+      BigDecimal amount,
+      BigDecimal price,
+      CurrencyPair currencyPair,
+      OrderType orderType,
+      String id) {
 
     // place a limit order
     BigDecimal limitPrice = price;
@@ -83,7 +86,13 @@ public final class BitcurexAdapters {
     Date date = DateUtils.fromMillisUtc(bitcurexTrade.getDate() * 1000L);
     final String tradeId = String.valueOf(bitcurexTrade.getTid());
 
-    return new Trade(bitcurexTrade.getType() == 1 ? OrderType.ASK : OrderType.BID, amount, currencyPair, price, date, tradeId);
+    return new Trade(
+        bitcurexTrade.getType() == 1 ? OrderType.ASK : OrderType.BID,
+        amount,
+        currencyPair,
+        price,
+        date,
+        tradeId);
   }
 
   /**
@@ -121,7 +130,15 @@ public final class BitcurexAdapters {
     BigDecimal sell = bitcurexTicker.getAsk();
     BigDecimal volume = bitcurexTicker.getVolume();
 
-    return new Ticker.Builder().currencyPair(currencyPair).last(last).high(high).low(low).bid(buy).ask(sell).volume(volume).build();
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .high(high)
+        .low(low)
+        .bid(buy)
+        .ask(sell)
+        .volume(volume)
+        .build();
   }
 
   /**
@@ -148,5 +165,4 @@ public final class BitcurexAdapters {
 
     return new Wallet(balances);
   }
-
 }

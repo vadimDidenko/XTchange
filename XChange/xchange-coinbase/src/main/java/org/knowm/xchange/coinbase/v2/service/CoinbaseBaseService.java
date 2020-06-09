@@ -24,21 +24,28 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
   protected final ParamsDigest signatureCreator;
 
   public enum HttpMethod {
-    GET, POST
+    GET,
+    POST
   }
-  
+
   protected CoinbaseBaseService(Exchange exchange) {
 
     super(exchange);
-    coinbase = RestProxyFactory.createProxy(CoinbaseAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
-    signatureCreator = CoinbaseDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    coinbase =
+        RestProxyFactory.createProxy(
+            CoinbaseAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
+    signatureCreator =
+        CoinbaseDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 
   /**
    * Unauthenticated resource that returns currencies supported on Coinbase.
    *
    * @return A list of currency names and their corresponding ISO code.
-   * @see <a href="https://developers.coinbase.com/api/v2#get-currencies">developers.coinbase.com/api/v2#get-currencies</a>
+   * @see <a
+   *     href="https://developers.coinbase.com/api/v2#get-currencies">developers.coinbase.com/api/v2#get-currencies</a>
    */
   public List<CoinbaseCurrency> getCoinbaseCurrencies() throws IOException {
 
@@ -46,10 +53,11 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
   }
 
   /**
-   * Unauthenticated resource that tells you the server time. 
+   * Unauthenticated resource that tells you the server time.
    *
    * @return The current server time.
-   * @see <a href="https://developers.coinbase.com/api/v2#get-current-time">developers.coinbase.com/api/v2#get-current-time</a>
+   * @see <a
+   *     href="https://developers.coinbase.com/api/v2#get-current-time">developers.coinbase.com/api/v2#get-current-time</a>
    */
   public CoinbaseTime getCoinbaseTime() throws IOException {
 
@@ -70,13 +78,26 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
     showCurl(HttpMethod.GET, apiKey, timestamp, signature, path, null);
   }
 
-  protected void showCurl(HttpMethod method, String apiKey, BigDecimal timestamp, String signature, String path, String json) {
-    String headers = String.format("-H 'CB-VERSION: 2017-11-26' -H 'CB-ACCESS-KEY: %s' -H 'CB-ACCESS-SIGN: %s' -H 'CB-ACCESS-TIMESTAMP: %s'", apiKey, signature, timestamp);
+  protected void showCurl(
+      HttpMethod method,
+      String apiKey,
+      BigDecimal timestamp,
+      String signature,
+      String path,
+      String json) {
+    String headers =
+        String.format(
+            "-H 'CB-VERSION: 2017-11-26' -H 'CB-ACCESS-KEY: %s' -H 'CB-ACCESS-SIGN: %s' -H"
+                + " 'CB-ACCESS-TIMESTAMP: %s'",
+            apiKey, signature, timestamp);
     if (method == HttpMethod.GET) {
       Coinbase.LOG.debug(String.format("curl %s https://api.coinbase.com%s", headers, path));
     } else if (method == HttpMethod.POST) {
       String payload = "-d '" + json + "'";
-      Coinbase.LOG.debug(String.format("curl -X %s -H 'Content-Type: %s' %s %s https://api.coinbase.com%s", method, MediaType.APPLICATION_JSON, headers, payload, path));
+      Coinbase.LOG.debug(
+          String.format(
+              "curl -X %s -H 'Content-Type: %s' %s %s https://api.coinbase.com%s",
+              method, MediaType.APPLICATION_JSON, headers, payload, path));
     }
   }
 }

@@ -5,8 +5,9 @@ import java.util.List;
 
 /**
  * DTO representing open loan orders
- * <p>
- * Open loan orders are loan order that have placed with the exchange that have not yet been matched to a counterparty.
+ *
+ * <p>Open loan orders are loan order that have placed with the exchange that have not yet been
+ * matched to a counterparty.
  */
 public final class OpenLoanOrders implements Serializable {
 
@@ -19,7 +20,9 @@ public final class OpenLoanOrders implements Serializable {
    * @param openFixedRateLoanOrders
    * @param openFloatingRateLoanOrders
    */
-  public OpenLoanOrders(List<FixedRateLoanOrder> openFixedRateLoanOrders, List<FloatingRateLoanOrder> openFloatingRateLoanOrders) {
+  public OpenLoanOrders(
+      List<FixedRateLoanOrder> openFixedRateLoanOrders,
+      List<FloatingRateLoanOrder> openFloatingRateLoanOrders) {
 
     this.openFixedRateLoanOrders = openFixedRateLoanOrders;
     this.openFloatingRateLoanOrders = openFloatingRateLoanOrders;
@@ -38,7 +41,10 @@ public final class OpenLoanOrders implements Serializable {
   @Override
   public String toString() {
 
-    return "OpenLoanOrders [openFixedRateLoanOrders=" + openFixedRateLoanOrders + ", openFloatingRateLoanOrders=" + openFloatingRateLoanOrders + "]";
+    return "OpenLoanOrders [openFixedRateLoanOrders="
+        + openFixedRateLoanOrders
+        + ", openFloatingRateLoanOrders="
+        + openFloatingRateLoanOrders
+        + "]";
   }
-
 }

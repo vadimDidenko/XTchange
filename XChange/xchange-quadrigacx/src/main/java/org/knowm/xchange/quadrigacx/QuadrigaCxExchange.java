@@ -23,12 +23,15 @@ public class QuadrigaCxExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.quadrigacx.com");
     exchangeSpecification.setHost("quadrigacx.com");
     exchangeSpecification.setPort(443);
     exchangeSpecification.setExchangeName("QuadrigaCx");
-    exchangeSpecification.setExchangeDescription("QuadrigaCX is a Canadian Cryptocurrency exchange platform, with offices in Vancouver, BC.");
+    exchangeSpecification.setExchangeDescription(
+        "QuadrigaCX is a Canadian Cryptocurrency exchange platform, with offices in Vancouver,"
+            + " BC.");
     return exchangeSpecification;
   }
 

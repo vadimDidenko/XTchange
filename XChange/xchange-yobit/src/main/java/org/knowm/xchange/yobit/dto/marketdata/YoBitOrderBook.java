@@ -37,7 +37,8 @@ public class YoBitOrderBook {
   static class YoBitOrderBookDeserializer extends JsonDeserializer<YoBitOrderBook> {
 
     @Override
-    public YoBitOrderBook deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public YoBitOrderBook deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jp.getCodec();
       JsonNode node = oc.readTree(jp);
@@ -53,7 +54,10 @@ public class YoBitOrderBook {
 
       if (nodeArray != null) {
         for (JsonNode jsonNode : nodeArray) {
-          res.add(new YoBitAsksBidsData(BigDecimal.valueOf(jsonNode.get(1).asDouble()), BigDecimal.valueOf(jsonNode.get(0).asDouble())));
+          res.add(
+              new YoBitAsksBidsData(
+                  BigDecimal.valueOf(jsonNode.get(1).asDouble()),
+                  BigDecimal.valueOf(jsonNode.get(0).asDouble())));
         }
       }
 

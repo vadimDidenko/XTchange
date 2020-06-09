@@ -7,9 +7,7 @@ import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public interface CoinbaseTransactionInfo {
 
   @JsonIgnore

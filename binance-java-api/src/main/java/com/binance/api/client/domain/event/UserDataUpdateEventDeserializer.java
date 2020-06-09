@@ -12,7 +12,9 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
 /**
- * Custom deserializer for a User Data stream event, since the API can return two different responses in this stream.
+ * Custom deserializer for a User Data stream event, since the API can return two different
+ * responses in this stream.
+ *
  * @see UserDataUpdateEvent
  */
 public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUpdateEvent> {
@@ -20,9 +22,10 @@ public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUp
   private ObjectMapper mapper;
 
   @Override
-  public UserDataUpdateEvent deserialize(JsonParser jp, DeserializationContext ctx) throws IOException {
+  public UserDataUpdateEvent deserialize(JsonParser jp, DeserializationContext ctx)
+      throws IOException {
 
-    if (mapper == null){
+    if (mapper == null) {
       mapper = new ObjectMapper();
     }
 
@@ -32,17 +35,20 @@ public class UserDataUpdateEventDeserializer extends JsonDeserializer<UserDataUp
 
     final String eventTypeId = node.get("e").asText();
     final Long eventTime = node.get("E").asLong();
-    UserDataUpdateEventType userDataUpdateEventType = UserDataUpdateEventType.fromEventTypeId(eventTypeId);
+    UserDataUpdateEventType userDataUpdateEventType =
+        UserDataUpdateEventType.fromEventTypeId(eventTypeId);
 
     UserDataUpdateEvent userDataUpdateEvent = new UserDataUpdateEvent();
     userDataUpdateEvent.setEventType(userDataUpdateEventType);
     userDataUpdateEvent.setEventTime(eventTime);
 
     if (userDataUpdateEventType == UserDataUpdateEventType.ACCOUNT_UPDATE) {
-      AccountUpdateEvent accountUpdateEvent = getUserDataUpdateEventDetail(json, AccountUpdateEvent.class, mapper);
+      AccountUpdateEvent accountUpdateEvent =
+          getUserDataUpdateEventDetail(json, AccountUpdateEvent.class, mapper);
       userDataUpdateEvent.setAccountUpdateEvent(accountUpdateEvent);
     } else { // userDataUpdateEventType == UserDataUpdateEventType.ORDER_TRADE_UPDATE
-      OrderTradeUpdateEvent orderTradeUpdateEvent = getUserDataUpdateEventDetail(json, OrderTradeUpdateEvent.class, mapper);
+      OrderTradeUpdateEvent orderTradeUpdateEvent =
+          getUserDataUpdateEventDetail(json, OrderTradeUpdateEvent.class, mapper);
       userDataUpdateEvent.setOrderTradeUpdateEvent(orderTradeUpdateEvent);
     }
 

@@ -3,19 +3,13 @@ package com.binance.api.client;
 import com.binance.api.client.constant.BinanceApiConstants;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Binance API error object.
- */
+/** Binance API error object. */
 public class BinanceApiError {
 
-  /**
-   * Error code.
-   */
+  /** Error code. */
   private int code;
 
-  /**
-   * Error message.
-   */
+  /** Error message. */
   private String msg;
 
   public int getCode() {

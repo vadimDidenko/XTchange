@@ -16,8 +16,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = BitmexOrderStatusDeserializer.class)
 public enum BitmexOrderStatus {
-
-  PENDING, OPEN, CLOSED, CANCELED, EXPIRED;
+  PENDING,
+  OPEN,
+  CLOSED,
+  CANCELED,
+  EXPIRED;
 
   @Override
   public String toString() {
@@ -40,7 +43,8 @@ public enum BitmexOrderStatus {
   static class BitmexOrderStatusDeserializer extends JsonDeserializer<BitmexOrderStatus> {
 
     @Override
-    public BitmexOrderStatus deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitmexOrderStatus deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

@@ -10,16 +10,16 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class BitmexMarginAccountJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitmexMarginAccountJSONTest.class.getResourceAsStream("/account/example-margin-account.json");
+    InputStream is =
+        BitmexMarginAccountJSONTest.class.getResourceAsStream(
+            "/account/example-margin-account.json");
 
     ObjectMapper mapper = new ObjectMapper();
     BitmexMarginAccount bitmexMarginAccount = mapper.readValue(is, BitmexMarginAccount.class);
@@ -34,5 +34,4 @@ public class BitmexMarginAccountJSONTest {
     assertThat(bitmexMarginAccount.getMarginLeverage()).isEqualTo(BigDecimal.ZERO);
     assertThat(bitmexMarginAccount.getTaxableMargin()).isEqualTo(BigDecimal.ZERO);
   }
-
 }

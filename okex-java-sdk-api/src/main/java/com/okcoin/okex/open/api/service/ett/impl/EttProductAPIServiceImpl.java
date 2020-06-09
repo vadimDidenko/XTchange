@@ -14,21 +14,21 @@ import java.util.List;
  */
 public class EttProductAPIServiceImpl implements EttProductAPIService {
 
-    private final APIClient client;
-    private final EttProductAPI api;
+  private final APIClient client;
+  private final EttProductAPI api;
 
-    public EttProductAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
-        this.api = this.client.createService(EttProductAPI.class);
-    }
+  public EttProductAPIServiceImpl(APIConfiguration config) {
+    this.client = new APIClient(config);
+    this.api = this.client.createService(EttProductAPI.class);
+  }
 
-    @Override
-    public EttConstituentsResult getConstituents(String ett) {
-        return this.client.executeSync(this.api.getConstituents(ett));
-    }
+  @Override
+  public EttConstituentsResult getConstituents(String ett) {
+    return this.client.executeSync(this.api.getConstituents(ett));
+  }
 
-    @Override
-    public List<EttSettlementDefinePrice> getDefinePrice(String ett) {
-        return this.client.executeSync(this.api.getDefinePrice(ett));
-    }
+  @Override
+  public List<EttSettlementDefinePrice> getDefinePrice(String ett) {
+    return this.client.executeSync(this.api.getDefinePrice(ett));
+  }
 }

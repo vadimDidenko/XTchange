@@ -7,9 +7,7 @@ import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.wex.v3.WexExchange;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class WexExamplesUtils {
 
   public static Exchange createExchange() throws IOException {

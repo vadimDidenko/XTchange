@@ -42,7 +42,7 @@ public class KucoinAdapters {
 
     return pair.base.getCurrencyCode() + "-" + pair.counter.getCurrencyCode();
   }
-  
+
   public static Ticker adaptTicker(KucoinResponse<KucoinTicker> tickResponse, CurrencyPair pair) {
 
     KucoinTicker kcTick = tickResponse.getData();
@@ -59,8 +59,8 @@ public class KucoinAdapters {
         .build();
   }
 
-  public static OrderBook adaptOrderBook(KucoinResponse<KucoinOrderBook> response,
-      CurrencyPair currencyPair) {
+  public static OrderBook adaptOrderBook(
+      KucoinResponse<KucoinOrderBook> response, CurrencyPair currencyPair) {
 
     KucoinOrderBook kcOrders = response.getData();
     Date timestamp = new Date(response.getTimestamp());
@@ -72,18 +72,26 @@ public class KucoinAdapters {
         .forEach(s -> bids.add(adaptLimitOrder(currencyPair, OrderType.BID, s, timestamp)));
     return new OrderBook(timestamp, asks, bids);
   }
-  
+
   public static Trade adaptTrade(KucoinDealOrder kucoinTrade, CurrencyPair currencyPair) {
 
-    return new Trade(kucoinTrade.getOrderType().getOrderType(),
-        kucoinTrade.getAmount(), currencyPair, kucoinTrade.getPrice(),
-        new Date(kucoinTrade.getTimestamp()), null);
+    return new Trade(
+        kucoinTrade.getOrderType().getOrderType(),
+        kucoinTrade.getAmount(),
+        currencyPair,
+        kucoinTrade.getPrice(),
+        new Date(kucoinTrade.getTimestamp()),
+        null);
   }
-  
-  private static LimitOrder adaptLimitOrder(CurrencyPair currencyPair, OrderType orderType,
-      List<BigDecimal> kucoinLimitOrder, Date timestamp) {
 
-    return new LimitOrder(orderType, kucoinLimitOrder.get(1), currencyPair, null, timestamp, kucoinLimitOrder.get(0));
+  private static LimitOrder adaptLimitOrder(
+      CurrencyPair currencyPair,
+      OrderType orderType,
+      List<BigDecimal> kucoinLimitOrder,
+      Date timestamp) {
+
+    return new LimitOrder(
+        orderType, kucoinLimitOrder.get(1), currencyPair, null, timestamp, kucoinLimitOrder.get(0));
   }
 
   public static OpenOrders adaptActiveOrders(CurrencyPair currencyPair, KucoinActiveOrders data) {
@@ -102,8 +110,10 @@ public class KucoinAdapters {
         .limitPrice(order.getPrice())
         .originalAmount(order.getAmount()) // this might be the remaining amount, not sure
         .cumulativeAmount(order.getDealAmount())
-        .orderStatus(order.getDealAmount().compareTo(BigDecimal.ZERO) == 0 ?
-            OrderStatus.NEW : OrderStatus.PARTIALLY_FILLED)
+        .orderStatus(
+            order.getDealAmount().compareTo(BigDecimal.ZERO) == 0
+                ? OrderStatus.NEW
+                : OrderStatus.PARTIALLY_FILLED)
         .build();
   }
 
@@ -124,14 +134,18 @@ public class KucoinAdapters {
         .timestamp(new Date(order.getCreatedAt()))
         .type(order.getDirection().getOrderType())
         .feeAmount(order.getFee())
-        .feeCurrency(order.getDirection().equals(KucoinOrderType.BUY)
-            ? new Currency(order.getCoinType()) : new Currency(order.getCoinTypePair()))
+        .feeCurrency(
+            order.getDirection().equals(KucoinOrderType.BUY)
+                ? new Currency(order.getCoinType())
+                : new Currency(order.getCoinTypePair()))
         .build();
   }
-  
-  public static ExchangeMetaData adaptExchangeMetadata(List<KucoinTicker> tickers, List<KucoinCoin> coins) {
-    
-    Map<String, KucoinCoin> coinMap = coins.stream().collect(Collectors.toMap(c -> c.getCoin(), c -> c));
+
+  public static ExchangeMetaData adaptExchangeMetadata(
+      List<KucoinTicker> tickers, List<KucoinCoin> coins) {
+
+    Map<String, KucoinCoin> coinMap =
+        coins.stream().collect(Collectors.toMap(c -> c.getCoin(), c -> c));
     Map<CurrencyPair, CurrencyPairMetaData> pairMeta = adaptCurrencyPairMap(tickers, coinMap);
     Map<Currency, CurrencyMetaData> coinMeta = adaptCurrencyMap(coins);
     return new ExchangeMetaData(pairMeta, coinMeta, null, null, null);
@@ -139,9 +153,8 @@ public class KucoinAdapters {
 
   private static Map<Currency, CurrencyMetaData> adaptCurrencyMap(List<KucoinCoin> coins) {
 
-    return coins.stream().collect(Collectors.toMap(
-        c -> new Currency(c.getCoin()),
-        c -> adaptCurrencyMetadata(c)));
+    return coins.stream()
+        .collect(Collectors.toMap(c -> new Currency(c.getCoin()), c -> adaptCurrencyMetadata(c)));
   }
 
   private static CurrencyMetaData adaptCurrencyMetadata(KucoinCoin coin) {
@@ -153,26 +166,27 @@ public class KucoinAdapters {
   private static Map<CurrencyPair, CurrencyPairMetaData> adaptCurrencyPairMap(
       List<KucoinTicker> symbols, Map<String, KucoinCoin> coins) {
 
-    return symbols.stream().collect(Collectors.toMap(
-        t -> new CurrencyPair(t.getCoinType(), t.getCoinTypePair()),
-        t -> adaptCurrencyPairMetadata(t, coins.get(t.getCoinTypePair()))));
+    return symbols.stream()
+        .collect(
+            Collectors.toMap(
+                t -> new CurrencyPair(t.getCoinType(), t.getCoinTypePair()),
+                t -> adaptCurrencyPairMetadata(t, coins.get(t.getCoinTypePair()))));
   }
 
-  private static CurrencyPairMetaData adaptCurrencyPairMetadata(KucoinTicker tick, KucoinCoin coin) {
+  private static CurrencyPairMetaData adaptCurrencyPairMetadata(
+      KucoinTicker tick, KucoinCoin coin) {
 
     // trading scale is determined by the base currency's trade precision
     return new CurrencyPairMetaData(tick.getFeeRate(), null, null, coin.getTradePrecision());
   }
 
-  public static AccountInfo adaptAccountInfo(
-  
-      List<KucoinCoinBalance> balances) {
+  public static AccountInfo adaptAccountInfo(List<KucoinCoinBalance> balances) {
 
-    return new AccountInfo(new Wallet(balances.stream()
-        .map(KucoinAdapters::adaptBalance)
-        .collect(Collectors.toList())));
+    return new AccountInfo(
+        new Wallet(
+            balances.stream().map(KucoinAdapters::adaptBalance).collect(Collectors.toList())));
   }
-  
+
   private static Balance adaptBalance(KucoinCoinBalance balance) {
 
     return new Balance(new Currency(balance.getCoinType()), balance.getBalance());
@@ -182,7 +196,7 @@ public class KucoinAdapters {
 
     return records.stream().map(KucoinAdapters::adaptFundingRecord).collect(Collectors.toList());
   }
-  
+
   private static FundingRecord adaptFundingRecord(KucoinWalletRecord record) {
 
     return new FundingRecord.Builder()

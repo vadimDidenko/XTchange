@@ -7,8 +7,9 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class KrakenDepositAddressResult extends KrakenResult<KrakenDepositAddress[]> {
 
-  public KrakenDepositAddressResult(@JsonProperty("result") KrakenDepositAddress[] result, @JsonProperty("error") String[] error) {
+  public KrakenDepositAddressResult(
+      @JsonProperty("result") KrakenDepositAddress[] result,
+      @JsonProperty("error") String[] error) {
     super(result, error);
   }
-
 }

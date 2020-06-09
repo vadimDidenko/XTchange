@@ -15,10 +15,11 @@ public interface Vircurex {
 
   @GET
   @Path("orderbook.json")
-  VircurexDepth getFullDepth(@QueryParam("base") String tradeableIdentifier, @QueryParam("alt") String currency);
+  VircurexDepth getFullDepth(
+      @QueryParam("base") String tradeableIdentifier, @QueryParam("alt") String currency);
 
   @GET
   @Path("get_last_trade.json")
-  VircurexLastTrade getLastTrade(@QueryParam("base") String tradeableIdentifier, @QueryParam("alt") String currency);
-
+  VircurexLastTrade getLastTrade(
+      @QueryParam("base") String tradeableIdentifier, @QueryParam("alt") String currency);
 }

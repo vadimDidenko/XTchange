@@ -16,7 +16,8 @@ public class LiquiInfoJSONTest {
 
   @Test
   public void testUnmarshall() throws Exception {
-    final InputStream is = LiquiTickerJSONTest.class.getResourceAsStream("/marketdata/example-info-data.json");
+    final InputStream is =
+        LiquiTickerJSONTest.class.getResourceAsStream("/marketdata/example-info-data.json");
 
     final ObjectMapper mapper = new ObjectMapper();
     final LiquiInfoResult infoResult = mapper.readValue(is, LiquiInfoResult.class);
@@ -44,6 +45,5 @@ public class LiquiInfoJSONTest {
     assertThat(ltcBtc.getMinPrice()).isEqualTo(new BigDecimal("0.00000001"));
     assertThat(ltcBtc.getMinTotal()).isEqualTo(new BigDecimal("0.0001"));
     assertThat(ltcBtc.isHidden()).isFalse();
-
   }
 }

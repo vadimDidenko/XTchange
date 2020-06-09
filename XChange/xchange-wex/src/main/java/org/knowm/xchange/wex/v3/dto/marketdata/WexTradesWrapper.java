@@ -4,9 +4,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-/**
- * Author: brox Data object representing multi-currency trades from Wex API v.3
- */
+/** Author: brox Data object representing multi-currency trades from Wex API v.3 */
 public class WexTradesWrapper {
 
   private final Map<String, WexTrade[]> tradesMap;
@@ -41,5 +39,4 @@ public class WexTradesWrapper {
 
     return "BTCETradesV3 [map=" + tradesMap.toString() + "]";
   }
-
 }

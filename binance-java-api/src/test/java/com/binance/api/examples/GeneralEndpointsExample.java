@@ -6,9 +6,7 @@ import com.binance.api.client.domain.general.*;
 
 import java.util.List;
 
-/**
- * Examples on how to use the general endpoints.
- */
+/** Examples on how to use the general endpoints. */
 public class GeneralEndpointsExample {
 
   public static void main(String[] args) {
@@ -37,6 +35,7 @@ public class GeneralEndpointsExample {
 
     // Obtain asset information
     List<Asset> allAssets = client.getAllAssets();
-    System.out.println(allAssets.stream().filter(asset -> asset.getAssetCode().equals("BNB")).findFirst().get());
+    System.out.println(
+        allAssets.stream().filter(asset -> asset.getAssetCode().equals("BNB")).findFirst().get());
   }
 }

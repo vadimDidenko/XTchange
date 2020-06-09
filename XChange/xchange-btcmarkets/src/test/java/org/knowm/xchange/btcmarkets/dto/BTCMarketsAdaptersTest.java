@@ -33,7 +33,8 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
 
     assertThat(wallet.getBalances()).hasSize(3);
     assertThat(wallet.getBalance(Currency.LTC).getTotal()).isEqualTo(new BigDecimal("10.00000000"));
-    assertThat(wallet.getBalance(Currency.LTC).getAvailable()).isEqualTo(new BigDecimal("10.00000000"));
+    assertThat(wallet.getBalance(Currency.LTC).getAvailable())
+        .isEqualTo(new BigDecimal("10.00000000"));
   }
 
   @Test
@@ -59,7 +60,8 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
     assertThat(openOrders.getOpenOrders().get(1).getId()).isEqualTo("4345675");
     assertThat(openOrders.getOpenOrders().get(1).getCurrencyPair()).isEqualTo(CurrencyPair.BTC_AUD);
     assertThat(openOrders.getOpenOrders().get(1).getType()).isEqualTo(Order.OrderType.ASK);
-    assertThat(openOrders.getOpenOrders().get(1).getTimestamp().getTime()).isEqualTo(1378636912705L);
+    assertThat(openOrders.getOpenOrders().get(1).getTimestamp().getTime())
+        .isEqualTo(1378636912705L);
     assertThat(openOrders.getOpenOrders().get(1).getLimitPrice()).isEqualTo("130.00000000");
     assertThat(openOrders.getOpenOrders().get(1).getOriginalAmount()).isEqualTo("0.10000000");
   }
@@ -81,7 +83,9 @@ public class BTCMarketsAdaptersTest extends BTCMarketsDtoTestSupport {
   public void shouldAdaptTradeHistory() throws IOException {
     final BTCMarketsTradeHistory response = parse(BTCMarketsTradeHistory.class);
 
-    final List<UserTrade> userTrades = BTCMarketsAdapters.adaptTradeHistory(response.getTrades(), CurrencyPair.BTC_AUD).getUserTrades();
+    final List<UserTrade> userTrades =
+        BTCMarketsAdapters.adaptTradeHistory(response.getTrades(), CurrencyPair.BTC_AUD)
+            .getUserTrades();
     assertThat(userTrades).hasSize(3);
     assertThat(userTrades.get(2).getId()).isEqualTo("45118157");
     assertThat(userTrades.get(2).getTimestamp().getTime()).isEqualTo(1442994673684L);

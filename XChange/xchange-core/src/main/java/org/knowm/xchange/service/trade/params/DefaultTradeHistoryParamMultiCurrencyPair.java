@@ -5,7 +5,8 @@ import java.util.Collections;
 
 import org.knowm.xchange.currency.CurrencyPair;
 
-public class DefaultTradeHistoryParamMultiCurrencyPair implements TradeHistoryParamMultiCurrencyPair {
+public class DefaultTradeHistoryParamMultiCurrencyPair
+    implements TradeHistoryParamMultiCurrencyPair {
 
   private Collection<CurrencyPair> pairs = Collections.emptySet();
 

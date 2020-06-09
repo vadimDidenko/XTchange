@@ -10,18 +10,17 @@ import org.slf4j.LoggerFactory;
 import java.io.IOException;
 import java.io.InputStream;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class ExchangeUtils {
 
-  private final static Logger logger = LoggerFactory.getLogger(ExchangeUtils.class);
+  private static final Logger logger = LoggerFactory.getLogger(ExchangeUtils.class);
 
   public static Exchange createExchangeFromJsonConfiguration() throws IOException {
 
     ExchangeSpecification exSpec = new ExchangeSpecification(DSXExchange.class);
     ObjectMapper mapper = new ObjectMapper();
-    InputStream is = ExchangeUtils.class.getClassLoader().getResourceAsStream("exchangeConfiguration.json");
+    InputStream is =
+        ExchangeUtils.class.getClassLoader().getResourceAsStream("exchangeConfiguration.json");
     if (is == null) {
       logger.warn("No exchangeConfiguration.json file found. Returning null exchange.");
       return null;
@@ -40,7 +39,10 @@ public class ExchangeUtils {
         exSpec.setSslUri(conf.sslUri);
       }
     } catch (Exception e) {
-      logger.warn("An exception occured while loading the exchangeConfiguration.json file from the classpath. " + "Returning null exchange. ", e);
+      logger.warn(
+          "An exception occured while loading the exchangeConfiguration.json file from the"
+              + " classpath. Returning null exchange. ",
+          e);
       return null;
     }
 

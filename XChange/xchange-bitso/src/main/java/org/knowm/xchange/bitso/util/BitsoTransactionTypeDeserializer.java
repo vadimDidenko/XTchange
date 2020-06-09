@@ -4,14 +4,11 @@ import org.knowm.xchange.bitso.dto.trade.BitsoUserTransaction;
 
 import si.mazi.rescu.serialization.jackson.serializers.EnumIntDeserializer;
 
-/**
- * @author Piotr Ładyżyński
- */
-public class BitsoTransactionTypeDeserializer extends EnumIntDeserializer<BitsoUserTransaction.TransactionType> {
+/** @author Piotr Ładyżyński */
+public class BitsoTransactionTypeDeserializer
+    extends EnumIntDeserializer<BitsoUserTransaction.TransactionType> {
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public BitsoTransactionTypeDeserializer() {
 
     super(BitsoUserTransaction.TransactionType.class);

@@ -15,23 +15,26 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseRecurringPaymentStatusDeserializer.class)
 @JsonSerialize(using = EnumLowercaseJsonSerializer.class)
 public enum CoinbaseRecurringPaymentStatus {
+  NEW,
+  ACTIVE,
+  PAUSED,
+  COMPLETED,
+  CANCELED;
 
-  NEW, ACTIVE, PAUSED, COMPLETED, CANCELED;
+  static class CoinbaseRecurringPaymentStatusDeserializer
+      extends JsonDeserializer<CoinbaseRecurringPaymentStatus> {
 
-  static class CoinbaseRecurringPaymentStatusDeserializer extends JsonDeserializer<CoinbaseRecurringPaymentStatus> {
-
-    private static final EnumFromStringHelper<CoinbaseRecurringPaymentStatus> FROM_STRING_HELPER = new EnumFromStringHelper<>(
-        CoinbaseRecurringPaymentStatus.class);
+    private static final EnumFromStringHelper<CoinbaseRecurringPaymentStatus> FROM_STRING_HELPER =
+        new EnumFromStringHelper<>(CoinbaseRecurringPaymentStatus.class);
 
     @Override
-    public CoinbaseRecurringPaymentStatus deserialize(JsonParser jsonParser,
-        final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseRecurringPaymentStatus deserialize(
+        JsonParser jsonParser, final DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

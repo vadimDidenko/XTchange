@@ -14,7 +14,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BitcoindeErrorTest {
 
   @Test
-  public void testBitcoindeOrderBook() throws JsonParseException, JsonMappingException, IOException {
+  public void testBitcoindeOrderBook()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = BitcoindeErrorTest.class.getResourceAsStream("/errors.json");

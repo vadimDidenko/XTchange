@@ -1,20 +1,20 @@
-//package com.ailu.bitmex.bean.trade;
+// package com.ailu.bitmex.bean.trade;
 //
-//import com.fasterxml.jackson.core.JsonParser;
-//import com.fasterxml.jackson.core.JsonProcessingException;
-//import com.fasterxml.jackson.core.ObjectCodec;
-//import com.fasterxml.jackson.databind.DeserializationContext;
-//import com.fasterxml.jackson.databind.JsonDeserializer;
-//import com.fasterxml.jackson.databind.JsonNode;
-//import org.knowm.xchange.dto.Order.IOrderFlags;
+// import com.fasterxml.jackson.core.JsonParser;
+// import com.fasterxml.jackson.core.JsonProcessingException;
+// import com.fasterxml.jackson.core.ObjectCodec;
+// import com.fasterxml.jackson.databind.DeserializationContext;
+// import com.fasterxml.jackson.databind.JsonDeserializer;
+// import com.fasterxml.jackson.databind.JsonNode;
+// import org.knowm.xchange.dto.Order.IOrderFlags;
 //
-//import java.io.IOException;
-//import java.util.EnumSet;
-//import java.util.HashMap;
-//import java.util.Map;
-//import java.util.Set;
+// import java.io.IOException;
+// import java.util.EnumSet;
+// import java.util.HashMap;
+// import java.util.Map;
+// import java.util.Set;
 //
-//public enum BitmexOrderFlags implements IOrderFlags {
+// public enum BitmexOrderFlags implements IOrderFlags {
 //
 //  FCIB, // prefer fee in base currency
 //  FCIQ, // prefer fee in quote currency
@@ -43,7 +43,8 @@
 //  static class BitmexOrderFlagsDeserializer extends JsonDeserializer<Set<BitmexOrderFlags>> {
 //
 //    @Override
-//    public Set<BitmexOrderFlags> deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+//    public Set<BitmexOrderFlags> deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+// throws IOException, JsonProcessingException {
 //
 //      ObjectCodec oc = jsonParser.getCodec();
 //      JsonNode node = oc.readTree(jsonParser);
@@ -56,4 +57,4 @@
 //      return orderFlags;
 //    }
 //  }
-//}
+// }

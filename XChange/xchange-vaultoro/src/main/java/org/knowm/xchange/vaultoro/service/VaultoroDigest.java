@@ -29,5 +29,4 @@ public class VaultoroDigest extends BaseParamsDigest {
 
     return String.format("%040x", new BigInteger(1, mac.doFinal()));
   }
-
 }

@@ -35,5 +35,4 @@ public class GDAXTickerDemo {
 
     System.out.println(gdaxTicker.toString());
   }
-
 }

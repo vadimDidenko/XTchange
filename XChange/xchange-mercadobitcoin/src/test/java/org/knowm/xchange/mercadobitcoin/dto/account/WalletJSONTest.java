@@ -23,14 +23,16 @@ public class WalletJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = WalletJSONTest.class.getResourceAsStream("/account/example-accountinfo-data.json");
+    InputStream is =
+        WalletJSONTest.class.getResourceAsStream("/account/example-accountinfo-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
 
-    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo> accountInfo = mapper.readValue(is,
-        new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo>>() {
-        });
+    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo> accountInfo =
+        mapper.readValue(
+            is,
+            new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo>>() {});
 
     // Verify that the example data was unmarshalled correctly
     assertThat(accountInfo.getSuccess()).isEqualTo(1);
@@ -38,8 +40,11 @@ public class WalletJSONTest {
     assertThat(accountInfo.getTheReturn()).isNotNull();
     assertThat(accountInfo.getTheReturn().getServerTime()).isEqualTo(1417409950);
     assertThat(accountInfo.getTheReturn().getOpenOrders()).isEqualTo(0);
-    assertThat(accountInfo.getTheReturn().getFunds().getBrl()).isEqualTo(new BigDecimal("248.29516"));
-    assertThat(accountInfo.getTheReturn().getFunds().getBtc()).isEqualTo(new BigDecimal("0.25000000"));
-    assertThat(accountInfo.getTheReturn().getFunds().getLtc()).isEqualTo(new BigDecimal("0.00000000"));
+    assertThat(accountInfo.getTheReturn().getFunds().getBrl())
+        .isEqualTo(new BigDecimal("248.29516"));
+    assertThat(accountInfo.getTheReturn().getFunds().getBtc())
+        .isEqualTo(new BigDecimal("0.25000000"));
+    assertThat(accountInfo.getTheReturn().getFunds().getLtc())
+        .isEqualTo(new BigDecimal("0.00000000"));
   }
 }

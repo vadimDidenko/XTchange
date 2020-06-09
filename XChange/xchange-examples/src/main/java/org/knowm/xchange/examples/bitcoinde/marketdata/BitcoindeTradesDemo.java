@@ -35,13 +35,13 @@ public class BitcoindeTradesDemo {
     for (Trade t : allTrades) {
       System.out.println(t);
     }
-
   }
 
   public static void raw(BitcoindeMarketDataServiceRaw marketDataService) throws IOException {
 
     /* get BitcoindeTrades data */
-    BitcoindeTradesWrapper bitcoindeTrades = marketDataService.getBitcoindeTrades(CurrencyPair.ETH_EUR, 4196418);
+    BitcoindeTradesWrapper bitcoindeTrades =
+        marketDataService.getBitcoindeTrades(CurrencyPair.ETH_EUR, 4196418);
 
     /* print each trade object */
     for (BitcoindeTrade bitcoindeTrade : bitcoindeTrades.getTrades())

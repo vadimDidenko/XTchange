@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class BitbayTrade {
 
   private final long date;
@@ -22,7 +20,10 @@ public class BitbayTrade {
    * @param amount
    * @param tid
    */
-  public BitbayTrade(@JsonProperty("date") long date, @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount,
+  public BitbayTrade(
+      @JsonProperty("date") long date,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
       @JsonProperty("tid") String tid) {
 
     this.date = date;
@@ -54,6 +55,16 @@ public class BitbayTrade {
   @Override
   public String toString() {
 
-    return "BitbayTrade{" + "date=" + date + ", price=" + price + ", amount=" + amount + ", tid='" + tid + '\'' + '}';
+    return "BitbayTrade{"
+        + "date="
+        + date
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + ", tid='"
+        + tid
+        + '\''
+        + '}';
   }
 }

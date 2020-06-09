@@ -27,9 +27,7 @@ public class BTCTradeDigest extends BaseParamsDigest {
     super(secretKeyBase64, HMAC_SHA_256);
   }
 
-  /**
-   * {@inheritDoc}
-   */
+  /** {@inheritDoc} */
   @Override
   public String digestParams(RestInvocation restInvocation) {
 
@@ -49,5 +47,4 @@ public class BTCTradeDigest extends BaseParamsDigest {
 
     return String.format("%064x", new BigInteger(1, mac.doFinal()));
   }
-
 }

@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test QuoineOrderDetailsResponse JSON parsing
- */
+/** Test QuoineOrderDetailsResponse JSON parsing */
 public class QuoineOrderResponseJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = QuoineOrderResponseJSONTest.class.getResourceAsStream("/trade/example-order-response.json");
+    InputStream is =
+        QuoineOrderResponseJSONTest.class.getResourceAsStream("/trade/example-order-response.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

@@ -30,17 +30,11 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class BitbayAdapters {
 
-  /**
-   * Singleton
-   */
-  private BitbayAdapters() {
-
-  }
+  /** Singleton */
+  private BitbayAdapters() {}
 
   /**
    * Adapts a BitbayTicker to a Ticker Object
@@ -58,7 +52,15 @@ public class BitbayAdapters {
     BigDecimal volume = bitbayTicker.getVolume();
     BigDecimal last = bitbayTicker.getLast();
 
-    return new Ticker.Builder().currencyPair(currencyPair).last(last).bid(bid).ask(ask).high(high).low(low).volume(volume).build();
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .volume(volume)
+        .build();
   }
 
   /**
@@ -67,13 +69,15 @@ public class BitbayAdapters {
    * @param currencyPair
    * @return
    */
-  private static List<LimitOrder> transformArrayToLimitOrders(BigDecimal[][] orders, OrderType orderType, CurrencyPair currencyPair) {
+  private static List<LimitOrder> transformArrayToLimitOrders(
+      BigDecimal[][] orders, OrderType orderType, CurrencyPair currencyPair) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
 
     if (orders != null) {
       for (BigDecimal[] order : orders) {
-        limitOrders.add(new LimitOrder(orderType, order[1], currencyPair, null, new Date(), order[0]));
+        limitOrders.add(
+            new LimitOrder(orderType, order[1], currencyPair, null, new Date(), order[0]));
       }
     }
 
@@ -85,10 +89,14 @@ public class BitbayAdapters {
    * @param currencyPair
    * @return
    */
-  public static OrderBook adaptOrderBook(BitbayOrderBook bitbayOrderBook, CurrencyPair currencyPair) {
+  public static OrderBook adaptOrderBook(
+      BitbayOrderBook bitbayOrderBook, CurrencyPair currencyPair) {
 
-    OrderBook orderBook = new OrderBook(null, transformArrayToLimitOrders(bitbayOrderBook.getAsks(), OrderType.ASK, currencyPair),
-        transformArrayToLimitOrders(bitbayOrderBook.getBids(), OrderType.BID, currencyPair));
+    OrderBook orderBook =
+        new OrderBook(
+            null,
+            transformArrayToLimitOrders(bitbayOrderBook.getAsks(), OrderType.ASK, currencyPair),
+            transformArrayToLimitOrders(bitbayOrderBook.getBids(), OrderType.BID, currencyPair));
 
     return orderBook;
   }
@@ -104,8 +112,14 @@ public class BitbayAdapters {
 
     for (BitbayTrade bitbayTrade : bitbayTrades) {
 
-      Trade trade = new Trade(null, bitbayTrade.getAmount(), currencyPair, bitbayTrade.getPrice(), new Date(bitbayTrade.getDate() * 1000),
-          bitbayTrade.getTid());
+      Trade trade =
+          new Trade(
+              null,
+              bitbayTrade.getAmount(),
+              currencyPair,
+              bitbayTrade.getPrice(),
+              new Date(bitbayTrade.getDate() * 1000),
+              bitbayTrade.getTid());
 
       tradeList.add(trade);
     }
@@ -114,14 +128,21 @@ public class BitbayAdapters {
     return trades;
   }
 
-  public static AccountInfo adaptAccountInfo(String userName, BitbayAccountInfoResponse bitbayAccountInfo) {
+  public static AccountInfo adaptAccountInfo(
+      String userName, BitbayAccountInfoResponse bitbayAccountInfo) {
     List<Balance> balances = new ArrayList<>(bitbayAccountInfo.getBitbayBalances().size());
 
-    for (Map.Entry<String, BitbayBalance> entry : bitbayAccountInfo.getBitbayBalances().entrySet()) {
+    for (Map.Entry<String, BitbayBalance> entry :
+        bitbayAccountInfo.getBitbayBalances().entrySet()) {
       Currency currency = Currency.getInstance(entry.getKey());
       BitbayBalance balance = entry.getValue();
 
-      balances.add(new Balance(currency, balance.getAvailable().add(balance.getLocked()), balance.getAvailable(), balance.getLocked()));
+      balances.add(
+          new Balance(
+              currency,
+              balance.getAvailable().add(balance.getLocked()),
+              balance.getAvailable(),
+              balance.getLocked()));
     }
 
     return new AccountInfo(userName, new Wallet(balances));
@@ -152,7 +173,8 @@ public class BitbayAdapters {
   }
 
   private static LimitOrder createOrder(BitbayOrder bitbayOrder) {
-    CurrencyPair currencyPair = new CurrencyPair(bitbayOrder.getCurrency(), bitbayOrder.getPaymentCurrency());
+    CurrencyPair currencyPair =
+        new CurrencyPair(bitbayOrder.getCurrency(), bitbayOrder.getPaymentCurrency());
     OrderType type = "ask".equals(bitbayOrder.getType()) ? OrderType.ASK : OrderType.BID;
 
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -163,12 +185,18 @@ public class BitbayAdapters {
       throw new IllegalArgumentException(e);
     }
 
-    return new LimitOrder(type, bitbayOrder.getAmount(), currencyPair, String.valueOf(bitbayOrder.getId()), date,
+    return new LimitOrder(
+        type,
+        bitbayOrder.getAmount(),
+        currencyPair,
+        String.valueOf(bitbayOrder.getId()),
+        date,
         bitbayOrder.getStartPrice().divide(bitbayOrder.getStartAmount()));
   }
 
   private static UserTrade createUserTrade(BitbayOrder bitbayOrder) {
-    CurrencyPair currencyPair = new CurrencyPair(bitbayOrder.getCurrency(), bitbayOrder.getPaymentCurrency());
+    CurrencyPair currencyPair =
+        new CurrencyPair(bitbayOrder.getCurrency(), bitbayOrder.getPaymentCurrency());
     OrderType type = "ask".equals(bitbayOrder.getType()) ? OrderType.ASK : OrderType.BID;
 
     DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
@@ -179,12 +207,16 @@ public class BitbayAdapters {
       throw new IllegalArgumentException(e);
     }
 
-    return new UserTrade(type,
+    return new UserTrade(
+        type,
         bitbayOrder.getAmount(),
         currencyPair,
         bitbayOrder.getCurrentPrice().divide(bitbayOrder.getStartAmount()),
         date,
-        String.valueOf(bitbayOrder.getId()), String.valueOf(bitbayOrder.getId()), null, null);
+        String.valueOf(bitbayOrder.getId()),
+        String.valueOf(bitbayOrder.getId()),
+        null,
+        null);
   }
 
   public static List<UserTrade> adaptTransactions(List<Map> response) {
@@ -195,17 +227,15 @@ public class BitbayAdapters {
         OrderType orderType;
         String type = map.get("type").toString();
 
-        if (type.equals("BID"))
-          orderType = OrderType.BID;
-        else if (type.equals("ASK"))
-          orderType = OrderType.ASK;
-        else
-          continue;
+        if (type.equals("BID")) orderType = OrderType.BID;
+        else if (type.equals("ASK")) orderType = OrderType.ASK;
+        else continue;
 
         String market = map.get("market").toString();
 
         String[] parts = market.split("-");
-        CurrencyPair pair = new CurrencyPair(Currency.getInstance(parts[0]), Currency.getInstance(parts[1]));
+        CurrencyPair pair =
+            new CurrencyPair(Currency.getInstance(parts[0]), Currency.getInstance(parts[1]));
         DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
         String date = map.get("date").toString();
         Date timestamp = formatter.parse(date);
@@ -213,20 +243,10 @@ public class BitbayAdapters {
         BigDecimal price = new BigDecimal(map.get("rate").toString());
         BigDecimal fee = new BigDecimal(map.get("price").toString());
 
-        //there's no id - create a synthetic one
+        // there's no id - create a synthetic one
         String id = (type + "_" + date + "_" + market).replaceAll("\\s+", "");
 
-        trades.add(new UserTrade(
-            orderType,
-            amount,
-            pair,
-            price,
-            timestamp,
-            id,
-            null,
-            fee,
-            null
-        ));
+        trades.add(new UserTrade(orderType, amount, pair, price, timestamp, id, null, fee, null));
       } catch (ParseException e) {
         throw new IllegalStateException("Cannot parse " + map);
       }

@@ -12,10 +12,9 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author Matija Mazi
- */
-public class BTCMarketsMarketDataService extends BTCMarketsMarketDataServiceRaw implements MarketDataService {
+/** @author Matija Mazi */
+public class BTCMarketsMarketDataService extends BTCMarketsMarketDataServiceRaw
+    implements MarketDataService {
 
   public BTCMarketsMarketDataService(Exchange exchange) {
     super(exchange);

@@ -12,16 +12,15 @@ import org.knowm.xchange.currency.CurrencyPair;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Created by semihunaldi on 26/11/2017
- */
+/** Created by semihunaldi on 26/11/2017 */
 public class BTCTurkTickerTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BTCTurkTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        BTCTurkTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
     ObjectMapper mapper = new ObjectMapper();
     BTCTurkTicker btcTurkTicker = mapper.readValue(is, BTCTurkTicker.class);
 

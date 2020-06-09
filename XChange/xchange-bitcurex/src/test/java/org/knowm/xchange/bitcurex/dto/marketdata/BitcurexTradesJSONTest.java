@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitcurexTrade[] JSON parsing
- */
+/** Test BitcurexTrade[] JSON parsing */
 public class BitcurexTradesJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitcurexTradesJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
+    InputStream is =
+        BitcurexTradesJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

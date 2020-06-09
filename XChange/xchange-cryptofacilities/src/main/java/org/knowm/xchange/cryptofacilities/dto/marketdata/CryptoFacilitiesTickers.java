@@ -9,19 +9,21 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Neil Panchen
- */
-
+/** @author Neil Panchen */
 public class CryptoFacilitiesTickers extends CryptoFacilitiesResult {
 
-  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+  private static final SimpleDateFormat DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
   private final Date serverTime;
   private final List<CryptoFacilitiesTicker> tickers;
 
-  public CryptoFacilitiesTickers(@JsonProperty("result") String result, @JsonProperty("serverTime") String strServerTime,
-      @JsonProperty("error") String error, @JsonProperty("tickers") List<CryptoFacilitiesTicker> tickers) throws ParseException {
+  public CryptoFacilitiesTickers(
+      @JsonProperty("result") String result,
+      @JsonProperty("serverTime") String strServerTime,
+      @JsonProperty("error") String error,
+      @JsonProperty("tickers") List<CryptoFacilitiesTicker> tickers)
+      throws ParseException {
 
     super(result, error);
 
@@ -52,7 +54,11 @@ public class CryptoFacilitiesTickers extends CryptoFacilitiesResult {
   public String toString() {
 
     if (isSuccess()) {
-      StringBuilder res = new StringBuilder("CryptoFacilitiesTickers [serverTime=" + DATE_FORMAT.format(serverTime) + ", tickers=");
+      StringBuilder res =
+          new StringBuilder(
+              "CryptoFacilitiesTickers [serverTime="
+                  + DATE_FORMAT.format(serverTime)
+                  + ", tickers=");
       for (CryptoFacilitiesTicker ticker : tickers) {
         res.append(ticker.toString()).append(", ");
       }
@@ -63,5 +69,4 @@ public class CryptoFacilitiesTickers extends CryptoFacilitiesResult {
       return super.toString();
     }
   }
-
 }

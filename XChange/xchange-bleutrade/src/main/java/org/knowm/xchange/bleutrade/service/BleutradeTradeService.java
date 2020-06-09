@@ -38,8 +38,7 @@ public class BleutradeTradeService extends BleutradeTradeServiceRaw implements T
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return BleutradeAdapters.adaptBleutradeOpenOrders(getBleutradeOpenOrders());
   }
 
@@ -100,9 +99,7 @@ public class BleutradeTradeService extends BleutradeTradeServiceRaw implements T
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

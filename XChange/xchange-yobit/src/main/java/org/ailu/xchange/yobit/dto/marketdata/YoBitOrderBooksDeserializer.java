@@ -15,7 +15,8 @@ import com.fasterxml.jackson.databind.ObjectReader;
 public class YoBitOrderBooksDeserializer extends JsonDeserializer<YoBitOrderBooksReturn> {
 
   @Override
-  public YoBitOrderBooksReturn deserialize(JsonParser p, DeserializationContext ctxt) throws IOException {
+  public YoBitOrderBooksReturn deserialize(JsonParser p, DeserializationContext ctxt)
+      throws IOException {
 
     JsonNode node = p.readValueAsTree();
     Map<String, YoBitOrderBook> tickers = new HashMap<>();
@@ -37,5 +38,4 @@ public class YoBitOrderBooksDeserializer extends JsonDeserializer<YoBitOrderBook
 
     return new YoBitOrderBooksReturn(tickers);
   }
-
 }

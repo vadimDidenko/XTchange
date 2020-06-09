@@ -7,21 +7,20 @@ import org.knowm.xchange.dto.Order.OrderType;
 
 public class BinanceAdapters {
 
-  private BinanceAdapters() {
-  }
+  private BinanceAdapters() {}
 
   public static String toSymbol(CurrencyPair pair) {
-	  if (pair.equals(CurrencyPair.IOTA_BTC)) {
-		  return "IOTABTC";
-	  }
+    if (pair.equals(CurrencyPair.IOTA_BTC)) {
+      return "IOTABTC";
+    }
     return pair.base.getCurrencyCode() + pair.counter.getCurrencyCode();
   }
 
   public static String toSymbol(Currency currency) {
-	  if (Currency.IOT.equals(currency)) {
-		  return "IOTA";
-	  }
-	  return currency.getSymbol();
+    if (Currency.IOT.equals(currency)) {
+      return "IOTA";
+    }
+    return currency.getSymbol();
   }
 
   public static OrderType convert(OrderSide side) {

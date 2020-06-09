@@ -11,7 +11,8 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 public class CexIOExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2014NonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2014NonceFactory();
 
   @Override
   protected void initServices() {
@@ -23,12 +24,14 @@ public class CexIOExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://cex.io");
     exchangeSpecification.setHost("cex.io");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Cex IO");
-    exchangeSpecification.setExchangeDescription("Cex.IO is a virtual commodities exchange registered in United Kingdom.");
+    exchangeSpecification.setExchangeDescription(
+        "Cex.IO is a virtual commodities exchange registered in United Kingdom.");
 
     return exchangeSpecification;
   }

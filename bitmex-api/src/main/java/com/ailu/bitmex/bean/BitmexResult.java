@@ -1,8 +1,6 @@
 package com.ailu.bitmex.bean;
 
-/**
- * @author Raphael Voellmy
- */
+/** @author Raphael Voellmy */
 public class BitmexResult {
 
   private Long XRateLimitLimit;

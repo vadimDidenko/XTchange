@@ -19,12 +19,14 @@ public class BittrexTradeResponse {
 
   @JsonProperty("success")
   private Boolean success;
+
   @JsonProperty("message")
   private String message;
+
   @JsonProperty("result")
   private BittrexTradeId result;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -77,8 +79,14 @@ public class BittrexTradeResponse {
   @Override
   public String toString() {
 
-    return "BittrexTradeResponse [success=" + success + ", message=" + message + ", result=" + result + ", additionalProperties="
-        + additionalProperties + "]";
+    return "BittrexTradeResponse [success="
+        + success
+        + ", message="
+        + message
+        + ", result="
+        + result
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

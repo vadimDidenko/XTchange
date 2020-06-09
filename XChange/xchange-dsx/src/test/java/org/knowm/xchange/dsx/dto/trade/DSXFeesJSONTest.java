@@ -9,10 +9,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXFeesJSONTest {
 
   @Test

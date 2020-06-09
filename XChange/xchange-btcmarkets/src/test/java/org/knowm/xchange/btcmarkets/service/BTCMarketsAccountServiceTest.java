@@ -36,7 +36,9 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
 
   @Before
   public void setUp() {
-    BTCMarketsExchange exchange = (BTCMarketsExchange) ExchangeFactory.INSTANCE.createExchange(BTCMarketsExchange.class.getCanonicalName());
+    BTCMarketsExchange exchange =
+        (BTCMarketsExchange)
+            ExchangeFactory.INSTANCE.createExchange(BTCMarketsExchange.class.getCanonicalName());
     ExchangeSpecification specification = exchange.getExchangeSpecification();
     specification.setUserName(SPECIFICATION_USERNAME);
     specification.setApiKey(SPECIFICATION_API_KEY);
@@ -51,8 +53,11 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     BTCMarketsBalance balance = parse(BTCMarketsBalance.class);
 
     BTCMarketsAuthenticated btcm = mock(BTCMarketsAuthenticated.class);
-    PowerMockito
-        .when(btcm.getBalance(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(SynchronizedValueFactory.class), Mockito.any(BTCMarketsDigest.class)))
+    PowerMockito.when(
+            btcm.getBalance(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.any(BTCMarketsDigest.class)))
         .thenReturn(Arrays.asList(balance));
     Whitebox.setInternalState(accountService, "btcm", btcm);
 
@@ -64,7 +69,8 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     assertThat(accountInfo.getTradingFee()).isNull();
     assertThat(accountInfo.getWallets()).hasSize(1);
 
-    BtcMarketsAssert.assertEquals(accountInfo.getWallet().getBalance(Currency.BTC), EXPECTED_BALANCE);
+    BtcMarketsAssert.assertEquals(
+        accountInfo.getWallet().getBalance(Currency.BTC), EXPECTED_BALANCE);
   }
 
   @Test(expected = NotYetImplementedForExchangeException.class)
@@ -73,7 +79,9 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     accountService.withdrawFunds(Currency.BTC, BigDecimal.TEN, "any address");
 
     // then
-    fail("BTCMarketsAccountService should throw NotYetImplementedForExchangeException when call withdrawFunds");
+    fail(
+        "BTCMarketsAccountService should throw NotYetImplementedForExchangeException when call"
+            + " withdrawFunds");
   }
 
   @Test(expected = NotYetImplementedForExchangeException.class)
@@ -82,6 +90,8 @@ public class BTCMarketsAccountServiceTest extends BTCMarketsTestSupport {
     accountService.requestDepositAddress(Currency.BTC);
 
     // then
-    fail("BTCMarketsAccountService should throw NotYetImplementedForExchangeException when call requestDepositAddress");
+    fail(
+        "BTCMarketsAccountService should throw NotYetImplementedForExchangeException when call"
+            + " requestDepositAddress");
   }
 }

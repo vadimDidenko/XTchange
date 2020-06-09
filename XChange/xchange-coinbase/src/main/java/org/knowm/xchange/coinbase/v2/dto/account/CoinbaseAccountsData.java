@@ -25,5 +25,4 @@ public class CoinbaseAccountsData {
   public String toString() {
     return "" + data;
   }
-
 }

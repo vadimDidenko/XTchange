@@ -30,7 +30,8 @@ public class DepthChartDemo {
   public static void main(String[] args) throws IOException {
 
     // Use the factory to get the version 1 Mercado Bitcoin exchange API using default settings
-    Exchange mercadoExchange = ExchangeFactory.INSTANCE.createExchange(MercadoBitcoinExchange.class.getName());
+    Exchange mercadoExchange =
+        ExchangeFactory.INSTANCE.createExchange(MercadoBitcoinExchange.class.getName());
 
     // Interested in the public market data feed (no authentication)
     MarketDataService marketDataService = mercadoExchange.getMarketDataService();
@@ -45,7 +46,14 @@ public class DepthChartDemo {
     System.out.println("plotting...");
 
     // Create Chart
-    XYChart chart = new XYChartBuilder().width(800).height(600).title("Mercado Order Book").xAxisTitle("BTC").yAxisTitle("BRL").build();
+    XYChart chart =
+        new XYChartBuilder()
+            .width(800)
+            .height(600)
+            .title("Mercado Order Book")
+            .xAxisTitle("BTC")
+            .yAxisTitle("BRL")
+            .build();
 
     // Customize Chart
     chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Area);
@@ -85,7 +93,5 @@ public class DepthChartDemo {
     series.setMarker(SeriesMarkers.NONE);
 
     new SwingWrapper(chart).displayChart();
-
   }
-
 }

@@ -29,7 +29,6 @@ public class BitflyerTradeDemo {
     System.out.println(executions);
     executions = serviceRaw.getExecutions("BTC_JPY");
     System.out.println(executions);
-
   }
 
   private static void positionsInfo(TradeService service) throws IOException {
@@ -40,7 +39,5 @@ public class BitflyerTradeDemo {
     System.out.println(executions);
     executions = serviceRaw.getPositions("BTC_JPY");
     System.out.println(executions);
-
   }
-
 }

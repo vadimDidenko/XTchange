@@ -12,9 +12,7 @@ import org.knowm.xchange.bitmarket.dto.marketdata.BitMarketOrderBook;
 import org.knowm.xchange.bitmarket.dto.marketdata.BitMarketTicker;
 import org.knowm.xchange.bitmarket.dto.marketdata.BitMarketTrade;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 @Path("json")
 @Produces(MediaType.APPLICATION_JSON)
 public interface BitMarket {

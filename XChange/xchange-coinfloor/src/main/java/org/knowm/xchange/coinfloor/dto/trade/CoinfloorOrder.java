@@ -21,8 +21,13 @@ public class CoinfloorOrder {
   // this is used by the CoinfloorTradeService to temporarily store details of the currency pair
   private CurrencyPair pair = null;
 
-  public CoinfloorOrder(@JsonProperty("status") String status, @JsonProperty("reason") Object reason, @JsonProperty("id") int id,
-      @JsonProperty("datetime") String datetime, @JsonProperty("type") int type, @JsonProperty("price") BigDecimal price,
+  public CoinfloorOrder(
+      @JsonProperty("status") String status,
+      @JsonProperty("reason") Object reason,
+      @JsonProperty("id") int id,
+      @JsonProperty("datetime") String datetime,
+      @JsonProperty("type") int type,
+      @JsonProperty("price") BigDecimal price,
       @JsonProperty("amount") BigDecimal amount) {
 
     this.id = id;
@@ -73,6 +78,8 @@ public class CoinfloorOrder {
 
   @Override
   public String toString() {
-    return String.format("Order{id=%s, datetime=%s, side=%s, price=%s, amount=%s}", id, datetime, getSide(), price, amount);
+    return String.format(
+        "Order{id=%s, datetime=%s, side=%s, price=%s, amount=%s}",
+        id, datetime, getSide(), price, amount);
   }
 }

@@ -5,9 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Author: Kamil Zbikowski Date: 4/15/15
- */
+/** Author: Kamil Zbikowski Date: 4/15/15 */
 public class IndependentReservePlaceLimitOrderResponse {
   private final Date createdTimestampUtc;
   private final String orderGuid;
@@ -20,11 +18,17 @@ public class IndependentReservePlaceLimitOrderResponse {
   private final BigDecimal volumeFilled;
   private final BigDecimal volumeOrdered;
 
-  public IndependentReservePlaceLimitOrderResponse(@JsonProperty("CreatedTimestampUtc") Date createdTimestampUtc,
-      @JsonProperty("OrderGuid") String orderGuid, @JsonProperty("Price") BigDecimal price,
-      @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode, @JsonProperty("ReservedAmount") BigDecimal reservedAmount,
-      @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode, @JsonProperty("Status") String status, @JsonProperty("Type") String type,
-      @JsonProperty("VolumeFilled") BigDecimal volumeFilled, @JsonProperty("VolumeOrdered") BigDecimal volumeOrdered) {
+  public IndependentReservePlaceLimitOrderResponse(
+      @JsonProperty("CreatedTimestampUtc") Date createdTimestampUtc,
+      @JsonProperty("OrderGuid") String orderGuid,
+      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("PrimaryCurrencyCode") String primaryCurrencyCode,
+      @JsonProperty("ReservedAmount") BigDecimal reservedAmount,
+      @JsonProperty("SecondaryCurrencyCode") String secondaryCurrencyCode,
+      @JsonProperty("Status") String status,
+      @JsonProperty("Type") String type,
+      @JsonProperty("VolumeFilled") BigDecimal volumeFilled,
+      @JsonProperty("VolumeOrdered") BigDecimal volumeOrdered) {
 
     this.createdTimestampUtc = createdTimestampUtc;
     this.orderGuid = orderGuid;

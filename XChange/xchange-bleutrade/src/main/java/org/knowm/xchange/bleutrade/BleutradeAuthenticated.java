@@ -32,58 +32,104 @@ public interface BleutradeAuthenticated extends Bleutrade {
 
   @GET
   @Path("account/getdepositaddress")
-  BleutradeDepositAddressReturn getDepositAddress(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                                  @QueryParam("nonce") SynchronizedValueFactory<Long> nonce, @QueryParam("currency") String currency) throws IOException, BleutradeException;
+  BleutradeDepositAddressReturn getDepositAddress(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("currency") String currency)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("account/getbalance")
-  BleutradeBalanceReturn getBalance(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                    @QueryParam("nonce") SynchronizedValueFactory<Long> nonce, @QueryParam("currency") String currency) throws IOException, BleutradeException;
+  BleutradeBalanceReturn getBalance(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("currency") String currency)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("account/getbalances")
-  BleutradeBalancesReturn getBalances(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException, BleutradeException;
+  BleutradeBalancesReturn getBalances(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("market/buylimit")
-  BleutradePlaceOrderReturn buyLimit(@QueryParam("apikey") String apikey, @HeaderParam("apisign") ParamsDigest signature,
-                                     @QueryParam("nonce") SynchronizedValueFactory<Long> nonce, @QueryParam("market") String market, @QueryParam("quantity") String quantity,
-                                     @QueryParam("rate") String rate) throws IOException, BleutradeException;
+  BleutradePlaceOrderReturn buyLimit(
+      @QueryParam("apikey") String apikey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("market") String market,
+      @QueryParam("quantity") String quantity,
+      @QueryParam("rate") String rate)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("market/selllimit")
-  BleutradePlaceOrderReturn sellLimit(@QueryParam("apikey") String apikey, @HeaderParam("apisign") ParamsDigest signature,
-                                      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce, @QueryParam("market") String market, @QueryParam("quantity") String quantity,
-                                      @QueryParam("rate") String rate) throws IOException, BleutradeException;
+  BleutradePlaceOrderReturn sellLimit(
+      @QueryParam("apikey") String apikey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("market") String market,
+      @QueryParam("quantity") String quantity,
+      @QueryParam("rate") String rate)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("market/cancel")
-  BleutradeCancelOrderReturn cancel(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                    @QueryParam("nonce") SynchronizedValueFactory<Long> nonce, @QueryParam("orderid") String orderid) throws IOException, BleutradeException;
+  BleutradeCancelOrderReturn cancel(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("orderid") String orderid)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("market/getopenorders")
-  BleutradeOpenOrdersReturn getOrders(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException, BleutradeException;
+  BleutradeOpenOrdersReturn getOrders(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("account/getorders")
-  BluetradeExecutedTradesWrapper getTrades(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature,
-                                           @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                           @QueryParam("market") String market, @QueryParam("orderstatus") String orderStatus, @QueryParam("ordertype") String orderType) throws IOException, BleutradeException;
+  BluetradeExecutedTradesWrapper getTrades(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("market") String market,
+      @QueryParam("orderstatus") String orderStatus,
+      @QueryParam("ordertype") String orderType)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("/account/withdraw")
-  BleutradeWithdrawReturn withdraw(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature, @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                   @QueryParam("currency") String currency, @QueryParam("quantity") BigDecimal quantity, @QueryParam("address") String address) throws IOException, BleutradeException;
+  BleutradeWithdrawReturn withdraw(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @QueryParam("currency") String currency,
+      @QueryParam("quantity") BigDecimal quantity,
+      @QueryParam("address") String address)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("/account/getdeposithistory")
-  BleutradeResponse<List<DepositRecord>> depositHistory(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature, @QueryParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException, BleutradeException;
+  BleutradeResponse<List<DepositRecord>> depositHistory(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException, BleutradeException;
 
   @GET
   @Path("/account/getwithdrawhistory")
-  BleutradeResponse<List<WithdrawRecord>> withdrawHistory(@QueryParam("apikey") String apiKey, @HeaderParam("apisign") ParamsDigest signature, @QueryParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException, BleutradeException;
-
+  BleutradeResponse<List<WithdrawRecord>> withdrawHistory(
+      @QueryParam("apikey") String apiKey,
+      @HeaderParam("apisign") ParamsDigest signature,
+      @QueryParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException, BleutradeException;
 }

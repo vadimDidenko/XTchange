@@ -19,7 +19,8 @@ public class BleutradeAccountDemo {
     raw((BleutradeAccountServiceRaw) accountService);
   }
 
-  private static void generic(AccountService accountService) throws IOException, InterruptedException {
+  private static void generic(AccountService accountService)
+      throws IOException, InterruptedException {
 
     System.out.println(accountService.requestDepositAddress(Currency.BTC));
     Thread.sleep(1000);
@@ -31,5 +32,4 @@ public class BleutradeAccountDemo {
 
     System.out.println(accountService.getBleutradeBalance("BTC"));
   }
-
 }

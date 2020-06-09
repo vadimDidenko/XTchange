@@ -12,7 +12,9 @@ public class BTCMarketsBaseResponse {
   private final String errorMessage;
   private final Integer errorCode;
 
-  protected BTCMarketsBaseResponse(@JsonProperty("success") Boolean success, @JsonProperty("errorMessage") String errorMessage,
+  protected BTCMarketsBaseResponse(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("errorMessage") String errorMessage,
       @JsonProperty("errorCode") Integer errorCode) {
     if (!Objects.equals(success, Boolean.TRUE)) {
       throw new ExceptionalReturnContentException(errorMessage);
@@ -36,6 +38,8 @@ public class BTCMarketsBaseResponse {
 
   @Override
   public String toString() {
-    return String.format("%s{success=%s, errorMessage='%s', errorCode=%d}", getClass().getSimpleName(), success, errorMessage, errorCode);
+    return String.format(
+        "%s{success=%s, errorMessage='%s', errorCode=%d}",
+        getClass().getSimpleName(), success, errorMessage, errorCode);
   }
 }

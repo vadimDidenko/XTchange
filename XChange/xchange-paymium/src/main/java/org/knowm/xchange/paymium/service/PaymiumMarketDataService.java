@@ -10,7 +10,8 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.paymium.PaymiumAdapters;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-public class PaymiumMarketDataService extends PaymiumMarketDataServiceRaw implements MarketDataService {
+public class PaymiumMarketDataService extends PaymiumMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -39,5 +40,4 @@ public class PaymiumMarketDataService extends PaymiumMarketDataServiceRaw implem
 
     return PaymiumAdapters.adaptTrade(getPaymiumTrades(), currencyPair);
   }
-
 }

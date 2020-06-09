@@ -27,15 +27,14 @@ import org.knowm.xchange.coinmate.dto.CoinmateBaseResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class CoinmateOpenOrders extends CoinmateBaseResponse<CoinmateOpenOrdersData> {
 
-  public CoinmateOpenOrders(@JsonProperty("error") boolean error, @JsonProperty("errorMessage") String errorMessage,
+  public CoinmateOpenOrders(
+      @JsonProperty("error") boolean error,
+      @JsonProperty("errorMessage") String errorMessage,
       @JsonProperty("data") CoinmateOpenOrdersData data) {
 
     super(error, errorMessage, data);
   }
-
 }

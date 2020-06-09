@@ -11,10 +11,9 @@ import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.koineks.KoineksAdapters;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author semihunaldi
- */
-public class KoineksMarketDataService extends KoineksMarketDataServiceRaw implements MarketDataService {
+/** @author semihunaldi */
+public class KoineksMarketDataService extends KoineksMarketDataServiceRaw
+    implements MarketDataService {
 
   public KoineksMarketDataService(Exchange exchange) {
     super(exchange);

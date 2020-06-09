@@ -8,7 +8,8 @@ public class TheRockTrades {
 
   private final TheRockTrade[] trades;
 
-  public TheRockTrades(@JsonProperty("trades") TheRockTrade[] trades, @JsonProperty("meta") Object ignored) {
+  public TheRockTrades(
+      @JsonProperty("trades") TheRockTrade[] trades, @JsonProperty("meta") Object ignored) {
     this.trades = trades;
   }
 

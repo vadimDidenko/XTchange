@@ -4,9 +4,7 @@ import org.knowm.xchange.anx.v2.dto.ANXValue;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing Open Orders from ANX
- */
+/** Data object representing Open Orders from ANX */
 public final class ANXOrderResult {
 
   private final ANXValue avgCost;
@@ -24,8 +22,11 @@ public final class ANXOrderResult {
    * @param totalSpent
    * @param trades
    */
-  public ANXOrderResult(@JsonProperty("avg_cost") ANXValue avgCost, @JsonProperty("order_id") String orderId,
-      @JsonProperty("total_amount") ANXValue totalAmount, @JsonProperty("total_spent") ANXValue totalSpent,
+  public ANXOrderResult(
+      @JsonProperty("avg_cost") ANXValue avgCost,
+      @JsonProperty("order_id") String orderId,
+      @JsonProperty("total_amount") ANXValue totalAmount,
+      @JsonProperty("total_spent") ANXValue totalSpent,
       @JsonProperty("trades") ANXOrderResultTrade[] trades) {
 
     this.avgCost = avgCost;
@@ -67,8 +68,16 @@ public final class ANXOrderResult {
     for (int i = 0; i < trades.length; i++)
       tradesString.append((i > 0) ? ", " : "").append(trades[i].toString());
     tradesString.append("]");
-    return "ANXOpenOrder [avgCost=" + avgCost + ", orderId=" + orderId + ", totalAmount=" + totalAmount + ", totalSpent=" + totalSpent + ", trades="
-        + tradesString + "]";
+    return "ANXOpenOrder [avgCost="
+        + avgCost
+        + ", orderId="
+        + orderId
+        + ", totalAmount="
+        + totalAmount
+        + ", totalSpent="
+        + totalSpent
+        + ", trades="
+        + tradesString
+        + "]";
   }
-
 }

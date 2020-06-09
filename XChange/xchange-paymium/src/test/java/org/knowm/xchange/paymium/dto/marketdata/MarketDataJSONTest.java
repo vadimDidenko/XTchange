@@ -15,7 +15,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class MarketDataJSONTest {
 
   @Test
-  public void testPaymiumTickerRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumTickerRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = MarketDataJSONTest.class.getResourceAsStream("/Example_TickerData.json");
@@ -31,11 +32,11 @@ public class MarketDataJSONTest {
     assertEquals(PaymiumTicker.getLow(), new BigDecimal("20.2"));
     assertEquals(PaymiumTicker.getPrice(), new BigDecimal("20.2"));
     assertEquals(PaymiumTicker.getVolume(), new BigDecimal("148.80193218"));
-
   }
 
   @Test
-  public void testPaymiumDepthRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumDepthRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = MarketDataJSONTest.class.getResourceAsStream("/Example_DepthData.json");
@@ -48,11 +49,11 @@ public class MarketDataJSONTest {
     assertEquals(PaymiumMarketDepth.getAsks().get(0).getPrice(), new BigDecimal("24.48996"));
     assertEquals(PaymiumMarketDepth.getBids().get(0).getAmount(), new BigDecimal("0.77372456"));
     assertEquals(PaymiumMarketDepth.getBids().get(0).getPrice(), new BigDecimal("24.05"));
-
   }
 
   @Test
-  public void testPaymiumTradesRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumTradesRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = MarketDataJSONTest.class.getResourceAsStream("/Example_TradesData.json");
@@ -64,7 +65,5 @@ public class MarketDataJSONTest {
     assertEquals(PaymiumTrades[0].getPrice(), new BigDecimal("5.0"));
     assertEquals(PaymiumTrades[0].getTraded_btc(), new BigDecimal("980.0"));
     assertEquals(PaymiumTrades[0].getTraded_currency(), new BigDecimal("4940.0"));
-
   }
-
 }

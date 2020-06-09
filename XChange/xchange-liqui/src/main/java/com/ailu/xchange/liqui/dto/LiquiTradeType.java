@@ -15,8 +15,8 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = LiquiTradeType.TradeTypeDeserializer.class)
 public enum LiquiTradeType {
-
-  BUY, SELL;
+  BUY,
+  SELL;
 
   @Override
   public String toString() {
@@ -37,8 +37,7 @@ public enum LiquiTradeType {
   private static final Map<String, LiquiTradeType> fromString = new HashMap<>();
 
   static {
-    for (final LiquiTradeType type : values())
-      fromString.put(type.toString(), type);
+    for (final LiquiTradeType type : values()) fromString.put(type.toString(), type);
 
     fromString.put("bid", BUY);
     fromString.put("ask", SELL);
@@ -49,7 +48,8 @@ public enum LiquiTradeType {
   static class TradeTypeDeserializer extends JsonDeserializer<LiquiTradeType> {
 
     @Override
-    public LiquiTradeType deserialize(final JsonParser jsonParser, final DeserializationContext ctxt) throws IOException {
+    public LiquiTradeType deserialize(
+        final JsonParser jsonParser, final DeserializationContext ctxt) throws IOException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

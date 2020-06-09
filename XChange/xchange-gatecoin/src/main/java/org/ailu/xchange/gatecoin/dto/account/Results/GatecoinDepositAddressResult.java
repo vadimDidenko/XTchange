@@ -6,13 +6,12 @@ import org.knowm.xchange.gatecoin.dto.marketdata.ResponseStatus;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author sumedha
- */
+/** @author sumedha */
 public class GatecoinDepositAddressResult extends GatecoinResult {
   private final GatecoinDepositAddress[] addresses;
 
-  public GatecoinDepositAddressResult(@JsonProperty("addresses") GatecoinDepositAddress[] addresses,
+  public GatecoinDepositAddressResult(
+      @JsonProperty("addresses") GatecoinDepositAddress[] addresses,
       @JsonProperty("responseStatus") ResponseStatus responseStatus) {
     super(responseStatus);
     this.addresses = addresses;

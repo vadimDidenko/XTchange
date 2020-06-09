@@ -10,9 +10,7 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.itbit.v1.ItBitExchange;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Created by joseph on 6/15/17.
- */
+/** Created by joseph on 6/15/17. */
 public class ItBitTradesDemo {
   public static void main(String[] args) throws IOException {
     Exchange xchange = ExchangeFactory.INSTANCE.createExchange(ItBitExchange.class.getName());
@@ -27,8 +25,8 @@ public class ItBitTradesDemo {
     Trades trades = marketDataService.getTrades(CurrencyPair.BTC_USD, 22233);
     System.out.println(trades.toString());
 
-    Trades tradesAsXBT = marketDataService.getTrades(new CurrencyPair(Currency.XBT, Currency.USD), 22233);
+    Trades tradesAsXBT =
+        marketDataService.getTrades(new CurrencyPair(Currency.XBT, Currency.USD), 22233);
     System.out.println(tradesAsXBT.toString());
   }
-
 }

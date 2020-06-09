@@ -10,9 +10,6 @@ import java.util.Map;
 
 import org.junit.Test;
 import org.knowm.xchange.coinbase.v2.dto.CoinbasePrice;
-import org.knowm.xchange.coinbase.v2.dto.marketdata.CoinbaseCurrencyData;
-import org.knowm.xchange.coinbase.v2.dto.marketdata.CoinbaseExchangeRateData;
-import org.knowm.xchange.coinbase.v2.dto.marketdata.CoinbasePriceData;
 import org.knowm.xchange.coinbase.v2.dto.marketdata.CoinbaseCurrencyData.CoinbaseCurrency;
 
 import com.fasterxml.jackson.databind.JavaType;
@@ -24,7 +21,9 @@ public class CoinbaseMarketDataJsonTest {
   public void testDeserializeExchangeRates() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CoinbaseMarketDataJsonTest.class.getResourceAsStream("/v2/marketdata/example-exchange-rate-data.json");
+    InputStream is =
+        CoinbaseMarketDataJsonTest.class.getResourceAsStream(
+            "/v2/marketdata/example-exchange-rate-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -42,7 +41,9 @@ public class CoinbaseMarketDataJsonTest {
   public void testDeserializeCurrencies() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CoinbaseMarketDataJsonTest.class.getResourceAsStream("/v2/marketdata/example-currencies-data.json");
+    InputStream is =
+        CoinbaseMarketDataJsonTest.class.getResourceAsStream(
+            "/v2/marketdata/example-currencies-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -61,7 +62,9 @@ public class CoinbaseMarketDataJsonTest {
   public void testDeserializePrice() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CoinbaseMarketDataJsonTest.class.getResourceAsStream("/v2/marketdata/example-price-data.json");
+    InputStream is =
+        CoinbaseMarketDataJsonTest.class.getResourceAsStream(
+            "/v2/marketdata/example-price-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -69,7 +72,7 @@ public class CoinbaseMarketDataJsonTest {
     CoinbasePriceData rawdata = mapper.readValue(is, javaType);
 
     CoinbasePrice price = rawdata.getData();
-    assertThat(price).isEqualToComparingFieldByField(new CoinbasePrice(new BigDecimal("11832.46"), "USD"));
+    assertThat(price)
+        .isEqualToComparingFieldByField(new CoinbasePrice(new BigDecimal("11832.46"), "USD"));
   }
-
 }

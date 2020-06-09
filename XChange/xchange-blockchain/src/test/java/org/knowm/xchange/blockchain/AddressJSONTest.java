@@ -12,9 +12,7 @@ import org.knowm.xchange.blockchain.dto.BitcoinAddress;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author timmolter
- */
+/** @author timmolter */
 public class AddressJSONTest {
 
   @Test
@@ -33,5 +31,4 @@ public class AddressJSONTest {
     assertThat(address.getFinalBalanceDecimal()).isEqualTo(new BigDecimal(".78399012"));
     assertThat(address.getAddress()).isEqualTo("17dQktcAmU4urXz7tGk2sbuiCqykm3WLs6");
   }
-
 }

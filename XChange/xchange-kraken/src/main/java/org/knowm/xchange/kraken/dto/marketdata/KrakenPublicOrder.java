@@ -51,7 +51,8 @@ public class KrakenPublicOrder {
   static class KrakenOrderDeserializer extends JsonDeserializer<KrakenPublicOrder> {
 
     @Override
-    public KrakenPublicOrder deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenPublicOrder deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

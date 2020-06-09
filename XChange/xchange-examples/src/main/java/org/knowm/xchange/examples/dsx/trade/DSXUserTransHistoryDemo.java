@@ -11,10 +11,7 @@ import org.knowm.xchange.dsx.service.DSXTradeServiceRaw;
 import org.knowm.xchange.examples.dsx.DSXExamplesUtils;
 import org.knowm.xchange.exceptions.ExchangeException;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXUserTransHistoryDemo {
 
   public static void main(String[] args) throws IOException {

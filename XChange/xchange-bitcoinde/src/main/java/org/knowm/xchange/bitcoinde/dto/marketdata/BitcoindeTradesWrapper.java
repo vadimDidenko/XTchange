@@ -10,12 +10,13 @@ public class BitcoindeTradesWrapper extends BitcoindeResponse {
 
   private final BitcoindeTrade[] trades;
 
-  public BitcoindeTradesWrapper(@JsonProperty("trades") BitcoindeTrade[] trades, @JsonProperty("credits") int credits, @JsonProperty("errors") String[]
-      errors) {
+  public BitcoindeTradesWrapper(
+      @JsonProperty("trades") BitcoindeTrade[] trades,
+      @JsonProperty("credits") int credits,
+      @JsonProperty("errors") String[] errors) {
 
     super(credits, errors);
     this.trades = trades;
-
   }
 
   public BitcoindeTrade[] getTrades() {
@@ -24,8 +25,10 @@ public class BitcoindeTradesWrapper extends BitcoindeResponse {
 
   @Override
   public String toString() {
-    return "BitcoindeTradesWrapper{" +
-        "trades=" + Arrays.toString(trades) +
-        "} " + super.toString();
+    return "BitcoindeTradesWrapper{"
+        + "trades="
+        + Arrays.toString(trades)
+        + "} "
+        + super.toString();
   }
 }

@@ -10,56 +10,82 @@ public final class BitmexAccountPreferences {
 
   @JSONField(name = "alertOnLiquidations")
   private Boolean alertOnLiquidations;
+
   @JSONField(name = "animationsEnabled")
   private Boolean animationsEnabled;
+
   @JSONField(name = "announcementsLastSeen")
   private String announcementsLastSeen;
+
   @JSONField(name = "chatChannelID")
   private Integer chatChannelID;
+
   @JSONField(name = "colorTheme")
   private String colorTheme;
+
   @JSONField(name = "currency")
   private String currency;
+
   @JSONField(name = "debug")
   private Boolean debug;
+
   @JSONField(name = "disableEmails")
   private List<String> disableEmails = null;
+
   @JSONField(name = "hideConfirmDialogs")
   private List<String> hideConfirmDialogs = null;
+
   @JSONField(name = "hideConnectionModal")
   private Boolean hideConnectionModal;
+
   @JSONField(name = "hideFromLeaderboard")
   private Boolean hideFromLeaderboard;
+
   @JSONField(name = "hideNameFromLeaderboard")
   private Boolean hideNameFromLeaderboard;
+
   @JSONField(name = "hideNotifications")
   private List<String> hideNotifications = null;
+
   @JSONField(name = "locale")
   private String locale;
+
   @JSONField(name = "msgsSeen")
   private List<String> msgsSeen = null;
+
   @JSONField(name = "orderBookBinning")
   private BitmexOrderBookBinning orderBookBinning;
+
   @JSONField(name = "orderBookType")
   private String orderBookType;
+
   @JSONField(name = "orderClearImmediate")
   private Boolean orderClearImmediate;
+
   @JSONField(name = "orderControlsPlusMinus")
   private Boolean orderControlsPlusMinus;
+
   @JSONField(name = "showLocaleNumbers")
   private Boolean showLocaleNumbers;
+
   @JSONField(name = "sounds")
   private List<String> sounds = null;
+
   @JSONField(name = "strictIPCheck")
   private Boolean strictIPCheck;
+
   @JSONField(name = "strictTimeout")
   private Boolean strictTimeout;
+
   @JSONField(name = "tickerGroup")
   private String tickerGroup;
+
   @JSONField(name = "tickerPinned")
   private Boolean tickerPinned;
+
   @JSONField(name = "tradeLayout")
   private String tradeLayout;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
 

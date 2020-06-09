@@ -19,9 +19,7 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketAccountService extends BitMarketAccountServiceRaw implements AccountService {
 
   public BitMarketAccountService(Exchange exchange) {
@@ -33,14 +31,17 @@ public class BitMarketAccountService extends BitMarketAccountServiceRaw implemen
   public AccountInfo getAccountInfo() throws IOException {
 
     BitMarketAccountInfo accountInfo = getBitMarketAccountInfo().getData();
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), BitMarketAdapters.adaptWallet(accountInfo.getBalance()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        BitMarketAdapters.adaptWallet(accountInfo.getBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
-    BitMarketWithdrawResponse response = withdrawFromBitMarket(currency.toString(), amount, address);
+    BitMarketWithdrawResponse response =
+        withdrawFromBitMarket(currency.toString(), amount, address);
     return response.getData();
   }
 
@@ -54,8 +55,7 @@ public class BitMarketAccountService extends BitMarketAccountServiceRaw implemen
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... strings) throws IOException {
+  public String requestDepositAddress(Currency currency, String... strings) throws IOException {
 
     BitMarketDepositResponse response = depositToBitMarket(currency.toString());
     return response.getData();
@@ -67,8 +67,7 @@ public class BitMarketAccountService extends BitMarketAccountServiceRaw implemen
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

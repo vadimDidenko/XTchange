@@ -25,15 +25,14 @@ public class LakeBTCTradeHistoryDemo {
     // Get the trade history
     Trades trades = tradeService.getTradeHistory(tradeService.createTradeHistoryParams());
     System.out.println(trades);
-
   }
 
   private static void raw(Exchange lakeBtcExchange) throws IOException {
-    LakeBTCTradeServiceRaw tradeService = (LakeBTCTradeServiceRaw) lakeBtcExchange.getTradeService();
+    LakeBTCTradeServiceRaw tradeService =
+        (LakeBTCTradeServiceRaw) lakeBtcExchange.getTradeService();
 
     // Get the trade history
     LakeBTCTradeResponse[] trades = tradeService.getLakeBTCTradeHistory(0);
     System.out.println(Arrays.toString(trades));
-
   }
 }

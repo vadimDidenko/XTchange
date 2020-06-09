@@ -9,8 +9,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class DepositStatusResult extends KrakenResult<List<DepostitStatus>> {
 
-  public DepositStatusResult(@JsonProperty("result") List<DepostitStatus> result, @JsonProperty("error") String[] error) {
+  public DepositStatusResult(
+      @JsonProperty("result") List<DepostitStatus> result, @JsonProperty("error") String[] error) {
     super(result, error);
   }
-
 }

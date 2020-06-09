@@ -52,8 +52,10 @@ import com.fasterxml.jackson.databind.SerializationFeature;
 
 public class ANXGenerator {
 
-  static ObjectMapper mapper = new ObjectMapper().configure(SerializationFeature.INDENT_OUTPUT, true)
-      .setSerializationInclusion(JsonInclude.Include.NON_NULL);
+  static ObjectMapper mapper =
+      new ObjectMapper()
+          .configure(SerializationFeature.INDENT_OUTPUT, true)
+          .setSerializationInclusion(JsonInclude.Include.NON_NULL);
 
   static Set<Currency> cryptos = new HashSet<>(Arrays.asList(BTC, LTC, DOGE, STR, XRP, START, EGD));
   static Currency[] fiats = {USD, EUR, GBP, HKD, AUD, CAD, NZD, SGD, JPY, CNY};
@@ -138,11 +140,15 @@ public class ANXGenerator {
     out.flush();
   }
 
-  private void handleCurrencyPair(Map<CurrencyPair, CurrencyPairMetaData> map, CurrencyPair currencyPair) {
+  private void handleCurrencyPair(
+      Map<CurrencyPair, CurrencyPairMetaData> map, CurrencyPair currencyPair) {
     int amountScale = amountScale(currencyPair);
-    BigDecimal minimumAmount = scaled(minAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
-    BigDecimal maximumAmount = scaled(maxAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
-    ANXMarketMetaData mmd = new ANXMarketMetaData(fee, minimumAmount, maximumAmount, priceScale(currencyPair));
+    BigDecimal minimumAmount =
+        scaled(minAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
+    BigDecimal maximumAmount =
+        scaled(maxAmount.get(currencyPair.base.getCurrencyCode()), amountScale);
+    ANXMarketMetaData mmd =
+        new ANXMarketMetaData(fee, minimumAmount, maximumAmount, priceScale(currencyPair));
     map.put(currencyPair, mmd);
   }
 
@@ -155,11 +161,12 @@ public class ANXGenerator {
   }
 
   int priceScale(CurrencyPair pair) {
-    if (LTC_BTC.equals(pair) || (BTC.equals(pair.base.getCurrencyCode()) && !cryptos.contains(pair.counter.getCurrencyCode()))) {
+    if (LTC_BTC.equals(pair)
+        || (BTC.equals(pair.base.getCurrencyCode())
+            && !cryptos.contains(pair.counter.getCurrencyCode()))) {
       return 5;
     } else {
       return 8;
     }
   }
-
 }

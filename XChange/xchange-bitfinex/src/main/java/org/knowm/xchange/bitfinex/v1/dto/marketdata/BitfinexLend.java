@@ -17,7 +17,9 @@ public class BitfinexLend {
    * @param amountLent
    * @param timestamp
    */
-  public BitfinexLend(@JsonProperty("rate") BigDecimal rate, @JsonProperty("amount_lent") BigDecimal amountLent,
+  public BitfinexLend(
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount_lent") BigDecimal amountLent,
       @JsonProperty("timestamp") long timestamp) {
 
     this.rate = rate;
@@ -43,7 +45,12 @@ public class BitfinexLend {
   @Override
   public String toString() {
 
-    return "BitfinexLend [rate=" + rate + ", amountLent=" + amountLent + ", timestamp=" + timestamp + "]";
+    return "BitfinexLend [rate="
+        + rate
+        + ", amountLent="
+        + amountLent
+        + ", timestamp="
+        + timestamp
+        + "]";
   }
-
 }

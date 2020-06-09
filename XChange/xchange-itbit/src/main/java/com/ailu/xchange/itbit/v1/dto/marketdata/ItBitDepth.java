@@ -16,7 +16,9 @@ public class ItBitDepth {
    * @param asks
    * @param bids
    */
-  public ItBitDepth(@JsonProperty("asks") List<BigDecimal[]> asks, @JsonProperty("bids") List<BigDecimal[]> bids) {
+  public ItBitDepth(
+      @JsonProperty("asks") List<BigDecimal[]> asks,
+      @JsonProperty("bids") List<BigDecimal[]> bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -37,5 +39,4 @@ public class ItBitDepth {
 
     return "ItBitDepth [asks=" + asks.toString() + ", bids=" + bids.toString() + "]";
   }
-
 }

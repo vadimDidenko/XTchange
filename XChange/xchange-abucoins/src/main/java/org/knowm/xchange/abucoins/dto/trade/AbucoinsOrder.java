@@ -5,10 +5,7 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>POJO representing the output JSON for the Abucoins
- * <code>GET /orders</code> endpoint.</p>
- *
- * Example:
+ * POJO representing the output JSON for the Abucoins <code>GET /orders</code> endpoint. Example:
  * <code><pre>
  * [
  *    {
@@ -41,6 +38,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *     }
  * ]
  * </pre></code>
+ *
  * @author bryant_harris
  */
 public class AbucoinsOrder {
@@ -57,20 +55,21 @@ public class AbucoinsOrder {
   Status status;
   boolean settled;
   String message;
-        
-  public AbucoinsOrder(@JsonProperty("id") String id,
-                       @JsonProperty("price") BigDecimal price,
-                       @JsonProperty("size") BigDecimal size,
-                       @JsonProperty("product_id") String productID,
-                       @JsonProperty("side") Side side,
-                       @JsonProperty("type") Type type,
-                       @JsonProperty("time_in_force") TimeInForce timeInForce,
-                       @JsonProperty("post_only") boolean postOnly,
-                       @JsonProperty("created_at") String createdAt,
-                       @JsonProperty("filled_size") BigDecimal filledSize,
-                       @JsonProperty("status") Status status,
-                       @JsonProperty("settled") boolean settled,
-                       @JsonProperty("message") String message) {
+
+  public AbucoinsOrder(
+      @JsonProperty("id") String id,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("product_id") String productID,
+      @JsonProperty("side") Side side,
+      @JsonProperty("type") Type type,
+      @JsonProperty("time_in_force") TimeInForce timeInForce,
+      @JsonProperty("post_only") boolean postOnly,
+      @JsonProperty("created_at") String createdAt,
+      @JsonProperty("filled_size") BigDecimal filledSize,
+      @JsonProperty("status") Status status,
+      @JsonProperty("settled") boolean settled,
+      @JsonProperty("message") String message) {
     this.id = id;
     this.price = price;
     this.size = size;
@@ -85,7 +84,7 @@ public class AbucoinsOrder {
     this.settled = settled;
     this.message = message;
   }
-  
+
   public String getId() {
     return id;
   }
@@ -133,49 +132,80 @@ public class AbucoinsOrder {
   public boolean isSettled() {
     return settled;
   }
-  
+
   public String getMessage() {
-        return message;
+    return message;
   }
 
   @Override
   public String toString() {
-    return "AbucoinsOrder [id=" + id + ", price=" + price + ", size=" + size + ", productID=" + productID + ", side="
-        + side + ", type=" + type + ", timeInForce=" + timeInForce + ", postOnly=" + postOnly + ", createdAt="
-        + createdAt + ", filledSize=" + filledSize + ", status=" + status + ", settled=" + settled + ", message="
-        + message + "]";
+    return "AbucoinsOrder [id="
+        + id
+        + ", price="
+        + price
+        + ", size="
+        + size
+        + ", productID="
+        + productID
+        + ", side="
+        + side
+        + ", type="
+        + type
+        + ", timeInForce="
+        + timeInForce
+        + ", postOnly="
+        + postOnly
+        + ", createdAt="
+        + createdAt
+        + ", filledSize="
+        + filledSize
+        + ", status="
+        + status
+        + ", settled="
+        + settled
+        + ", message="
+        + message
+        + "]";
   }
-    
+
   public enum Side {
-    buy, sell
+    buy,
+    sell
   }
-  
+
   public enum Type {
-    limit, market;
+    limit,
+    market;
   }
 
   public enum TimeInForce {
-    GTC, GTT, IOC, FOK;
-    
+    GTC,
+    GTT,
+    IOC,
+    FOK;
+
     public String toDescription() {
       switch (this) {
-      case GTC:
-        return "Good Till Canceled";
-        
-      case GTT:
-        return "Good Till Time";
-                
-      case IOC:
-        return "Immediate or cancel";
-                
-      case FOK:
-        return "Fill or kill";
+        case GTC:
+          return "Good Till Canceled";
+
+        case GTT:
+          return "Good Till Time";
+
+        case IOC:
+          return "Immediate or cancel";
+
+        case FOK:
+          return "Fill or kill";
       }
       return ""; // dead code path
     }
   }
-  
+
   public enum Status {
-    pending, open, done, rejected;
+    pending,
+    open,
+    done,
+    rejected;
   }
 }

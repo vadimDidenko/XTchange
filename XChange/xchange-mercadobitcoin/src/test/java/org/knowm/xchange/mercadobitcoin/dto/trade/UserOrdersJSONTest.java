@@ -27,9 +27,9 @@ public class UserOrdersJSONTest {
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders> apiResult = mapper.readValue(is,
-        new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders>>() {
-        });
+    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders> apiResult =
+        mapper.readValue(
+            is, new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders>>() {});
 
     MercadoBitcoinUserOrders userOrders = apiResult.getTheReturn();
 
@@ -40,10 +40,13 @@ public class UserOrdersJSONTest {
     assertThat(userOrders.get("1212").getVolume()).isEqualTo(new BigDecimal("165.47309607"));
     assertThat(userOrders.get("1212").getPair()).isEqualTo("ltc_brl");
     assertThat(userOrders.get("1212").getType()).isEqualTo("sell");
-    assertThat(userOrders.get("1212").getOperations().get("442").getVolume()).isEqualTo(new BigDecimal("30.00000000"));
-    assertThat(userOrders.get("1212").getOperations().get("442").getPrice()).isEqualTo(new BigDecimal("6.00000"));
-    assertThat(userOrders.get("1212").getOperations().get("442").getRate()).isEqualTo(new BigDecimal("0.70"));
-    assertThat(userOrders.get("1212").getOperations().get("442").getCreated()).isEqualTo(1378929161L);
-
+    assertThat(userOrders.get("1212").getOperations().get("442").getVolume())
+        .isEqualTo(new BigDecimal("30.00000000"));
+    assertThat(userOrders.get("1212").getOperations().get("442").getPrice())
+        .isEqualTo(new BigDecimal("6.00000"));
+    assertThat(userOrders.get("1212").getOperations().get("442").getRate())
+        .isEqualTo(new BigDecimal("0.70"));
+    assertThat(userOrders.get("1212").getOperations().get("442").getCreated())
+        .isEqualTo(1378929161L);
   }
 }

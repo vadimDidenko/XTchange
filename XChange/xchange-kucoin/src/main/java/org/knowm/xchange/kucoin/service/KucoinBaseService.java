@@ -21,8 +21,13 @@ public class KucoinBaseService extends BaseExchangeService implements BaseServic
    */
   protected KucoinBaseService(Exchange exchange) {
     super(exchange);
-    this.kucoin = RestProxyFactory.createProxy(KucoinAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.kucoin =
+        RestProxyFactory.createProxy(
+            KucoinAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = KucoinDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    this.signatureCreator =
+        KucoinDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 }

@@ -89,15 +89,18 @@ public class CoinfloorAdaptersTests {
   public void adaptAccountInfoTest() throws JsonParseException, JsonMappingException, IOException {
     ObjectMapper mapper = new ObjectMapper();
 
-    InputStream btcgbpStream = getClass().getResourceAsStream("/account/example-balance-btcgbp.json");
+    InputStream btcgbpStream =
+        getClass().getResourceAsStream("/account/example-balance-btcgbp.json");
     CoinfloorBalance btcgbp = mapper.readValue(btcgbpStream, CoinfloorBalance.class);
 
-    InputStream btcusdStream = getClass().getResourceAsStream("/account/example-balance-btcusd.json");
+    InputStream btcusdStream =
+        getClass().getResourceAsStream("/account/example-balance-btcusd.json");
     CoinfloorBalance btcusd = mapper.readValue(btcusdStream, CoinfloorBalance.class);
 
     Currency[] currencies = {Currency.BTC, Currency.GBP, Currency.USD, Currency.EUR};
     CoinfloorBalance[] rawBalances = {btcgbp, btcusd};
-    AccountInfo info = CoinfloorAdapters.adaptAccountInfo(Arrays.asList(currencies), Arrays.asList(rawBalances));
+    AccountInfo info =
+        CoinfloorAdapters.adaptAccountInfo(Arrays.asList(currencies), Arrays.asList(rawBalances));
 
     assertThat(info.getWallet().getBalances()).hasSize(3);
 
@@ -121,7 +124,8 @@ public class CoinfloorAdaptersTests {
   public void adaptTradeHistoryTest() throws JsonParseException, JsonMappingException, IOException {
     InputStream is = getClass().getResourceAsStream("/trade/example-user-transactions.json");
     ObjectMapper mapper = new ObjectMapper();
-    CoinfloorUserTransaction[] transactions = mapper.readValue(is, CoinfloorUserTransaction[].class);
+    CoinfloorUserTransaction[] transactions =
+        mapper.readValue(is, CoinfloorUserTransaction[].class);
 
     UserTrades trades = CoinfloorAdapters.adaptTradeHistory(Arrays.asList(transactions));
 

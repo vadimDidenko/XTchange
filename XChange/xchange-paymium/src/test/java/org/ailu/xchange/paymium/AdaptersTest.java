@@ -19,7 +19,8 @@ import java.math.BigDecimal;
 public class AdaptersTest {
 
   @Test
-  public void testPaymiumTickerRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumTickerRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = AdaptersTest.class.getResourceAsStream("/Example_TickerData.json");
@@ -36,11 +37,11 @@ public class AdaptersTest {
     assertEquals(genericTicker.getLow(), new BigDecimal("20.2"));
     assertEquals(genericTicker.getLast(), new BigDecimal("20.2"));
     assertEquals(genericTicker.getVolume(), new BigDecimal("148.80193218"));
-
   }
 
   @Test
-  public void testPaymiumDepthRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumDepthRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = AdaptersTest.class.getResourceAsStream("/Example_DepthData.json");
@@ -49,17 +50,19 @@ public class AdaptersTest {
     ObjectMapper mapper = new ObjectMapper();
     PaymiumMarketDepth PaymiumMarketDepth = mapper.readValue(is, PaymiumMarketDepth.class);
 
-    OrderBook genericOrderBook = PaymiumAdapters.adaptMarketDepth(PaymiumMarketDepth, CurrencyPair.BTC_EUR);
+    OrderBook genericOrderBook =
+        PaymiumAdapters.adaptMarketDepth(PaymiumMarketDepth, CurrencyPair.BTC_EUR);
 
     assertEquals(genericOrderBook.getAsks().get(0).getOriginalAmount(), new BigDecimal("0.48762"));
     assertEquals(genericOrderBook.getAsks().get(0).getLimitPrice(), new BigDecimal("24.48996"));
-    assertEquals(genericOrderBook.getBids().get(0).getOriginalAmount(), new BigDecimal("0.40491093"));
+    assertEquals(
+        genericOrderBook.getBids().get(0).getOriginalAmount(), new BigDecimal("0.40491093"));
     assertEquals(genericOrderBook.getBids().get(0).getLimitPrice(), new BigDecimal("24.001"));
-
   }
 
   @Test
-  public void testPaymiumTradesRequest() throws JsonParseException, JsonMappingException, IOException {
+  public void testPaymiumTradesRequest()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = AdaptersTest.class.getResourceAsStream("/Example_TradesData.json");
@@ -72,7 +75,5 @@ public class AdaptersTest {
 
     assertEquals(genericTrades.getTrades().get(0).getPrice(), new BigDecimal("5.0"));
     assertEquals(genericTrades.getTrades().get(0).getOriginalAmount(), new BigDecimal("980.0"));
-
   }
-
 }

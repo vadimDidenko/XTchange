@@ -8,10 +8,7 @@ import org.knowm.xchange.dsx.dto.account.DSXCurrencyAmount;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXTradeResult {
 
   private final long orderId;
@@ -19,8 +16,11 @@ public class DSXTradeResult {
   private final BigDecimal remains;
   private final Map<String, DSXCurrencyAmount> funds;
 
-  public DSXTradeResult(@JsonProperty("orderId") long orderId, @JsonProperty("received") BigDecimal received,
-      @JsonProperty("remains") BigDecimal remains, @JsonProperty("funds") Map<String, DSXCurrencyAmount> funds) {
+  public DSXTradeResult(
+      @JsonProperty("orderId") long orderId,
+      @JsonProperty("received") BigDecimal received,
+      @JsonProperty("remains") BigDecimal remains,
+      @JsonProperty("funds") Map<String, DSXCurrencyAmount> funds) {
 
     this.orderId = orderId;
     this.received = received;
@@ -51,6 +51,8 @@ public class DSXTradeResult {
   @Override
   public String toString() {
 
-    return MessageFormat.format("DSXTrade[orderId={0}, received={1}, remains={2}, funds={3}]", orderId, received, remains, funds);
+    return MessageFormat.format(
+        "DSXTrade[orderId={0}, received={1}, remains={2}, funds={3}]",
+        orderId, received, remains, funds);
   }
 }

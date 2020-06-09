@@ -15,33 +15,38 @@ import org.knowm.xchange.wex.v3.WexAdapters;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test WexTicker JSON parsing
- */
+/** Test WexTicker JSON parsing */
 public class WexTickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = WexTickerJSONTest.class.getResourceAsStream("/v3/marketdata/example-ticker-data.json");
+    InputStream is =
+        WexTickerJSONTest.class.getResourceAsStream("/v3/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
     WexTickerWrapper bTCETickerWrapper = mapper.readValue(is, WexTickerWrapper.class);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLast()).isEqualTo(new BigDecimal("757"));
-    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getHigh()).isEqualTo(new BigDecimal("770"));
-    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLow()).isEqualTo(new BigDecimal("655"));
-    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getVol()).isEqualTo(new BigDecimal("17512163.25736"));
+    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLast())
+        .isEqualTo(new BigDecimal("757"));
+    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getHigh())
+        .isEqualTo(new BigDecimal("770"));
+    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getLow())
+        .isEqualTo(new BigDecimal("655"));
+    assertThat(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getVol())
+        .isEqualTo(new BigDecimal("17512163.25736"));
 
     SimpleDateFormat f = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
     f.setTimeZone(TimeZone.getTimeZone("UTC"));
-    String dateString = f
-        .format(DateUtils.fromMillisUtc(bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getUpdated() * 1000L));
+    String dateString =
+        f.format(
+            DateUtils.fromMillisUtc(
+                bTCETickerWrapper.getTicker(WexAdapters.getPair(CurrencyPair.BTC_USD)).getUpdated()
+                    * 1000L));
     System.out.println(dateString);
     assertThat(dateString).isEqualTo("2013-11-23 11:13:39");
   }
-
 }

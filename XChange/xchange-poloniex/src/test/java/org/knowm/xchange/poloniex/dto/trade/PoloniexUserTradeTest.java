@@ -19,14 +19,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PoloniexUserTradeTest {
 
   @Test
-  public void testTradeHistoryMultiPair() throws JsonParseException, JsonMappingException, IOException {
+  public void testTradeHistoryMultiPair()
+      throws JsonParseException, JsonMappingException, IOException {
 
-    final InputStream is = PoloniexUserTrade.class.getResourceAsStream("/trade/trade-history-multi-pair.json");
+    final InputStream is =
+        PoloniexUserTrade.class.getResourceAsStream("/trade/trade-history-multi-pair.json");
 
     final ObjectMapper mapper = new ObjectMapper();
     final JavaType stringType = mapper.getTypeFactory().constructType(String.class, String.class);
     final JavaType tradeArray = mapper.getTypeFactory().constructArrayType(PoloniexUserTrade.class);
-    final JavaType multiPairTradeType = mapper.getTypeFactory().constructMapType(HashMap.class, stringType, tradeArray);
+    final JavaType multiPairTradeType =
+        mapper.getTypeFactory().constructMapType(HashMap.class, stringType, tradeArray);
 
     final Map<String, PoloniexUserTrade[]> tradeHistory = mapper.readValue(is, multiPairTradeType);
     assertThat(tradeHistory).hasSize(2);
@@ -49,9 +52,11 @@ public class PoloniexUserTradeTest {
   }
 
   @Test
-  public void testTradeHistorySinglePair() throws JsonParseException, JsonMappingException, IOException {
+  public void testTradeHistorySinglePair()
+      throws JsonParseException, JsonMappingException, IOException {
 
-    final InputStream is = PoloniexUserTrade.class.getResourceAsStream("/trade/trade-history-single-pair.json");
+    final InputStream is =
+        PoloniexUserTrade.class.getResourceAsStream("/trade/trade-history-single-pair.json");
 
     final ObjectMapper mapper = new ObjectMapper();
     final JavaType tradeArray = mapper.getTypeFactory().constructArrayType(PoloniexUserTrade.class);
@@ -69,5 +74,4 @@ public class PoloniexUserTradeTest {
     assertThat(trade.getOrderNumber()).isEqualTo("17730787");
     assertThat(trade.getType()).isEqualTo("sell");
   }
-
 }

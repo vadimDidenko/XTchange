@@ -6,16 +6,16 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Panchen
- */
-
+/** @author Panchen */
 public class CryptoFacilitiesAccounts extends CryptoFacilitiesResult {
 
   private final Map<String, CryptoFacilitiesAccountInfo> accounts;
 
-  public CryptoFacilitiesAccounts(@JsonProperty("result") String result, @JsonProperty("serverTime") String strServerTime,
-      @JsonProperty("error") String error, @JsonProperty("accounts") Map<String, CryptoFacilitiesAccountInfo> accounts) {
+  public CryptoFacilitiesAccounts(
+      @JsonProperty("result") String result,
+      @JsonProperty("serverTime") String strServerTime,
+      @JsonProperty("error") String error,
+      @JsonProperty("accounts") Map<String, CryptoFacilitiesAccountInfo> accounts) {
 
     super(result, error);
 
@@ -25,5 +25,4 @@ public class CryptoFacilitiesAccounts extends CryptoFacilitiesResult {
   public Map<String, CryptoFacilitiesAccountInfo> getAccounts() {
     return accounts;
   }
-
 }

@@ -10,7 +10,8 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-public class CoinbaseMarketDataService extends CoinbaseMarketDataServiceRaw implements MarketDataService {
+public class CoinbaseMarketDataService extends CoinbaseMarketDataServiceRaw
+    implements MarketDataService {
 
   public CoinbaseMarketDataService(Exchange exchange) {
 
@@ -34,5 +35,4 @@ public class CoinbaseMarketDataService extends CoinbaseMarketDataServiceRaw impl
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

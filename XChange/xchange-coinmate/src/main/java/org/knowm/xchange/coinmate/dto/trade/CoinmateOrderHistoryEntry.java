@@ -14,7 +14,8 @@ public class CoinmateOrderHistoryEntry {
   private final BigDecimal originalAmount;
   private final String status;
 
-  public CoinmateOrderHistoryEntry(@JsonProperty("id") long id,
+  public CoinmateOrderHistoryEntry(
+      @JsonProperty("id") long id,
       @JsonProperty("timestamp") long timestamp,
       @JsonProperty("type") String type,
       @JsonProperty("price") BigDecimal price,

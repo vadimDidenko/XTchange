@@ -12,8 +12,12 @@ public class BitcurexTrade {
   private final long tid;
   private final long type;
 
-  public BitcurexTrade(@JsonProperty("amount") BigDecimal amount, @JsonProperty("date") long date, @JsonProperty("price") BigDecimal price,
-      @JsonProperty("tid") long tid, @JsonProperty("type") long type) {
+  public BitcurexTrade(
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("date") long date,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("tid") long tid,
+      @JsonProperty("type") long type) {
 
     this.amount = amount;
     this.date = date;
@@ -50,6 +54,16 @@ public class BitcurexTrade {
   @Override
   public String toString() {
 
-    return "BitcurexTrade [amount=" + amount + ", date=" + date + ", price=" + price + ", tid=" + tid + ", type=" + type + "]";
+    return "BitcurexTrade [amount="
+        + amount
+        + ", date="
+        + date
+        + ", price="
+        + price
+        + ", tid="
+        + tid
+        + ", type="
+        + type
+        + "]";
   }
 }

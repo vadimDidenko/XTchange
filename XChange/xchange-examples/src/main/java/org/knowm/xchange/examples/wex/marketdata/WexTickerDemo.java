@@ -12,9 +12,7 @@ import org.knowm.xchange.wex.v3.WexExchange;
 import org.knowm.xchange.wex.v3.dto.marketdata.WexTickerWrapper;
 import org.knowm.xchange.wex.v3.service.WexMarketDataServiceRaw;
 
-/**
- * Demonstrate requesting Order Book at BTC-E
- */
+/** Demonstrate requesting Order Book at BTC-E */
 public class WexTickerDemo {
 
   public static void main(String[] args) throws Exception {
@@ -46,11 +44,11 @@ public class WexTickerDemo {
   private static void raw(Exchange exchange) throws IOException {
 
     // Interested in the public market data feed (no authentication)
-    WexMarketDataServiceRaw marketDataService = (WexMarketDataServiceRaw) exchange.getMarketDataService();
+    WexMarketDataServiceRaw marketDataService =
+        (WexMarketDataServiceRaw) exchange.getMarketDataService();
 
     // Get the latest ticker data showing BTC to USD
     WexTickerWrapper ticker = marketDataService.getBTCETicker("btc_usd");
     System.out.println(ticker.toString());
   }
-
 }

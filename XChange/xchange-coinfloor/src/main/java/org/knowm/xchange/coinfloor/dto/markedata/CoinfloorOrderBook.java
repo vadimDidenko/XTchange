@@ -9,21 +9,19 @@ public class CoinfloorOrderBook {
   private final List<List<BigDecimal>> bids;
   private final List<List<BigDecimal>> asks;
 
-  public CoinfloorOrderBook(@JsonProperty("bids") List<List<BigDecimal>> bids, @JsonProperty("asks") List<List<BigDecimal>> asks) {
+  public CoinfloorOrderBook(
+      @JsonProperty("bids") List<List<BigDecimal>> bids,
+      @JsonProperty("asks") List<List<BigDecimal>> asks) {
     this.bids = bids;
     this.asks = asks;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getBids() {
     return bids;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getAsks() {
     return asks;
   }
@@ -32,5 +30,4 @@ public class CoinfloorOrderBook {
   public String toString() {
     return "CoinfloorOrderBook [bids=" + bids + ", asks=" + asks + "]";
   }
-
 }

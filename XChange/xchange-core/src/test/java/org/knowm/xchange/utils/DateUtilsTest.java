@@ -47,5 +47,4 @@ public class DateUtilsTest {
 
     assertEquals(expectedOutput, DateUtils.fromRfc3339DateString(input));
   }
-
 }

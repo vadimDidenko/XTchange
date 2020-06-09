@@ -33,9 +33,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class TickerJSONTest {
 
   @Test

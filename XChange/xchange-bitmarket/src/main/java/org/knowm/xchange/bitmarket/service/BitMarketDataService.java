@@ -10,9 +10,7 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class BitMarketDataService extends BitMarketDataServiceRaw implements MarketDataService {
 
   /**
@@ -42,5 +40,4 @@ public class BitMarketDataService extends BitMarketDataServiceRaw implements Mar
 
     return BitMarketAdapters.adaptTrades(getBitMarketTrades(currencyPair), currencyPair);
   }
-
 }

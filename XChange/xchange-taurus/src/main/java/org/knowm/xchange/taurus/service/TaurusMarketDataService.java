@@ -11,10 +11,9 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.taurus.Taurus;
 import org.knowm.xchange.taurus.TaurusAdapters;
 
-/**
- * @author Matija Mazi
- */
-public class TaurusMarketDataService extends TaurusMarketDataServiceRaw implements MarketDataService {
+/** @author Matija Mazi */
+public class TaurusMarketDataService extends TaurusMarketDataServiceRaw
+    implements MarketDataService {
 
   public TaurusMarketDataService(Exchange exchange) {
     super(exchange);

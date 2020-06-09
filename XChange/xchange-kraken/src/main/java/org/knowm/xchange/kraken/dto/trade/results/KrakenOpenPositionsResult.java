@@ -15,9 +15,10 @@ public class KrakenOpenPositionsResult extends KrakenResult<Map<String, KrakenOp
    * @param result
    * @param error
    */
-  public KrakenOpenPositionsResult(@JsonProperty("result") Map<String, KrakenOpenPosition> result, @JsonProperty("error") String[] error) {
+  public KrakenOpenPositionsResult(
+      @JsonProperty("result") Map<String, KrakenOpenPosition> result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
-
 }

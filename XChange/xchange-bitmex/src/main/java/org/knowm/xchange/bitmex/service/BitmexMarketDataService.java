@@ -20,14 +20,14 @@ import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * <p>
  * Implementation of the market data service for Bitmex
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class BitmexMarketDataService extends BitmexMarketDataServiceRaw implements MarketDataService {
+public class BitmexMarketDataService extends BitmexMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -42,7 +42,8 @@ public class BitmexMarketDataService extends BitmexMarketDataServiceRaw implemen
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
-    List<BitmexTicker> bitmexTickers = getTicker(currencyPair.base.toString() + currencyPair.counter.toString());
+    List<BitmexTicker> bitmexTickers =
+        getTicker(currencyPair.base.toString() + currencyPair.counter.toString());
     BitmexTicker bitmexTicker = bitmexTickers.get(0);
 
     DateFormat format = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS'Z'");
@@ -50,11 +51,20 @@ public class BitmexMarketDataService extends BitmexMarketDataServiceRaw implemen
     Ticker ticker = null;
 
     try {
-      ticker = new Ticker.Builder().currencyPair(currencyPair).open(bitmexTicker.getOpenValue())
-              .last(bitmexTicker.getLastPrice()).bid(bitmexTicker.getBidPrice()).ask(bitmexTicker.getAskPrice())
-              .high(bitmexTicker.getHighPrice()).low(bitmexTicker.getLowPrice())
-              .vwap(new BigDecimal(bitmexTicker.getVwap())).volume(bitmexTicker.getVolume()).quoteVolume(null)
-              .timestamp(format.parse(bitmexTicker.getTimestamp())).build();
+      ticker =
+          new Ticker.Builder()
+              .currencyPair(currencyPair)
+              .open(bitmexTicker.getOpenValue())
+              .last(bitmexTicker.getLastPrice())
+              .bid(bitmexTicker.getBidPrice())
+              .ask(bitmexTicker.getAskPrice())
+              .high(bitmexTicker.getHighPrice())
+              .low(bitmexTicker.getLowPrice())
+              .vwap(new BigDecimal(bitmexTicker.getVwap()))
+              .volume(bitmexTicker.getVolume())
+              .quoteVolume(null)
+              .timestamp(format.parse(bitmexTicker.getTimestamp()))
+              .build();
     } catch (ParseException e) {
 
       return null;
@@ -71,14 +81,14 @@ public class BitmexMarketDataService extends BitmexMarketDataServiceRaw implemen
       Object arg0 = args[0];
       if (arg0 instanceof BitmexPrompt) {
         prompt = (BitmexPrompt) arg0;
-      }
-      else {
+      } else {
         throw new ExchangeException("args[0] must be of type BitmexPrompt!");
       }
     }
     Object[] argsToPass = Arrays.copyOfRange(args, 1, args.length);
-    return BitmexAdapters.adaptOrderBook(getBitmexDepth(BitmexAdapters.adaptCurrencyPair(currencyPair), prompt, argsToPass), currencyPair);
-
+    return BitmexAdapters.adaptOrderBook(
+        getBitmexDepth(BitmexAdapters.adaptCurrencyPair(currencyPair), prompt, argsToPass),
+        currencyPair);
   }
 
   @Override
@@ -90,14 +100,13 @@ public class BitmexMarketDataService extends BitmexMarketDataServiceRaw implemen
       Object arg0 = args[0];
       if (arg0 instanceof BitmexPrompt) {
         prompt = (BitmexPrompt) arg0;
-      }
-      else {
+      } else {
         throw new ExchangeException("args[0] must be of type BitmexPrompt!");
       }
     }
     Object[] argsToPass = Arrays.copyOfRange(args, 1, args.length);
-    // Trades bitmexTrades = getBitmexTrades(BitmexAdapters.adaptCurrencyPair(currencyPair), prompt, argsToPass);
+    // Trades bitmexTrades = getBitmexTrades(BitmexAdapters.adaptCurrencyPair(currencyPair), prompt,
+    // argsToPass);
     return getBitmexTrades(BitmexAdapters.adaptCurrencyPair(currencyPair), prompt, argsToPass);
-
   }
 }

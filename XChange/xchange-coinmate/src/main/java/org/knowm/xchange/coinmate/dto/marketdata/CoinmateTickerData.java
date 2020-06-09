@@ -28,9 +28,7 @@ import java.math.BigDecimal;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class CoinmateTickerData {
 
   private final BigDecimal last;

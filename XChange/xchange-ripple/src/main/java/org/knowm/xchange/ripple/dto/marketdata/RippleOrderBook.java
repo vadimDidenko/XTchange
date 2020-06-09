@@ -11,8 +11,10 @@ public final class RippleOrderBook extends RippleCommon {
 
   @JsonProperty("order_book")
   private String orderBook;
+
   @JsonProperty("bids")
   private List<RippleOrder> bids = new ArrayList<>();
+
   @JsonProperty("asks")
   private List<RippleOrder> asks = new ArrayList<>();
 
@@ -42,7 +44,8 @@ public final class RippleOrderBook extends RippleCommon {
 
   @Override
   public String toString() {
-    return String.format("OrderBook [ledger=%s, validated=%b, success=%b, order_book=%s, bids=%s, asks=%s]", ledger, validated, success, orderBook,
-        bids, asks);
+    return String.format(
+        "OrderBook [ledger=%s, validated=%b, success=%b, order_book=%s, bids=%s, asks=%s]",
+        ledger, validated, success, orderBook, bids, asks);
   }
 }

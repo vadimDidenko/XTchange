@@ -8,16 +8,12 @@ import com.binance.api.client.domain.market.*;
 
 import java.util.List;
 
-/**
- * Binance API façade, supporting synchronous/blocking access Binance's REST API.
- */
+/** Binance API façade, supporting synchronous/blocking access Binance's REST API. */
 public interface BinanceApiRestClient {
 
   // General endpoints
 
-  /**
-   * Test connectivity to the Rest API.
-   */
+  /** Test connectivity to the Rest API. */
   void ping();
 
   /**
@@ -27,14 +23,10 @@ public interface BinanceApiRestClient {
    */
   Long getServerTime();
 
-  /**
-   * @return Current exchange trading rules and symbol information
-   */
+  /** @return Current exchange trading rules and symbol information */
   ExchangeInfo getExchangeInfo();
 
-  /**
-   * @return All the supported assets and whether or not they can be withdrawn.
-   */
+  /** @return All the supported assets and whether or not they can be withdrawn. */
   List<Asset> getAllAssets();
 
   // Market Data endpoints
@@ -65,11 +57,12 @@ public interface BinanceApiRestClient {
   List<TradeHistoryItem> getHistoricalTrades(String symbol, Integer limit, Long fromId);
 
   /**
-   * Get compressed, aggregate trades. Trades that fill at the time, from the same order, with
-   * the same price will have the quantity aggregated.
+   * Get compressed, aggregate trades. Trades that fill at the time, from the same order, with the
+   * same price will have the quantity aggregated.
    *
-   * If both <code>startTime</code> and <code>endTime</code> are sent, <code>limit</code>should not
-   * be sent AND the distance between <code>startTime</code> and <code>endTime</code> must be less than 24 hours.
+   * <p>If both <code>startTime</code> and <code>endTime</code> are sent, <code>limit</code>should
+   * not be sent AND the distance between <code>startTime</code> and <code>endTime</code> must be
+   * less than 24 hours.
    *
    * @param symbol symbol to aggregate (mandatory)
    * @param fromId ID to get aggregate trades from INCLUSIVE (optional)
@@ -78,7 +71,8 @@ public interface BinanceApiRestClient {
    * @param endTime Timestamp in ms to get aggregate trades until INCLUSIVE (optional).
    * @return a list of aggregate trades for the given symbol
    */
-  List<AggTrade> getAggTrades(String symbol, String fromId, Integer limit, Long startTime, Long endTime);
+  List<AggTrade> getAggTrades(
+      String symbol, String fromId, Integer limit, Long startTime, Long endTime);
 
   /**
    * Return the most recent aggregate trades for <code>symbol</code>
@@ -97,7 +91,8 @@ public interface BinanceApiRestClient {
    * @param endTime Timestamp in ms to get candlestick bars until INCLUSIVE (optional).
    * @return a candlestick bar for the given symbol and interval
    */
-  List<Candlestick> getCandlestickBars(String symbol, CandlestickInterval interval, Integer limit, Long startTime, Long endTime);
+  List<Candlestick> getCandlestickBars(
+      String symbol, CandlestickInterval interval, Integer limit, Long startTime, Long endTime);
 
   /**
    * Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
@@ -113,14 +108,10 @@ public interface BinanceApiRestClient {
    */
   TickerStatistics get24HrPriceStatistics(String symbol);
 
-  /**
-   * Get 24 hour price change statistics for all symbols.
-   */
+  /** Get 24 hour price change statistics for all symbols. */
   List<TickerStatistics> getAll24HrPriceStatistics();
 
-  /**
-   * Get Latest price for all symbols.
-   */
+  /** Get Latest price for all symbols. */
   List<TickerPrice> getAllPrices();
 
   /**
@@ -130,9 +121,7 @@ public interface BinanceApiRestClient {
    */
   TickerPrice getPrice(String symbol);
 
-  /**
-   * Get best price/qty on the order book for all symbols.
-   */
+  /** Get best price/qty on the order book for all symbols. */
   List<BookTicker> getBookTickers();
 
   // Account endpoints
@@ -146,7 +135,8 @@ public interface BinanceApiRestClient {
   NewOrderResponse newOrder(NewOrder order);
 
   /**
-   * Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.
+   * Test new order creation and signature/recvWindow long. Creates and validates a new order but
+   * does not send it into the matching engine.
    *
    * @param order the new TEST order to submit.
    */
@@ -154,8 +144,8 @@ public interface BinanceApiRestClient {
 
   /**
    * Check an order's status.
-   * @param orderStatusRequest order status request options/filters
    *
+   * @param orderStatusRequest order status request options/filters
    * @return an order
    */
   Order getOrderStatus(OrderStatusRequest orderStatusRequest);
@@ -183,14 +173,10 @@ public interface BinanceApiRestClient {
    */
   List<Order> getAllOrders(AllOrdersRequest orderRequest);
 
-  /**
-   * Get current account information.
-   */
+  /** Get current account information. */
   Account getAccount(Long recvWindow, Long timestamp);
 
-  /**
-   * Get current account information using default parameters.
-   */
+  /** Get current account information using default parameters. */
   Account getAccount();
 
   /**
@@ -201,7 +187,8 @@ public interface BinanceApiRestClient {
    * @param fromId TradeId to fetch from. Default gets most recent trades.
    * @return a list of trades
    */
-  List<Trade> getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp);
+  List<Trade> getMyTrades(
+      String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp);
 
   /**
    * Get trades for a specific account and symbol.
@@ -223,7 +210,7 @@ public interface BinanceApiRestClient {
   /**
    * Submit a withdraw request.
    *
-   * Enable Withdrawals option has to be active in the API settings.
+   * <p>Enable Withdrawals option has to be active in the API settings.
    *
    * @param asset asset symbol to withdraw
    * @param address address to withdraw to
@@ -231,7 +218,8 @@ public interface BinanceApiRestClient {
    * @param name description/alias of the address
    * @param addressTag Secondary address identifier for coins like XRP,XMR etc.
    */
-  WithdrawResult withdraw(String asset, String address, String amount, String name, String addressTag);
+  WithdrawResult withdraw(
+      String asset, String address, String amount, String name, String addressTag);
 
   /**
    * Fetch account deposit history.

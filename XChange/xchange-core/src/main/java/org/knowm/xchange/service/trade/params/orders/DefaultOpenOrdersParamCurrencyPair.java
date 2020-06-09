@@ -10,8 +10,7 @@ public class DefaultOpenOrdersParamCurrencyPair implements OpenOrdersParamCurren
 
   private CurrencyPair pair;
 
-  public DefaultOpenOrdersParamCurrencyPair() {
-  }
+  public DefaultOpenOrdersParamCurrencyPair() {}
 
   public DefaultOpenOrdersParamCurrencyPair(CurrencyPair pair) {
     this.pair = pair;

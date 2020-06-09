@@ -14,7 +14,5 @@ public class BitBayMetaDataDemo {
     Exchange anx = ExchangeFactory.INSTANCE.createExchange(BitbayExchange.class.getName());
 
     System.out.println(anx.getExchangeMetaData().toString());
-
   }
-
 }

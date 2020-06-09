@@ -31,10 +31,24 @@ public class ItBitTradesDemo {
 
     printOpenOrders(tradeService);
 
-    String placeLimitOrderXBT = tradeService.placeLimitOrder(
-        new LimitOrder(OrderType.BID, BigDecimal.valueOf(0.001), new CurrencyPair("XBT", "USD"), "0", new Date(), BigDecimal.valueOf(300)));
-    String placeLimitOrderBTC = tradeService.placeLimitOrder(
-        new LimitOrder(OrderType.BID, BigDecimal.valueOf(0.001), new CurrencyPair("BTC", "USD"), "0", new Date(), BigDecimal.valueOf(360)));
+    String placeLimitOrderXBT =
+        tradeService.placeLimitOrder(
+            new LimitOrder(
+                OrderType.BID,
+                BigDecimal.valueOf(0.001),
+                new CurrencyPair("XBT", "USD"),
+                "0",
+                new Date(),
+                BigDecimal.valueOf(300)));
+    String placeLimitOrderBTC =
+        tradeService.placeLimitOrder(
+            new LimitOrder(
+                OrderType.BID,
+                BigDecimal.valueOf(0.001),
+                new CurrencyPair("BTC", "USD"),
+                "0",
+                new Date(),
+                BigDecimal.valueOf(360)));
 
     System.out.println("limit order id " + placeLimitOrderXBT);
     System.out.println("limit order id " + placeLimitOrderBTC);
@@ -66,7 +80,8 @@ public class ItBitTradesDemo {
     System.out.println("Open Orders: " + openOrders.toString());
   }
 
-  private static void printOrderStatus(TradeService tradeService, String orderId) throws IOException {
+  private static void printOrderStatus(TradeService tradeService, String orderId)
+      throws IOException {
 
     final ItBitTradeServiceRaw tradeServiceRaw = (ItBitTradeServiceRaw) tradeService;
     final ItBitOrder response = tradeServiceRaw.getItBitOrder(orderId);

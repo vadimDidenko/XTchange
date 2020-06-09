@@ -17,7 +17,9 @@ public class GeminiLevel {
    * @param amount
    * @param timestamp
    */
-  public GeminiLevel(@JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount,
+  public GeminiLevel(
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
       @JsonProperty("timestamp") BigDecimal timestamp) {
 
     this.price = price;
@@ -45,5 +47,4 @@ public class GeminiLevel {
 
     return "GeminiLevel [price=" + price + ", amount=" + amount + ", timestamp=" + timestamp + "]";
   }
-
 }

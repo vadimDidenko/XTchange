@@ -9,7 +9,9 @@ public class CryptopiaOrderBook {
   private final List<CryptopiaOrder> bids;
   private final List<CryptopiaOrder> asks;
 
-  public CryptopiaOrderBook(@JsonProperty("Buy") List<CryptopiaOrder> bids, @JsonProperty("Sell") List<CryptopiaOrder> asks) {
+  public CryptopiaOrderBook(
+      @JsonProperty("Buy") List<CryptopiaOrder> bids,
+      @JsonProperty("Sell") List<CryptopiaOrder> asks) {
     this.bids = bids;
     this.asks = asks;
   }
@@ -24,9 +26,6 @@ public class CryptopiaOrderBook {
 
   @Override
   public String toString() {
-    return "CryptopiaOrderBook{" +
-        "bids=" + bids +
-        ", asks=" + asks +
-        '}';
+    return "CryptopiaOrderBook{" + "bids=" + bids + ", asks=" + asks + '}';
   }
 }

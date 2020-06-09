@@ -27,9 +27,7 @@ import org.knowm.xchange.taurus.TaurusAdapters;
 import org.knowm.xchange.taurus.dto.TaurusException;
 import org.knowm.xchange.taurus.dto.trade.TaurusOrder;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class TaurusTradeService extends TaurusTradeServiceRaw implements TradeService {
 
   public TaurusTradeService(Exchange exchange) {
@@ -43,8 +41,7 @@ public class TaurusTradeService extends TaurusTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     TaurusOrder[] openOrders = getTaurusOpenOrders();
 
     List<LimitOrder> limitOrders = new ArrayList<>();
@@ -52,7 +49,14 @@ public class TaurusTradeService extends TaurusTradeServiceRaw implements TradeSe
       OrderType orderType = taurusOrder.getType();
       String id = taurusOrder.getId();
       BigDecimal price = taurusOrder.getPrice();
-      limitOrders.add(new LimitOrder(orderType, taurusOrder.getAmount(), CurrencyPair.BTC_CAD, id, taurusOrder.getDatetime(), price));
+      limitOrders.add(
+          new LimitOrder(
+              orderType,
+              taurusOrder.getAmount(),
+              CurrencyPair.BTC_CAD,
+              id,
+              taurusOrder.getDatetime(),
+              price));
     }
     return new OpenOrders(limitOrders);
   }
@@ -64,8 +68,10 @@ public class TaurusTradeService extends TaurusTradeServiceRaw implements TradeSe
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException, TaurusException {
-    TaurusOrder taurusOrder = limitOrder.getType() == BID ? buyTaurusOrder(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice())
-        : sellTaurusOrder(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice());
+    TaurusOrder taurusOrder =
+        limitOrder.getType() == BID
+            ? buyTaurusOrder(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice())
+            : sellTaurusOrder(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice());
 
     return taurusOrder.getId();
   }
@@ -120,9 +126,7 @@ public class TaurusTradeService extends TaurusTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

@@ -34,11 +34,11 @@ import java.io.InputStream;
 
 public class ExchangeUtils {
 
-  private final static Logger logger = LoggerFactory.getLogger(ExchangeUtils.class);
+  private static final Logger logger = LoggerFactory.getLogger(ExchangeUtils.class);
 
   /**
-   * Create a Coinmate exchange using the keys provided in a exchangeConfiguration.json file on the classpath. See the
-   * sampleExchangeConfiguration.json file for format of required file.
+   * Create a Coinmate exchange using the keys provided in a exchangeConfiguration.json file on the
+   * classpath. See the sampleExchangeConfiguration.json file for format of required file.
    *
    * @return Create exchange or null if .json file was not on classpath.
    */
@@ -46,7 +46,8 @@ public class ExchangeUtils {
 
     ExchangeSpecification exSpec = new ExchangeSpecification(CoinmateExchange.class);
     ObjectMapper mapper = new ObjectMapper();
-    InputStream is = ExchangeUtils.class.getClassLoader().getResourceAsStream("exchangeConfiguration.json");
+    InputStream is =
+        ExchangeUtils.class.getClassLoader().getResourceAsStream("exchangeConfiguration.json");
 
     if (is == null) {
       logger.warn("No exchangeConfiguration.json file found. Returning null exchange.");
@@ -66,11 +67,13 @@ public class ExchangeUtils {
         exSpec.setUserName(conf.clientId);
       }
     } catch (Exception e) {
-      logger.warn("An exception occured while loading the exchangeConfiguration.json file from the classpath. " + "Returning null exchange.", e);
+      logger.warn(
+          "An exception occured while loading the exchangeConfiguration.json file from the"
+              + " classpath. Returning null exchange.",
+          e);
       return null;
     }
 
     return ExchangeFactory.INSTANCE.createExchange(exSpec);
   }
-
 }

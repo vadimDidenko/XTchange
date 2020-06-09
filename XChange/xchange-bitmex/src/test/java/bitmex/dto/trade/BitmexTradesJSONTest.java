@@ -12,9 +12,7 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class BitmexTradesJSONTest {
 
   @Test
@@ -39,5 +37,4 @@ public class BitmexTradesJSONTest {
     assertThat(bitmexTrade.getHomeNotional()).isNull();
     assertThat(bitmexTrade.getTickDirection()).isEqualTo(BitmexTickDirection.PLUSTICK);
   }
-
 }

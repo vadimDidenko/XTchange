@@ -1,8 +1,6 @@
 package org.knowm.xchange.bitmex.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
-import org.knowm.xchange.bitmex.dto.trade.BitmexOrderStatus;
-import org.knowm.xchange.bitmex.dto.trade.BitmexOrderType;
 import org.knowm.xchange.bitmex.dto.trade.BitmexSide;
 
 import java.math.BigDecimal;
@@ -24,15 +22,25 @@ public class BitmexPrivateOrder {
   private final String ordType;
 
   public enum OrderStatus {
-    New, Partially_filled, Filled, Canceled
+    New,
+    Partially_filled,
+    Filled,
+    Canceled
   }
 
-  public BitmexPrivateOrder(@JsonProperty("ordType") String ordType,@JsonProperty("price") BigDecimal price, @JsonProperty("orderID") String id,
-                            @JsonProperty("orderQty") BigDecimal size, @JsonProperty("side") BitmexSide side,
-                            @JsonProperty("symbol") String symbol, @JsonProperty("timestamp") Date timestamp,
-                            @JsonProperty("ordStatus") OrderStatus orderStatus,
-                            @JsonProperty("currency") String currency,
-                            @JsonProperty("settlCurrency") String settleCurrency,@JsonProperty("cumQty") BigDecimal cumQty,@JsonProperty("avgPx") BigDecimal avgPx) {
+  public BitmexPrivateOrder(
+      @JsonProperty("ordType") String ordType,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("orderID") String id,
+      @JsonProperty("orderQty") BigDecimal size,
+      @JsonProperty("side") BitmexSide side,
+      @JsonProperty("symbol") String symbol,
+      @JsonProperty("timestamp") Date timestamp,
+      @JsonProperty("ordStatus") OrderStatus orderStatus,
+      @JsonProperty("currency") String currency,
+      @JsonProperty("settlCurrency") String settleCurrency,
+      @JsonProperty("cumQty") BigDecimal cumQty,
+      @JsonProperty("avgPx") BigDecimal avgPx) {
 
     this.symbol = symbol;
     this.id = id;
@@ -106,8 +114,18 @@ public class BitmexPrivateOrder {
   @Override
   public String toString() {
 
-    return "BitmexOrder [price=" + price + ", volume=" + size + ", symbol=" + symbol + ", side=" + side +
-            ", timestamp=" + timestamp + ", cumQty=" + cumQty +"]";
+    return "BitmexOrder [price="
+        + price
+        + ", volume="
+        + size
+        + ", symbol="
+        + symbol
+        + ", side="
+        + side
+        + ", timestamp="
+        + timestamp
+        + ", cumQty="
+        + cumQty
+        + "]";
   }
-
 }

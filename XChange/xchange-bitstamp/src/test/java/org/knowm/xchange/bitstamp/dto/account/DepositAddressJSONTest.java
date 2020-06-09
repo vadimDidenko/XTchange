@@ -8,9 +8,7 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * @author ujjwal on 08/02/18.
- */
+/** @author ujjwal on 08/02/18. */
 public class DepositAddressJSONTest {
 
   private BitstampDepositAddress unmarshall(String file) throws IOException {

@@ -22,10 +22,17 @@ public class LiquiBaseService extends BaseExchangeService implements BaseService
   protected LiquiBaseService(final Exchange exchange) {
     super(exchange);
 
-    liqui = RestProxyFactory.createProxy(Liqui.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
-    liquiAuthenticated = RestProxyFactory.createProxy(LiquiAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    liqui =
+        RestProxyFactory.createProxy(
+            Liqui.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    liquiAuthenticated =
+        RestProxyFactory.createProxy(
+            LiquiAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
 
-    signatureCreator = LiquiDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    signatureCreator =
+        LiquiDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 
   public Map<String, LiquiPairInfo> getInfo() {

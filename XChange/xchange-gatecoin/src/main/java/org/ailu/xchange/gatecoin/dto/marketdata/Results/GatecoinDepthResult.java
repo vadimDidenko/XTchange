@@ -7,9 +7,7 @@ import org.knowm.xchange.gatecoin.dto.marketdata.ResponseStatus;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author sumdeha
- */
+/** @author sumdeha */
 public class GatecoinDepthResult extends GatecoinResult {
 
   private final GatecoinDepth[] asks;
@@ -17,7 +15,9 @@ public class GatecoinDepthResult extends GatecoinResult {
   private final GatecoinDepth[] bids;
 
   @JsonCreator
-  public GatecoinDepthResult(@JsonProperty("asks") GatecoinDepth[] asks, @JsonProperty("bids") GatecoinDepth[] bids,
+  public GatecoinDepthResult(
+      @JsonProperty("asks") GatecoinDepth[] asks,
+      @JsonProperty("bids") GatecoinDepth[] bids,
       @JsonProperty("responseStatus") ResponseStatus responseStatus) {
     super(responseStatus);
     this.asks = asks;

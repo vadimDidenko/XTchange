@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * An aggregated trade event for a symbol.
- */
+/** An aggregated trade event for a symbol. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AggTradeEvent extends AggTrade {
 

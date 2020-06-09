@@ -6,9 +6,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnyGetter;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
-/**
- * Author: Kamil Zbikowski Date: 4/13/15
- */
+/** Author: Kamil Zbikowski Date: 4/13/15 */
 public class AuthAggregate {
   private final String apiKey;
   private String signature;

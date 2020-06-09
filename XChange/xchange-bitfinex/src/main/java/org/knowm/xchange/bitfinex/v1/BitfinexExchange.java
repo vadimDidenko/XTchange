@@ -18,7 +18,8 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 public class BitfinexExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2013NonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2013NonceFactory();
 
   @Override
   protected void initServices() {
@@ -30,7 +31,8 @@ public class BitfinexExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.bitfinex.com/");
     exchangeSpecification.setHost("api.bitfinex.com");
     exchangeSpecification.setPort(80);
@@ -49,10 +51,9 @@ public class BitfinexExchange extends BaseExchange implements Exchange {
   @Override
   public void remoteInit() throws IOException, ExchangeException {
 
-    BitfinexMarketDataServiceRaw dataService = (BitfinexMarketDataServiceRaw) this.marketDataService;
+    BitfinexMarketDataServiceRaw dataService =
+        (BitfinexMarketDataServiceRaw) this.marketDataService;
     List<CurrencyPair> currencyPairs = dataService.getExchangeSymbols();
     exchangeMetaData = BitfinexAdapters.adaptMetaData(currencyPairs, exchangeMetaData);
-
   }
-
 }

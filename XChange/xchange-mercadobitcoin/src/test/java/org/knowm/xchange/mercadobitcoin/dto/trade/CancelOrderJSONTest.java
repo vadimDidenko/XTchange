@@ -23,13 +23,16 @@ public class CancelOrderJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CancelOrderJSONTest.class.getResourceAsStream("/trade/example-cancel-order.json");
+    InputStream is =
+        CancelOrderJSONTest.class.getResourceAsStream("/trade/example-cancel-order.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult> apiResult = mapper.readValue(is,
-        new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult>>() {
-        });
+    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult> apiResult =
+        mapper.readValue(
+            is,
+            new TypeReference<
+                MercadoBitcoinBaseTradeApiResult<MercadoBitcoinPlaceLimitOrderResult>>() {});
 
     MercadoBitcoinPlaceLimitOrderResult limitOrder = apiResult.getTheReturn();
 
@@ -41,5 +44,4 @@ public class CancelOrderJSONTest {
     assertThat(limitOrder.get("27176").getType()).isEqualTo("sell");
     assertThat(limitOrder.get("27176").getOperations().size()).isEqualTo(0);
   }
-
 }

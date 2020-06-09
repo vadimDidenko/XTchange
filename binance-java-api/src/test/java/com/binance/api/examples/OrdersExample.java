@@ -14,13 +14,12 @@ import java.util.List;
 import static com.binance.api.client.domain.account.NewOrder.limitBuy;
 import static com.binance.api.client.domain.account.NewOrder.marketBuy;
 
-/**
- * Examples on how to place orders, cancel them, and query account information.
- */
+/** Examples on how to place orders, cancel them, and query account information. */
 public class OrdersExample {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+    BinanceApiClientFactory factory =
+        BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
     BinanceApiRestClient client = factory.newRestClient();
 
     // Getting list of open orders
@@ -37,7 +36,8 @@ public class OrdersExample {
 
     // Canceling an order
     try {
-      CancelOrderResponse cancelOrderResponse = client.cancelOrder(new CancelOrderRequest("LINKETH", 756762l));
+      CancelOrderResponse cancelOrderResponse =
+          client.cancelOrder(new CancelOrderRequest("LINKETH", 756762l));
       System.out.println(cancelOrderResponse);
     } catch (BinanceApiException e) {
       System.out.println(e.getError().getMsg());
@@ -50,8 +50,10 @@ public class OrdersExample {
     client.newOrderTest(marketBuy("LINKETH", "1000"));
 
     // Placing a real LIMIT order
-    NewOrderResponse newOrderResponse = client.newOrder(limitBuy("LINKETH", TimeInForce.GTC, "1000", "0.0001").newOrderRespType(NewOrderResponseType.FULL));
+    NewOrderResponse newOrderResponse =
+        client.newOrder(
+            limitBuy("LINKETH", TimeInForce.GTC, "1000", "0.0001")
+                .newOrderRespType(NewOrderResponseType.FULL));
     System.out.println(newOrderResponse);
   }
-
 }

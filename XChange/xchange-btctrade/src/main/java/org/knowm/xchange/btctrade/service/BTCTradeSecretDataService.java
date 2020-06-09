@@ -21,13 +21,14 @@ public class BTCTradeSecretDataService extends BTCTradeBaseService {
 
   public BTCTradeSecretData getSecretData() throws IOException {
 
-    BTCTradeSecretResponse response = btcTrade.getSecret(exchange.getExchangeSpecification().getSecretKey(),
-        exchange.getExchangeSpecification().getApiKey());
+    BTCTradeSecretResponse response =
+        btcTrade.getSecret(
+            exchange.getExchangeSpecification().getSecretKey(),
+            exchange.getExchangeSpecification().getApiKey());
     if (response.getResult()) {
       return response.getData();
     } else {
       throw new ExchangeException(response.getMessage());
     }
   }
-
 }

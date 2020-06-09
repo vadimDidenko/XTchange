@@ -26,11 +26,14 @@ public class HitbtcAccountService extends HitbtcAccountServiceRaw implements Acc
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
-    return new AccountInfo(HitbtcAdapters.adaptWallet("Main", getMainBalance()), HitbtcAdapters.adaptWallet("Trading", getTradingBalance()));
+    return new AccountInfo(
+        HitbtcAdapters.adaptWallet("Main", getMainBalance()),
+        HitbtcAdapters.adaptWallet("Trading", getTradingBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     return withdrawFundsRaw(currency, amount, address, null);
   }
@@ -65,12 +68,15 @@ public class HitbtcAccountService extends HitbtcAccountServiceRaw implements Acc
     if (params instanceof TradeHistoryParams) {
       HitbtcFundingHistoryParams hitbtcTradeHistoryParams = (HitbtcFundingHistoryParams) params;
 
-      String currency = hitbtcTradeHistoryParams.getCurrency() != null ? hitbtcTradeHistoryParams.getCurrency().getCurrencyCode() : null;
+      String currency =
+          hitbtcTradeHistoryParams.getCurrency() != null
+              ? hitbtcTradeHistoryParams.getCurrency().getCurrencyCode()
+              : null;
 
-      transactions = getTransactions(currency, hitbtcTradeHistoryParams.getLimit(), hitbtcTradeHistoryParams.getOffset());
-    }
-
-    else {
+      transactions =
+          getTransactions(
+              currency, hitbtcTradeHistoryParams.getLimit(), hitbtcTradeHistoryParams.getOffset());
+    } else {
       transactions = getTransactions(null, null, null);
     }
 
@@ -80,5 +86,4 @@ public class HitbtcAccountService extends HitbtcAccountServiceRaw implements Acc
     }
     return records;
   }
-
 }

@@ -15,9 +15,11 @@ public class PoloniexMetaDataDemo {
     Exchange anx = ExchangeFactory.INSTANCE.createExchange(PoloniexExchange.class.getName());
     ExchangeMetaData exchangeMetaData = anx.getExchangeMetaData();
     System.out.println(exchangeMetaData.toJSONString());
-    System.out.println("private poll delay ms: " + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPrivateRateLimits()));
-    System.out.println("public  poll delay ms: " + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPublicRateLimits()));
-
+    System.out.println(
+        "private poll delay ms: "
+            + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPrivateRateLimits()));
+    System.out.println(
+        "public  poll delay ms: "
+            + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPublicRateLimits()));
   }
-
 }

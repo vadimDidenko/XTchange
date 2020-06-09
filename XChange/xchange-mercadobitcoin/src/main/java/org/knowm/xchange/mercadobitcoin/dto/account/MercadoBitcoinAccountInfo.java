@@ -4,16 +4,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Felipe Micaroni Lalli
- */
+/** @author Felipe Micaroni Lalli */
 public class MercadoBitcoinAccountInfo {
 
   private final Funds funds;
   private final Long serverTime;
   private final Long openOrders;
 
-  public MercadoBitcoinAccountInfo(@JsonProperty("funds") Funds funds, @JsonProperty("server_time") Long serverTime,
+  public MercadoBitcoinAccountInfo(
+      @JsonProperty("funds") Funds funds,
+      @JsonProperty("server_time") Long serverTime,
       @JsonProperty("open_orders") Long openOrders) {
 
     this.funds = funds;
@@ -24,7 +24,14 @@ public class MercadoBitcoinAccountInfo {
   @Override
   public String toString() {
 
-    return "MercadoBitcoinAccountInfo [" + "funds=" + funds + ", serverTime=" + serverTime + ", openOrders=" + openOrders + ']';
+    return "MercadoBitcoinAccountInfo ["
+        + "funds="
+        + funds
+        + ", serverTime="
+        + serverTime
+        + ", openOrders="
+        + openOrders
+        + ']';
   }
 
   public Long getOpenOrders() {
@@ -48,7 +55,10 @@ public class MercadoBitcoinAccountInfo {
     private final BigDecimal brl;
     private final BigDecimal btc;
 
-    public Funds(@JsonProperty("ltc") BigDecimal ltc, @JsonProperty("brl") BigDecimal brl, @JsonProperty("btc") BigDecimal btc) {
+    public Funds(
+        @JsonProperty("ltc") BigDecimal ltc,
+        @JsonProperty("brl") BigDecimal brl,
+        @JsonProperty("btc") BigDecimal btc) {
 
       this.ltc = ltc;
       this.brl = brl;

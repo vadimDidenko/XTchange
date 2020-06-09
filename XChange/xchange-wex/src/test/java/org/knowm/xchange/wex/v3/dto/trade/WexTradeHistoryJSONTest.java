@@ -12,16 +12,16 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Benedikt Bünz Test WexTradeHistoryReturn JSON parsing
- */
+/** @author Benedikt Bünz Test WexTradeHistoryReturn JSON parsing */
 public class WexTradeHistoryJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = WexTradeHistoryJSONTest.class.getResourceAsStream("/v3/trade/example-trade-history-data.json");
+    InputStream is =
+        WexTradeHistoryJSONTest.class.getResourceAsStream(
+            "/v3/trade/example-trade-history-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -38,6 +38,5 @@ public class WexTradeHistoryJSONTest {
     assertThat(firstEntry.getValue().getTimestamp()).isEqualTo(1378194574L);
     assertThat(firstEntry.getValue().getType()).isEqualTo(WexTradeHistoryResult.Type.sell);
     assertThat(firstEntry.getValue().isYourOrder()).isEqualTo(false);
-
   }
 }

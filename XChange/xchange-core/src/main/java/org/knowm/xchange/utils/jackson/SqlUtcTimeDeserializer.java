@@ -11,9 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class SqlUtcTimeDeserializer extends JsonDeserializer<Date> {
 
   private SimpleDateFormat dateFormat;

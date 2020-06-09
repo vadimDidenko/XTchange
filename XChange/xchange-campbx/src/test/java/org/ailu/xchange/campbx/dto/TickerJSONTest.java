@@ -11,16 +11,15 @@ import org.knowm.xchange.campbx.dto.marketdata.CampBXTicker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class TickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     CampBXTicker campBXTicker = mapper.readValue(is, CampBXTicker.class);
@@ -30,5 +29,4 @@ public class TickerJSONTest {
     assertThat(campBXTicker.getBid()).isEqualTo(new BigDecimal("13.30"));
     assertThat(campBXTicker.getAsk()).isEqualTo(new BigDecimal("13.52"));
   }
-
 }

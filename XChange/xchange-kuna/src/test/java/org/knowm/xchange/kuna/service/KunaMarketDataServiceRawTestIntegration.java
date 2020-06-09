@@ -32,7 +32,8 @@ public class KunaMarketDataServiceRawTestIntegration extends BaseKunaTest {
   public void test_btcuah_ticker() throws IOException {
     KunaTimeTicker kunaTimeTicker = marketDataServiceRaw.getKunaTicker(BTC_UAH);
 
-    assertThat(kunaTimeTicker.getTimestamp()).isCloseTo(Instant.now().getEpochSecond(), Offset.offset(DEFAULT_OFFSET));
+    assertThat(kunaTimeTicker.getTimestamp())
+        .isCloseTo(Instant.now().getEpochSecond(), Offset.offset(DEFAULT_OFFSET));
     assertThat(kunaTimeTicker.getTicker()).isNotNull();
     assertThat(kunaTimeTicker.getTicker()).hasNoNullFieldsOrProperties();
   }
@@ -41,7 +42,8 @@ public class KunaMarketDataServiceRawTestIntegration extends BaseKunaTest {
   public void test_ethuah_ticker() throws IOException {
     KunaTimeTicker kunaTimeTicker = marketDataServiceRaw.getKunaTicker(ETH_UAH);
 
-    assertThat(kunaTimeTicker.getTimestamp()).isCloseTo(Instant.now().getEpochSecond(), Offset.offset(DEFAULT_OFFSET));
+    assertThat(kunaTimeTicker.getTimestamp())
+        .isCloseTo(Instant.now().getEpochSecond(), Offset.offset(DEFAULT_OFFSET));
     assertThat(kunaTimeTicker.getTicker()).isNotNull();
     assertThat(kunaTimeTicker.getTicker()).hasNoNullFieldsOrProperties();
   }
@@ -51,7 +53,8 @@ public class KunaMarketDataServiceRawTestIntegration extends BaseKunaTest {
     Map<String, KunaTimeTicker> availableTickers = marketDataServiceRaw.getKunaTickers();
 
     assertThat(availableTickers).isNotNull().isNotEmpty();
-    assertThat(availableTickers).containsKeys(toPairString(BTC_UAH), toPairString(ETH_UAH), toPairString(BCH_UAH));
+    assertThat(availableTickers)
+        .containsKeys(toPairString(BTC_UAH), toPairString(ETH_UAH), toPairString(BCH_UAH));
   }
 
   @Test

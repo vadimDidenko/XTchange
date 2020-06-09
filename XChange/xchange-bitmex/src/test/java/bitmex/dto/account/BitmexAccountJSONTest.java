@@ -9,16 +9,15 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class BitmexAccountJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitmexAccountJSONTest.class.getResourceAsStream("/account/example-account.json");
+    InputStream is =
+        BitmexAccountJSONTest.class.getResourceAsStream("/account/example-account.json");
 
     ObjectMapper mapper = new ObjectMapper();
     BitmexAccount bitmexAccount = mapper.readValue(is, BitmexAccount.class);
@@ -32,5 +31,4 @@ public class BitmexAccountJSONTest {
     assertThat(bitmexAccount.getUsername()).isEqualTo("string");
     assertThat(bitmexAccount.getPhone()).isEqualTo("string");
   }
-
 }

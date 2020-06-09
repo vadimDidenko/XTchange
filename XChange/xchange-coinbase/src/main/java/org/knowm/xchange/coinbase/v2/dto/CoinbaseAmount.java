@@ -14,14 +14,15 @@ public class CoinbaseAmount {
   private final String currency;
   private final BigDecimal amount;
   private final String toString;
-  
+
   @JsonCreator
-  public CoinbaseAmount(@JsonProperty("currency") String currency, @JsonProperty("amount") BigDecimal amount) {
+  public CoinbaseAmount(
+      @JsonProperty("currency") String currency, @JsonProperty("amount") BigDecimal amount) {
     Assert.notNull(currency, "Null currency");
     Assert.notNull(amount, "Null amount");
     this.currency = currency;
     this.amount = amount;
-    
+
     toString = String.format("%.8f %s", amount, currency);
   }
 

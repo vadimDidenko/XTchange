@@ -27,7 +27,8 @@ public class KucoinExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.kucoin.com/");
     exchangeSpecification.setHost("kucoin.com");
     exchangeSpecification.setPort(80);
@@ -42,7 +43,7 @@ public class KucoinExchange extends BaseExchange implements Exchange {
 
     return nonceFactory;
   }
-  
+
   @Override
   public void remoteInit() throws IOException, ExchangeException {
 

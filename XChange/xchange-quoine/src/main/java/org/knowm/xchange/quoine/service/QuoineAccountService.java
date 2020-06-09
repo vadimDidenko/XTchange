@@ -23,20 +23,17 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
 /**
- * <p>
  * XChange service to provide the following to {@link org.knowm.xchange.Exchange}:
- * </p>
+ *
  * <ul>
- * <li>ANX specific methods to handle account-related operations</li>
+ *   <li>ANX specific methods to handle account-related operations
  * </ul>
  */
 public class QuoineAccountService extends QuoineAccountServiceRaw implements AccountService {
 
   private final boolean useMargin;
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public QuoineAccountService(BaseExchange baseExchange, boolean useMargin) {
 
     super(baseExchange);
@@ -46,7 +43,7 @@ public class QuoineAccountService extends QuoineAccountServiceRaw implements Acc
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    //need to make 2 calls
+    // need to make 2 calls
 
     FiatAccount[] quoineFiatAccountInfo = getQuoineFiatAccountInfo();
     List<Wallet> fiatBalances = QuoineAdapters.adapt(quoineFiatAccountInfo);
@@ -62,7 +59,8 @@ public class QuoineAccountService extends QuoineAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }
@@ -77,8 +75,7 @@ public class QuoineAccountService extends QuoineAccountServiceRaw implements Acc
     BitcoinAccount[] quoineCryptoAccountInfo = getQuoineCryptoAccountInfo();
     for (BitcoinAccount bitcoinAccount : quoineCryptoAccountInfo) {
       Currency ccy = Currency.getInstance(bitcoinAccount.getCurrency());
-      if (ccy.equals(currency))
-        return bitcoinAccount.getAddress();
+      if (ccy.equals(currency)) return bitcoinAccount.getAddress();
     }
     return null;
   }
@@ -114,7 +111,8 @@ public class QuoineAccountService extends QuoineAccountServiceRaw implements Acc
     return res;
   }
 
-  public static class QuoineFundingHistoryParam implements TradeHistoryParamCurrency, TradeHistoryParamPaging {
+  public static class QuoineFundingHistoryParam
+      implements TradeHistoryParamCurrency, TradeHistoryParamPaging {
     private Currency currency;
     private Integer pageLength;
     private Integer pageNumber;
@@ -125,8 +123,7 @@ public class QuoineAccountService extends QuoineAccountServiceRaw implements Acc
       this.pageNumber = pageNumber;
     }
 
-    public QuoineFundingHistoryParam() {
-    }
+    public QuoineFundingHistoryParam() {}
 
     @Override
     public void setCurrency(Currency currency) {

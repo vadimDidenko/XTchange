@@ -21,12 +21,16 @@ public class BitcointoyouBalance {
 
   @JsonProperty("success")
   private String success;
+
   @JsonProperty("oReturn")
   private List<Map<String, BigDecimal>> oReturn;
+
   @JsonProperty("error")
   private String error;
+
   @JsonProperty("date")
   private String date;
+
   @JsonProperty("timestamp")
   private String timestamp;
 
@@ -92,11 +96,15 @@ public class BitcointoyouBalance {
 
   @Override
   public String toString() {
-    return "BitcointoyouBalance[" +
-        "success=" + success +
-        ", oReturn=" + oReturn +
-        ", date=" + date +
-        ", timestamp=" + timestamp +
-        ']';
+    return "BitcointoyouBalance["
+        + "success="
+        + success
+        + ", oReturn="
+        + oReturn
+        + ", date="
+        + date
+        + ", timestamp="
+        + timestamp
+        + ']';
   }
 }

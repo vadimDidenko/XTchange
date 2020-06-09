@@ -4,21 +4,13 @@ import java.util.List;
 
 import org.knowm.xchange.dto.LoanOrder;
 
-/**
- * <p>
- * DTO representing loan information
- * </p>
- */
+/** DTO representing loan information */
 public final class LoanInfo {
 
-  /**
-   * Provided loans
-   */
+  /** Provided loans */
   private final List<LoanOrder> providedLoans;
 
-  /**
-   * Used loans
-   */
+  /** Used loans */
   private final List<LoanOrder> usedLoans;
 
   /**
@@ -39,5 +31,4 @@ public final class LoanInfo {
   public List<LoanOrder> getUsedLoans() {
     return usedLoans;
   }
-
 }

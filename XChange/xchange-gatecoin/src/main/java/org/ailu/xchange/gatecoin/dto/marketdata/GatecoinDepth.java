@@ -4,15 +4,14 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author sumedha
- */
+/** @author sumedha */
 public class GatecoinDepth {
 
   private final BigDecimal price;
   private final BigDecimal volume;
 
-  public GatecoinDepth(@JsonProperty("price") BigDecimal price, @JsonProperty("volume") BigDecimal volume) {
+  public GatecoinDepth(
+      @JsonProperty("price") BigDecimal price, @JsonProperty("volume") BigDecimal volume) {
     this.price = price;
     this.volume = volume;
   }
@@ -29,5 +28,4 @@ public class GatecoinDepth {
   public String toString() {
     return "GatecoinDepth[ price=" + price + ",volume =" + volume + "]";
   }
-
 }

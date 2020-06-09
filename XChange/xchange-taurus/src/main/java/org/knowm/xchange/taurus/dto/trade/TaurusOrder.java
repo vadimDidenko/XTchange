@@ -16,9 +16,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public final class TaurusOrder extends TaurusBaseResponse {
 
   private final String id;
@@ -29,10 +27,17 @@ public final class TaurusOrder extends TaurusBaseResponse {
   private final Status status;
   private final CurrencyPair book;
 
-  public TaurusOrder(@JsonProperty("id") String id, @JsonProperty("datetime") @JsonDeserialize(using = SqlUtcTimeDeserializer.class) Date datetime,
-      @JsonProperty("type") Order.OrderType type, @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("status") Status status, @JsonProperty("error") Object error,
-      @JsonProperty("book") @JsonDeserialize(using = CurrencyPairDeserializer.class) CurrencyPair book) {
+  public TaurusOrder(
+      @JsonProperty("id") String id,
+      @JsonProperty("datetime") @JsonDeserialize(using = SqlUtcTimeDeserializer.class)
+          Date datetime,
+      @JsonProperty("type") Order.OrderType type,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("status") Status status,
+      @JsonProperty("error") Object error,
+      @JsonProperty("book") @JsonDeserialize(using = CurrencyPairDeserializer.class)
+          CurrencyPair book) {
     super(error);
     this.id = id;
     this.datetime = datetime;
@@ -73,12 +78,14 @@ public final class TaurusOrder extends TaurusBaseResponse {
 
   @JsonDeserialize(using = StatusDeserializer.class)
   public enum Status {
-    cancelled, active, partiallyFilled, complete, unknown
+    cancelled,
+    active,
+    partiallyFilled,
+    complete,
+    unknown
   }
 
-  /**
-   * (-1 - cancelled; 0 - active; 1 - partially filled; 2 - complete)
-   */
+  /** (-1 - cancelled; 0 - active; 1 - partially filled; 2 - complete) */
   public static class StatusDeserializer extends JsonDeserializer<Status> {
     @Override
     public Status deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException {
@@ -98,6 +105,8 @@ public final class TaurusOrder extends TaurusBaseResponse {
 
   @Override
   public String toString() {
-    return String.format("Order{id=%s, datetime=%s, type=%s, price=%s, amount=%s}", id, datetime, type, price, amount);
+    return String.format(
+        "Order{id=%s, datetime=%s, type=%s, price=%s, amount=%s}",
+        id, datetime, type, price, amount);
   }
 }

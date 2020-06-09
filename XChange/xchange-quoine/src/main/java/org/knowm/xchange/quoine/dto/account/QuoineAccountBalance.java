@@ -9,7 +9,8 @@ public final class QuoineAccountBalance {
   private final String currency;
   private final BigDecimal balance;
 
-  public QuoineAccountBalance(@JsonProperty("currency") String currency, @JsonProperty("balance") BigDecimal balance) {
+  public QuoineAccountBalance(
+      @JsonProperty("currency") String currency, @JsonProperty("balance") BigDecimal balance) {
     this.currency = currency;
     this.balance = balance;
   }
@@ -26,5 +27,4 @@ public final class QuoineAccountBalance {
   public String toString() {
     return "QuoineAccountBalance [currency=" + currency + ", balance=" + balance + "]";
   }
-
 }

@@ -34,16 +34,17 @@ public class EmpoExMarketDataServiceRaw extends EmpoExBaseService {
     return empoEx.getEmpoExTicker(pairString).get(0);
   }
 
-  public Map<String, List<EmpoExTrade>> getEmpoExTrades(CurrencyPair currencyPair) throws IOException {
+  public Map<String, List<EmpoExTrade>> getEmpoExTrades(CurrencyPair currencyPair)
+      throws IOException {
 
     String pairString = EmpoExUtils.toPairString(currencyPair);
     return empoEx.getEmpoExTrades(pairString);
   }
 
-  public Map<String, Map<String, List<EmpoExLevel>>> getEmpoExDepth(CurrencyPair currencyPair) throws IOException {
+  public Map<String, Map<String, List<EmpoExLevel>>> getEmpoExDepth(CurrencyPair currencyPair)
+      throws IOException {
 
     String pairString = EmpoExUtils.toPairString(currencyPair);
     return empoEx.getEmpoExDepth(pairString);
   }
-
 }

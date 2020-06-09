@@ -13,11 +13,12 @@ public class LakeBTCAccountRawSpecificDemo {
 
     Exchange lakebtcExchange = LakeBTCExamplesUtils.createTestExchange();
 
-    LakeBTCAccountServiceRaw rawLakeBtcAcctService = (LakeBTCAccountServiceRaw) lakebtcExchange.getAccountService();
+    LakeBTCAccountServiceRaw rawLakeBtcAcctService =
+        (LakeBTCAccountServiceRaw) lakebtcExchange.getAccountService();
 
     LakeBTCAccountInfoResponse balanceInfo = rawLakeBtcAcctService.getLakeBTCAccountInfo();
     System.out.println(balanceInfo);
 
-    //TODO: add more demos
+    // TODO: add more demos
   }
 }

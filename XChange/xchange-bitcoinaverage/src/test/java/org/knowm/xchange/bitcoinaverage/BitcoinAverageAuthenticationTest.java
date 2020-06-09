@@ -34,7 +34,8 @@ public class BitcoinAverageAuthenticationTest {
     connection.setRequestProperty("X-Signature", signature);
 
     // read all the lines of the response into response StringBuffer
-    BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(connection.getInputStream()));
+    BufferedReader bufferedReader =
+        new BufferedReader(new InputStreamReader(connection.getInputStream()));
     String inputLine;
     StringBuffer response = new StringBuffer();
 
@@ -55,9 +56,8 @@ public class BitcoinAverageAuthenticationTest {
     Mac sha256_Mac = Mac.getInstance("HmacSHA256");
     SecretKeySpec secretKeySpec = new SecretKeySpec(secretKey.getBytes(), "HmacSHA256");
     sha256_Mac.init(secretKeySpec);
-    String hashHex =  bytesToHex(sha256_Mac.doFinal(payload.getBytes())).toLowerCase();
+    String hashHex = bytesToHex(sha256_Mac.doFinal(payload.getBytes())).toLowerCase();
     String signature = payload + "." + hashHex;
     return signature;
   }
-
 }

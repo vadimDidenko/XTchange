@@ -8,9 +8,7 @@ import org.knowm.xchange.wex.v3.dto.marketdata.WexExchangeInfo;
 import org.knowm.xchange.wex.v3.dto.marketdata.WexTickerWrapper;
 import org.knowm.xchange.wex.v3.dto.marketdata.WexTradesWrapper;
 
-/**
- * @author brox
- */
+/** @author brox */
 public class WexMarketDataServiceRaw extends WexBaseService {
 
   protected static final int FULL_SIZE = 5000;
@@ -81,5 +79,4 @@ public class WexMarketDataServiceRaw extends WexBaseService {
 
     return btce.getInfo();
   }
-
 }

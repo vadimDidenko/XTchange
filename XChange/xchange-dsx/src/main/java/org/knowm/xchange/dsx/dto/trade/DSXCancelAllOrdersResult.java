@@ -6,10 +6,7 @@ import org.knowm.xchange.dsx.dto.account.DSXCurrencyAmount;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXCancelAllOrdersResult {
 
   private final Map<String, DSXCurrencyAmount> funds;
@@ -26,8 +23,6 @@ public class DSXCancelAllOrdersResult {
 
   @Override
   public String toString() {
-    return "DSXCancelAllOrdersResult{" +
-        "funds=" + funds +
-        '}';
+    return "DSXCancelAllOrdersResult{" + "funds=" + funds + '}';
   }
 }

@@ -14,14 +14,13 @@ import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Market Data from CampBX
- */
+/** Demonstrate requesting Market Data from CampBX */
 public class BitcoiniumMarketDataDemo {
 
   public static void main(String[] args) throws Exception {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(BitcoiniumExchange.class.getName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(BitcoiniumExchange.class.getName());
     exchangeSpecification.setApiKey("42djci5kmbtyzrvglfdw3e2dgmh5mr37");
     System.out.println(exchangeSpecification.toString());
     Exchange bitcoiniumExchange = ExchangeFactory.INSTANCE.createExchange(exchangeSpecification);
@@ -36,7 +35,8 @@ public class BitcoiniumMarketDataDemo {
     MarketDataService bitcoiniumGenericMarketDataService = exchange.getMarketDataService();
 
     // Get the latest ticker data showing BTC to USD
-    Ticker ticker = bitcoiniumGenericMarketDataService.getTicker(new CurrencyPair("BTC", "BITSTAMP_USD"));
+    Ticker ticker =
+        bitcoiniumGenericMarketDataService.getTicker(new CurrencyPair("BTC", "BITSTAMP_USD"));
 
     System.out.println("Last: " + ticker.getLast());
     System.out.println("Bid: " + ticker.getBid());
@@ -44,7 +44,9 @@ public class BitcoiniumMarketDataDemo {
     System.out.println("Volume: " + ticker.getVolume());
 
     // Get the latest order book data for BTC/USD
-    OrderBook orderBook = bitcoiniumGenericMarketDataService.getOrderBook(new CurrencyPair("BTC", "BITSTAMP_USD"), "TEN_PERCENT");
+    OrderBook orderBook =
+        bitcoiniumGenericMarketDataService.getOrderBook(
+            new CurrencyPair("BTC", "BITSTAMP_USD"), "TEN_PERCENT");
 
     System.out.println("Order book: " + orderBook);
   }
@@ -52,10 +54,12 @@ public class BitcoiniumMarketDataDemo {
   private static void raw(Exchange exchange) throws IOException {
 
     // Interested in the public market data feed (no authentication)
-    BitcoiniumMarketDataServiceRaw bitcoiniumSpecificMarketDataService = (BitcoiniumMarketDataServiceRaw) exchange.getMarketDataService();
+    BitcoiniumMarketDataServiceRaw bitcoiniumSpecificMarketDataService =
+        (BitcoiniumMarketDataServiceRaw) exchange.getMarketDataService();
 
     // Get the latest ticker data showing BTC to USD
-    BitcoiniumTicker bitcoiniumTicker = bitcoiniumSpecificMarketDataService.getBitcoiniumTicker("BTC", "BITSTAMP_USD");
+    BitcoiniumTicker bitcoiniumTicker =
+        bitcoiniumSpecificMarketDataService.getBitcoiniumTicker("BTC", "BITSTAMP_USD");
 
     System.out.println("Last: " + bitcoiniumTicker.getLast());
     System.out.println("Bid: " + bitcoiniumTicker.getBid());
@@ -63,7 +67,9 @@ public class BitcoiniumMarketDataDemo {
     System.out.println("Volume: " + bitcoiniumTicker.getVolume());
 
     // Get the latest order book data for BTC/USD - MtGox
-    BitcoiniumOrderbook bitcoiniumOrderbook = bitcoiniumSpecificMarketDataService.getBitcoiniumOrderbook("BTC", "BITSTAMP_USD", "TEN_PERCENT");
+    BitcoiniumOrderbook bitcoiniumOrderbook =
+        bitcoiniumSpecificMarketDataService.getBitcoiniumOrderbook(
+            "BTC", "BITSTAMP_USD", "TEN_PERCENT");
 
     System.out.println("Order book: " + bitcoiniumOrderbook);
   }

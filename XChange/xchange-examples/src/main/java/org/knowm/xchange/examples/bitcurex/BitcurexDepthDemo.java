@@ -11,9 +11,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Order Book at Bitcurex
- */
+/** Demonstrate requesting Order Book at Bitcurex */
 public class BitcurexDepthDemo {
 
   public static void main(String[] args) throws IOException {
@@ -33,13 +31,17 @@ public class BitcurexDepthDemo {
     raw((BitcurexMarketDataServiceRaw) marketDataService, pair.counter.getCurrencyCode());
   }
 
-  private static void generic(MarketDataService marketDataService, CurrencyPair pair) throws IOException {
+  private static void generic(MarketDataService marketDataService, CurrencyPair pair)
+      throws IOException {
 
     // Get the latest order book data for BTC/CAD
     OrderBook orderBook = marketDataService.getOrderBook(pair);
 
     System.out.println(
-        "Current Order Book size for BTC / " + pair.counter.getCurrencyCode() + ": " + (orderBook.getAsks().size() + orderBook.getBids().size()));
+        "Current Order Book size for BTC / "
+            + pair.counter.getCurrencyCode()
+            + ": "
+            + (orderBook.getAsks().size() + orderBook.getBids().size()));
 
     System.out.println("First Ask: " + orderBook.getAsks().get(0).toString());
 
@@ -48,13 +50,17 @@ public class BitcurexDepthDemo {
     System.out.println(orderBook.toString());
   }
 
-  private static void raw(BitcurexMarketDataServiceRaw marketDataService, String counterSymbol) throws IOException {
+  private static void raw(BitcurexMarketDataServiceRaw marketDataService, String counterSymbol)
+      throws IOException {
 
     // Get the latest order book data for BTC/CAD
     BitcurexDepth bitcurexDepth = marketDataService.getBitcurexOrderBook(counterSymbol);
 
-    System.out
-        .println("Current Order Book size for BTC / " + counterSymbol + ": " + (bitcurexDepth.getAsks().size() + bitcurexDepth.getBids().size()));
+    System.out.println(
+        "Current Order Book size for BTC / "
+            + counterSymbol
+            + ": "
+            + (bitcurexDepth.getAsks().size() + bitcurexDepth.getBids().size()));
 
     System.out.println("First Ask: " + bitcurexDepth.getAsks().get(0)[0].toString());
 
@@ -62,5 +68,4 @@ public class BitcurexDepthDemo {
 
     System.out.println(bitcurexDepth.toString());
   }
-
 }

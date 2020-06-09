@@ -29,9 +29,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.*;
 
-/**
- * Various adapters for converting from BTCTrade DTOs to XChange DTOs.
- */
+/** Various adapters for converting from BTCTrade DTOs to XChange DTOs. */
 public final class BTCTradeAdapters {
 
   private static final Map<String, CurrencyPair> currencyPairs = getCurrencyPairs();
@@ -49,12 +47,8 @@ public final class BTCTradeAdapters {
     return currencyPairs;
   }
 
-  /**
-   * private Constructor
-   */
-  private BTCTradeAdapters() {
-
-  }
+  /** private Constructor */
+  private BTCTradeAdapters() {}
 
   public static Date adaptDatetime(String datetime) {
 
@@ -74,8 +68,15 @@ public final class BTCTradeAdapters {
 
   public static Ticker adaptTicker(BTCTradeTicker btcTradeTicker, CurrencyPair currencyPair) {
 
-    return new Ticker.Builder().currencyPair(currencyPair).high(btcTradeTicker.getHigh()).low(btcTradeTicker.getLow()).bid(btcTradeTicker.getBuy())
-        .ask(btcTradeTicker.getSell()).last(btcTradeTicker.getLast()).volume(btcTradeTicker.getVol()).build();
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .high(btcTradeTicker.getHigh())
+        .low(btcTradeTicker.getLow())
+        .bid(btcTradeTicker.getBuy())
+        .ask(btcTradeTicker.getSell())
+        .last(btcTradeTicker.getLast())
+        .volume(btcTradeTicker.getVol())
+        .build();
   }
 
   public static OrderBook adaptOrderBook(BTCTradeDepth btcTradeDepth, CurrencyPair currencyPair) {
@@ -86,7 +87,8 @@ public final class BTCTradeAdapters {
     return new OrderBook(null, asks, bids);
   }
 
-  private static List<LimitOrder> adaptLimitOrders(BigDecimal[][] orders, CurrencyPair currencyPair, OrderType type) {
+  private static List<LimitOrder> adaptLimitOrders(
+      BigDecimal[][] orders, CurrencyPair currencyPair, OrderType type) {
 
     List<LimitOrder> limitOrders = new ArrayList<>(orders.length);
     for (BigDecimal[] order : orders) {
@@ -95,7 +97,8 @@ public final class BTCTradeAdapters {
     return limitOrders;
   }
 
-  private static LimitOrder adaptLimitOrder(BigDecimal[] order, CurrencyPair currencyPair, OrderType type) {
+  private static LimitOrder adaptLimitOrder(
+      BigDecimal[] order, CurrencyPair currencyPair, OrderType type) {
 
     return new LimitOrder(type, order[1], currencyPair, null, null, order[0]);
   }
@@ -113,8 +116,13 @@ public final class BTCTradeAdapters {
 
   private static Trade adaptTrade(BTCTradeTrade btcTradeTrade, CurrencyPair currencyPair) {
 
-    return new Trade(adaptOrderType(btcTradeTrade.getType()), btcTradeTrade.getAmount(), currencyPair, btcTradeTrade.getPrice(),
-        new Date(btcTradeTrade.getDate() * 1000), String.valueOf(btcTradeTrade.getTid()));
+    return new Trade(
+        adaptOrderType(btcTradeTrade.getType()),
+        btcTradeTrade.getAmount(),
+        currencyPair,
+        btcTradeTrade.getPrice(),
+        new Date(btcTradeTrade.getDate() * 1000),
+        String.valueOf(btcTradeTrade.getTid()));
   }
 
   private static OrderType adaptOrderType(String type) {
@@ -141,16 +149,36 @@ public final class BTCTradeAdapters {
     checkException(balance);
 
     List<Balance> balances = new ArrayList<>(5);
-    balances.add(new Balance(Currency.BTC, nullSafeSum(balance.getBtcBalance(), balance.getBtcReserved()), zeroIfNull(balance.getBtcBalance()),
-        zeroIfNull(balance.getBtcReserved())));
-    balances.add(new Balance(Currency.LTC, nullSafeSum(balance.getLtcBalance(), balance.getLtcReserved()), zeroIfNull(balance.getLtcBalance()),
-        zeroIfNull(balance.getLtcReserved())));
-    balances.add(new Balance(Currency.DOGE, nullSafeSum(balance.getDogeBalance(), balance.getDogeReserved()), zeroIfNull(balance.getDogeBalance()),
-        zeroIfNull(balance.getDogeReserved())));
-    balances.add(new Balance(Currency.YBC, nullSafeSum(balance.getYbcBalance(), balance.getYbcReserved()), zeroIfNull(balance.getYbcBalance()),
-        zeroIfNull(balance.getYbcReserved())));
-    balances.add(new Balance(Currency.CNY, nullSafeSum(balance.getCnyBalance(), balance.getCnyReserved()), zeroIfNull(balance.getCnyBalance()),
-        zeroIfNull(balance.getCnyReserved())));
+    balances.add(
+        new Balance(
+            Currency.BTC,
+            nullSafeSum(balance.getBtcBalance(), balance.getBtcReserved()),
+            zeroIfNull(balance.getBtcBalance()),
+            zeroIfNull(balance.getBtcReserved())));
+    balances.add(
+        new Balance(
+            Currency.LTC,
+            nullSafeSum(balance.getLtcBalance(), balance.getLtcReserved()),
+            zeroIfNull(balance.getLtcBalance()),
+            zeroIfNull(balance.getLtcReserved())));
+    balances.add(
+        new Balance(
+            Currency.DOGE,
+            nullSafeSum(balance.getDogeBalance(), balance.getDogeReserved()),
+            zeroIfNull(balance.getDogeBalance()),
+            zeroIfNull(balance.getDogeReserved())));
+    balances.add(
+        new Balance(
+            Currency.YBC,
+            nullSafeSum(balance.getYbcBalance(), balance.getYbcReserved()),
+            zeroIfNull(balance.getYbcBalance()),
+            zeroIfNull(balance.getYbcReserved())));
+    balances.add(
+        new Balance(
+            Currency.CNY,
+            nullSafeSum(balance.getCnyBalance(), balance.getCnyReserved()),
+            zeroIfNull(balance.getCnyBalance()),
+            zeroIfNull(balance.getCnyReserved())));
     return new Wallet(balances);
   }
 
@@ -197,14 +225,21 @@ public final class BTCTradeAdapters {
       // Unknown currency pair
       limitOrder = null;
     } else {
-      limitOrder = new LimitOrder(adaptOrderType(order.getType()), order.getAmountOutstanding(), currencyPair, order.getId(),
-          adaptDatetime(order.getDatetime()), order.getPrice());
+      limitOrder =
+          new LimitOrder(
+              adaptOrderType(order.getType()),
+              order.getAmountOutstanding(),
+              currencyPair,
+              order.getId(),
+              adaptDatetime(order.getDatetime()),
+              order.getPrice());
     }
 
     return limitOrder;
   }
 
-  public static UserTrades adaptTrades(BTCTradeOrder[] btcTradeOrders, BTCTradeOrder[] btcTradeOrderDetails) {
+  public static UserTrades adaptTrades(
+      BTCTradeOrder[] btcTradeOrders, BTCTradeOrder[] btcTradeOrderDetails) {
 
     List<UserTrade> trades = new ArrayList<>();
     for (int i = 0; i < btcTradeOrders.length; i++) {
@@ -223,10 +258,20 @@ public final class BTCTradeAdapters {
     return new UserTrades(trades, TradeSortType.SortByTimestamp);
   }
 
-  private static UserTrade adaptTrade(BTCTradeOrder order, org.knowm.xchange.btctrade.dto.trade.BTCTradeTrade trade, CurrencyPair currencyPair) {
+  private static UserTrade adaptTrade(
+      BTCTradeOrder order,
+      org.knowm.xchange.btctrade.dto.trade.BTCTradeTrade trade,
+      CurrencyPair currencyPair) {
 
-    return new UserTrade(adaptOrderType(order.getType()), trade.getAmount(), currencyPair, trade.getPrice(), adaptDatetime(trade.getDatetime()),
-        trade.getTradeId(), order.getId(), null, (Currency) null);
+    return new UserTrade(
+        adaptOrderType(order.getType()),
+        trade.getAmount(),
+        currencyPair,
+        trade.getPrice(),
+        adaptDatetime(trade.getDatetime()),
+        trade.getTradeId(),
+        order.getId(),
+        null,
+        (Currency) null);
   }
-
 }

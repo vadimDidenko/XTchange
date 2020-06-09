@@ -9,10 +9,7 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing List of Tickers from BitcoinAverage
- */
-
+/** Data object representing List of Tickers from BitcoinAverage */
 public final class BitcoinAverageTickers {
 
   private Map<String, BitcoinAverageTicker> tickers = new HashMap<>();
@@ -23,7 +20,8 @@ public final class BitcoinAverageTickers {
 
     try {
       // Parse the timestamp into a Date object
-      this.timestamp = new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.getDefault()).parse(timestamp);
+      this.timestamp =
+          new SimpleDateFormat("EEE, dd MMM yyyy HH:mm:ss Z", Locale.getDefault()).parse(timestamp);
     } catch (Exception e) {
       this.timestamp = null;
     }
@@ -50,5 +48,4 @@ public final class BitcoinAverageTickers {
 
     return "BitcoinAverageTicker [tickers=" + tickers + ", timestamp=" + timestamp + "]";
   }
-
 }

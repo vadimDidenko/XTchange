@@ -8,75 +8,47 @@ import com.binance.api.client.domain.TimeInForce;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Trade order information.
- */
+/** Trade order information. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Order {
 
-  /**
-   * Symbol that the order was put on.
-   */
+  /** Symbol that the order was put on. */
   private String symbol;
 
-  /**
-   * Order id.
-   */
+  /** Order id. */
   private Long orderId;
 
-  /**
-   * Client order id.
-   */
+  /** Client order id. */
   private String clientOrderId;
 
-  /**
-   * Price.
-   */
+  /** Price. */
   private String price;
 
-  /**
-   * Original quantity.
-   */
+  /** Original quantity. */
   private String origQty;
 
-  /**
-   * Original quantity.
-   */
+  /** Original quantity. */
   private String executedQty;
 
-  /**
-   * Order status.
-   */
+  /** Order status. */
   private OrderStatus status;
 
-  /**
-   * Time in force to indicate how long will the order remain active.
-   */
+  /** Time in force to indicate how long will the order remain active. */
   private TimeInForce timeInForce;
 
-  /**
-   * Type of order.
-   */
+  /** Type of order. */
   private OrderType type;
 
-  /**
-   * Buy/Sell order side.
-   */
+  /** Buy/Sell order side. */
   private OrderSide side;
 
-  /**
-   * Used with stop orders.
-   */
+  /** Used with stop orders. */
   private String stopPrice;
 
-  /**
-   * Used with iceberg orders.
-   */
+  /** Used with iceberg orders. */
   private String icebergQty;
 
-  /**
-   * Order timestamp.
-   */
+  /** Order timestamp. */
   private long time;
 
   public String getSymbol() {

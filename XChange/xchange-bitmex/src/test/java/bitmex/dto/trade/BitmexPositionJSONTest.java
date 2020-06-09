@@ -23,6 +23,5 @@ public class BitmexPositionJSONTest {
     assertThat(position.getCurrency()).isEqualTo("string");
     assertThat(position.getUnderlying()).isEqualTo("string");
     assertThat(position.getQuoteCurrency()).isEqualTo("string");
-
   }
 }

@@ -15,14 +15,14 @@ import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * <p>
  * Implementation of the generic market data service for Bitcoinium
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class BitcoiniumMarketDataService extends BitcoiniumMarketDataServiceRaw implements MarketDataService {
+public class BitcoiniumMarketDataService extends BitcoiniumMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -38,7 +38,9 @@ public class BitcoiniumMarketDataService extends BitcoiniumMarketDataServiceRaw 
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
     // Request data
-    BitcoiniumTicker bitcoiniumTicker = getBitcoiniumTicker(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
+    BitcoiniumTicker bitcoiniumTicker =
+        getBitcoiniumTicker(
+            currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
 
     // Adapt to XChange DTOs
     return BitcoiniumAdapters.adaptTicker(bitcoiniumTicker, currencyPair);
@@ -61,8 +63,11 @@ public class BitcoiniumMarketDataService extends BitcoiniumMarketDataServiceRaw 
     }
 
     // Request data
-    BitcoiniumOrderbook bitcoiniumOrderbook = getBitcoiniumOrderbook(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode(),
-        priceWindow);
+    BitcoiniumOrderbook bitcoiniumOrderbook =
+        getBitcoiniumOrderbook(
+            currencyPair.base.getCurrencyCode(),
+            currencyPair.counter.getCurrencyCode(),
+            priceWindow);
 
     // Adapt to XChange DTOs
     return BitcoiniumAdapters.adaptOrderbook(bitcoiniumOrderbook, currencyPair);
@@ -73,5 +78,4 @@ public class BitcoiniumMarketDataService extends BitcoiniumMarketDataServiceRaw 
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

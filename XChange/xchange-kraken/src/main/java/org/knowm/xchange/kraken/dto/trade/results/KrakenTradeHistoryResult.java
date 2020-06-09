@@ -16,7 +16,8 @@ public class KrakenTradeHistoryResult extends KrakenResult<KrakenTradeHistory> {
    * @param result
    * @param error
    */
-  public KrakenTradeHistoryResult(@JsonProperty("result") KrakenTradeHistory result, @JsonProperty("error") String[] error) {
+  public KrakenTradeHistoryResult(
+      @JsonProperty("result") KrakenTradeHistory result, @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
@@ -32,7 +33,8 @@ public class KrakenTradeHistoryResult extends KrakenResult<KrakenTradeHistory> {
      * @param orders
      * @param count
      */
-    public KrakenTradeHistory(@JsonProperty("trades") Map<String, KrakenTrade> orders, @JsonProperty("count") int count) {
+    public KrakenTradeHistory(
+        @JsonProperty("trades") Map<String, KrakenTrade> orders, @JsonProperty("count") int count) {
 
       this.orders = orders;
       this.count = count;

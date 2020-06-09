@@ -6,36 +6,46 @@ import java.math.BigDecimal;
 import java.util.HashMap;
 import java.util.Map;
 
-
 public final class BitmexWalletTransaction {
 
   @JSONField(name = "transactID")
   private String transactID;
+
   @JSONField(name = "account")
   private Integer account;
+
   @JSONField(name = "currency")
   private String currency;
+
   @JSONField(name = "transactType")
   private String transactType;
+
   @JSONField(name = "amount")
   private BigDecimal amount;
+
   @JSONField(name = "fee")
   private BigDecimal fee;
+
   @JSONField(name = "transactStatus")
   private String transactStatus;
+
   @JSONField(name = "address")
   private String address;
+
   @JSONField(name = "tx")
   private String tx;
+
   @JSONField(name = "text")
   private String text;
+
   @JSONField(name = "transactTime")
   private String transactTime;
+
   @JSONField(name = "timestamp")
   private String timestamp;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
-
 
   public String getTransactID() {
     return transactID;

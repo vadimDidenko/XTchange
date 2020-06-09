@@ -26,5 +26,4 @@ public class BitmexTradeDemo {
     // tradesInfo(tradeService);
     // positionsInfo(tradeService);
   }
-
 }

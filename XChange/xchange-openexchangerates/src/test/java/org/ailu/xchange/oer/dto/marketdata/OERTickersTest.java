@@ -10,9 +10,7 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author timmolter
- */
+/** @author timmolter */
 public class OERTickersTest {
 
   @Test

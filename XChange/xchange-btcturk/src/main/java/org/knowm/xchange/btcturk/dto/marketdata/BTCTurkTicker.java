@@ -6,9 +6,7 @@ import org.knowm.xchange.btcturk.BTCTurk;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by semihunaldi on 26/11/2017
- */
+/** Created by semihunaldi on 26/11/2017 */
 public final class BTCTurkTicker {
 
   private BTCTurk.Pair pair;
@@ -22,11 +20,17 @@ public final class BTCTurkTicker {
   private final BigDecimal open;
   private final BigDecimal average;
 
-  public BTCTurkTicker(@JsonProperty("pair") BTCTurk.Pair pair, @JsonProperty("high") BigDecimal high,
-      @JsonProperty("last") BigDecimal last, @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("bid") BigDecimal bid, @JsonProperty("volume") BigDecimal volume,
-      @JsonProperty("low") BigDecimal low, @JsonProperty("ask") BigDecimal ask,
-      @JsonProperty("open") BigDecimal open, @JsonProperty("average") BigDecimal average) {
+  public BTCTurkTicker(
+      @JsonProperty("pair") BTCTurk.Pair pair,
+      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("timestamp") long timestamp,
+      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("open") BigDecimal open,
+      @JsonProperty("average") BigDecimal average) {
     this.pair = pair;
     this.high = high;
     this.last = last;
@@ -81,6 +85,27 @@ public final class BTCTurkTicker {
 
   @Override
   public String toString() {
-    return "BTCTurkTicker {" + "pair=" + pair + ", high=" + high + ", last=" + last + ", timestamp=" + timestamp + ", bid=" + bid + ", volume=" + volume + ", low=" + low + ", ask=" + ask + ", open=" + open + ", average=" + average + '}';
+    return "BTCTurkTicker {"
+        + "pair="
+        + pair
+        + ", high="
+        + high
+        + ", last="
+        + last
+        + ", timestamp="
+        + timestamp
+        + ", bid="
+        + bid
+        + ", volume="
+        + volume
+        + ", low="
+        + low
+        + ", ask="
+        + ask
+        + ", open="
+        + open
+        + ", average="
+        + average
+        + '}';
   }
 }

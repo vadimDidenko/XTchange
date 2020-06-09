@@ -7,187 +7,276 @@ import java.math.BigDecimal;
 public class BitmexPosition {
   @JSONField(name = "account")
   private Integer account;
+
   @JSONField(name = "symbol")
   private String symbol;
+
   @JSONField(name = "currency")
   private String currency;
+
   @JSONField(name = "underlying")
   private String underlying;
+
   @JSONField(name = "quoteCurrency")
   private String quoteCurrency;
+
   @JSONField(name = "commission")
   private BigDecimal commission;
+
   @JSONField(name = "initMarginReq")
   private BigDecimal initMarginReq;
+
   @JSONField(name = "maintMarginReq")
   private BigDecimal maintMarginReq;
+
   @JSONField(name = "riskLimit")
   private BigDecimal riskLimit;
+
   @JSONField(name = "leverage")
   private BigDecimal leverage;
+
   @JSONField(name = "crossMargin")
   private Boolean crossMargin;
+
   @JSONField(name = "deleveragePercentile")
   private BigDecimal deleveragePercentile;
+
   @JSONField(name = "rebalancedPnl")
   private BigDecimal rebalancedPnl;
+
   @JSONField(name = "prevRealisedPnl")
   private BigDecimal prevRealisedPnl;
+
   @JSONField(name = "prevUnrealisedPnl")
   private BigDecimal prevUnrealisedPnl;
+
   @JSONField(name = "prevClosePrice")
   private BigDecimal prevClosePrice;
+
   @JSONField(name = "openingTimestamp")
   private String openingTimestamp;
+
   @JSONField(name = "openingQty")
   private BigDecimal openingQty;
+
   @JSONField(name = "openingCost")
   private BigDecimal openingCost;
+
   @JSONField(name = "openingComm")
   private BigDecimal openingComm;
+
   @JSONField(name = "openOrderBuyQty")
   private BigDecimal openOrderBuyQty;
+
   @JSONField(name = "openOrderBuyCost")
   private BigDecimal openOrderBuyCost;
+
   @JSONField(name = "openOrderBuyPremium")
   private BigDecimal openOrderBuyPremium;
+
   @JSONField(name = "openOrderSellQty")
   private BigDecimal openOrderSellQty;
+
   @JSONField(name = "openOrderSellCost")
   private BigDecimal openOrderSellCost;
+
   @JSONField(name = "openOrderSellPremium")
   private BigDecimal openOrderSellPremium;
+
   @JSONField(name = "execBuyQty")
   private BigDecimal execBuyQty;
+
   @JSONField(name = "execBuyCost")
   private BigDecimal execBuyCost;
+
   @JSONField(name = "execSellQty")
   private BigDecimal execSellQty;
+
   @JSONField(name = "execSellCost")
   private BigDecimal execSellCost;
+
   @JSONField(name = "execQty")
   private BigDecimal execQty;
+
   @JSONField(name = "execCost")
   private BigDecimal execCost;
+
   @JSONField(name = "execComm")
   private BigDecimal execComm;
+
   @JSONField(name = "currentTimestamp")
   private String currentTimestamp;
+
   @JSONField(name = "currentQty")
   private BigDecimal currentQty;
+
   @JSONField(name = "currentCost")
   private BigDecimal currentCost;
+
   @JSONField(name = "currentComm")
   private BigDecimal currentComm;
+
   @JSONField(name = "realisedCost")
   private BigDecimal realisedCost;
+
   @JSONField(name = "unrealisedCost")
   private BigDecimal unrealisedCost;
+
   @JSONField(name = "grossOpenCost")
   private BigDecimal grossOpenCost;
+
   @JSONField(name = "grossOpenPremium")
   private BigDecimal grossOpenPremium;
+
   @JSONField(name = "grossExecCost")
   private BigDecimal grossExecCost;
+
   @JSONField(name = "isOpen")
   private Boolean isOpen;
+
   @JSONField(name = "markPrice")
   private BigDecimal markPrice;
+
   @JSONField(name = "markValue")
   private BigDecimal markValue;
+
   @JSONField(name = "riskValue")
   private BigDecimal riskValue;
+
   @JSONField(name = "homeNotional")
   private BigDecimal homeNotional;
+
   @JSONField(name = "foreignNotional")
   private BigDecimal foreignNotional;
+
   @JSONField(name = "posState")
   private String posState;
+
   @JSONField(name = "posCost")
   private BigDecimal posCost;
+
   @JSONField(name = "posCost2")
   private BigDecimal posCost2;
+
   @JSONField(name = "posCross")
   private BigDecimal posCross;
+
   @JSONField(name = "posInit")
   private BigDecimal posInit;
+
   @JSONField(name = "posComm")
   private BigDecimal posComm;
+
   @JSONField(name = "posLoss")
   private BigDecimal posLoss;
+
   @JSONField(name = "posMargin")
   private BigDecimal posMargin;
+
   @JSONField(name = "posMaint")
   private BigDecimal posMaint;
+
   @JSONField(name = "posAllowance")
   private BigDecimal posAllowance;
+
   @JSONField(name = "taxableMargin")
   private BigDecimal taxableMargin;
+
   @JSONField(name = "initMargin")
   private BigDecimal initMargin;
+
   @JSONField(name = "maintMargin")
   private BigDecimal maintMargin;
+
   @JSONField(name = "sessionMargin")
   private BigDecimal sessionMargin;
+
   @JSONField(name = "targetExcessMargin")
   private BigDecimal targetExcessMargin;
+
   @JSONField(name = "varMargin")
   private BigDecimal varMargin;
+
   @JSONField(name = "realisedGrossPnl")
   private BigDecimal realisedGrossPnl;
+
   @JSONField(name = "realisedTax")
   private BigDecimal realisedTax;
+
   @JSONField(name = "realisedPnl")
   private BigDecimal realisedPnl;
+
   @JSONField(name = "unrealisedGrossPnl")
   private BigDecimal unrealisedGrossPnl;
+
   @JSONField(name = "longBankrupt")
   private BigDecimal longBankrupt;
+
   @JSONField(name = "shortBankrupt")
   private BigDecimal shortBankrupt;
+
   @JSONField(name = "taxBase")
   private BigDecimal taxBase;
+
   @JSONField(name = "indicativeTaxRate")
   private BigDecimal indicativeTaxRate;
+
   @JSONField(name = "indicativeTax")
   private BigDecimal indicativeTax;
+
   @JSONField(name = "unrealisedTax")
   private BigDecimal unrealisedTax;
+
   @JSONField(name = "unrealisedPnl")
   private BigDecimal unrealisedPnl;
+
   @JSONField(name = "unrealisedPnlPcnt")
   private BigDecimal unrealisedPnlPcnt;
+
   @JSONField(name = "unrealisedRoePcnt")
   private BigDecimal unrealisedRoePcnt;
+
   @JSONField(name = "simpleQty")
   private BigDecimal simpleQty;
+
   @JSONField(name = "simpleCost")
   private BigDecimal simpleCost;
+
   @JSONField(name = "simpleValue")
   private BigDecimal simpleValue;
+
   @JSONField(name = "simplePnl")
   private BigDecimal simplePnl;
+
   @JSONField(name = "simplePnlPcnt")
   private BigDecimal simplePnlPcnt;
+
   @JSONField(name = "avgCostPrice")
   private BigDecimal avgCostPrice;
+
   @JSONField(name = "avgEntryPrice")
   private BigDecimal avgEntryPrice;
+
   @JSONField(name = "breakEvenPrice")
   private BigDecimal breakEvenPrice;
+
   @JSONField(name = "marginCallPrice")
   private BigDecimal marginCallPrice;
+
   @JSONField(name = "liquidationPrice")
   private BigDecimal liquidationPrice;
+
   @JSONField(name = "bankruptPrice")
   private BigDecimal bankruptPrice;
+
   @JSONField(name = "timestamp")
   private String timestamp;
+
   @JSONField(name = "lastPrice")
   private BigDecimal lastPrice;
+
   @JSONField(name = "lastValue")
   private BigDecimal lastValue;
-
 
   public Integer getAccount() {
     return account;

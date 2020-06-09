@@ -6,9 +6,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 
-/**
- * Data object representing Volume from Cryptonit
- */
+/** Data object representing Volume from Cryptonit */
 public final class CryptonitVolume {
 
   private final Map<String, BigDecimal> volumes = new HashMap<>();
@@ -28,5 +26,4 @@ public final class CryptonitVolume {
 
     this.volumes.put(name, volume);
   }
-
 }

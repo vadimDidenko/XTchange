@@ -22,7 +22,10 @@ public final class QuadrigaCxBalance {
 
   private final String error;
 
-  public QuadrigaCxBalance(@JsonProperty("fee") BigDecimal fee, @JsonProperty("error") String error, @JsonProperty("fees") Object fees) {
+  public QuadrigaCxBalance(
+      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("error") String error,
+      @JsonProperty("fees") Object fees) {
 
     this.fee = fee;
     this.error = error;
@@ -47,8 +50,7 @@ public final class QuadrigaCxBalance {
           break;
       }
 
-      if (!currencies.contains(currency))
-        currencies.add(currency);
+      if (!currencies.contains(currency)) currencies.add(currency);
     }
   }
 
@@ -80,7 +82,18 @@ public final class QuadrigaCxBalance {
 
   @Override
   public String toString() {
-    return "QuadrigaCxBalance{" + "currencyReserved=" + currencyReserved + ", currencyAvailable=" + currencyAvailable + ", currencyBalance="
-        + currencyBalance + ", fee=" + fee + ", error='" + error + '\'' + '}';
+    return "QuadrigaCxBalance{"
+        + "currencyReserved="
+        + currencyReserved
+        + ", currencyAvailable="
+        + currencyAvailable
+        + ", currencyBalance="
+        + currencyBalance
+        + ", fee="
+        + fee
+        + ", error='"
+        + error
+        + '\''
+        + '}';
   }
 }

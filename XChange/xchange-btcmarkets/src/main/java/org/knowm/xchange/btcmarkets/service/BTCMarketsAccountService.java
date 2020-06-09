@@ -16,10 +16,9 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author Matija Mazi
- */
-public class BTCMarketsAccountService extends BTCMarketsAccountServiceRaw implements AccountService {
+/** @author Matija Mazi */
+public class BTCMarketsAccountService extends BTCMarketsAccountServiceRaw
+    implements AccountService {
 
   public BTCMarketsAccountService(Exchange exchange) {
     super(exchange);
@@ -27,11 +26,14 @@ public class BTCMarketsAccountService extends BTCMarketsAccountServiceRaw implem
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), BTCMarketsAdapters.adaptWallet(getBTCMarketsBalance()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        BTCMarketsAdapters.adaptWallet(getBTCMarketsBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 
@@ -39,7 +41,10 @@ public class BTCMarketsAccountService extends BTCMarketsAccountServiceRaw implem
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultWithdrawFundsParams = (DefaultWithdrawFundsParams) params;
-      return withdrawCrypto(defaultWithdrawFundsParams.address, defaultWithdrawFundsParams.amount, defaultWithdrawFundsParams.currency);
+      return withdrawCrypto(
+          defaultWithdrawFundsParams.address,
+          defaultWithdrawFundsParams.amount,
+          defaultWithdrawFundsParams.currency);
     }
     throw new IllegalStateException("Cannot process " + params);
   }
@@ -55,8 +60,7 @@ public class BTCMarketsAccountService extends BTCMarketsAccountServiceRaw implem
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

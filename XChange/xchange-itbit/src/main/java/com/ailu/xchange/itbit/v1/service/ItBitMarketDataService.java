@@ -51,5 +51,4 @@ public class ItBitMarketDataService extends ItBitMarketDataServiceRaw implements
 
     return ItBitAdapters.adaptTrades(getItBitTrades(currencyPair, args), currencyPair);
   }
-
 }

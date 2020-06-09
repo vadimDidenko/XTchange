@@ -18,11 +18,14 @@ public class PoloniexTradableBalanceTest {
   @Test
   public void testUnmarshal() throws IOException {
     // Read in the JSON from the example resources
-    InputStream is = PoloniexAccountBalanceTest.class.getResourceAsStream("/trade/trade-tradable-balances.json");
+    InputStream is =
+        PoloniexAccountBalanceTest.class.getResourceAsStream("/trade/trade-tradable-balances.json");
     ObjectMapper mapper = new ObjectMapper();
     JavaType stringType = mapper.getTypeFactory().constructType(String.class, String.class);
-    MapLikeType mapType = mapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, BigDecimal.class);
-    MapLikeType mapType2 = mapper.getTypeFactory().constructMapLikeType(HashMap.class, stringType, mapType);
+    MapLikeType mapType =
+        mapper.getTypeFactory().constructMapLikeType(HashMap.class, String.class, BigDecimal.class);
+    MapLikeType mapType2 =
+        mapper.getTypeFactory().constructMapLikeType(HashMap.class, stringType, mapType);
     Map<String, Map<String, BigDecimal>> balances = mapper.readValue(is, mapType2);
 
     assertThat(balances.size()).isEqualTo(3);
@@ -40,6 +43,5 @@ public class PoloniexTradableBalanceTest {
     assertThat(btc_xmr.size()).isEqualTo(2);
     assertThat(btc_xmr.get("BTC")).isEqualTo(new BigDecimal("8.50274777"));
     assertThat(btc_xmr.get("XMR")).isEqualTo(new BigDecimal("3696.84685650"));
-
   }
 }

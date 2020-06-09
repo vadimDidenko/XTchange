@@ -25,18 +25,15 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
 /**
- * <p>
  * XChange service to provide the following to {@link org.knowm.xchange.Exchange}:
- * </p>
+ *
  * <ul>
- * <li>ANX specific methods to handle account-related operations</li>
+ *   <li>ANX specific methods to handle account-related operations
  * </ul>
  */
 public class ANXAccountService extends ANXAccountServiceRaw implements AccountService {
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   public ANXAccountService(BaseExchange baseExchange) {
 
     super(baseExchange);
@@ -49,10 +46,12 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     if (amount.scale() > ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE) {
-      throw new IllegalArgumentException("Amount scale exceed " + ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE);
+      throw new IllegalArgumentException(
+          "Amount scale exceed " + ANXUtils.VOLUME_AND_AMOUNT_MAX_SCALE);
     }
 
     if (address == null) {
@@ -62,10 +61,11 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
     ANXWithdrawalResponseWrapper wrapper = anxWithdrawFunds(currency.toString(), amount, address);
     ANXWithdrawalResponse response = wrapper.getAnxWithdrawalResponse();
 
-    //eg: {  "result": "error",  "data": {    "message": "min size, params, or available funds problem."  }}
+    // eg: {  "result": "error",  "data": {    "message": "min size, params, or available funds
+    // problem."  }}
     if (wrapper.getResult().equals("error")) {
       throw new IllegalStateException("Failed to withdraw funds: " + response.getMessage());
-    } else if (wrapper.getError() != null) {//does this ever happen?
+    } else if (wrapper.getError() != null) { // does this ever happen?
       throw new IllegalStateException("Failed to withdraw funds: " + wrapper.getError());
     } else {
       return response.getTransactionId();
@@ -101,24 +101,24 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
     List<ANXWalletHistoryEntry> walletHistory = getWalletHistory(params);
     for (ANXWalletHistoryEntry entry : walletHistory) {
 
-      if (!entry.getType().equalsIgnoreCase("deposit") && !entry.getType().equalsIgnoreCase("withdraw"))
-        continue;
+      if (!entry.getType().equalsIgnoreCase("deposit")
+          && !entry.getType().equalsIgnoreCase("withdraw")) continue;
 
       results.add(ANXAdapters.adaptFundingRecord(entry));
     }
     return results;
   }
 
-  public static class AnxFundingHistoryParams implements TradeHistoryParamCurrency, TradeHistoryParamPaging, TradeHistoryParamsTimeSpan {
+  public static class AnxFundingHistoryParams
+      implements TradeHistoryParamCurrency, TradeHistoryParamPaging, TradeHistoryParamsTimeSpan {
 
     private Currency currency;
     private Integer pageNumber;
-    private Integer pageLength;//not supported
+    private Integer pageLength; // not supported
     private Date startTime;
     private Date endTime;
 
-    public AnxFundingHistoryParams() {
-    }
+    public AnxFundingHistoryParams() {}
 
     public AnxFundingHistoryParams(Currency currency, Date startTime, Date endTime) {
       this.currency = currency;
@@ -138,7 +138,7 @@ public class ANXAccountService extends ANXAccountServiceRaw implements AccountSe
 
     @Override
     public void setPageLength(Integer pageLength) {
-      //not supported, failed quietly
+      // not supported, failed quietly
     }
 
     @Override

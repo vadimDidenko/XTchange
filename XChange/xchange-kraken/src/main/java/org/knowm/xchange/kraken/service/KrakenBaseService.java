@@ -36,8 +36,13 @@ public class KrakenBaseService extends BaseExchangeService implements BaseServic
 
     super(exchange);
 
-    kraken = RestProxyFactory.createProxy(KrakenAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
-    signatureCreator = KrakenDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    kraken =
+        RestProxyFactory.createProxy(
+            KrakenAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
+    signatureCreator =
+        KrakenDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 
   public KrakenServerTime getServerTime() throws IOException {
@@ -72,7 +77,7 @@ public class KrakenBaseService extends BaseExchangeService implements BaseServic
       } else if ("EOrder:Insufficient funds".equals(error)) {
         throw new FundsExceededException(error);
       }
-      if("EAPI:Rate limit exceeded".equals(error)) {
+      if ("EAPI:Rate limit exceeded".equals(error)) {
         throw new RateLimitExceededException(error);
       }
 
@@ -104,7 +109,9 @@ public class KrakenBaseService extends BaseExchangeService implements BaseServic
     if (assets != null && assets.length > 0) {
       boolean started = false;
       for (Currency asset : assets) {
-        commaDelimitedAssets.append((started) ? "," : "").append(KrakenUtils.getKrakenCurrencyCode(asset));
+        commaDelimitedAssets
+            .append((started) ? "," : "")
+            .append(KrakenUtils.getKrakenCurrencyCode(asset));
         started = true;
       }
 
@@ -153,5 +160,4 @@ public class KrakenBaseService extends BaseExchangeService implements BaseServic
     }
     return delimitedSetString;
   }
-
 }

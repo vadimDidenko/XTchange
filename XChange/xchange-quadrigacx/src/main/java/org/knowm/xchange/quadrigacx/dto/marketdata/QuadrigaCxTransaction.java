@@ -21,8 +21,12 @@ public class QuadrigaCxTransaction {
    * @param amount BTC amount
    * @param side "buy"/"sell" for the type of order the trade has completed
    */
-  public QuadrigaCxTransaction(@JsonProperty("date") long date, @JsonProperty("tid") int tid, @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount, @JsonProperty("side") String side) {
+  public QuadrigaCxTransaction(
+      @JsonProperty("date") long date,
+      @JsonProperty("tid") int tid,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("side") String side) {
 
     this.date = date;
     this.tid = tid;
@@ -75,7 +79,16 @@ public class QuadrigaCxTransaction {
   @Override
   public String toString() {
 
-    return "Transaction [date=" + date + ", tid=" + tid + ", price=" + price + ", amount=" + amount + ", side=" + side + "]";
+    return "Transaction [date="
+        + date
+        + ", tid="
+        + tid
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + ", side="
+        + side
+        + "]";
   }
-
 }

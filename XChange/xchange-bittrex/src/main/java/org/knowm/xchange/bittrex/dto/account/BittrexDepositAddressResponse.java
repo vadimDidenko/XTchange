@@ -19,12 +19,14 @@ public class BittrexDepositAddressResponse {
 
   @JsonProperty("success")
   private Boolean success;
+
   @JsonProperty("message")
   private String message;
+
   @JsonProperty("result")
   private BittrexDepositAddress result;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -73,5 +75,4 @@ public class BittrexDepositAddressResponse {
 
     this.additionalProperties.put(name, value);
   }
-
 }

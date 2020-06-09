@@ -12,8 +12,15 @@ public class RippleLimitOrder extends LimitOrder {
   private final String baseCounterparty;
   private final String counterCounterparty;
 
-  public RippleLimitOrder(final OrderType type, final BigDecimal originalAmount, final CurrencyPair currencyPair, final String id,
-      final Date timestamp, final BigDecimal limitPrice, final String baseCounterparty, final String counterCounterparty) {
+  public RippleLimitOrder(
+      final OrderType type,
+      final BigDecimal originalAmount,
+      final CurrencyPair currencyPair,
+      final String id,
+      final Date timestamp,
+      final BigDecimal limitPrice,
+      final String baseCounterparty,
+      final String counterCounterparty) {
     super(type, originalAmount, currencyPair, id, timestamp, limitPrice);
     this.baseCounterparty = baseCounterparty;
     this.counterCounterparty = counterCounterparty;
@@ -38,8 +45,14 @@ public class RippleLimitOrder extends LimitOrder {
 
     public static Builder from(final Order order) {
       final Builder builder = new Builder(order.getType(), order.getCurrencyPair());
-      builder.id(order.getId()).orderType(order.getType()).originalAmount(order.getOriginalAmount()).currencyPair(order.getCurrencyPair())
-          .timestamp(order.getTimestamp()).id(order.getId()).flags(order.getOrderFlags());
+      builder
+          .id(order.getId())
+          .orderType(order.getType())
+          .originalAmount(order.getOriginalAmount())
+          .currencyPair(order.getCurrencyPair())
+          .timestamp(order.getTimestamp())
+          .id(order.getId())
+          .flags(order.getOrderFlags());
 
       if (order instanceof LimitOrder) {
         final LimitOrder limitOrder = (LimitOrder) order;
@@ -48,7 +61,9 @@ public class RippleLimitOrder extends LimitOrder {
 
       if (order instanceof RippleLimitOrder) {
         final RippleLimitOrder ripple = (RippleLimitOrder) order;
-        builder.baseCounterparty(ripple.getBaseCounterparty()).counterCounterparty(ripple.getCounterCounterparty());
+        builder
+            .baseCounterparty(ripple.getBaseCounterparty())
+            .counterCounterparty(ripple.getCounterCounterparty());
       }
 
       return builder;
@@ -65,8 +80,16 @@ public class RippleLimitOrder extends LimitOrder {
     }
 
     public RippleLimitOrder build() {
-      final RippleLimitOrder order = new RippleLimitOrder(orderType, originalAmount, currencyPair, id, timestamp, limitPrice, baseCounterparty,
-          counterCounterparty);
+      final RippleLimitOrder order =
+          new RippleLimitOrder(
+              orderType,
+              originalAmount,
+              currencyPair,
+              id,
+              timestamp,
+              limitPrice,
+              baseCounterparty,
+              counterCounterparty);
       order.setOrderFlags(flags);
       return order;
     }

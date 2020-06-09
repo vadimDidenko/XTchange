@@ -16,15 +16,16 @@ public class BitmexTickerIntegration {
   @Test
   public void fetchTickerTest() throws IOException {
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(BitmexExchange.class.getName());
-    BitmexMarketDataServiceRaw service = (BitmexMarketDataServiceRaw) exchange.getMarketDataService();
+    BitmexMarketDataServiceRaw service =
+        (BitmexMarketDataServiceRaw) exchange.getMarketDataService();
 
     List<BitmexTicker> tickers = service.getTicker(Currency.XBT.getSymbol());
-//    BitmexTicker ticker = tickers.get(0);
-//    assertThat(ticker.getAskPrice()).isGreaterThan(BigDecimal.ZERO);
-//    assertThat(ticker.getAskPrice()).isGreaterThan(BigDecimal.ZERO);
-//    assertThat(ticker.getReferenceSymbol()).isEqualTo("");
-//    assertThat(ticker.getSymbol()).isEqualTo("");
-//    assertThat(ticker.getRootSymbol()).isEqualTo("");
-//    assertThat(ticker.getUnderlyingSymbol()).isEqualTo("");
+    //    BitmexTicker ticker = tickers.get(0);
+    //    assertThat(ticker.getAskPrice()).isGreaterThan(BigDecimal.ZERO);
+    //    assertThat(ticker.getAskPrice()).isGreaterThan(BigDecimal.ZERO);
+    //    assertThat(ticker.getReferenceSymbol()).isEqualTo("");
+    //    assertThat(ticker.getSymbol()).isEqualTo("");
+    //    assertThat(ticker.getRootSymbol()).isEqualTo("");
+    //    assertThat(ticker.getUnderlyingSymbol()).isEqualTo("");
   }
 }

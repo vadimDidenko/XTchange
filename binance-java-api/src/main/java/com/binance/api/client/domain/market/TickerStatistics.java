@@ -4,95 +4,59 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * 24 hour price change statistics for a ticker.
- */
+/** 24 hour price change statistics for a ticker. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class TickerStatistics {
 
-  /**
-   * Ticker symbol.
-   */
+  /** Ticker symbol. */
   private String symbol;
 
-  /**
-   * Price change during the last 24 hours.
-   */
+  /** Price change during the last 24 hours. */
   private String priceChange;
 
-  /**
-   * Price change, in percentage, during the last 24 hours.
-   */
+  /** Price change, in percentage, during the last 24 hours. */
   private String priceChangePercent;
 
-  /**
-   * Weighted average price.
-   */
+  /** Weighted average price. */
   private String weightedAvgPrice;
 
-  /**
-   * Previous close price.
-   */
+  /** Previous close price. */
   private String prevClosePrice;
 
-  /**
-   * Last price.
-   */
+  /** Last price. */
   private String lastPrice;
 
-  /**
-   * Bid price.
-   */
+  /** Bid price. */
   private String bidPrice;
 
-  /**
-   * Ask price.
-   */
+  /** Ask price. */
   private String askPrice;
 
-  /**
-   * Open price 24 hours ago.
-   */
+  /** Open price 24 hours ago. */
   private String openPrice;
 
-  /**
-   * Highest price during the past 24 hours.
-   */
+  /** Highest price during the past 24 hours. */
   private String highPrice;
 
-  /**
-   * Lowest price during the past 24 hours.
-   */
+  /** Lowest price during the past 24 hours. */
   private String lowPrice;
 
-  /**
-   * Total volume during the past 24 hours.
-   */
+  /** Total volume during the past 24 hours. */
   private String volume;
 
-  /**
-   * Open time.
-   */
+  /** Open time. */
   private long openTime;
 
-  /**
-   * Close time.
-   */
+  /** Close time. */
   private long closeTime;
 
-  /**
-   * First trade id.
-   */
+  /** First trade id. */
   private long firstId;
 
-  /**
-   * Last trade id.
-   */
+  /** Last trade id. */
   private long lastId;
 
-  /**
-   * Total number of trades during the last 24 hours.
-   */
+  /** Total number of trades during the last 24 hours. */
   private long count;
 
   public String getPriceChange() {
@@ -222,13 +186,13 @@ public class TickerStatistics {
   public void setCount(long count) {
     this.count = count;
   }
-  
+
   public String getSymbol() {
-	return symbol;
+    return symbol;
   }
 
   public void setSymbol(String symbol) {
-	this.symbol = symbol;
+    this.symbol = symbol;
   }
 
   @Override

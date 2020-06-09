@@ -8,18 +8,19 @@ import org.knowm.xchange.coinbase.dto.marketdata.CoinbaseMoney;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseAccountChanges extends CoinbasePagedResult {
 
   private final CoinbaseUser currentUser;
   private final CoinbaseMoney balance;
   private final List<CoinbaseAccountChange> accountChanges;
 
-  private CoinbaseAccountChanges(@JsonProperty("current_user") final CoinbaseUserInfo currentUser,
-      @JsonProperty("balance") final CoinbaseMoney balance, @JsonProperty("account_changes") final List<CoinbaseAccountChange> accountChanges,
-      @JsonProperty("total_count") final int totalCount, @JsonProperty("num_pages") final int numPages,
+  private CoinbaseAccountChanges(
+      @JsonProperty("current_user") final CoinbaseUserInfo currentUser,
+      @JsonProperty("balance") final CoinbaseMoney balance,
+      @JsonProperty("account_changes") final List<CoinbaseAccountChange> accountChanges,
+      @JsonProperty("total_count") final int totalCount,
+      @JsonProperty("num_pages") final int numPages,
       @JsonProperty("current_page") final int currentPage) {
 
     super(totalCount, numPages, currentPage);
@@ -46,7 +47,12 @@ public class CoinbaseAccountChanges extends CoinbasePagedResult {
   @Override
   public String toString() {
 
-    return "CoinbaseAccountChanges [currentUser=" + currentUser + ", balance=" + balance + ", accountChanges=" + accountChanges + "]";
+    return "CoinbaseAccountChanges [currentUser="
+        + currentUser
+        + ", balance="
+        + balance
+        + ", accountChanges="
+        + accountChanges
+        + "]";
   }
-
 }

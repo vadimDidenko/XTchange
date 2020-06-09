@@ -44,5 +44,4 @@ public class BTCCMarketDataService extends BTCCBaseService<BTCC> implements Mark
     Map<String, BTCCTicker> response = btcc.getMarketTicker(symbol);
     return response.get("ticker");
   }
-
 }

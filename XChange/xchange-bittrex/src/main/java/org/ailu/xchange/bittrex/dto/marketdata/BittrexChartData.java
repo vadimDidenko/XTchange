@@ -63,7 +63,20 @@ public class BittrexChartData {
 
   @Override
   public String toString() {
-    return "BittrexChartData [timeStamp=" + timeStamp + ", open=" + open + ", close=" + close + ", high=" + high +
-        ", low=" + low + ", volume=" + volume + ", baseVolume=" + baseVolume + "]";
+    return "BittrexChartData [timeStamp="
+        + timeStamp
+        + ", open="
+        + open
+        + ", close="
+        + close
+        + ", high="
+        + high
+        + ", low="
+        + low
+        + ", volume="
+        + volume
+        + ", baseVolume="
+        + baseVolume
+        + "]";
   }
 }

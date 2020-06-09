@@ -10,8 +10,12 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamOffset;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamPaging;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 
-public class CoinfloorTradeHistoryParams implements TradeHistoryParamMultiCurrencyPair, TradeHistoryParamCurrencyPair, TradeHistoryParamsSorted,
-    TradeHistoryParamOffset, TradeHistoryParamPaging {
+public class CoinfloorTradeHistoryParams
+    implements TradeHistoryParamMultiCurrencyPair,
+        TradeHistoryParamCurrencyPair,
+        TradeHistoryParamsSorted,
+        TradeHistoryParamOffset,
+        TradeHistoryParamPaging {
   private Collection<CurrencyPair> pairs = Collections.emptySet();
   private CurrencyPair pair = null;
   private Order order = null;

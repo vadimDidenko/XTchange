@@ -14,9 +14,9 @@ import java.util.Collection;
 
 public class BitZTradeService extends BitZTradeServiceRaw implements TradeService {
 
-	public BitZTradeService(Exchange exchange) {
-		super(exchange);
-	}
+  public BitZTradeService(Exchange exchange) {
+    super(exchange);
+  }
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
@@ -32,7 +32,7 @@ public class BitZTradeService extends BitZTradeServiceRaw implements TradeServic
   public OpenOrdersParams createOpenOrdersParams() {
     throw new NotYetImplementedForExchangeException();
   }
-  
+
   @Override
   public OpenOrders getOpenOrders() throws IOException {
     throw new NotYetImplementedForExchangeException();
@@ -52,22 +52,22 @@ public class BitZTradeService extends BitZTradeServiceRaw implements TradeServic
   public boolean cancelOrder(CancelOrderParams orderParams) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-  
+
   @Override
   public TradeHistoryParams createTradeHistoryParams() {
     throw new NotAvailableFromExchangeException();
   }
-  
+
   @Override
   public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
-  
+
   @Override
   public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
-  
+
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
     throw new NotAvailableFromExchangeException();

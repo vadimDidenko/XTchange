@@ -38,13 +38,14 @@ public class BitstampDepositAddress extends BitstampBaseResponse {
   static class BitstampDepositAddressDeserializer extends JsonDeserializer<BitstampDepositAddress> {
 
     @Override
-    public BitstampDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitstampDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);
       if (node.get("error") != null) {
         return new BitstampDepositAddress(node.path("error").asText(), "");
-      } else if(node.get("address") != null) {
+      } else if (node.get("address") != null) {
         return new BitstampDepositAddress(null, node.get("address").asText());
       } else {
         return new BitstampDepositAddress(null, node.asText());

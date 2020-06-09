@@ -1,4 +1,3 @@
-
 package org.knowm.xchange.kucoin.dto.trading;
 
 import java.util.HashMap;
@@ -13,60 +12,42 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({
-    "orderOid"
-})
+@JsonPropertyOrder({"orderOid"})
 public class KucoinOrder {
 
-    @JsonProperty("orderOid")
-    private String orderOid;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  @JsonProperty("orderOid")
+  private String orderOid;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public KucoinOrder() {
-    }
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    /**
-     * 
-     * @param orderOid
-     */
-    public KucoinOrder(String orderOid) {
-        super();
-        this.orderOid = orderOid;
-    }
+  /** No args constructor for use in serialization */
+  public KucoinOrder() {}
 
-    /**
-     * 
-     * @return
-     *     The orderOid
-     */
-    @JsonProperty("orderOid")
-    public String getOrderOid() {
-        return orderOid;
-    }
+  /** @param orderOid */
+  public KucoinOrder(String orderOid) {
+    super();
+    this.orderOid = orderOid;
+  }
 
-    /**
-     * 
-     * @param orderOid
-     *     The orderOid
-     */
-    @JsonProperty("orderOid")
-    public void setOrderOid(String orderOid) {
-        this.orderOid = orderOid;
-    }
+  /** @return The orderOid */
+  @JsonProperty("orderOid")
+  public String getOrderOid() {
+    return orderOid;
+  }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
+  /** @param orderOid The orderOid */
+  @JsonProperty("orderOid")
+  public void setOrderOid(String orderOid) {
+    this.orderOid = orderOid;
+  }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+  @JsonAnyGetter
+  public Map<String, Object> getAdditionalProperties() {
+    return this.additionalProperties;
+  }
 
+  @JsonAnySetter
+  public void setAdditionalProperty(String name, Object value) {
+    this.additionalProperties.put(name, value);
+  }
 }

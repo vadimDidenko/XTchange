@@ -14,10 +14,9 @@ import java.util.List;
  */
 interface EttProductAPI {
 
-    @GET("/api/ett/v3/constituents/{ett}")
-    Call<EttConstituentsResult> getConstituents(@Path("ett") String ett);
+  @GET("/api/ett/v3/constituents/{ett}")
+  Call<EttConstituentsResult> getConstituents(@Path("ett") String ett);
 
-    @GET("/api/ett/v3/define-price/{ett}")
-    Call<List<EttSettlementDefinePrice>> getDefinePrice(@Path("ett") String ett);
-
+  @GET("/api/ett/v3/define-price/{ett}")
+  Call<List<EttSettlementDefinePrice>> getDefinePrice(@Path("ett") String ett);
 }

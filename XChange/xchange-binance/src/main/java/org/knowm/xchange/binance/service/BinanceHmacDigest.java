@@ -55,7 +55,8 @@ public class BinanceHmacDigest extends BaseParamsDigest {
             input = restInvocation.getRequestBody();
             break;
           default:
-            throw new RuntimeException("Not support http method: " + restInvocation.getHttpMethod());
+            throw new RuntimeException(
+                "Not support http method: " + restInvocation.getHttpMethod());
         }
       }
 
@@ -69,7 +70,8 @@ public class BinanceHmacDigest extends BaseParamsDigest {
       // hack to replace the signature in the invocation URL.
       String invocationUrl = restInvocation.getInvocationUrl();
       LOG.debug("old invocationUrl: {}", invocationUrl);
-      //String newInvocationUrl = UriBuilder.fromUri(invocationUrl).replaceQueryParam("signature", printBase64Binary).build().toString();
+      // String newInvocationUrl = UriBuilder.fromUri(invocationUrl).replaceQueryParam("signature",
+      // printBase64Binary).build().toString();
 
       final String sig = "signature=";
       int idx = invocationUrl.indexOf(sig);
@@ -87,13 +89,12 @@ public class BinanceHmacDigest extends BaseParamsDigest {
     }
   }
 
-  /**
-   * @return the query string except of the "signature" parameter
-   */
+  /** @return the query string except of the "signature" parameter */
   private static String getQuery(RestInvocation restInvocation) {
     final Params p = Params.of();
     restInvocation.getParamsMap().get(QueryParam.class).asHttpHeaders().entrySet().stream()
-        .filter(e -> !BinanceAuthenticated.SIGNATURE.equals(e.getKey())).forEach(e -> p.add(e.getKey(), e.getValue()));
+        .filter(e -> !BinanceAuthenticated.SIGNATURE.equals(e.getKey()))
+        .forEach(e -> p.add(e.getKey(), e.getValue()));
     return p.asQueryString();
   }
 }

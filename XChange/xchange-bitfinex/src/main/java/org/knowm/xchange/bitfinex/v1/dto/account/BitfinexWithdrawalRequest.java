@@ -22,8 +22,10 @@ public class BitfinexWithdrawalRequest {
 
   @JsonProperty("walletselected")
   private final String walletSelected;
+
   @JsonProperty("amount")
   private final String amount;
+
   @JsonProperty("address")
   private final String address;
 
@@ -39,7 +41,13 @@ public class BitfinexWithdrawalRequest {
    * @param amount
    * @param address
    */
-  public BitfinexWithdrawalRequest(String nonce, String withdrawType, String walletSelected, BigDecimal amount, String address, String paymentId) {
+  public BitfinexWithdrawalRequest(
+      String nonce,
+      String withdrawType,
+      String walletSelected,
+      BigDecimal amount,
+      String address,
+      String paymentId) {
 
     this.request = "/v1/withdraw";
     this.nonce = String.valueOf(nonce);

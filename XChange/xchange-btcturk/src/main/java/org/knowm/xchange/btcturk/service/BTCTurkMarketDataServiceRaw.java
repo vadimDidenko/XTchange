@@ -14,9 +14,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author semihunaldi
- */
+/** @author semihunaldi */
 public class BTCTurkMarketDataServiceRaw extends BTCTurkBaseService {
 
   private final BTCTurk btcTurk;
@@ -24,7 +22,9 @@ public class BTCTurkMarketDataServiceRaw extends BTCTurkBaseService {
   public BTCTurkMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-    this.btcTurk = RestProxyFactory.createProxy(BTCTurk.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.btcTurk =
+        RestProxyFactory.createProxy(
+            BTCTurk.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public BTCTurkTicker getBTCTurkTicker(@Nullable CurrencyPair pair) throws IOException {
@@ -35,11 +35,13 @@ public class BTCTurkMarketDataServiceRaw extends BTCTurkBaseService {
     return btcTurk.getOrderBook(new BTCTurk.Pair(pair));
   }
 
-  public BTCTurkTrade[] getBTCTurkTrades(CurrencyPair pair, @Nullable Integer last) throws IOException {
+  public BTCTurkTrade[] getBTCTurkTrades(CurrencyPair pair, @Nullable Integer last)
+      throws IOException {
     return btcTurk.getTrades(new BTCTurk.Pair(pair), last);
   }
 
-  public BTCTurkOHLC[] getBTCTurkOHLC(@Nullable CurrencyPair pair, @Nullable Integer last) throws IOException {
+  public BTCTurkOHLC[] getBTCTurkOHLC(@Nullable CurrencyPair pair, @Nullable Integer last)
+      throws IOException {
     return btcTurk.getOHLC(new BTCTurk.Pair(pair), last);
   }
 }

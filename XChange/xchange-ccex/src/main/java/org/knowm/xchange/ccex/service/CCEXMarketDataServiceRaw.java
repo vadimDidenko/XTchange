@@ -15,16 +15,16 @@ import org.knowm.xchange.currency.CurrencyPair;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author Andraž Prinčič
- */
+/** @author Andraž Prinčič */
 public class CCEXMarketDataServiceRaw extends CCEXBaseService {
 
   private final CCEX ccex;
 
   public CCEXMarketDataServiceRaw(Exchange exchange) {
     super(exchange);
-    this.ccex = RestProxyFactory.createProxy(CCEX.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.ccex =
+        RestProxyFactory.createProxy(
+            CCEX.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public CCEXGetorderbook getCCEXOrderBook(CurrencyPair pair, int depth) throws IOException {
@@ -32,7 +32,8 @@ public class CCEXMarketDataServiceRaw extends CCEXBaseService {
   }
 
   public CCEXPriceResponse getTicker(CurrencyPair pair) throws IOException {
-    CCEXTickerResponse response = ccex.getTicker(pair.base.toString().toLowerCase(), pair.counter.toString().toLowerCase());
+    CCEXTickerResponse response =
+        ccex.getTicker(pair.base.toString().toLowerCase(), pair.counter.toString().toLowerCase());
 
     return response.getTicker();
   }
@@ -47,7 +48,9 @@ public class CCEXMarketDataServiceRaw extends CCEXBaseService {
   }
 
   public enum CCEXTime {
-    DAY, HOUR, MINUTE;
+    DAY,
+    HOUR,
+    MINUTE;
 
     @Override
     public String toString() {

@@ -22,32 +22,43 @@ public class KucoinAccountServiceRaw extends KucoinBaseService {
   protected KucoinAccountServiceRaw(Exchange exchange) {
     super(exchange);
   }
-  
-  public KucoinResponse<KucoinCoinBalances> getKucoinBalances(Integer limit, Integer page) throws IOException {
-    
+
+  public KucoinResponse<KucoinCoinBalances> getKucoinBalances(Integer limit, Integer page)
+      throws IOException {
+
     try {
-      return checkSuccess(kucoin.accountBalances(apiKey, exchange.getNonceFactory(), signatureCreator, limit, page));
+      return checkSuccess(
+          kucoin.accountBalances(
+              apiKey, exchange.getNonceFactory(), signatureCreator, limit, page));
     } catch (KucoinException e) {
       throw new ExchangeException(e.getMessage());
     }
   }
-  
-  public KucoinResponse<KucoinDepositAddress> getKucoinDepositAddress(Currency cur) throws IOException {
-    
+
+  public KucoinResponse<KucoinDepositAddress> getKucoinDepositAddress(Currency cur)
+      throws IOException {
+
     try {
-      return checkSuccess(kucoin.walletAddress(apiKey, exchange.getNonceFactory(), signatureCreator, cur.getCurrencyCode()));
+      return checkSuccess(
+          kucoin.walletAddress(
+              apiKey, exchange.getNonceFactory(), signatureCreator, cur.getCurrencyCode()));
     } catch (KucoinException e) {
       throw new ExchangeException(e.getMessage());
     }
   }
-  
+
   KucoinSimpleResponse<Object> withdrawalApply(Currency cur, BigDecimal amount, String address)
       throws IOException {
-    
+
     try {
       KucoinSimpleResponse<Object> response =
-          kucoin.withdrawalApply(apiKey, exchange.getNonceFactory(), signatureCreator,
-              cur.getCurrencyCode(), amount, address);
+          kucoin.withdrawalApply(
+              apiKey,
+              exchange.getNonceFactory(),
+              signatureCreator,
+              cur.getCurrencyCode(),
+              amount,
+              address);
       if (response.isSuccess()) {
         return response;
       } else {
@@ -57,15 +68,21 @@ public class KucoinAccountServiceRaw extends KucoinBaseService {
       throw new ExchangeException(e.getMessage());
     }
   }
-  
-  KucoinResponse<KucoinWalletRecords> walletRecords(Currency currency,
-      FundingRecord.Type type, Integer limit, Integer page) throws IOException {
-    
+
+  KucoinResponse<KucoinWalletRecords> walletRecords(
+      Currency currency, FundingRecord.Type type, Integer limit, Integer page) throws IOException {
+
     try {
-      return checkSuccess(kucoin.walletRecords(apiKey, exchange.getNonceFactory(), signatureCreator,
-          currency.getCurrencyCode(),
-          type == null ? "" : KucoinWalletOperation.fromFundingRecordType(type).toString(),
-          "", limit, page));
+      return checkSuccess(
+          kucoin.walletRecords(
+              apiKey,
+              exchange.getNonceFactory(),
+              signatureCreator,
+              currency.getCurrencyCode(),
+              type == null ? "" : KucoinWalletOperation.fromFundingRecordType(type).toString(),
+              "",
+              limit,
+              page));
     } catch (KucoinException e) {
       throw new ExchangeException(e.getMessage());
     }

@@ -13,36 +13,37 @@ import si.mazi.rescu.SynchronizedValueFactory;
 public class CoinEggExchange extends BaseExchange implements Exchange {
 
   private final SynchronizedValueFactory<Long> nonceFactory = new CurrentTimeNonceFactory();
-  
+
   @Override
   protected void initServices() {
-		this.marketDataService = new CoinEggMarketDataService(this);
-		this.accountService = new CoinEggAccountService(this);
-	}
-	
+    this.marketDataService = new CoinEggMarketDataService(this);
+    this.accountService = new CoinEggAccountService(this);
+  }
+
   @Override
   public SynchronizedValueFactory<Long> getNonceFactory() {
     return nonceFactory;
-	}
-
-  @Override
-	public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
-	  exchangeSpecification.setSslUri("https://api.coinegg.com");
-	  exchangeSpecification.setHost("http://api.coinegg.com");
-	  exchangeSpecification.setPort(80);
-	  exchangeSpecification.setExchangeName("CoinEgg");
-	  exchangeSpecification.setExchangeDescription("CoinEgg is a Bitcoin exchange based in the United Kingdom.");
-	  exchangeSpecification.setApiKey("");
-	  exchangeSpecification.setSecretKey("");
-	  exchangeSpecification.setPassword("");
-	  
-	  return exchangeSpecification;
   }
 
-	@Override
-	public TradeService getTradeService() {
-	  throw new NotAvailableFromExchangeException();
-	}
+  @Override
+  public ExchangeSpecification getDefaultExchangeSpecification() {
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
+    exchangeSpecification.setSslUri("https://api.coinegg.com");
+    exchangeSpecification.setHost("http://api.coinegg.com");
+    exchangeSpecification.setPort(80);
+    exchangeSpecification.setExchangeName("CoinEgg");
+    exchangeSpecification.setExchangeDescription(
+        "CoinEgg is a Bitcoin exchange based in the United Kingdom.");
+    exchangeSpecification.setApiKey("");
+    exchangeSpecification.setSecretKey("");
+    exchangeSpecification.setPassword("");
 
+    return exchangeSpecification;
+  }
+
+  @Override
+  public TradeService getTradeService() {
+    throw new NotAvailableFromExchangeException();
+  }
 }

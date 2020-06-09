@@ -11,9 +11,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Ticker at Bitcurex
- */
+/** Demonstrate requesting Ticker at Bitcurex */
 public class BitcurexTickerDemo {
 
   public static void main(String[] args) throws IOException {
@@ -46,7 +44,8 @@ public class BitcurexTickerDemo {
 
   private static void raw(Exchange bitcurex, String currency) throws IOException {
 
-    BitcurexMarketDataServiceRaw bitcurexMarketDataServiceRaw = (BitcurexMarketDataServiceRaw) bitcurex.getMarketDataService();
+    BitcurexMarketDataServiceRaw bitcurexMarketDataServiceRaw =
+        (BitcurexMarketDataServiceRaw) bitcurex.getMarketDataService();
 
     // Get the latest ticker data showing BTC to EUR
     BitcurexTicker ticker = bitcurexMarketDataServiceRaw.getBitcurexTicker(currency);

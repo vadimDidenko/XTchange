@@ -21,33 +21,24 @@ public class CCEXPairs {
 
   @JsonProperty("pairs")
   private List<String> pairs = new ArrayList<String>();
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * No args constructor for use in serialization
-   */
-  public CCEXPairs() {
-  }
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @param pairs
-   */
+  /** No args constructor for use in serialization */
+  public CCEXPairs() {}
+
+  /** @param pairs */
   public CCEXPairs(List<String> pairs) {
     this.pairs = pairs;
   }
 
-  /**
-   * @return The pairs
-   */
+  /** @return The pairs */
   @JsonProperty("pairs")
   public List<String> getPairs() {
     return pairs;
   }
 
-  /**
-   * @param pairs The pairs
-   */
+  /** @param pairs The pairs */
   @JsonProperty("pairs")
   public void setPairs(List<String> pairs) {
     this.pairs = pairs;
@@ -72,5 +63,4 @@ public class CCEXPairs {
     this.additionalProperties.put(name, value);
     return this;
   }
-
 }

@@ -11,7 +11,9 @@ public final class BleutradeUtils {
 
   public static String toPairString(CurrencyPair currencyPair) {
 
-    return currencyPair.base.getCurrencyCode().toUpperCase() + "_" + currencyPair.counter.getCurrencyCode().toUpperCase();
+    return currencyPair.base.getCurrencyCode().toUpperCase()
+        + "_"
+        + currencyPair.counter.getCurrencyCode().toUpperCase();
   }
 
   public static CurrencyPair toCurrencyPair(String pairString) {

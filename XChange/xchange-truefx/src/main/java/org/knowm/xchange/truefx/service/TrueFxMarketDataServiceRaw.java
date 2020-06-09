@@ -28,7 +28,9 @@ public class TrueFxMarketDataServiceRaw extends BaseExchangeService {
     final ClientConfig config = getClientConfig();
     config.setJacksonObjectMapperFactory(factory);
 
-    trueFx = RestProxyFactory.createProxy(TrueFxPublic.class, exchange.getExchangeSpecification().getPlainTextUri(), config);
+    trueFx =
+        RestProxyFactory.createProxy(
+            TrueFxPublic.class, exchange.getExchangeSpecification().getPlainTextUri(), config);
   }
 
   public TrueFxTicker getTicker(CurrencyPair pair) throws IOException {
@@ -41,19 +43,22 @@ public class TrueFxMarketDataServiceRaw extends BaseExchangeService {
     return mapper;
   }
 
-  private final JacksonObjectMapperFactory factory = new DefaultJacksonObjectMapperFactory() {
-    @Override
-    protected ObjectMapper createInstance() {
-      return new CsvMapper();
-    }
+  private final JacksonObjectMapperFactory factory =
+      new DefaultJacksonObjectMapperFactory() {
+        @Override
+        protected ObjectMapper createInstance() {
+          return new CsvMapper();
+        }
 
-    @Override
-    public void configureObjectMapper(ObjectMapper mapper) {
-      super.configureObjectMapper(mapper);
+        @Override
+        public void configureObjectMapper(ObjectMapper mapper) {
+          super.configureObjectMapper(mapper);
 
-      final SimpleModule customDeserializer = new SimpleModule(TrueFxTicker.class.getSimpleName(), Version.unknownVersion());
-      customDeserializer.addDeserializer(TrueFxTicker.class, new TrueFxTicker.TrueFxTickerDeserializer());
-      mapper.registerModule(customDeserializer);
-    }
-  };
+          final SimpleModule customDeserializer =
+              new SimpleModule(TrueFxTicker.class.getSimpleName(), Version.unknownVersion());
+          customDeserializer.addDeserializer(
+              TrueFxTicker.class, new TrueFxTicker.TrueFxTickerDeserializer());
+          mapper.registerModule(customDeserializer);
+        }
+      };
 }

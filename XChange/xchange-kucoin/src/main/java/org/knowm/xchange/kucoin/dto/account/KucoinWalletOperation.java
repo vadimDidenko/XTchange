@@ -1,13 +1,11 @@
 package org.knowm.xchange.kucoin.dto.account;
 
-import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.dto.account.FundingRecord.Type;
 
 public enum KucoinWalletOperation {
-
   DEPOSIT(Type.DEPOSIT),
   WITHDRAW(Type.WITHDRAWAL);
-  
+
   private Type fundingRecordType;
 
   private KucoinWalletOperation(Type fundingRecordType) {
@@ -17,9 +15,9 @@ public enum KucoinWalletOperation {
   public Type getFundingRecordType() {
     return fundingRecordType;
   }
-  
+
   public static KucoinWalletOperation fromFundingRecordType(Type fundingRecordType) {
-    switch(fundingRecordType) {
+    switch (fundingRecordType) {
       case DEPOSIT:
         return DEPOSIT;
       case WITHDRAWAL:

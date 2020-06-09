@@ -16,13 +16,15 @@ public class WithdrawalRequest {
 
   private Type type;
   private BigDecimal amount;
-  @JsonProperty("status")
-  private String statusOriginal;         // keep the original status, if it comes to "unknown"
 
-  private String data;                   // additional withdrawal request data
-  private String address;                // Bitcoin withdrawal address (bitcoin withdrawals only).
+  @JsonProperty("status")
+  private String statusOriginal; // keep the original status, if it comes to "unknown"
+
+  private String data; // additional withdrawal request data
+  private String address; // Bitcoin withdrawal address (bitcoin withdrawals only).
+
   @JsonProperty("transaction_id")
-  private String transactionId;         // Transaction id (bitcoin withdrawals only).
+  private String transactionId; // Transaction id (bitcoin withdrawals only).
 
   public Long getId() {
     return id;
@@ -68,12 +70,36 @@ public class WithdrawalRequest {
 
   @Override
   public String toString() {
-    return "WithdrawalRequest [id=" + id + ", datetime=" + datetime + ", type=" + type + ", amount=" + amount + ", status="
-        + getStatus() + ", statusOriginal=" + statusOriginal + ", data=" + data + ", address=" + address + ", transactionId=" + transactionId + "]";
+    return "WithdrawalRequest [id="
+        + id
+        + ", datetime="
+        + datetime
+        + ", type="
+        + type
+        + ", amount="
+        + amount
+        + ", status="
+        + getStatus()
+        + ", statusOriginal="
+        + statusOriginal
+        + ", data="
+        + data
+        + ", address="
+        + address
+        + ", transactionId="
+        + transactionId
+        + "]";
   }
 
   public enum Type {
-    SEPA, bitcoin, wire, rippleUSD, rippleBTC, XRP, litecoin, unknown;
+    SEPA,
+    bitcoin,
+    wire,
+    rippleUSD,
+    rippleBTC,
+    XRP,
+    litecoin,
+    unknown;
 
     // 0 (SEPA), 1 (bitcoin) or 2(WIRE transfer).
     @JsonCreator
@@ -100,7 +126,12 @@ public class WithdrawalRequest {
   }
 
   public enum Status {
-    open, in_process, finished, canceled, failed, unknown;
+    open,
+    in_process,
+    finished,
+    canceled,
+    failed,
+    unknown;
 
     // 0 (open), 1 (in process), 2 (finished), 3 (canceled) or 4 (failed).
     @JsonCreator

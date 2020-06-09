@@ -13,7 +13,9 @@ public class KrakenCancelOrderResult extends KrakenResult<KrakenCancelOrderRespo
    * @param result
    * @param error
    */
-  public KrakenCancelOrderResult(@JsonProperty("result") KrakenCancelOrderResponse result, @JsonProperty("error") String[] error) {
+  public KrakenCancelOrderResult(
+      @JsonProperty("result") KrakenCancelOrderResponse result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
@@ -29,7 +31,8 @@ public class KrakenCancelOrderResult extends KrakenResult<KrakenCancelOrderRespo
      * @param count
      * @param pending
      */
-    public KrakenCancelOrderResponse(@JsonProperty("count") int count, @JsonProperty("pending") boolean pending) {
+    public KrakenCancelOrderResponse(
+        @JsonProperty("count") int count, @JsonProperty("pending") boolean pending) {
 
       this.count = count;
       this.pending = pending;

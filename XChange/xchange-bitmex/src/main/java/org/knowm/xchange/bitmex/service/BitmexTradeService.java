@@ -37,15 +37,18 @@ public class BitmexTradeService extends BitmexTradeServiceRaw implements TradeSe
     List<LimitOrder> limitOrders = new ArrayList<>();
 
     for (BitmexPrivateOrder order : bitmexOrders) {
-      if (order.getOrderStatus() == BitmexPrivateOrder.OrderStatus.Filled || order.getOrderStatus() == BitmexPrivateOrder.OrderStatus.Canceled) {
+      if (order.getOrderStatus() == BitmexPrivateOrder.OrderStatus.Filled
+          || order.getOrderStatus() == BitmexPrivateOrder.OrderStatus.Canceled) {
         continue;
       }
 
-      Order.OrderType type = order.getSide() == BitmexSide.BUY ? Order.OrderType.BID : Order.OrderType.ASK;
+      Order.OrderType type =
+          order.getSide() == BitmexSide.BUY ? Order.OrderType.BID : Order.OrderType.ASK;
       CurrencyPair pair = new CurrencyPair(order.getCurrency(), order.getSettleCurrency());
 
-      LimitOrder limitOrder = new LimitOrder(type, order.getVolume(), pair, order.getId(), order.getTimestamp(),
-              order.getPrice());
+      LimitOrder limitOrder =
+          new LimitOrder(
+              type, order.getVolume(), pair, order.getId(), order.getTimestamp(), order.getPrice());
       limitOrders.add(limitOrder);
     }
 

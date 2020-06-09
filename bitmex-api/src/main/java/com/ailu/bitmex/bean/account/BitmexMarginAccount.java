@@ -10,86 +10,127 @@ public final class BitmexMarginAccount {
 
   @JSONField(name = "account")
   public Integer account;
+
   @JSONField(name = "currency")
   public String currency;
+
   @JSONField(name = "riskLimit")
   public BigDecimal riskLimit;
+
   @JSONField(name = "prevState")
   public String prevState;
+
   @JSONField(name = "state")
   public String state;
+
   @JSONField(name = "action")
   public String action;
+
   @JSONField(name = "amount")
   public BigDecimal amount;
+
   @JSONField(name = "pendingCredit")
   public BigDecimal pendingCredit;
+
   @JSONField(name = "pendingDebit")
   public BigDecimal pendingDebit;
+
   @JSONField(name = "confirmedDebit")
   public BigDecimal confirmedDebit;
+
   @JSONField(name = "prevRealisedPnl")
   public BigDecimal prevRealisedPnl;
+
   @JSONField(name = "prevUnrealisedPnl")
   public BigDecimal prevUnrealisedPnl;
+
   @JSONField(name = "grossComm")
   public BigDecimal grossComm;
+
   @JSONField(name = "grossOpenCost")
   public BigDecimal grossOpenCost;
+
   @JSONField(name = "grossOpenPremium")
   public BigDecimal grossOpenPremium;
+
   @JSONField(name = "grossExecCost")
   public BigDecimal grossExecCost;
+
   @JSONField(name = "grossMarkValue")
   public BigDecimal grossMarkValue;
+
   @JSONField(name = "riskValue")
   public BigDecimal riskValue;
+
   @JSONField(name = "taxableMargin")
   public BigDecimal taxableMargin;
+
   @JSONField(name = "initMargin")
   public BigDecimal initMargin;
+
   @JSONField(name = "maintMargin")
   public BigDecimal maintMargin;
+
   @JSONField(name = "sessionMargin")
   public BigDecimal sessionMargin;
+
   @JSONField(name = "targetExcessMargin")
   public BigDecimal targetExcessMargin;
+
   @JSONField(name = "varMargin")
   public BigDecimal varMargin;
+
   @JSONField(name = "realisedPnl")
   public BigDecimal realisedPnl;
+
   @JSONField(name = "unrealisedPnl")
   public BigDecimal unrealisedPnl;
+
   @JSONField(name = "indicativeTax")
   public BigDecimal indicativeTax;
+
   @JSONField(name = "unrealisedProfit")
   public BigDecimal unrealisedProfit;
+
   @JSONField(name = "syntheticMargin")
   public BigDecimal syntheticMargin;
+
   @JSONField(name = "walletBalance")
   public BigDecimal walletBalance;
+
   @JSONField(name = "marginBalance")
   public BigDecimal marginBalance;
+
   @JSONField(name = "marginBalancePcnt")
   public BigDecimal marginBalancePcnt;
+
   @JSONField(name = "marginLeverage")
   public BigDecimal marginLeverage;
+
   @JSONField(name = "marginUsedPcnt")
   public BigDecimal marginUsedPcnt;
+
   @JSONField(name = "excessMargin")
   public BigDecimal excessMargin;
+
   @JSONField(name = "excessMarginPcnt")
   public BigDecimal excessMarginPcnt;
+
   @JSONField(name = "availableMargin")
   public BigDecimal availableMargin;
+
   @JSONField(name = "withdrawableMargin")
   public BigDecimal withdrawableMargin;
+
   @JSONField(name = "timestamp")
   public String timestamp;
+
   @JSONField(name = "grossLastValue")
   public BigDecimal grossLastValue;
+
   @JSONField(name = "commission")
   public BigDecimal commission;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
 

@@ -6,9 +6,7 @@ import org.knowm.xchange.wex.v3.dto.WexReturn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Raphael Voellmy
- */
+/** @author Raphael Voellmy */
 public class WexTradeHistoryReturn extends WexReturn<Map<Long, WexTradeHistoryResult>> {
 
   /**
@@ -18,7 +16,9 @@ public class WexTradeHistoryReturn extends WexReturn<Map<Long, WexTradeHistoryRe
    * @param value
    * @param error
    */
-  public WexTradeHistoryReturn(@JsonProperty("success") boolean success, @JsonProperty("return") Map<Long, WexTradeHistoryResult> value,
+  public WexTradeHistoryReturn(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("return") Map<Long, WexTradeHistoryResult> value,
       @JsonProperty("error") String error) {
 
     super(success, value, error);

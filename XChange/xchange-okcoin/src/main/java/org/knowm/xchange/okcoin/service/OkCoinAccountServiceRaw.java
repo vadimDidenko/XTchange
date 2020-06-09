@@ -21,7 +21,8 @@ public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
 
     super(exchange);
 
-    tradepwd = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("tradepwd");
+    tradepwd =
+        (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("tradepwd");
   }
 
   public OkCoinUserInfo getUserInfo() throws IOException {
@@ -33,35 +34,49 @@ public class OkCoinAccountServiceRaw extends OKCoinBaseTradeService {
 
   public OkCoinFuturesUserInfoCross getFutureUserInfo() throws IOException {
 
-    OkCoinFuturesUserInfoCross futuresUserInfoCross = okCoin.getFuturesUserInfoCross(apikey, signatureCreator);
+    OkCoinFuturesUserInfoCross futuresUserInfoCross =
+        okCoin.getFuturesUserInfoCross(apikey, signatureCreator);
 
     return returnOrThrow(futuresUserInfoCross);
   }
 
-  public OKCoinWithdraw withdraw(String currencySymbol, String withdrawAddress, BigDecimal amount, String target) throws IOException {
+  public OKCoinWithdraw withdraw(
+      String currencySymbol, String withdrawAddress, BigDecimal amount, String target)
+      throws IOException {
     String fee = null;
-    if (target.equals("address")) { //External address
+    if (target.equals("address")) { // External address
       if (currencySymbol.startsWith("btc")) fee = "0.002";
       else if (currencySymbol.startsWith("ltc")) fee = "0.001";
       else if (currencySymbol.startsWith("eth")) fee = "0.01";
       else throw new IllegalArgumentException("Unsupported withdraw currency");
-    } else if (target.equals("okex") || target.equals("okcn") || target.equals("okcom")) { //Internal address
+    } else if (target.equals("okex")
+        || target.equals("okcn")
+        || target.equals("okcom")) { // Internal address
       fee = "0";
     } else {
       throw new IllegalArgumentException("Unsupported withdraw target");
     }
 
-    OKCoinWithdraw withdrawResult = okCoin.withdraw(exchange.getExchangeSpecification().getApiKey(), currencySymbol,
-        signatureCreator, fee, tradepwd, withdrawAddress, amount.toString(), target);
+    OKCoinWithdraw withdrawResult =
+        okCoin.withdraw(
+            exchange.getExchangeSpecification().getApiKey(),
+            currencySymbol,
+            signatureCreator,
+            fee,
+            tradepwd,
+            withdrawAddress,
+            amount.toString(),
+            target);
 
     return returnOrThrow(withdrawResult);
   }
 
-  public OkCoinAccountRecords getAccountRecords(String symbol, String type, String currentPage, String pageLength) throws IOException {
+  public OkCoinAccountRecords getAccountRecords(
+      String symbol, String type, String currentPage, String pageLength) throws IOException {
 
-    OkCoinAccountRecords accountRecords = okCoin.getAccountRecords(apikey, symbol, type, currentPage, pageLength, signatureCreator);
+    OkCoinAccountRecords accountRecords =
+        okCoin.getAccountRecords(apikey, symbol, type, currentPage, pageLength, signatureCreator);
 
     return returnOrThrow(accountRecords);
   }
-
 }

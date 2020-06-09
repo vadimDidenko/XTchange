@@ -43,11 +43,10 @@ public class BitcointoyouMarketDataTest {
 
   private static BitcointoyouMarketData loadBitcointoyouTickerFromExampleData() throws IOException {
 
-    InputStream is = BitcointoyouAdaptersTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        BitcointoyouAdaptersTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     return mapper.readValue(is, BitcointoyouMarketData.class);
   }
-
-
 }

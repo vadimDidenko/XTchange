@@ -13,24 +13,26 @@ import java.io.IOException;
 import java.util.Date;
 import java.util.Objects;
 
-//see https://www.therocktrading.com/pages/api
+// see https://www.therocktrading.com/pages/api
 @Path("v1")
 @Produces(MediaType.APPLICATION_JSON)
 public interface TheRock {
 
-  //TODO review - inconsistent https://www.therocktrading.com/pages/api
+  // TODO review - inconsistent https://www.therocktrading.com/pages/api
   @GET
   @Path("funds/{id}/ticker")
   TheRockTicker getTicker(@PathParam("id") Pair currencyPair) throws TheRockException, IOException;
 
-  //TODO review - inconsistent https://www.therocktrading.com/pages/api
+  // TODO review - inconsistent https://www.therocktrading.com/pages/api
   @GET
   @Path("funds/{id}/orderbook")
-  TheRockOrderBook getOrderbook(@PathParam("id") Pair currencyPair) throws TheRockException, IOException;
+  TheRockOrderBook getOrderbook(@PathParam("id") Pair currencyPair)
+      throws TheRockException, IOException;
 
   @GET
   @Path("funds/{id}/trades")
-  TheRockTrades getTrades(@PathParam("id") Pair currencyPair, @QueryParam("after") Date after) throws IOException;
+  TheRockTrades getTrades(@PathParam("id") Pair currencyPair, @QueryParam("after") Date after)
+      throws IOException;
 
   class Pair {
     public final CurrencyPair pair;
@@ -48,7 +50,8 @@ public interface TheRock {
 
     @Override
     public boolean equals(Object o) {
-      return this == o || !(o == null || getClass() != o.getClass()) && Objects.equals(pair, ((Pair) o).pair);
+      return this == o
+          || !(o == null || getClass() != o.getClass()) && Objects.equals(pair, ((Pair) o).pair);
     }
 
     @Override

@@ -14,21 +14,19 @@ public class CCEXBuySellResult {
    * @param sell
    * @param buy
    */
-  public CCEXBuySellResult(@JsonProperty("buy") List<CCEXBuySellData> buy, @JsonProperty("sell") List<CCEXBuySellData> sell) {
+  public CCEXBuySellResult(
+      @JsonProperty("buy") List<CCEXBuySellData> buy,
+      @JsonProperty("sell") List<CCEXBuySellData> sell) {
     this.buy = buy;
     this.sell = sell;
   }
 
-  /**
-   * @return The buy
-   */
+  /** @return The buy */
   public List<CCEXBuySellData> getBuy() {
     return buy;
   }
 
-  /**
-   * @return The sell
-   */
+  /** @return The sell */
   public List<CCEXBuySellData> getSell() {
     return sell;
   }

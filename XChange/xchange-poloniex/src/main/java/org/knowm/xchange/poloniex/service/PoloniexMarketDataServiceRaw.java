@@ -50,7 +50,6 @@ public class PoloniexMarketDataServiceRaw extends PoloniexBaseService {
     } catch (PoloniexException e) {
       throw new ExchangeException(e.getError(), e);
     }
-
   }
 
   // There is no point to query the ticker instantly again when
@@ -136,7 +135,8 @@ public class PoloniexMarketDataServiceRaw extends PoloniexBaseService {
     }
   }
 
-  public PoloniexPublicTrade[] getPoloniexPublicTrades(CurrencyPair currencyPair) throws IOException {
+  public PoloniexPublicTrade[] getPoloniexPublicTrades(CurrencyPair currencyPair)
+      throws IOException {
 
     String command = "returnTradeHistory";
     String pairString = PoloniexUtils.toPairString(currencyPair);
@@ -149,7 +149,8 @@ public class PoloniexMarketDataServiceRaw extends PoloniexBaseService {
     }
   }
 
-  public PoloniexPublicTrade[] getPoloniexPublicTrades(CurrencyPair currencyPair, Long startTime, Long endTime) throws IOException {
+  public PoloniexPublicTrade[] getPoloniexPublicTrades(
+      CurrencyPair currencyPair, Long startTime, Long endTime) throws IOException {
 
     String command = "returnTradeHistory";
     String pairString = PoloniexUtils.toPairString(currencyPair);
@@ -162,14 +163,16 @@ public class PoloniexMarketDataServiceRaw extends PoloniexBaseService {
     }
   }
 
-  public PoloniexChartData[] getPoloniexChartData(CurrencyPair currencyPair, Long startTime, Long endTime,
-      PoloniexChartDataPeriodType period) throws IOException {
+  public PoloniexChartData[] getPoloniexChartData(
+      CurrencyPair currencyPair, Long startTime, Long endTime, PoloniexChartDataPeriodType period)
+      throws IOException {
 
     String command = "returnChartData";
     String pairString = PoloniexUtils.toPairString(currencyPair);
 
     try {
-      PoloniexChartData[] chartData = poloniex.getChartData(command, pairString, startTime, endTime, period.getPeriod());
+      PoloniexChartData[] chartData =
+          poloniex.getChartData(command, pairString, startTime, endTime, period.getPeriod());
       return chartData;
     } catch (PoloniexException e) {
       throw new ExchangeException(e.getError(), e);

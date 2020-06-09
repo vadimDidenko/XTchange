@@ -20,10 +20,14 @@ public class ANXMetaData extends ExchangeMetaData {
   @JsonProperty("taker_trading_fee")
   private final BigDecimal takerTradingFee;
 
-  public ANXMetaData(@JsonProperty("currency_pairs") Map<CurrencyPair, CurrencyPairMetaData> currencyPairs,
-      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currencies, @JsonProperty("public_rate_limits") RateLimit[] publicRateLimits,
-      @JsonProperty("private_rate_limits") RateLimit[] privateRateLimits, @JsonProperty("share_rate_limits") Boolean shareRateLimits,
-      @JsonProperty("maker_trading_fee") BigDecimal makerTradingFee, @JsonProperty("taker_trading_fee") BigDecimal takerTradingFee) {
+  public ANXMetaData(
+      @JsonProperty("currency_pairs") Map<CurrencyPair, CurrencyPairMetaData> currencyPairs,
+      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currencies,
+      @JsonProperty("public_rate_limits") RateLimit[] publicRateLimits,
+      @JsonProperty("private_rate_limits") RateLimit[] privateRateLimits,
+      @JsonProperty("share_rate_limits") Boolean shareRateLimits,
+      @JsonProperty("maker_trading_fee") BigDecimal makerTradingFee,
+      @JsonProperty("taker_trading_fee") BigDecimal takerTradingFee) {
 
     super(currencyPairs, currencies, publicRateLimits, privateRateLimits, shareRateLimits);
 
@@ -38,5 +42,4 @@ public class ANXMetaData extends ExchangeMetaData {
   public BigDecimal getTakerTradingFee() {
     return takerTradingFee;
   }
-
 }

@@ -18,7 +18,9 @@ public class KrakenServerTimeJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = KrakenServerTimeJSONTest.class.getResourceAsStream("/marketdata/example-servertime-data.json");
+    InputStream is =
+        KrakenServerTimeJSONTest.class.getResourceAsStream(
+            "/marketdata/example-servertime-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -26,6 +28,7 @@ public class KrakenServerTimeJSONTest {
     KrakenServerTime serverTime = krakenResult.getResult();
 
     assertThat(serverTime.getUnixTime()).isEqualTo(1391835876);
-    assertThat(serverTime.getRfc1123Time()).isEqualTo(DateUtils.fromRfc1123DateString("Sat,  8 Feb 14 05:04:36 +0000", Locale.US));
+    assertThat(serverTime.getRfc1123Time())
+        .isEqualTo(DateUtils.fromRfc1123DateString("Sat,  8 Feb 14 05:04:36 +0000", Locale.US));
   }
 }

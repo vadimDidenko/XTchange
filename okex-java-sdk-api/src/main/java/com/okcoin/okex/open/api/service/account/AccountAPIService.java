@@ -12,33 +12,31 @@ import com.okcoin.okex.open.api.bean.account.result.WithdrawFee;
 import java.math.BigDecimal;
 import java.util.List;
 
-
 public interface AccountAPIService {
 
-    JSONObject transfer(Transfer transfer);
+  JSONObject transfer(Transfer transfer);
 
-    JSONObject withdraw(Withdraw withdraw);
+  JSONObject withdraw(Withdraw withdraw);
 
-    List<Currency> getCurrencies();
+  List<Currency> getCurrencies();
 
-    List<Ledger> getLedger(Integer type, String currency, Integer before, Integer after, int limit);
+  List<Ledger> getLedger(Integer type, String currency, Integer before, Integer after, int limit);
 
-    List<Wallet> getWallet();
+  List<Wallet> getWallet();
 
-    List<Wallet> getWallet(String currency);
+  List<Wallet> getWallet(String currency);
 
-    JSONArray getDepositAddress(String currency);
+  JSONArray getDepositAddress(String currency);
 
-    List<WithdrawFee> getWithdrawFee(String currency);
+  List<WithdrawFee> getWithdrawFee(String currency);
 
-    JSONArray getOnHold(String currency);
+  JSONArray getOnHold(String currency);
 
-    JSONObject lock(String currency, BigDecimal amount);
+  JSONObject lock(String currency, BigDecimal amount);
 
-    JSONObject unlock(String currency, BigDecimal amount);
+  JSONObject unlock(String currency, BigDecimal amount);
 
-    JSONArray getDepositHistory();
+  JSONArray getDepositHistory();
 
-    JSONArray getDepositHistory(String currency);
-
+  JSONArray getDepositHistory(String currency);
 }

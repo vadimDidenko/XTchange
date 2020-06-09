@@ -13,14 +13,14 @@ public class DefaultWithdrawFundsParams implements WithdrawFundsParams {
 
   public final BigDecimal amount;
 
-  @Nullable
-  public final BigDecimal commission;
+  @Nullable public final BigDecimal commission;
 
   public DefaultWithdrawFundsParams(String address, Currency currency, BigDecimal amount) {
     this(address, currency, amount, null);
   }
 
-  public DefaultWithdrawFundsParams(String address, Currency currency, BigDecimal amount, BigDecimal commission) {
+  public DefaultWithdrawFundsParams(
+      String address, Currency currency, BigDecimal amount, BigDecimal commission) {
     this.address = address;
     this.currency = currency;
     this.amount = amount;
@@ -29,11 +29,16 @@ public class DefaultWithdrawFundsParams implements WithdrawFundsParams {
 
   @Override
   public String toString() {
-    return "DefaultWithdrawFundsParams{" +
-        "address='" + address + '\'' +
-        ", currency=" + currency +
-        ", amount=" + amount +
-        ", commission=" + commission +
-        '}';
+    return "DefaultWithdrawFundsParams{"
+        + "address='"
+        + address
+        + '\''
+        + ", currency="
+        + currency
+        + ", amount="
+        + amount
+        + ", commission="
+        + commission
+        + '}';
   }
 }

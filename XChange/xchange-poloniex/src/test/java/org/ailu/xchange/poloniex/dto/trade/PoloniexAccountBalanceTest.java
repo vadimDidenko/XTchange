@@ -16,7 +16,8 @@ public class PoloniexAccountBalanceTest {
   @Test
   public void testUnmarshal() throws IOException {
     // Read in the JSON from the example resources
-    InputStream is = PoloniexAccountBalanceTest.class.getResourceAsStream("/trade/order-balances.json");
+    InputStream is =
+        PoloniexAccountBalanceTest.class.getResourceAsStream("/trade/order-balances.json");
 
     ObjectMapper mapper = new ObjectMapper();
     PoloniexAccountBalance balance = mapper.readValue(is, PoloniexAccountBalance.class);
@@ -39,6 +40,5 @@ public class PoloniexAccountBalanceTest {
     assertThat(marginBalance.get("BTC")).isEqualTo(new BigDecimal("3.90015637"));
     assertThat(marginBalance.get("DASH")).isEqualTo(new BigDecimal("250.00238240"));
     assertThat(marginBalance.get("XMR")).isEqualTo(new BigDecimal("497.12028113"));
-
   }
 }

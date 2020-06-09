@@ -13,7 +13,8 @@ public class LiquiTradeResult extends LiquiResult<LiquiTrade> {
   private final boolean success;
   private final LiquiStat stat;
 
-  public LiquiTradeResult(@JsonProperty("success") final boolean success,
+  public LiquiTradeResult(
+      @JsonProperty("success") final boolean success,
       @JsonProperty("return") final LiquiTrade result,
       @JsonProperty("stat") final LiquiStat stat,
       @JsonProperty("error") final String error) {
@@ -32,9 +33,6 @@ public class LiquiTradeResult extends LiquiResult<LiquiTrade> {
 
   @Override
   public String toString() {
-    return "LiquiTradeResult{" +
-        "success=" + success +
-        ", stat=" + stat +
-        '}';
+    return "LiquiTradeResult{" + "success=" + success + ", stat=" + stat + '}';
   }
 }

@@ -19,15 +19,16 @@ public class GateioFunds extends GateioBaseResponse {
    * @param theAvailable
    * @param theLocked
    */
-  public GateioFunds(@JsonProperty("available") Map<String, BigDecimal> theAvailable,
-      @JsonProperty("locked") Map<String, BigDecimal> theLocked, @JsonProperty("result") boolean result,
+  public GateioFunds(
+      @JsonProperty("available") Map<String, BigDecimal> theAvailable,
+      @JsonProperty("locked") Map<String, BigDecimal> theLocked,
+      @JsonProperty("result") boolean result,
       @JsonProperty("message") final String message) {
 
     super(result, message);
 
     available = theAvailable == null ? new HashMap<String, BigDecimal>() : theAvailable;
     locked = theLocked == null ? new HashMap<String, BigDecimal>() : theLocked;
-
   }
 
   public Map<String, BigDecimal> getAvailableFunds() {
@@ -45,5 +46,4 @@ public class GateioFunds extends GateioBaseResponse {
 
     return "BTERAccountInfoReturn [availableFunds=" + available + ", lockedFunds=" + locked + "]";
   }
-
 }

@@ -12,9 +12,7 @@ import org.knowm.xchange.service.trade.params.CancelOrderParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author Dat Bui
- */
+/** @author Dat Bui */
 public class KunaTradeService extends KunaTradeServiceRaw implements TradeService {
 
   /**

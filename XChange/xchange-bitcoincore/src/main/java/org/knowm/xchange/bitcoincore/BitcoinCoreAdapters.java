@@ -9,7 +9,8 @@ import org.knowm.xchange.dto.account.Balance;
 import org.knowm.xchange.dto.account.Wallet;
 
 public class BitcoinCoreAdapters {
-  public static AccountInfo adaptAccountInfo(BitcoinCoreBalanceResponse available, BitcoinCoreBalanceResponse unconfirmed) {
+  public static AccountInfo adaptAccountInfo(
+      BitcoinCoreBalanceResponse available, BitcoinCoreBalanceResponse unconfirmed) {
     BigDecimal total = available.getAmount().add(unconfirmed.getAmount());
     Balance btc = new Balance(Currency.BTC, total, available.getAmount(), unconfirmed.getAmount());
     Wallet wallet = new Wallet(btc);

@@ -32,7 +32,6 @@ public class BittrexAccountDemo {
     System.out.println(balances);
 
     System.out.println(accountService.requestDepositAddress(Currency.BTC));
-
   }
 
   private static void raw(BittrexAccountServiceRaw accountService) throws IOException {

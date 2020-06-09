@@ -8,9 +8,7 @@ import org.knowm.xchange.utils.jackson.UnixTimestampDeserializer;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class TaurusTransaction {
 
   private final Date date;
@@ -26,8 +24,11 @@ public class TaurusTransaction {
    * @param price BTC price
    * @param amount BTC amount
    */
-  public TaurusTransaction(@JsonProperty("date") @JsonDeserialize(using = UnixTimestampDeserializer.class) Date date, @JsonProperty("tid") int tid,
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount) {
+  public TaurusTransaction(
+      @JsonProperty("date") @JsonDeserialize(using = UnixTimestampDeserializer.class) Date date,
+      @JsonProperty("tid") int tid,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount) {
     this.date = date;
     this.tid = tid;
     this.price = price;
@@ -52,6 +53,14 @@ public class TaurusTransaction {
 
   @Override
   public String toString() {
-    return "Transaction [date=" + date + ", tid=" + tid + ", price=" + price + ", amount=" + amount + "]";
+    return "Transaction [date="
+        + date
+        + ", tid="
+        + tid
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + "]";
   }
 }

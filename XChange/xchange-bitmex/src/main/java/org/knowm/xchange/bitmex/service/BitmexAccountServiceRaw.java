@@ -20,11 +20,9 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
    *
    * @param exchange
    */
-
   public BitmexAccountServiceRaw(Exchange exchange) {
 
     super(exchange);
-
   }
 
   public BitmexAccount getBitmexAccountInfo() throws IOException {
@@ -39,7 +37,8 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
   public BitmexWallet getBitmexWallet(Currency ccy) throws IOException {
 
     try {
-      return bitmex.getWallet(apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
+      return bitmex.getWallet(
+          apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
     } catch (BitmexException e) {
       throw handleError(e);
     }
@@ -48,16 +47,19 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
   public List<BitmexWalletTransaction> getBitmexWalletHistory(Currency ccy) throws IOException {
 
     try {
-      return bitmex.getWalletHistory(apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
+      return bitmex.getWalletHistory(
+          apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
     } catch (BitmexException e) {
       throw handleError(e);
     }
   }
 
-  public List<BitmexWalletTransaction> getBitmexWalletHistory(String start,String count,String reverse) throws IOException {
+  public List<BitmexWalletTransaction> getBitmexWalletHistory(
+      String start, String count, String reverse) throws IOException {
 
     try {
-      return bitmex.getWalletHistory(apiKey, exchange.getNonceFactory(), signatureCreator,count,start,reverse);
+      return bitmex.getWalletHistory(
+          apiKey, exchange.getNonceFactory(), signatureCreator, count, start, reverse);
     } catch (BitmexException e) {
       throw handleError(e);
     }
@@ -66,7 +68,8 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
   public List<BitmexWalletTransaction> getBitmexWalletSummary(Currency ccy) throws IOException {
 
     try {
-      return bitmex.getWalletSummary(apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
+      return bitmex.getWalletSummary(
+          apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
     } catch (BitmexException e) {
       throw handleError(e);
     }
@@ -75,7 +78,8 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
   public BitmexMarginAccount getBitmexMarginAccountStatus(Currency ccy) throws IOException {
 
     try {
-      return bitmex.getMarginAccountStatus(apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
+      return bitmex.getMarginAccountStatus(
+          apiKey, exchange.getNonceFactory(), signatureCreator, ccy.getBitmexCurrencyCode());
     } catch (BitmexException e) {
       throw handleError(e);
     }
@@ -89,5 +93,4 @@ public class BitmexAccountServiceRaw extends BitmexBaseService {
       throw handleError(e);
     }
   }
-
 }

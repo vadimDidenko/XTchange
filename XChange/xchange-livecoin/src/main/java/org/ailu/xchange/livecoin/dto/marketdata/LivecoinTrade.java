@@ -12,8 +12,12 @@ public class LivecoinTrade {
   private final BigDecimal quantity;
   private final String type;
 
-  public LivecoinTrade(@JsonProperty("time") Long time, @JsonProperty("id") Long id, @JsonProperty("price") BigDecimal price,
-      @JsonProperty("quantity") BigDecimal quantity, @JsonProperty("type") String type) {
+  public LivecoinTrade(
+      @JsonProperty("time") Long time,
+      @JsonProperty("id") Long id,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("quantity") BigDecimal quantity,
+      @JsonProperty("type") String type) {
     super();
 
     this.time = time;
@@ -45,6 +49,16 @@ public class LivecoinTrade {
 
   @Override
   public String toString() {
-    return "LivecoinTrade [time=" + time + ", id=" + id + ", price=" + price + ", quantity=" + quantity + ", type=" + type + "]";
+    return "LivecoinTrade [time="
+        + time
+        + ", id="
+        + id
+        + ", price="
+        + price
+        + ", quantity="
+        + quantity
+        + ", type="
+        + type
+        + "]";
   }
 }

@@ -5,9 +5,7 @@ import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketHistoryTrade {
 
   private final long id;
@@ -32,9 +30,15 @@ public class BitMarketHistoryTrade {
    * @param rate
    * @param time
    */
-  public BitMarketHistoryTrade(@JsonProperty("id") long id, @JsonProperty("type") String type, @JsonProperty("amountCrypto") BigDecimal amountCrypto,
-      @JsonProperty("currencyCrypto") String currencyCrypto, @JsonProperty("amountFiat") BigDecimal amountFiat,
-      @JsonProperty("currencyFiat") String currencyFiat, @JsonProperty("rate") BigDecimal rate, @JsonProperty("time") long time) {
+  public BitMarketHistoryTrade(
+      @JsonProperty("id") long id,
+      @JsonProperty("type") String type,
+      @JsonProperty("amountCrypto") BigDecimal amountCrypto,
+      @JsonProperty("currencyCrypto") String currencyCrypto,
+      @JsonProperty("amountFiat") BigDecimal amountFiat,
+      @JsonProperty("currencyFiat") String currencyFiat,
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("time") long time) {
 
     this.id = id;
     this.type = type;

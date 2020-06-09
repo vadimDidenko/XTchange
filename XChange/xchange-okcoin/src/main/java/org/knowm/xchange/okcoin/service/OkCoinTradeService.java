@@ -30,7 +30,8 @@ import org.slf4j.LoggerFactory;
 
 public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeService {
 
-  private static final OpenOrders noOpenOrders = new OpenOrders(Collections.<LimitOrder>emptyList());
+  private static final OpenOrders noOpenOrders =
+      new OpenOrders(Collections.<LimitOrder>emptyList());
 
   private final Logger log = LoggerFactory.getLogger(OkCoinTradeService.class);
 
@@ -50,8 +51,7 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     // TODO use params to specify currency pair
     List<CurrencyPair> exchangeSymbols = exchange.getExchangeSymbols();
 
@@ -90,15 +90,26 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
       amount = marketOrder.getOriginalAmount().toPlainString();
     }
 
-    long orderId = trade(OkCoinAdapters.adaptSymbol(marketOrder.getCurrencyPair()), marketOrderType, rate, amount).getOrderId();
+    long orderId =
+        trade(
+                OkCoinAdapters.adaptSymbol(marketOrder.getCurrencyPair()),
+                marketOrderType,
+                rate,
+                amount)
+            .getOrderId();
     return String.valueOf(orderId);
   }
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
 
-    long orderId = trade(OkCoinAdapters.adaptSymbol(limitOrder.getCurrencyPair()), limitOrder.getType() == OrderType.BID ? "buy" : "sell",
-        limitOrder.getLimitPrice().toPlainString(), limitOrder.getOriginalAmount().toPlainString()).getOrderId();
+    long orderId =
+        trade(
+                OkCoinAdapters.adaptSymbol(limitOrder.getCurrencyPair()),
+                limitOrder.getType() == OrderType.BID ? "buy" : "sell",
+                limitOrder.getLimitPrice().toPlainString(),
+                limitOrder.getOriginalAmount().toPlainString())
+            .getOrderId();
     return String.valueOf(orderId);
   }
 
@@ -143,7 +154,8 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
   }
 
   /**
-   * Required parameters {@link TradeHistoryParamPaging} Supported parameters {@link TradeHistoryParamCurrencyPair}
+   * Required parameters {@link TradeHistoryParamPaging} Supported parameters {@link
+   * TradeHistoryParamCurrencyPair}
    */
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
@@ -160,7 +172,9 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
       pair = useIntl ? CurrencyPair.BTC_USD : CurrencyPair.BTC_CNY;
     }
 
-    OkCoinOrderResult orderHistory = getOrderHistory(OkCoinAdapters.adaptSymbol(pair), "1", toString(pageNumber), toString(pageLength));
+    OkCoinOrderResult orderHistory =
+        getOrderHistory(
+            OkCoinAdapters.adaptSymbol(pair), "1", toString(pageNumber), toString(pageLength));
     return OkCoinAdapters.adaptTrades(orderHistory);
   }
 
@@ -180,12 +194,12 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
     return null;
   }
 
-  public static class OkCoinTradeHistoryParams extends DefaultTradeHistoryParamPaging implements TradeHistoryParamCurrencyPair {
+  public static class OkCoinTradeHistoryParams extends DefaultTradeHistoryParamPaging
+      implements TradeHistoryParamCurrencyPair {
 
     private CurrencyPair pair;
 
-    public OkCoinTradeHistoryParams() {
-    }
+    public OkCoinTradeHistoryParams() {}
 
     public OkCoinTradeHistoryParams(Integer pageLength, Integer pageNumber, CurrencyPair pair) {
 
@@ -207,9 +221,7 @@ public class OkCoinTradeService extends OkCoinTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

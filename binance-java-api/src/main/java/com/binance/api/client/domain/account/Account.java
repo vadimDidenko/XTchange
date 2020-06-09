@@ -6,55 +6,35 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
-/**
- * Account information.
- */
+/** Account information. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Account {
 
-  /**
-   * Maker commission.
-   */
+  /** Maker commission. */
   private int makerCommission;
 
-  /**
-   * Taker commission.
-   */
+  /** Taker commission. */
   private int takerCommission;
 
-  /**
-   * Buyer commission.
-   */
+  /** Buyer commission. */
   private int buyerCommission;
 
-  /**
-   * Seller commission.
-   */
+  /** Seller commission. */
   private int sellerCommission;
 
-  /**
-   * Whether or not this account can trade.
-   */
+  /** Whether or not this account can trade. */
   private boolean canTrade;
 
-  /**
-   * Whether or not it is possible to withdraw from this account.
-   */
+  /** Whether or not it is possible to withdraw from this account. */
   private boolean canWithdraw;
 
-  /**
-   * Whether or not it is possible to deposit into this account.
-   */
+  /** Whether or not it is possible to deposit into this account. */
   private boolean canDeposit;
 
-  /**
-   * Last account update time.
-   */
+  /** Last account update time. */
   private long updateTime;
 
-  /**
-   * List of asset balances of this account.
-   */
+  /** List of asset balances of this account. */
   private List<AssetBalance> balances;
 
   public int getMakerCommission() {
@@ -133,7 +113,8 @@ public class Account {
    * Returns the asset balance for a given symbol.
    *
    * @param symbol asset symbol to obtain the balances from
-   * @return an asset balance for the given symbol which can be 0 in case the symbol has no balance in the account
+   * @return an asset balance for the given symbol which can be 0 in case the symbol has no balance
+   *     in the account
    */
   public AssetBalance getAssetBalance(String symbol) {
     for (AssetBalance assetBalance : balances) {

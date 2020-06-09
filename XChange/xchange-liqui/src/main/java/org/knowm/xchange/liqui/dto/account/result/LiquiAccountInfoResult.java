@@ -13,7 +13,8 @@ public class LiquiAccountInfoResult extends LiquiResult<LiquiAccountInfo> {
   private final boolean success;
   private final LiquiStat stat;
 
-  public LiquiAccountInfoResult(@JsonProperty("success") final boolean success,
+  public LiquiAccountInfoResult(
+      @JsonProperty("success") final boolean success,
       @JsonProperty("return") final LiquiAccountInfo result,
       @JsonProperty("stat") final LiquiStat stat,
       @JsonProperty("error") final String error) {
@@ -32,9 +33,6 @@ public class LiquiAccountInfoResult extends LiquiResult<LiquiAccountInfo> {
 
   @Override
   public String toString() {
-    return "LiquiAccountInfoResult{" +
-        "success=" + success +
-        ", stat=" + stat +
-        '}';
+    return "LiquiAccountInfoResult{" + "success=" + success + ", stat=" + stat + '}';
   }
 }

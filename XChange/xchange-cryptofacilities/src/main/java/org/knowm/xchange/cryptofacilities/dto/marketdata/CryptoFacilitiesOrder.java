@@ -8,22 +8,24 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
+/** @author Jean-Christophe Laruelle */
 public class CryptoFacilitiesOrder extends CryptoFacilitiesResult {
 
-  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+  private static final SimpleDateFormat DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
   private final Date serverTime;
   private final CryptoFacilitiesOrderStatus orderStatus;
 
   private final String orderId;
 
-  public CryptoFacilitiesOrder(@JsonProperty("result") String result, @JsonProperty("serverTime") String strServerTime,
-      @JsonProperty("sendStatus") CryptoFacilitiesOrderStatus orderStatus, @JsonProperty("error") String error,
-      @JsonProperty("orderId") String orderId) throws ParseException {
+  public CryptoFacilitiesOrder(
+      @JsonProperty("result") String result,
+      @JsonProperty("serverTime") String strServerTime,
+      @JsonProperty("sendStatus") CryptoFacilitiesOrderStatus orderStatus,
+      @JsonProperty("error") String error,
+      @JsonProperty("orderId") String orderId)
+      throws ParseException {
 
     super(result, error);
 
@@ -44,11 +46,15 @@ public class CryptoFacilitiesOrder extends CryptoFacilitiesResult {
   public String toString() {
 
     if (isSuccess() && serverTime != null && orderStatus != null) {
-      String res = "CryptoFacilitiesOrder [result=" + this.getResult() + ", serverTime=" + DATE_FORMAT.format(serverTime) + ", "
-          + orderStatus.toString() + "]";
+      String res =
+          "CryptoFacilitiesOrder [result="
+              + this.getResult()
+              + ", serverTime="
+              + DATE_FORMAT.format(serverTime)
+              + ", "
+              + orderStatus.toString()
+              + "]";
       return res;
-    } else
-      return super.toString();
+    } else return super.toString();
   }
-
 }

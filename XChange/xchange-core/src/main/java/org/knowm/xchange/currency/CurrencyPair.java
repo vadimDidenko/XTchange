@@ -5,16 +5,15 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import java.io.Serializable;
 
 /**
- * <p>
  * Value object to provide the following to API:
- * </p>
+ *
  * <ul>
- * <li>Provision of major currency symbol pairs (EUR/USD, GBP/USD etc)</li>
- * <li>Provision of arbitrary symbol pairs for exchange index trading, notional currencies etc</li>
+ *   <li>Provision of major currency symbol pairs (EUR/USD, GBP/USD etc)
+ *   <li>Provision of arbitrary symbol pairs for exchange index trading, notional currencies etc
  * </ul>
- * <p>
- * Symbol pairs are quoted, for example, as EUR/USD 1.25 such that 1 EUR can be purchased with 1.25 USD
- * </p>
+ *
+ * <p>Symbol pairs are quoted, for example, as EUR/USD 1.25 such that 1 EUR can be purchased with
+ * 1.25 USD
  */
 @JsonSerialize(using = CustomCurrencyPairSerializer.class)
 public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
@@ -187,11 +186,11 @@ public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
   public static final CurrencyPair PPC_NMC = new CurrencyPair(Currency.PPC, Currency.NMC);
   // end
 
-  //IOTA
+  // IOTA
   public static final CurrencyPair IOTA_USD = new CurrencyPair(Currency.IOT, Currency.USD);
   public static final CurrencyPair IOTA_BTC = new CurrencyPair(Currency.IOT, Currency.BTC);
   public static final CurrencyPair IOTA_ETH = new CurrencyPair(Currency.IOT, Currency.ETH);
-  //end
+  // end
 
   // OMG
   public static final CurrencyPair OMG_USD = new CurrencyPair(Currency.OMG, Currency.USD);
@@ -256,19 +255,16 @@ public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
   public static final CurrencyPair ETH_UAH = new CurrencyPair(Currency.ETH, Currency.UAH);
   public static final CurrencyPair BCH_UAH = new CurrencyPair(Currency.BCH, Currency.UAH);
 
-
   public final Currency base;
   public final Currency counter;
 
   /**
-   * <p>
-   * Full constructor
-   * </p>
-   * In general the CurrencyPair.base is what you're wanting to buy/sell. The CurrencyPair.counter is what currency you want to use to pay/receive for
-   * your purchase/sale.
+   * Full constructor In general the CurrencyPair.base is what you're wanting to buy/sell. The
+   * CurrencyPair.counter is what currency you want to use to pay/receive for your purchase/sale.
    *
    * @param base The base currency is what you're wanting to buy/sell
-   * @param counter The counter currency is what currency you want to use to pay/receive for your purchase/sale.
+   * @param counter The counter currency is what currency you want to use to pay/receive for your
+   *     purchase/sale.
    */
   public CurrencyPair(Currency base, Currency counter) {
 
@@ -277,14 +273,12 @@ public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
   }
 
   /**
-   * <p>
-   * String constructor
-   * </p>
-   * In general the CurrencyPair.base is what you're wanting to buy/sell. The CurrencyPair.counter is what currency you want to use to pay/receive for
-   * your purchase/sale.
+   * String constructor In general the CurrencyPair.base is what you're wanting to buy/sell. The
+   * CurrencyPair.counter is what currency you want to use to pay/receive for your purchase/sale.
    *
    * @param baseSymbol The base symbol is what you're wanting to buy/sell
-   * @param counterSymbol The counter symbol is what currency you want to use to pay/receive for your purchase/sale.
+   * @param counterSymbol The counter symbol is what currency you want to use to pay/receive for
+   *     your purchase/sale.
    */
   public CurrencyPair(String baseSymbol, String counterSymbol) {
 
@@ -298,7 +292,8 @@ public class CurrencyPair implements Comparable<CurrencyPair>, Serializable {
 
     int split = currencyPair.indexOf('/');
     if (split < 1) {
-      throw new IllegalArgumentException("Could not parse currency pair from '" + currencyPair + "'");
+      throw new IllegalArgumentException(
+          "Could not parse currency pair from '" + currencyPair + "'");
     }
     String base = currencyPair.substring(0, split);
     String counter = currencyPair.substring(split + 1);

@@ -10,9 +10,7 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author Andraž Prinčič
- */
+/** @author Andraž Prinčič */
 public class CCEXMarketDataService extends CCEXMarketDataServiceRaw implements MarketDataService {
 
   public CCEXMarketDataService(Exchange exchange) {
@@ -43,5 +41,4 @@ public class CCEXMarketDataService extends CCEXMarketDataServiceRaw implements M
   public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
     return CCEXAdapters.adaptTrades(getCCEXTrades(currencyPair), currencyPair);
   }
-
 }

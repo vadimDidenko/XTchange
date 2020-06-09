@@ -15,21 +15,21 @@ import com.okcoin.okex.open.api.service.GeneralAPIService;
  */
 public class GeneralAPIServiceImpl implements GeneralAPIService {
 
-    private APIClient client;
-    private FuturesMarketAPI api;
+  private APIClient client;
+  private FuturesMarketAPI api;
 
-    public GeneralAPIServiceImpl(APIConfiguration config) {
-        this.client = new APIClient(config);
-        this.api = client.createService(FuturesMarketAPI.class);
-    }
+  public GeneralAPIServiceImpl(APIConfiguration config) {
+    this.client = new APIClient(config);
+    this.api = client.createService(FuturesMarketAPI.class);
+  }
 
-    @Override
-    public ServerTime getServerTime() {
-        return this.client.executeSync(this.api.getServerTime());
-    }
+  @Override
+  public ServerTime getServerTime() {
+    return this.client.executeSync(this.api.getServerTime());
+  }
 
-    @Override
-    public ExchangeRate getExchangeRate() {
-        return this.client.executeSync(this.api.getExchangeRate());
-    }
+  @Override
+  public ExchangeRate getExchangeRate() {
+    return this.client.executeSync(this.api.getExchangeRate());
+  }
 }

@@ -12,28 +12,26 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.truefx.TrueFxAdapters;
 import org.knowm.xchange.truefx.dto.marketdata.TrueFxTicker;
 
-public class TrueFxMarketDataService extends TrueFxMarketDataServiceRaw implements MarketDataService {
+public class TrueFxMarketDataService extends TrueFxMarketDataServiceRaw
+    implements MarketDataService {
 
   public TrueFxMarketDataService(Exchange exchange) {
     super(exchange);
   }
 
   @Override
-  public Ticker getTicker(CurrencyPair pair,
-      Object... args) throws IOException {
+  public Ticker getTicker(CurrencyPair pair, Object... args) throws IOException {
     final TrueFxTicker ticker = super.getTicker(pair);
     return TrueFxAdapters.adaptTicker(ticker);
   }
 
   @Override
-  public OrderBook getOrderBook(CurrencyPair pair,
-      Object... args) throws IOException {
+  public OrderBook getOrderBook(CurrencyPair pair, Object... args) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
-  public Trades getTrades(CurrencyPair pair,
-      Object... args) throws IOException {
+  public Trades getTrades(CurrencyPair pair, Object... args) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 }

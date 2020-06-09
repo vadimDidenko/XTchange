@@ -8,9 +8,7 @@ import org.knowm.xchange.kuna.util.KunaUtils;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Dat Bui
- */
+/** @author Dat Bui */
 public class KunaTrade {
 
   public static final String CREATED_AT = "created_at";
@@ -23,11 +21,8 @@ public class KunaTrade {
   private Date createdAt;
   private KunaSide side;
 
-  /**
-   * Hide default constructor.
-   */
-  private KunaTrade() {
-  }
+  /** Hide default constructor. */
+  private KunaTrade() {}
 
   public int getId() {
     return id;

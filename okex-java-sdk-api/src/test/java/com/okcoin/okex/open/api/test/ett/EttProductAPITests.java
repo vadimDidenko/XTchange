@@ -13,26 +13,25 @@ import java.util.List;
 
 public class EttProductAPITests extends EttAPIBaseTests {
 
-    private static final Logger LOG = LoggerFactory.getLogger(EttProductAPITests.class);
+  private static final Logger LOG = LoggerFactory.getLogger(EttProductAPITests.class);
 
-    private EttProductAPIService ettProductAPIService;
+  private EttProductAPIService ettProductAPIService;
 
-    @Before
-    public void before() {
-        this.config = this.config();
-        this.ettProductAPIService = new EttProductAPIServiceImpl(this.config);
-    }
+  @Before
+  public void before() {
+    this.config = this.config();
+    this.ettProductAPIService = new EttProductAPIServiceImpl(this.config);
+  }
 
-    @Test
-    public void getConstituents() {
-        EttConstituentsResult result = this.ettProductAPIService.getConstituents("ok06ett");
-        this.toResultString(EttProductAPITests.LOG, "result", result);
-    }
+  @Test
+  public void getConstituents() {
+    EttConstituentsResult result = this.ettProductAPIService.getConstituents("ok06ett");
+    this.toResultString(EttProductAPITests.LOG, "result", result);
+  }
 
-    @Test
-    public void getDefinePrice() {
-        List<EttSettlementDefinePrice> result = this.ettProductAPIService.getDefinePrice("ok06ett");
-        this.toResultString(EttProductAPITests.LOG, "result", result);
-    }
-
+  @Test
+  public void getDefinePrice() {
+    List<EttSettlementDefinePrice> result = this.ettProductAPIService.getDefinePrice("ok06ett");
+    this.toResultString(EttProductAPITests.LOG, "result", result);
+  }
 }

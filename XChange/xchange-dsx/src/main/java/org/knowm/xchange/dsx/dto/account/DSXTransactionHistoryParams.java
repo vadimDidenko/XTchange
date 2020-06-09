@@ -7,7 +7,8 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamCurrency;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsIdSpan;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
-public class DSXTransactionHistoryParams implements TradeHistoryParamsTimeSpan, TradeHistoryParamsIdSpan, TradeHistoryParamCurrency {
+public class DSXTransactionHistoryParams
+    implements TradeHistoryParamsTimeSpan, TradeHistoryParamsIdSpan, TradeHistoryParamCurrency {
 
   private Currency currency = null;
   private String startId = null;

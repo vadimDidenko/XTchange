@@ -12,7 +12,9 @@ public class HitbtcBalance {
   private final BigDecimal available;
   private final BigDecimal reserved;
 
-  public HitbtcBalance(@JsonProperty("currency") String currency, @JsonProperty("available") BigDecimal available,
+  public HitbtcBalance(
+      @JsonProperty("currency") String currency,
+      @JsonProperty("available") BigDecimal available,
       @JsonProperty("reserved") BigDecimal reserved) {
 
     this.currency = currency;

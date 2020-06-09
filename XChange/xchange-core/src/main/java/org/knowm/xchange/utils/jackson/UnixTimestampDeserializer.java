@@ -7,9 +7,7 @@ import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class UnixTimestampDeserializer extends JsonDeserializer<Date> {
 
   @Override

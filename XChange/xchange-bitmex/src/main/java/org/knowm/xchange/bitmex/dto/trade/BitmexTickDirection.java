@@ -16,8 +16,9 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = BitmexTickDirectionDeserializer.class)
 public enum BitmexTickDirection {
-
-  MINUSTICK, PLUSTICK, ZEROPLUSTICK;
+  MINUSTICK,
+  PLUSTICK,
+  ZEROPLUSTICK;
 
   @Override
   public String toString() {
@@ -40,7 +41,8 @@ public enum BitmexTickDirection {
   static class BitmexTickDirectionDeserializer extends JsonDeserializer<BitmexTickDirection> {
 
     @Override
-    public BitmexTickDirection deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitmexTickDirection deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

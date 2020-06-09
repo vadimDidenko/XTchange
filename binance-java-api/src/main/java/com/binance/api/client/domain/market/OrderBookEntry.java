@@ -7,9 +7,7 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * An order book entry consisting of price and quantity.
- */
+/** An order book entry consisting of price and quantity. */
 @JsonDeserialize(using = OrderBookEntryDeserializer.class)
 @JsonSerialize(using = OrderBookEntrySerializer.class)
 @JsonIgnoreProperties(ignoreUnknown = true)

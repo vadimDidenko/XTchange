@@ -17,9 +17,7 @@ import org.knowm.xchange.wex.v3.dto.trade.WexOrder;
 import org.knowm.xchange.wex.v3.dto.trade.WexPlaceOrderResult;
 import org.knowm.xchange.wex.v3.service.WexTradeServiceRaw;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class WexTradeDemo {
 
   public static void main(String[] args) throws IOException {
@@ -36,7 +34,14 @@ public class WexTradeDemo {
     printOpenOrders(tradeService);
 
     // place a limit buy order
-    LimitOrder limitOrder = new LimitOrder(Order.OrderType.ASK, new BigDecimal("0.1"), CurrencyPair.BTC_USD, "", null, new BigDecimal("1023.45"));
+    LimitOrder limitOrder =
+        new LimitOrder(
+            Order.OrderType.ASK,
+            new BigDecimal("0.1"),
+            CurrencyPair.BTC_USD,
+            "",
+            null,
+            new BigDecimal("1023.45"));
 
     String limitOrderReturnValue = null;
     try {
@@ -64,7 +69,8 @@ public class WexTradeDemo {
     // place buy order
     WexOrder.Type type = WexOrder.Type.buy;
     String pair = "btc_usd";
-    WexOrder wexOrder = new WexOrder(0, null, new BigDecimal("1"), new BigDecimal("0.1"), type, pair);
+    WexOrder wexOrder =
+        new WexOrder(0, null, new BigDecimal("1"), new BigDecimal("0.1"), type, pair);
 
     WexPlaceOrderResult result = null;
     try {
@@ -96,5 +102,4 @@ public class WexTradeDemo {
       System.out.println("ID: " + entry.getKey() + ", Order:" + entry.getValue());
     }
   }
-
 }

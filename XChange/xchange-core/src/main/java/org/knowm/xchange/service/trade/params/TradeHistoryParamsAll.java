@@ -8,12 +8,18 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.service.trade.TradeService;
 
 /**
- * Generic {@link TradeHistoryParams} implementation that implements all the interfaces in the hierarchy and can be safely (without getting
- * exceptions, if that all the required fields are non-null) passed to any implementation of {@link TradeService#getTradeHistory(TradeHistoryParams)}
- * .
+ * Generic {@link TradeHistoryParams} implementation that implements all the interfaces in the
+ * hierarchy and can be safely (without getting exceptions, if that all the required fields are
+ * non-null) passed to any implementation of {@link
+ * TradeService#getTradeHistory(TradeHistoryParams)} .
  */
-public class TradeHistoryParamsAll implements TradeHistoryParamsTimeSpan, TradeHistoryParamPaging, TradeHistoryParamsIdSpan, TradeHistoryParamOffset,
-    TradeHistoryParamCurrencyPair, TradeHistoryParamMultiCurrencyPair {
+public class TradeHistoryParamsAll
+    implements TradeHistoryParamsTimeSpan,
+        TradeHistoryParamPaging,
+        TradeHistoryParamsIdSpan,
+        TradeHistoryParamOffset,
+        TradeHistoryParamCurrencyPair,
+        TradeHistoryParamMultiCurrencyPair {
 
   private Integer pageLength;
   private Integer pageNumber;
@@ -94,10 +100,8 @@ public class TradeHistoryParamsAll implements TradeHistoryParamsTimeSpan, TradeH
   @Override
   public Long getOffset() {
 
-    if (offset != null || pageLength == null || pageNumber == null)
-      return offset;
-    else
-      return (long) pageLength * pageNumber;
+    if (offset != null || pageLength == null || pageNumber == null) return offset;
+    else return (long) pageLength * pageNumber;
   }
 
   @Override

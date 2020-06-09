@@ -9,8 +9,7 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 @JsonInclude(JsonInclude.Include.NON_NULL)
 public final class BitmexOrderBookBinning {
 
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<>();
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<>();
 
   public Map<String, Object> getAdditionalProperties() {
     return additionalProperties;

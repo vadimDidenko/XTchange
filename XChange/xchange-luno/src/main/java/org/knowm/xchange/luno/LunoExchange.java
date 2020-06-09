@@ -10,9 +10,7 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 import java.io.IOException;
 
-/**
- * @author Benedikt Bünz
- */
+/** @author Benedikt Bünz */
 public class LunoExchange extends BaseExchange implements Exchange {
 
   @Override
@@ -26,7 +24,8 @@ public class LunoExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.mybitx.com");
     exchangeSpecification.setHost("api.mybitx.com");
     exchangeSpecification.setPort(443);
@@ -41,7 +40,5 @@ public class LunoExchange extends BaseExchange implements Exchange {
   }
 
   @Override
-  public void remoteInit() throws IOException {
-
-  }
+  public void remoteInit() throws IOException {}
 }

@@ -19,56 +19,46 @@ public class EmpoExLevel {
 
   @JsonProperty("amount")
   private String amount;
+
   @JsonProperty("price")
   private String price;
+
   @JsonProperty("total")
   private String total;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The amount
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The amount */
   @JsonProperty("amount")
   public String getAmount() {
     return amount;
   }
 
-  /**
-   * @param amount The amount
-   */
+  /** @param amount The amount */
   @JsonProperty("amount")
   public void setAmount(String amount) {
     this.amount = amount;
   }
 
-  /**
-   * @return The price
-   */
+  /** @return The price */
   @JsonProperty("price")
   public String getPrice() {
     return price;
   }
 
-  /**
-   * @param price The price
-   */
+  /** @param price The price */
   @JsonProperty("price")
   public void setPrice(String price) {
     this.price = price;
   }
 
-  /**
-   * @return The total
-   */
+  /** @return The total */
   @JsonProperty("total")
   public String getTotal() {
     return total;
   }
 
-  /**
-   * @param total The total
-   */
+  /** @param total The total */
   @JsonProperty("total")
   public void setTotal(String total) {
     this.total = total;
@@ -86,7 +76,14 @@ public class EmpoExLevel {
 
   @Override
   public String toString() {
-    return "EmpoExLevel [amount=" + amount + ", price=" + price + ", total=" + total + ", additionalProperties=" + additionalProperties + "]";
+    return "EmpoExLevel [amount="
+        + amount
+        + ", price="
+        + price
+        + ", total="
+        + total
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

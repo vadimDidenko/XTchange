@@ -39,7 +39,8 @@ public class BitfinexAccountDemo {
     TradeHistoryParams params = accountService.createFundingHistoryParams();
     if (params instanceof TradeHistoryParamsTimeSpan) {
       final TradeHistoryParamsTimeSpan timeSpanParam = (TradeHistoryParamsTimeSpan) params;
-      timeSpanParam.setStartTime(new Date(System.currentTimeMillis() - (1 * 12 * 30 * 24 * 60 * 60 * 1000L)));
+      timeSpanParam.setStartTime(
+          new Date(System.currentTimeMillis() - (1 * 12 * 30 * 24 * 60 * 60 * 1000L)));
     }
     if (params instanceof TradeHistoryParamCurrency) {
       ((TradeHistoryParamCurrency) params).setCurrency(Currency.BTC);
@@ -48,5 +49,4 @@ public class BitfinexAccountDemo {
     List<FundingRecord> fundingRecords = accountService.getFundingHistory(params);
     AccountServiceTestUtil.printFundingHistory(fundingRecords);
   }
-
 }

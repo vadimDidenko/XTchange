@@ -8,8 +8,7 @@ import javax.annotation.Nullable;
 import org.knowm.xchange.currency.CurrencyPair;
 
 public class MultiCurrencyOrderBooksRequestParams implements OrderBooksRequestParam {
-  @Nullable
-  public final Integer desiredDepth;
+  @Nullable public final Integer desiredDepth;
   public final Collection<CurrencyPair> currencyPairs;
 
   public MultiCurrencyOrderBooksRequestParams(CurrencyPair... currencyPairs) {
@@ -24,7 +23,8 @@ public class MultiCurrencyOrderBooksRequestParams implements OrderBooksRequestPa
     this(null, currencyPairs);
   }
 
-  public MultiCurrencyOrderBooksRequestParams(Integer desiredDepth, Collection<CurrencyPair> currencyPairs) {
+  public MultiCurrencyOrderBooksRequestParams(
+      Integer desiredDepth, Collection<CurrencyPair> currencyPairs) {
     this.currencyPairs = currencyPairs;
     this.desiredDepth = desiredDepth;
   }

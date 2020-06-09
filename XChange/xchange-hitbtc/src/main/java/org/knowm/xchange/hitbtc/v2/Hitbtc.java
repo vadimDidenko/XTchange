@@ -14,9 +14,7 @@ import org.knowm.xchange.hitbtc.v2.dto.HitbtcSymbol;
 import org.knowm.xchange.hitbtc.v2.dto.HitbtcTicker;
 import org.knowm.xchange.hitbtc.v2.dto.HitbtcTrade;
 
-/**
- * Version 2 of HitBtc API. See https://api.hitbtc.com/api/2/explore/
- */
+/** Version 2 of HitBtc API. See https://api.hitbtc.com/api/2/explore/ */
 @Path("/api/2/")
 public interface Hitbtc {
 
@@ -34,7 +32,8 @@ public interface Hitbtc {
 
   @GET
   @Path("public/orderbook/{symbol}")
-  HitbtcOrderBook getOrderBook(@PathParam("symbol") String symbol, @QueryParam("limit") Integer limit) throws IOException;
+  HitbtcOrderBook getOrderBook(
+      @PathParam("symbol") String symbol, @QueryParam("limit") Integer limit) throws IOException;
 
   @GET
   @Path("public/trades/{symbol}")
@@ -46,6 +45,9 @@ public interface Hitbtc {
 
   @GET
   @Path("public/candles/{symbol}")
-  List<HitbtcCandle> getHitbtcOHLC(@PathParam("symbol") String symbol, @QueryParam("limit") int limit, @QueryParam("period") String period) throws IOException;
-
+  List<HitbtcCandle> getHitbtcOHLC(
+      @PathParam("symbol") String symbol,
+      @QueryParam("limit") int limit,
+      @QueryParam("period") String period)
+      throws IOException;
 }

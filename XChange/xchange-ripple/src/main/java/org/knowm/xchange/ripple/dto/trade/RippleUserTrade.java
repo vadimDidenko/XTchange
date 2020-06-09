@@ -16,10 +16,22 @@ public class RippleUserTrade extends UserTrade {
   private final BigDecimal baseTransferFee;
   private final BigDecimal counterTransferFee;
 
-  public RippleUserTrade(final OrderType type, final BigDecimal originalAmount, final CurrencyPair currencyPair, final BigDecimal price,
-      final Date timestamp, final String id, final String orderId, final BigDecimal feeAmount, final Currency feeCurrency,
-      final String baseCounterparty, final String counterCounterparty, final BigDecimal baseTransferFee, final BigDecimal counterTransferFee) {
-    super(type, originalAmount, currencyPair, price, timestamp, id, orderId, feeAmount, feeCurrency);
+  public RippleUserTrade(
+      final OrderType type,
+      final BigDecimal originalAmount,
+      final CurrencyPair currencyPair,
+      final BigDecimal price,
+      final Date timestamp,
+      final String id,
+      final String orderId,
+      final BigDecimal feeAmount,
+      final Currency feeCurrency,
+      final String baseCounterparty,
+      final String counterCounterparty,
+      final BigDecimal baseTransferFee,
+      final BigDecimal counterTransferFee) {
+    super(
+        type, originalAmount, currencyPair, price, timestamp, id, orderId, feeAmount, feeCurrency);
     this.baseCounterparty = baseCounterparty;
     this.counterCounterparty = counterCounterparty;
 
@@ -60,10 +72,21 @@ public class RippleUserTrade extends UserTrade {
     private BigDecimal counterTransferFee = BigDecimal.ZERO;
 
     public static Builder from(final RippleUserTrade trade) {
-      final Builder builder = new Builder().baseCounterparty(trade.getBaseCounterparty()).counterCounterparty(trade.getCounterCounterparty());
-      builder.orderId(trade.getOrderId()).feeAmount(trade.getFeeAmount()).feeCurrency(trade.getFeeCurrency());
-      builder.type(trade.getType()).originalAmount(trade.getOriginalAmount()).currencyPair(trade.getCurrencyPair()).price(trade.getPrice())
-          .timestamp(trade.getTimestamp()).id(trade.getId());
+      final Builder builder =
+          new Builder()
+              .baseCounterparty(trade.getBaseCounterparty())
+              .counterCounterparty(trade.getCounterCounterparty());
+      builder
+          .orderId(trade.getOrderId())
+          .feeAmount(trade.getFeeAmount())
+          .feeCurrency(trade.getFeeCurrency());
+      builder
+          .type(trade.getType())
+          .originalAmount(trade.getOriginalAmount())
+          .currencyPair(trade.getCurrencyPair())
+          .price(trade.getPrice())
+          .timestamp(trade.getTimestamp())
+          .id(trade.getId());
       return builder;
     }
 
@@ -89,8 +112,21 @@ public class RippleUserTrade extends UserTrade {
 
     @Override
     public RippleUserTrade build() {
-      final RippleUserTrade trade = new RippleUserTrade(type, originalAmount, currencyPair, price, timestamp, id, orderId, feeAmount, feeCurrency,
-          baseCounterparty, counterCounterparty, baseTransferFee, counterTransferFee);
+      final RippleUserTrade trade =
+          new RippleUserTrade(
+              type,
+              originalAmount,
+              currencyPair,
+              price,
+              timestamp,
+              id,
+              orderId,
+              feeAmount,
+              feeCurrency,
+              baseCounterparty,
+              counterCounterparty,
+              baseTransferFee,
+              counterTransferFee);
       return trade;
     }
   }

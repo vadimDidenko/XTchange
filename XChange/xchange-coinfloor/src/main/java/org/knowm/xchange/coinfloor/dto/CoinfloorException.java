@@ -8,7 +8,8 @@ public class CoinfloorException extends HttpStatusExceptionSupport {
 
   private final int errorCode;
 
-  public CoinfloorException(@JsonProperty("error_code") int errorCode, @JsonProperty("error_msg") String reason) {
+  public CoinfloorException(
+      @JsonProperty("error_code") int errorCode, @JsonProperty("error_msg") String reason) {
     super(reason);
     this.errorCode = errorCode;
   }

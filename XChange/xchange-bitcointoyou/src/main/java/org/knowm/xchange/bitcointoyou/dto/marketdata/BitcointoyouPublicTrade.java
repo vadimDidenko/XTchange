@@ -23,7 +23,7 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
  */
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({ "date", "price", "amount", "tid", "type", "currency" })
+@JsonPropertyOrder({"date", "price", "amount", "tid", "type", "currency"})
 public class BitcointoyouPublicTrade {
 
   private final Integer date;
@@ -32,11 +32,14 @@ public class BitcointoyouPublicTrade {
   private final Integer tid;
   private final String type;
   private final String currency;
-  @JsonIgnore
-  private final Map<String, Object> additionalProperties = new HashMap<>();
+  @JsonIgnore private final Map<String, Object> additionalProperties = new HashMap<>();
 
-  public BitcointoyouPublicTrade(@JsonProperty("date") Integer date, @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount, @JsonProperty("tid") Integer tid, @JsonProperty("type") String type,
+  public BitcointoyouPublicTrade(
+      @JsonProperty("date") Integer date,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("tid") Integer tid,
+      @JsonProperty("type") String type,
       @JsonProperty("currency") String currency) {
     this.date = date;
     this.price = price;
@@ -91,8 +94,14 @@ public class BitcointoyouPublicTrade {
   @Override
   public String toString() {
 
-    return new ToStringBuilder(this).append("date", date).append("price", price).append("amount", amount)
-        .append("tid", tid).append("type", type).append("currency", currency).append("additionalProperties",
-            additionalProperties).toString();
+    return new ToStringBuilder(this)
+        .append("date", date)
+        .append("price", price)
+        .append("amount", amount)
+        .append("tid", tid)
+        .append("type", type)
+        .append("currency", currency)
+        .append("additionalProperties", additionalProperties)
+        .toString();
   }
 }

@@ -8,10 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * @author semihunaldi
- */
-
+/** @author semihunaldi */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Paribu {
@@ -19,5 +16,4 @@ public interface Paribu {
   @GET
   @Path("ticker")
   ParibuTicker getTicker() throws IOException;
-
 }

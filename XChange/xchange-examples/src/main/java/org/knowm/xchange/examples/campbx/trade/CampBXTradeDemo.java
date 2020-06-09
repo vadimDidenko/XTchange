@@ -14,12 +14,11 @@ import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.service.trade.TradeService;
 
 /**
- * <p>
  * Example showing the following:
- * </p>
+ *
  * <ul>
- * <li>Connect to Camp BX exchange with authentication</li>
- * <li>Enter, review and cancel limit orders</li>
+ *   <li>Connect to Camp BX exchange with authentication
+ *   <li>Enter, review and cancel limit orders
  * </ul>
  */
 public class CampBXTradeDemo {
@@ -36,11 +35,25 @@ public class CampBXTradeDemo {
 
     printOpenOrders(tradeService);
 
-    LimitOrder lo = new LimitOrder((OrderType.ASK), new BigDecimal("0.1"), CurrencyPair.BTC_USD, "", null, new BigDecimal("28.99"));
+    LimitOrder lo =
+        new LimitOrder(
+            (OrderType.ASK),
+            new BigDecimal("0.1"),
+            CurrencyPair.BTC_USD,
+            "",
+            null,
+            new BigDecimal("28.99"));
     String rv = tradeService.placeLimitOrder(lo);
     System.out.println("Limit Order return value: " + rv);
     // place a limit sell order
-    LimitOrder limitOrder = new LimitOrder((OrderType.ASK), new BigDecimal("0.1"), CurrencyPair.BTC_USD, "", null, new BigDecimal("110"));
+    LimitOrder limitOrder =
+        new LimitOrder(
+            (OrderType.ASK),
+            new BigDecimal("0.1"),
+            CurrencyPair.BTC_USD,
+            "",
+            null,
+            new BigDecimal("110"));
     String limitOrderReturnValue = tradeService.placeLimitOrder(limitOrder);
     System.out.println("Limit Order return value: " + limitOrderReturnValue);
 

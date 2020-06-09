@@ -57,7 +57,8 @@ public class LivecoinTradeService extends LivecoinTradeServiceRaw implements Tra
       limit = ((TradeHistoryParamLimit) params).getLimit();
     }
 
-    return new UserTrades(tradeHistory(start, end, limit, offset), Trades.TradeSortType.SortByTimestamp);
+    return new UserTrades(
+        tradeHistory(start, end, limit, offset), Trades.TradeSortType.SortByTimestamp);
   }
 
   @Override

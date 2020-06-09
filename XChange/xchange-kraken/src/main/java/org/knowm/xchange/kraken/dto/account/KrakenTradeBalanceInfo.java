@@ -12,7 +12,8 @@ public class KrakenTradeBalanceInfo {
   private final BigDecimal costBasis; // cost basis of open positions
   private final BigDecimal floatingValuation; // current floating valuation of open positions
   private final BigDecimal equity; // trade balance + unrealized net profit/loss
-  private final BigDecimal freeMargin; // equity - initial margin (maximum margin available to open new positions)
+  private final BigDecimal
+      freeMargin; // equity - initial margin (maximum margin available to open new positions)
   private final BigDecimal marginLevel; // (equity / initial margin) * 100
 
   /**
@@ -27,9 +28,15 @@ public class KrakenTradeBalanceInfo {
    * @param freeMargin
    * @param marginLevel
    */
-  public KrakenTradeBalanceInfo(@JsonProperty("tb") BigDecimal tradeBalance, @JsonProperty("m") BigDecimal margin,
-      @JsonProperty("n") BigDecimal unrealizedGainsLosses, @JsonProperty("c") BigDecimal costBasis, @JsonProperty("v") BigDecimal floatingValuation,
-      @JsonProperty("e") BigDecimal equity, @JsonProperty("mf") BigDecimal freeMargin, @JsonProperty("ml") BigDecimal marginLevel) {
+  public KrakenTradeBalanceInfo(
+      @JsonProperty("tb") BigDecimal tradeBalance,
+      @JsonProperty("m") BigDecimal margin,
+      @JsonProperty("n") BigDecimal unrealizedGainsLosses,
+      @JsonProperty("c") BigDecimal costBasis,
+      @JsonProperty("v") BigDecimal floatingValuation,
+      @JsonProperty("e") BigDecimal equity,
+      @JsonProperty("mf") BigDecimal freeMargin,
+      @JsonProperty("ml") BigDecimal marginLevel) {
 
     this.tradeBalance = tradeBalance;
     this.margin = margin;
@@ -84,9 +91,22 @@ public class KrakenTradeBalanceInfo {
   @Override
   public String toString() {
 
-    return "KrakenTradeBalanceInfo [tradeBalance=" + tradeBalance + ", margin=" + margin + ", unrealizedGainsLosses=" + unrealizedGainsLosses
-        + ", costBasis=" + costBasis + ", floatingValuation=" + floatingValuation + ", equity=" + equity + ", freeMargin=" + freeMargin
-        + ", marginLevel=" + marginLevel + "]";
+    return "KrakenTradeBalanceInfo [tradeBalance="
+        + tradeBalance
+        + ", margin="
+        + margin
+        + ", unrealizedGainsLosses="
+        + unrealizedGainsLosses
+        + ", costBasis="
+        + costBasis
+        + ", floatingValuation="
+        + floatingValuation
+        + ", equity="
+        + equity
+        + ", freeMargin="
+        + freeMargin
+        + ", marginLevel="
+        + marginLevel
+        + "]";
   }
-
 }

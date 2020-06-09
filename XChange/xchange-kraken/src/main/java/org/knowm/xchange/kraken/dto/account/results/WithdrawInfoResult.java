@@ -7,8 +7,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class WithdrawInfoResult extends KrakenResult<WithdrawInfo> {
 
-  public WithdrawInfoResult(@JsonProperty("result") WithdrawInfo result, @JsonProperty("error") String[] error) {
+  public WithdrawInfoResult(
+      @JsonProperty("result") WithdrawInfo result, @JsonProperty("error") String[] error) {
     super(result, error);
   }
-
 }

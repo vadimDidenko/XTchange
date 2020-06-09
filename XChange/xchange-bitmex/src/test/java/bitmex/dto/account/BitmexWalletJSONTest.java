@@ -10,9 +10,7 @@ import java.math.BigDecimal;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class BitmexWalletJSONTest {
 
   @Test
@@ -32,5 +30,4 @@ public class BitmexWalletJSONTest {
     assertThat(bitmexWallet.getDeltaAmount()).isEqualTo(BigDecimal.ZERO);
     assertThat(bitmexWallet.getPrevAmount()).isEqualTo(BigDecimal.ZERO);
   }
-
 }

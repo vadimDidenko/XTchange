@@ -9,8 +9,10 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 public class ItBitUserTrade {
   private String orderId;
+
   @JsonDeserialize(using = ItBitDateDeserializer.class)
   private Date timestamp;
+
   private String instrument;
   private Direction direction;
   private String currency1;
@@ -76,6 +78,7 @@ public class ItBitUserTrade {
   }
 
   public enum Direction {
-    buy, sell
+    buy,
+    sell
   }
 }

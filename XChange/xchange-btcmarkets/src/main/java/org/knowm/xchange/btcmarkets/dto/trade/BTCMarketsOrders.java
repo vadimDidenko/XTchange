@@ -7,8 +7,11 @@ import org.knowm.xchange.btcmarkets.dto.BTCMarketsBaseResponse;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BTCMarketsOrders extends BTCMarketsBaseResponse {
-  protected BTCMarketsOrders(@JsonProperty("success") Boolean success, @JsonProperty("errorMessage") String errorMessage,
-      @JsonProperty("errorCode") Integer errorCode, @JsonProperty("orders") List<BTCMarketsOrder> orders) {
+  protected BTCMarketsOrders(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("errorMessage") String errorMessage,
+      @JsonProperty("errorCode") Integer errorCode,
+      @JsonProperty("orders") List<BTCMarketsOrder> orders) {
     super(success, errorMessage, errorCode);
     this.orders = orders;
   }

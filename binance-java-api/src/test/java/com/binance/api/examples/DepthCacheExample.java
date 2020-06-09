@@ -19,20 +19,20 @@ import java.util.function.Consumer;
 /**
  * Illustrates how to use the depth event stream to create a local cache of bids/asks for a symbol.
  *
- * Snapshots of the order book can be retrieved from the REST API.
- * Delta changes to the book can be received by subscribing for updates via the web socket API.
+ * <p>Snapshots of the order book can be retrieved from the REST API. Delta changes to the book can
+ * be received by subscribing for updates via the web socket API.
  *
- * To ensure no updates are missed, it is important to subscribe for updates on the web socket API
- * _before_ getting the snapshot from the REST API. Done the other way around it is possible to
+ * <p>To ensure no updates are missed, it is important to subscribe for updates on the web socket
+ * API _before_ getting the snapshot from the REST API. Done the other way around it is possible to
  * miss one or more updates on the web socket, leaving the local cache in an inconsistent state.
  *
- * Steps:
- * 1. Subscribe to depth events and cache any events that are received.
- * 2. Get a snapshot from the rest endpoint and use it to build your initial depth cache.
- * 3. Apply any cache events that have a final updateId later than the snapshot's update id.
- * 4. Start applying any newly received depth events to the depth cache.
+ * <p>Steps: 1. Subscribe to depth events and cache any events that are received. 2. Get a snapshot
+ * from the rest endpoint and use it to build your initial depth cache. 3. Apply any cache events
+ * that have a final updateId later than the snapshot's update id. 4. Start applying any newly
+ * received depth events to the depth cache.
  *
- * The example repeats these steps, on a new web socket, should the web socket connection be lost.
+ * <p>The example repeats these steps, on a new web socket, should the web socket connection be
+ * lost.
  */
 public class DepthCacheExample {
 
@@ -72,7 +72,7 @@ public class DepthCacheExample {
   /**
    * Begins streaming of depth events.
    *
-   * Any events received are cached until the rest API is polled for an initial snapshot.
+   * <p>Any events received are cached until the rest API is polled for an initial snapshot.
    */
   private List<DepthEvent> startDepthEventStreaming() {
     final List<DepthEvent> pendingDeltas = new CopyOnWriteArrayList<>();
@@ -83,9 +83,7 @@ public class DepthCacheExample {
     return pendingDeltas;
   }
 
-  /**
-   * 2. Initializes the depth cache by getting a snapshot from the REST API.
-   */
+  /** 2. Initializes the depth cache by getting a snapshot from the REST API. */
   private void initializeDepthCache() {
     OrderBook orderBook = restClient.getOrderBook(symbol.toUpperCase(), 10);
 
@@ -104,33 +102,35 @@ public class DepthCacheExample {
     depthCache.put(BIDS, bids);
   }
 
-  /**
-   * Deal with any cached updates and switch to normal running.
-   */
+  /** Deal with any cached updates and switch to normal running. */
   private void applyPendingDeltas(final List<DepthEvent> pendingDeltas) {
-    final Consumer<DepthEvent> updateOrderBook = newEvent -> {
-      if (newEvent.getFinalUpdateId() > lastUpdateId) {
-        System.out.println(newEvent);
-        lastUpdateId = newEvent.getFinalUpdateId();
-        updateOrderBook(getAsks(), newEvent.getAsks());
-        updateOrderBook(getBids(), newEvent.getBids());
-        printDepthCache();
-      }
-    };
+    final Consumer<DepthEvent> updateOrderBook =
+        newEvent -> {
+          if (newEvent.getFinalUpdateId() > lastUpdateId) {
+            System.out.println(newEvent);
+            lastUpdateId = newEvent.getFinalUpdateId();
+            updateOrderBook(getAsks(), newEvent.getAsks());
+            updateOrderBook(getBids(), newEvent.getBids());
+            printDepthCache();
+          }
+        };
 
-    final Consumer<DepthEvent> drainPending = newEvent -> {
-      pendingDeltas.add(newEvent);
+    final Consumer<DepthEvent> drainPending =
+        newEvent -> {
+          pendingDeltas.add(newEvent);
 
-      // 3. Apply any deltas received on the web socket that have an update-id indicating they come
-      // after the snapshot.
-      pendingDeltas.stream()
-          .filter(
-              e -> e.getFinalUpdateId() > lastUpdateId) // Ignore any updates before the snapshot
-          .forEach(updateOrderBook);
+          // 3. Apply any deltas received on the web socket that have an update-id indicating they
+          // come
+          // after the snapshot.
+          pendingDeltas.stream()
+              .filter(
+                  e ->
+                      e.getFinalUpdateId() > lastUpdateId) // Ignore any updates before the snapshot
+              .forEach(updateOrderBook);
 
-      // 4. Start applying any newly received depth events to the depth cache.
-      wsCallback.setHandler(updateOrderBook);
-    };
+          // 4. Start applying any newly received depth events to the depth cache.
+          wsCallback.setHandler(updateOrderBook);
+        };
 
     wsCallback.setHandler(drainPending);
   }
@@ -138,10 +138,12 @@ public class DepthCacheExample {
   /**
    * Updates an order book (bids or asks) with a delta received from the server.
    *
-   * Whenever the qty specified is ZERO, it means the price should was removed from the order book.
+   * <p>Whenever the qty specified is ZERO, it means the price should was removed from the order
+   * book.
    */
-  private void updateOrderBook(NavigableMap<BigDecimal, BigDecimal> lastOrderBookEntries,
-                               List<OrderBookEntry> orderBookDeltas) {
+  private void updateOrderBook(
+      NavigableMap<BigDecimal, BigDecimal> lastOrderBookEntries,
+      List<OrderBookEntry> orderBookDeltas) {
     for (OrderBookEntry orderBookDelta : orderBookDeltas) {
       BigDecimal price = new BigDecimal(orderBookDelta.getPrice());
       BigDecimal qty = new BigDecimal(orderBookDelta.getQty());
@@ -162,22 +164,19 @@ public class DepthCacheExample {
     return depthCache.get(BIDS);
   }
 
-  /**
-   * @return the best ask in the order book
-   */
+  /** @return the best ask in the order book */
   private Map.Entry<BigDecimal, BigDecimal> getBestAsk() {
     return getAsks().lastEntry();
   }
 
-  /**
-   * @return the best bid in the order book
-   */
+  /** @return the best bid in the order book */
   private Map.Entry<BigDecimal, BigDecimal> getBestBid() {
     return getBids().firstEntry();
   }
 
   /**
-   * @return a depth cache, containing two keys (ASKs and BIDs), and for each, an ordered list of book entries.
+   * @return a depth cache, containing two keys (ASKs and BIDs), and for each, an ordered list of
+   *     book entries.
    */
   public Map<String, NavigableMap<BigDecimal, BigDecimal>> getDepthCache() {
     return depthCache;
@@ -188,7 +187,8 @@ public class DepthCacheExample {
   }
 
   /**
-   * Prints the cached order book / depth of a symbol as well as the best ask and bid price in the book.
+   * Prints the cached order book / depth of a symbol as well as the best ask and bid price in the
+   * book.
    */
   private void printDepthCache() {
     System.out.println(depthCache);
@@ -200,9 +200,7 @@ public class DepthCacheExample {
     System.out.println("BEST BID: " + toDepthCacheEntryString(getBestBid()));
   }
 
-  /**
-   * Pretty prints an order book entry in the format "price / quantity".
-   */
+  /** Pretty prints an order book entry in the format "price / quantity". */
   private static String toDepthCacheEntryString(Map.Entry<BigDecimal, BigDecimal> depthCacheEntry) {
     return depthCacheEntry.getKey().toPlainString() + " / " + depthCacheEntry.getValue();
   }

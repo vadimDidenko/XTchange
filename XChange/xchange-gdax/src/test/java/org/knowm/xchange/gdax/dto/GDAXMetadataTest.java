@@ -36,6 +36,5 @@ public class GDAXMetadataTest {
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(specification);
     ExchangeMetaData exchangeMetaData = exchange.getExchangeMetaData();
     exchangeMetaData = GDAXAdapters.adaptToExchangeMetaData(exchangeMetaData, products);
-
   }
 }

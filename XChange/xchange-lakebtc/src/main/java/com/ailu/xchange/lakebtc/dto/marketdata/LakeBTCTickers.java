@@ -2,9 +2,7 @@ package org.knowm.xchange.lakebtc.dto.marketdata;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class LakeBTCTickers {
 
   private final LakeBTCTicker usd;
@@ -16,7 +14,8 @@ public class LakeBTCTickers {
    * @param usd
    * @param cny
    */
-  public LakeBTCTickers(@JsonProperty("USD") LakeBTCTicker usd, @JsonProperty("CNY") LakeBTCTicker cny) {
+  public LakeBTCTickers(
+      @JsonProperty("USD") LakeBTCTicker usd, @JsonProperty("CNY") LakeBTCTicker cny) {
 
     this.usd = usd;
     this.cny = cny;

@@ -15,21 +15,22 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseTransferTypeDeserializer.class)
 @JsonSerialize(using = EnumLowercaseJsonSerializer.class)
 public enum CoinbaseTransferType {
-
-  BUY, SELL;
+  BUY,
+  SELL;
 
   static class CoinbaseTransferTypeDeserializer extends JsonDeserializer<CoinbaseTransferType> {
 
-    private static final EnumFromStringHelper<CoinbaseTransferType> FROM_STRING_HELPER = new EnumFromStringHelper<>(CoinbaseTransferType.class);
+    private static final EnumFromStringHelper<CoinbaseTransferType> FROM_STRING_HELPER =
+        new EnumFromStringHelper<>(CoinbaseTransferType.class);
 
     @Override
-    public CoinbaseTransferType deserialize(JsonParser jsonParser, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseTransferType deserialize(
+        JsonParser jsonParser, final DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

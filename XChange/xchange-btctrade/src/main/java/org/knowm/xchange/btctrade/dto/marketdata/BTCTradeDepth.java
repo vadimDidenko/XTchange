@@ -9,7 +9,8 @@ public class BTCTradeDepth {
   private final BigDecimal[][] asks;
   private final BigDecimal[][] bids;
 
-  public BTCTradeDepth(@JsonProperty("asks") BigDecimal[][] asks, @JsonProperty("bids") BigDecimal[][] bids) {
+  public BTCTradeDepth(
+      @JsonProperty("asks") BigDecimal[][] asks, @JsonProperty("bids") BigDecimal[][] bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -24,5 +25,4 @@ public class BTCTradeDepth {
 
     return bids;
   }
-
 }

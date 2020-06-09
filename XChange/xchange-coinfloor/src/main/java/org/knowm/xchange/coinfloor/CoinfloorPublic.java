@@ -21,14 +21,21 @@ import org.knowm.xchange.currency.Currency;
 public interface CoinfloorPublic {
   @GET
   @Path("{base}/{counter}/ticker/")
-  CoinfloorTicker getTicker(@PathParam("base") Currency base, @PathParam("counter") Currency counter) throws CoinfloorException, IOException;
+  CoinfloorTicker getTicker(
+      @PathParam("base") Currency base, @PathParam("counter") Currency counter)
+      throws CoinfloorException, IOException;
 
   @GET
   @Path("{base}/{counter}/order_book/")
-  CoinfloorOrderBook getOrderBook(@PathParam("base") Currency base, @PathParam("counter") Currency counter) throws CoinfloorException, IOException;
+  CoinfloorOrderBook getOrderBook(
+      @PathParam("base") Currency base, @PathParam("counter") Currency counter)
+      throws CoinfloorException, IOException;
 
   @GET
   @Path("{base}/{counter}/transactions/")
-  CoinfloorTransaction[] getTransactions(@PathParam("base") Currency base, @PathParam("counter") Currency counter,
-                                         @QueryParam("time") CoinfloorMarketDataServiceRaw.CoinfloorInterval period) throws CoinfloorException, IOException;
+  CoinfloorTransaction[] getTransactions(
+      @PathParam("base") Currency base,
+      @PathParam("counter") Currency counter,
+      @QueryParam("time") CoinfloorMarketDataServiceRaw.CoinfloorInterval period)
+      throws CoinfloorException, IOException;
 }

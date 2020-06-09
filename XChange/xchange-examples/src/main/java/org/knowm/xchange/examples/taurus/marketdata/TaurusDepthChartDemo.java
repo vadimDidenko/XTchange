@@ -20,15 +20,14 @@ import org.knowm.xchart.XYSeries;
 import org.knowm.xchart.XYSeries.XYSeriesRenderStyle;
 import org.knowm.xchart.style.markers.SeriesMarkers;
 
-/**
- * Demonstrate requesting OrderBook from Taurus and plotting it using XChart.
- */
+/** Demonstrate requesting OrderBook from Taurus and plotting it using XChart. */
 public class TaurusDepthChartDemo {
 
   public static void main(String[] args) throws IOException {
 
     // Use the factory to get the version 1 Taurus exchange API using default settings
-    Exchange taurusExchange = ExchangeFactory.INSTANCE.createExchange(TaurusExchange.class.getName());
+    Exchange taurusExchange =
+        ExchangeFactory.INSTANCE.createExchange(TaurusExchange.class.getName());
 
     // Interested in the public market data feed (no authentication)
     MarketDataService marketDataService = taurusExchange.getMarketDataService();
@@ -43,7 +42,14 @@ public class TaurusDepthChartDemo {
     System.out.println("plotting...");
 
     // Create Chart
-    XYChart chart = new XYChartBuilder().width(800).height(600).title("Taurus Order Book").xAxisTitle("BTC").yAxisTitle("CAD").build();
+    XYChart chart =
+        new XYChartBuilder()
+            .width(800)
+            .height(600)
+            .title("Taurus Order Book")
+            .xAxisTitle("BTC")
+            .yAxisTitle("CAD")
+            .build();
 
     // Customize Chart
     chart.getStyler().setDefaultSeriesRenderStyle(XYSeriesRenderStyle.Area);
@@ -83,7 +89,5 @@ public class TaurusDepthChartDemo {
     series.setMarker(SeriesMarkers.NONE);
 
     new SwingWrapper(chart).displayChart();
-
   }
-
 }

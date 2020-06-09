@@ -12,7 +12,8 @@ import org.knowm.xchange.wex.v3.WexAuthenticated;
  *
  * @author Peter N. Steinmetz Date: 4/3/15 Time: 8:29 AM
  */
-public class WexTransHistoryParams extends DefaultTradeHistoryParamPaging implements TradeHistoryParamsIdSpan, TradeHistoryParamsTimeSpan {
+public class WexTransHistoryParams extends DefaultTradeHistoryParamPaging
+    implements TradeHistoryParamsIdSpan, TradeHistoryParamsTimeSpan {
   private WexAuthenticated.SortOrder sortOrder;
   private String startId;
   private String endId;

@@ -19,7 +19,8 @@ public interface Bittrex {
 
   @GET
   @Path("public/getmarketsummary/")
-  BittrexMarketSummaryResponse getMarketSummary(@QueryParam("market") String market) throws IOException;
+  BittrexMarketSummaryResponse getMarketSummary(@QueryParam("market") String market)
+      throws IOException;
 
   @GET
   @Path("public/getmarketsummaries/")
@@ -27,12 +28,16 @@ public interface Bittrex {
 
   @GET
   @Path("public/getorderbook/")
-  BittrexDepthResponse getBook(@QueryParam("market") String market, @QueryParam("type") String type,
-                               @QueryParam("depth") int depth) throws IOException;
+  BittrexDepthResponse getBook(
+      @QueryParam("market") String market,
+      @QueryParam("type") String type,
+      @QueryParam("depth") int depth)
+      throws IOException;
 
   @GET
   @Path("public/getmarkethistory/")
-  BittrexTradesResponse getTrades(@QueryParam("market") String market, @QueryParam("count") int count) throws IOException;
+  BittrexTradesResponse getTrades(
+      @QueryParam("market") String market, @QueryParam("count") int count) throws IOException;
 
   @GET
   @Path("public/getmarkets")
@@ -41,5 +46,4 @@ public interface Bittrex {
   @GET
   @Path("public/getcurrencies")
   BittrexCurrenciesResponse getCurrencies() throws IOException;
-
 }

@@ -28,9 +28,7 @@ import org.knowm.xchange.service.trade.params.orders.DefaultOpenOrdersParamCurre
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements TradeService {
 
   public BTCMarketsTradeService(Exchange exchange) {
@@ -39,12 +37,22 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
 
   @Override
   public String placeMarketOrder(MarketOrder order) throws IOException, BTCMarketsException {
-    return placeOrder(order.getCurrencyPair(), order.getType(), order.getOriginalAmount(), BigDecimal.ZERO, BTCMarketsOrder.Type.Market);
+    return placeOrder(
+        order.getCurrencyPair(),
+        order.getType(),
+        order.getOriginalAmount(),
+        BigDecimal.ZERO,
+        BTCMarketsOrder.Type.Market);
   }
 
   @Override
   public String placeLimitOrder(LimitOrder order) throws IOException, BTCMarketsException {
-    return placeOrder(order.getCurrencyPair(), order.getType(), order.getOriginalAmount(), order.getLimitPrice(), BTCMarketsOrder.Type.Limit);
+    return placeOrder(
+        order.getCurrencyPair(),
+        order.getType(),
+        order.getOriginalAmount(),
+        order.getLimitPrice(),
+        BTCMarketsOrder.Type.Limit);
   }
 
   @Override
@@ -52,10 +60,17 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
     throw new NotYetImplementedForExchangeException();
   }
 
-  private String placeOrder(CurrencyPair currencyPair, Order.OrderType orderSide, BigDecimal amount, BigDecimal price,
-      BTCMarketsOrder.Type orderType) throws IOException {
-    BTCMarketsOrder.Side side = orderSide == BID ? BTCMarketsOrder.Side.Bid : BTCMarketsOrder.Side.Ask;
-    final BTCMarketsPlaceOrderResponse orderResponse = placeBTCMarketsOrder(currencyPair, amount, price, side, orderType);
+  private String placeOrder(
+      CurrencyPair currencyPair,
+      Order.OrderType orderSide,
+      BigDecimal amount,
+      BigDecimal price,
+      BTCMarketsOrder.Type orderType)
+      throws IOException {
+    BTCMarketsOrder.Side side =
+        orderSide == BID ? BTCMarketsOrder.Side.Bid : BTCMarketsOrder.Side.Ask;
+    final BTCMarketsPlaceOrderResponse orderResponse =
+        placeBTCMarketsOrder(currencyPair, amount, price, side, orderType);
     return Long.toString(orderResponse.getId());
   }
 
@@ -65,9 +80,9 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
-    BTCMarketsOrders openOrders = getBTCMarketsOpenOrders(((OpenOrdersParamCurrencyPair) params).getCurrencyPair(), 50, null);
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
+    BTCMarketsOrders openOrders =
+        getBTCMarketsOpenOrders(((OpenOrdersParamCurrencyPair) params).getCurrencyPair(), 50, null);
 
     return BTCMarketsAdapters.adaptOpenOrders(openOrders);
   }
@@ -121,7 +136,8 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
     return new DefaultOpenOrdersParamCurrencyPair(null);
   }
 
-  public static class HistoryParams implements TradeHistoryParamPaging, TradeHistoryParamCurrencyPair, TradeHistoryParamsIdSpan {
+  public static class HistoryParams
+      implements TradeHistoryParamPaging, TradeHistoryParamCurrencyPair, TradeHistoryParamsIdSpan {
     private Integer limit = 200;
     private CurrencyPair currencyPair;
     private String startId;
@@ -157,9 +173,7 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
     }
 
     @Override
-    public void setEndId(String endId) {
-
-    }
+    public void setEndId(String endId) {}
 
     @Override
     public String getEndId() {
@@ -178,8 +192,7 @@ public class BTCMarketsTradeService extends BTCMarketsTradeServiceRaw implements
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

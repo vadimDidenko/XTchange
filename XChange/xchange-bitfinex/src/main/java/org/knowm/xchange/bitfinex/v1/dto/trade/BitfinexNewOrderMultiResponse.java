@@ -8,7 +8,8 @@ public class BitfinexNewOrderMultiResponse {
 
   private final BitfinexOrderStatusResponse[] orderStatuses;
 
-  public BitfinexNewOrderMultiResponse(@JsonProperty("order_ids") BitfinexOrderStatusResponse[] orderStatuses) {
+  public BitfinexNewOrderMultiResponse(
+      @JsonProperty("order_ids") BitfinexOrderStatusResponse[] orderStatuses) {
     this.orderStatuses = orderStatuses;
   }
 
@@ -20,5 +21,4 @@ public class BitfinexNewOrderMultiResponse {
   public String toString() {
     return "BitfinexNewOrderMultiResponse [orderStatuses=" + Arrays.toString(orderStatuses) + "]";
   }
-
 }

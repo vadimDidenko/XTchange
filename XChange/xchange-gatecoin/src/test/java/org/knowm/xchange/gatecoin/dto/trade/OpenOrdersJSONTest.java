@@ -29,6 +29,5 @@ public class OpenOrdersJSONTest {
     assertThat(ordersResult.getOrders()[0].getClOrderId()).isEqualTo("BK11431862176");
     assertThat(ordersResult.getOrders()[0].getPrice()).isEqualTo(new BigDecimal("500"));
     assertThat(ordersResult.getOrders()[0].getInitialQuantity()).isEqualTo(new BigDecimal("1"));
-
   }
 }

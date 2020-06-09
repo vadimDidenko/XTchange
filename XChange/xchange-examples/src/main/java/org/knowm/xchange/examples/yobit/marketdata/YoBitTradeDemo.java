@@ -10,9 +10,7 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 import org.knowm.xchange.yobit.YoBitExchange;
 
-/**
- * Demonstrate requesting Trade from YoBit..
- */
+/** Demonstrate requesting Trade from YoBit.. */
 public class YoBitTradeDemo {
 
   public static void main(String[] args) throws IOException {
@@ -29,8 +27,14 @@ public class YoBitTradeDemo {
     System.out.println("received data.");
 
     for (Trade trade : trades.getTrades()) {
-      System.out.println(trade.getType() + " " + trade.getCurrencyPair() + " Price: " + trade.getPrice() + " Amount: " + trade.getOriginalAmount());
+      System.out.println(
+          trade.getType()
+              + " "
+              + trade.getCurrencyPair()
+              + " Price: "
+              + trade.getPrice()
+              + " Amount: "
+              + trade.getOriginalAmount());
     }
   }
-
 }

@@ -21,13 +21,13 @@ import org.knowm.xchange.hitbtc.v2.dto.HitbtcTransferType;
 import si.mazi.rescu.HttpStatusIOException;
 
 /**
- * Test ignored in default build because it requires production authentication credentials. See {@link BaseAuthenticatedServiceTest}.
+ * Test ignored in default build because it requires production authentication credentials. See
+ * {@link BaseAuthenticatedServiceTest}.
  */
 @Ignore
 public class HitbtcAccountServiceRawIntegration extends BaseAuthenticatedServiceTest {
 
-  @Rule
-  public final ExpectedException exception = ExpectedException.none();
+  @Rule public final ExpectedException exception = ExpectedException.none();
 
   private HitbtcAccountServiceRaw service = (HitbtcAccountServiceRaw) exchange.getAccountService();
 
@@ -86,13 +86,14 @@ public class HitbtcAccountServiceRawIntegration extends BaseAuthenticatedService
     Assert.assertTrue(StringUtils.isNotEmpty(transactions.get(0).getId()));
   }
 
-  //Should return {"error":{"code":20001,"message":"Insufficient funds","description":"Check that the funds are sufficient, given commissions"}} --I'm poor
+  // Should return {"error":{"code":20001,"message":"Insufficient funds","description":"Check that
+  // the funds are sufficient, given commissions"}} --I'm poor
   @Test
   public void testTransferFunds() throws IOException {
 
     exception.expect(HttpStatusIOException.class);
     exception.expectMessage("HTTP status code was not OK: 400");
-    service.transferFunds(Currency.USD, new BigDecimal("0.01"), HitbtcTransferType.BANK_TO_EXCHANGE);
+    service.transferFunds(
+        Currency.USD, new BigDecimal("0.01"), HitbtcTransferType.BANK_TO_EXCHANGE);
   }
-
 }

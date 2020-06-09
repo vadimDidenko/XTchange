@@ -40,17 +40,18 @@ public class BitflyerAdapters {
     return currencies.size() >= 2 ? new CurrencyPair(currencies.get(0), currencies.get(1)) : null;
   }
 
-    /**
-     * Adapts a list of BitflyerBalance objects to Wallet.
-     *
-     * @param balances Some BitflyerBalances from the API
-     * @return A Wallet with balances in it
-     */
+  /**
+   * Adapts a list of BitflyerBalance objects to Wallet.
+   *
+   * @param balances Some BitflyerBalances from the API
+   * @return A Wallet with balances in it
+   */
   public static Wallet adaptAccountInfo(List<BitflyerBalance> balances) {
     List<Balance> adaptedBalances = new ArrayList<>(balances.size());
 
     for (BitflyerBalance balance : balances) {
-        adaptedBalances.add(new Balance(
+      adaptedBalances.add(
+          new Balance(
               Currency.getInstance(balance.getCurrencyCode()),
               balance.getAmount(),
               balance.getAvailable()));
@@ -71,10 +72,16 @@ public class BitflyerAdapters {
     BigDecimal bid = ticker.getBestBid();
     BigDecimal ask = ticker.getBestAsk();
     BigDecimal volume = ticker.getVolume();
-    Date timestamp = ticker.getTimestamp() != null ? BitflyerUtils.parseDate(ticker.getTimestamp()) : null;
+    Date timestamp =
+        ticker.getTimestamp() != null ? BitflyerUtils.parseDate(ticker.getTimestamp()) : null;
 
-    return new Ticker.Builder().currencyPair(currencyPair).bid(bid).ask(ask).volume(volume).timestamp(timestamp).build();
-
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .bid(bid)
+        .ask(ask)
+        .volume(volume)
+        .timestamp(timestamp)
+        .build();
   }
 
   public static void main(String[] args) {

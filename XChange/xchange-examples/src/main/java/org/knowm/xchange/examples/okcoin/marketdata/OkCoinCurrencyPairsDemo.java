@@ -26,5 +26,4 @@ public class OkCoinCurrencyPairsDemo {
     // Interested in the public market data feed (no authentication)
     MarketDataService marketDataService = okcoinExchange.getMarketDataService();
   }
-
 }

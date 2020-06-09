@@ -11,21 +11,21 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
+/** @author Jean-Christophe Laruelle */
 public class CryptoFacilitiesOrderBookJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CryptoFacilitiesOrderBookJSONTest.class.getResourceAsStream("/marketdata/example-orderBook-data.json");
+    InputStream is =
+        CryptoFacilitiesOrderBookJSONTest.class.getResourceAsStream(
+            "/marketdata/example-orderBook-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    CryptoFacilitiesOrderBook cryptoFacilitiesOrderBook = mapper.readValue(is, CryptoFacilitiesOrderBook.class);
+    CryptoFacilitiesOrderBook cryptoFacilitiesOrderBook =
+        mapper.readValue(is, CryptoFacilitiesOrderBook.class);
 
     // Verify that the example data was unmarshalled correctly
     assertThat(cryptoFacilitiesOrderBook.isSuccess()).isTrue();
@@ -40,5 +40,4 @@ public class CryptoFacilitiesOrderBookJSONTest {
     assertThat(bids.get(0).get(0)).isEqualTo(new BigDecimal("643.92"));
     assertThat(bids.get(0).get(1)).isEqualTo(new BigDecimal("9"));
   }
-
 }

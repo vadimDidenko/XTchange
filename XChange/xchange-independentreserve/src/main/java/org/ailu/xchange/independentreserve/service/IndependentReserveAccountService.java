@@ -16,10 +16,9 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * Author: Kamil Zbikowski Date: 4/10/15
- */
-public class IndependentReserveAccountService extends IndependentReserveAccountServiceRaw implements AccountService {
+/** Author: Kamil Zbikowski Date: 4/10/15 */
+public class IndependentReserveAccountService extends IndependentReserveAccountServiceRaw
+    implements AccountService {
 
   /**
    * Constructor
@@ -32,12 +31,14 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), IndependentReserveAdapters.adaptWallet(getIndependentReserveBalance()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        IndependentReserveAdapters.adaptWallet(getIndependentReserveBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     withdrawDigitalCurrency(amount, address, "");
     return null;
   }
@@ -52,8 +53,7 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... args) throws IOException {
+  public String requestDepositAddress(Currency currency, String... args) throws IOException {
     throw new UnsupportedOperationException();
   }
 
@@ -63,8 +63,7 @@ public class IndependentReserveAccountService extends IndependentReserveAccountS
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

@@ -10,16 +10,15 @@ import org.junit.Test;
 import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test ANXTicker JSON parsing
- */
+/** Test ANXTicker JSON parsing */
 public class TickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TickerJSONTest.class.getResourceAsStream("/v2/marketdata/example-ticker-data.json");
+    InputStream is =
+        TickerJSONTest.class.getResourceAsStream("/v2/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -39,6 +38,5 @@ public class TickerJSONTest {
     Assert.assertEquals(new BigDecimal("38.85148"), anxTicker.getBuy().getValue());
     Assert.assertEquals(new BigDecimal("897.25596"), anxTicker.getSell().getValue());
     Assert.assertEquals(1393388594814000L, anxTicker.getNow());
-
   }
 }

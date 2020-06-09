@@ -55,7 +55,9 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
 
   @Before
   public void setUp() {
-    BitMarketExchange exchange = (BitMarketExchange) ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
+    BitMarketExchange exchange =
+        (BitMarketExchange)
+            ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
     ExchangeSpecification specification = exchange.getExchangeSpecification();
     specification.setUserName(SPECIFICATION_USERNAME);
     specification.setApiKey(SPECIFICATION_API_KEY);
@@ -66,39 +68,70 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
 
   @Test
   public void constructor() {
-    assertThat((String) Whitebox.getInternalState(tradeService, "apiKey")).isEqualTo(SPECIFICATION_API_KEY);
+    assertThat((String) Whitebox.getInternalState(tradeService, "apiKey"))
+        .isEqualTo(SPECIFICATION_API_KEY);
   }
 
   @Test(expected = NotAvailableFromExchangeException.class)
   public void shouldFailOnPlaceMarketOrder() throws IOException {
     // given
-    MarketOrder marketOrder = new MarketOrder(Order.OrderType.ASK, BigDecimal.TEN, CurrencyPair.BTC_USD, new Date());
+    MarketOrder marketOrder =
+        new MarketOrder(Order.OrderType.ASK, BigDecimal.TEN, CurrencyPair.BTC_USD, new Date());
 
     // when
     tradeService.placeMarketOrder(marketOrder);
 
     // then
-    fail("BitMarketTradeService should throw NotAvailableFromExchangeException when call placeMarketOrder");
+    fail(
+        "BitMarketTradeService should throw NotAvailableFromExchangeException when call"
+            + " placeMarketOrder");
   }
 
   // should be changed after order type convertion fix
   @Test
   public void shouldPlaceBuyLimitOrder() throws IOException {
     // given
-    BitMarketTradeResponse responseBuy = new BitMarketTradeResponse(true,
-        new BitMarketTrade(12345, new BitMarketOrder(12345, "BTCAUD", BigDecimal.ONE, new BigDecimal("1.1"), BigDecimal.ZERO, "BUY", 1234567890L),
-            new BitMarketBalance(createAvailable(), createBlocked())),
-        new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketTradeResponse responseBuy =
+        new BitMarketTradeResponse(
+            true,
+            new BitMarketTrade(
+                12345,
+                new BitMarketOrder(
+                    12345,
+                    "BTCAUD",
+                    BigDecimal.ONE,
+                    new BigDecimal("1.1"),
+                    BigDecimal.ZERO,
+                    "BUY",
+                    1234567890L),
+                new BitMarketBalance(createAvailable(), createBlocked())),
+            new BitMarketAPILimit(3, 100, 12345000L),
+            0,
+            null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.trade(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq("BTCAUD"), Mockito.eq("buy"), Mockito.eq(BigDecimal.ONE), Mockito.eq(BigDecimal.TEN)))
+    PowerMockito.when(
+            bitMarketAuthenticated.trade(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCAUD"),
+                Mockito.eq("buy"),
+                Mockito.eq(BigDecimal.ONE),
+                Mockito.eq(BigDecimal.TEN)))
         .thenReturn(responseBuy);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
-    String placedBuy = tradeService
-        .placeLimitOrder(new LimitOrder(Order.OrderType.BID, BigDecimal.ONE, CurrencyPair.BTC_AUD, "12345", null, BigDecimal.TEN));
+    String placedBuy =
+        tradeService.placeLimitOrder(
+            new LimitOrder(
+                Order.OrderType.BID,
+                BigDecimal.ONE,
+                CurrencyPair.BTC_AUD,
+                "12345",
+                null,
+                BigDecimal.TEN));
 
     // then
     assertThat(placedBuy).isEqualTo("12345");
@@ -108,21 +141,47 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test
   public void shouldPlaceSellLimitOrder() throws IOException {
     // given
-    BitMarketTradeResponse responseSell = new BitMarketTradeResponse(true,
-        new BitMarketTrade(11111, new BitMarketOrder(11111, "BTCAUD", BigDecimal.ONE, new BigDecimal("2.2"), BigDecimal.TEN, "SELL", 1234567999L),
-            new BitMarketBalance(createAvailable(), createBlocked())),
-        new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketTradeResponse responseSell =
+        new BitMarketTradeResponse(
+            true,
+            new BitMarketTrade(
+                11111,
+                new BitMarketOrder(
+                    11111,
+                    "BTCAUD",
+                    BigDecimal.ONE,
+                    new BigDecimal("2.2"),
+                    BigDecimal.TEN,
+                    "SELL",
+                    1234567999L),
+                new BitMarketBalance(createAvailable(), createBlocked())),
+            new BitMarketAPILimit(3, 100, 12345000L),
+            0,
+            null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
     PowerMockito.when(
-        bitMarketAuthenticated.trade(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class), Mockito.any(SynchronizedValueFactory.class),
-            Mockito.eq("BTCAUD"), Mockito.eq("sell"), Mockito.eq(BigDecimal.ONE), Mockito.eq(BigDecimal.TEN)))
+            bitMarketAuthenticated.trade(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCAUD"),
+                Mockito.eq("sell"),
+                Mockito.eq(BigDecimal.ONE),
+                Mockito.eq(BigDecimal.TEN)))
         .thenReturn(responseSell);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
-    String placedSell = tradeService
-        .placeLimitOrder(new LimitOrder(Order.OrderType.ASK, BigDecimal.ONE, CurrencyPair.BTC_AUD, "11111", null, BigDecimal.TEN));
+    String placedSell =
+        tradeService.placeLimitOrder(
+            new LimitOrder(
+                Order.OrderType.ASK,
+                BigDecimal.ONE,
+                CurrencyPair.BTC_AUD,
+                "11111",
+                null,
+                BigDecimal.TEN));
 
     // then
     assertThat(placedSell).isEqualTo("11111");
@@ -131,31 +190,58 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulLimitOrder() throws IOException {
     // given
-    BitMarketTradeResponse response = new BitMarketTradeResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
+    BitMarketTradeResponse response =
+        new BitMarketTradeResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
     PowerMockito.when(
-        bitMarketAuthenticated.trade(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class), Mockito.any(SynchronizedValueFactory.class),
-            Mockito.eq("BTCAUD"), Mockito.eq("sell"), Mockito.eq(BigDecimal.ONE), Mockito.eq(BigDecimal.TEN)))
+            bitMarketAuthenticated.trade(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCAUD"),
+                Mockito.eq("sell"),
+                Mockito.eq(BigDecimal.ONE),
+                Mockito.eq(BigDecimal.TEN)))
         .thenReturn(response);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
-    tradeService.placeLimitOrder(new LimitOrder(Order.OrderType.ASK, BigDecimal.ONE, CurrencyPair.BTC_AUD, "12345", null, BigDecimal.TEN));
+    tradeService.placeLimitOrder(
+        new LimitOrder(
+            Order.OrderType.ASK,
+            BigDecimal.ONE,
+            CurrencyPair.BTC_AUD,
+            "12345",
+            null,
+            BigDecimal.TEN));
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when place limit order request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when place limit order request was"
+            + " unsuccessful");
   }
 
   @Test
   public void shouldCancelOrder() throws IOException {
     // given
-    BitMarketCancelResponse response = new BitMarketCancelResponse(true, new BitMarketBalance(createAvailable(), createBlocked()),
-        new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketCancelResponse response =
+        new BitMarketCancelResponse(
+            true,
+            new BitMarketBalance(createAvailable(), createBlocked()),
+            new BitMarketAPILimit(3, 100, 12345000L),
+            0,
+            null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.cancel(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq(12345L))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.cancel(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(12345L)))
+        .thenReturn(response);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
@@ -168,19 +254,27 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulCancelOrder() throws IOException {
     // given
-    BitMarketCancelResponse response = new BitMarketCancelResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L), 502,
-        "Invalid message hash");
+    BitMarketCancelResponse response =
+        new BitMarketCancelResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.cancel(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq(11111L))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.cancel(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(11111L)))
+        .thenReturn(response);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
     tradeService.cancelOrder("11111");
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when cancel order request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when cancel order request was"
+            + " unsuccessful");
   }
 
   @Test
@@ -188,11 +282,17 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     // given
     final LimitOrder[] expectedOrders = expectedOrders();
 
-    BitMarketOrdersResponse response = new BitMarketOrdersResponse(true, createOpenOrdersData(), new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketOrdersResponse response =
+        new BitMarketOrdersResponse(
+            true, createOpenOrdersData(), new BitMarketAPILimit(3, 100, 12345000L), 0, null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.orders(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.orders(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class)))
+        .thenReturn(response);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
@@ -210,19 +310,26 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulOpenOrders() throws IOException {
     // given
-    BitMarketOrdersResponse response = new BitMarketOrdersResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L), 502,
-        "Invalid message hash");
+    BitMarketOrdersResponse response =
+        new BitMarketOrdersResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.orders(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.orders(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class)))
+        .thenReturn(response);
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
     tradeService.getOpenOrders();
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when open orders request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when open orders request was"
+            + " unsuccessful");
   }
 
   @Test
@@ -230,23 +337,42 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     // given
     final UserTrade[] expectedUserTrades = expectedUserTrades();
 
-    BitMarketHistoryTradesResponse historyTradesResponse = parse("trade/example-history-trades-data", BitMarketHistoryTradesResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse = parse("trade/example-history-operations-data",
-        BitMarketHistoryOperationsResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse = parse("trade/example-history-operations-btc-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryTradesResponse historyTradesResponse =
+        parse("trade/example-history-trades-data", BitMarketHistoryTradesResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse =
+        parse("trade/example-history-operations-data", BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse =
+        parse(
+            "trade/example-history-operations-btc-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.trades(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq("BTCPLN"), Mockito.eq(1000), Mockito.eq(0L))).thenReturn(historyTradesResponse);
+    PowerMockito.when(
+            bitMarketAuthenticated.trades(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCPLN"),
+                Mockito.eq(1000),
+                Mockito.eq(0L)))
+        .thenReturn(historyTradesResponse);
 
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.PLN.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.PLN.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsPlnResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsBtcResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
@@ -267,29 +393,51 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     // given
     final UserTrade[] expectedCpUserTrades = expectedCpUserTrades();
 
-    BitMarketHistoryTradesResponse historyTradesCPResponse = parse("trade/example-history-trades-cp-data", BitMarketHistoryTradesResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsEurResponse = parse("trade/example-history-operations-eur-data",
-        BitMarketHistoryOperationsResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse = parse("trade/example-history-operations-btc-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryTradesResponse historyTradesCPResponse =
+        parse("trade/example-history-trades-cp-data", BitMarketHistoryTradesResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsEurResponse =
+        parse(
+            "trade/example-history-operations-eur-data", BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse =
+        parse(
+            "trade/example-history-operations-btc-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.trades(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq("BTCEUR"), Mockito.eq(1000), Mockito.eq(0L))).thenReturn(historyTradesCPResponse);
+    PowerMockito.when(
+            bitMarketAuthenticated.trades(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCEUR"),
+                Mockito.eq(1000),
+                Mockito.eq(0L)))
+        .thenReturn(historyTradesCPResponse);
 
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.EUR.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.EUR.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsEurResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsBtcResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
-    UserTrades tradesCP = tradeService.getTradeHistory(new DefaultTradeHistoryParamCurrencyPair(CurrencyPair.BTC_EUR));
+    UserTrades tradesCP =
+        tradeService.getTradeHistory(
+            new DefaultTradeHistoryParamCurrencyPair(CurrencyPair.BTC_EUR));
     List<UserTrade> userTrades = tradesCP.getUserTrades();
 
     // then
@@ -302,31 +450,50 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test
   public void shouldGetTradeHistory() throws IOException {
     // given
-    BitMarketHistoryTradesResponse historyTradesBMResponse = parse("trade/example-history-trades-bm-data", BitMarketHistoryTradesResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsEurResponse = parse("trade/example-history-operations-eur-data",
-        BitMarketHistoryOperationsResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse = parse("trade/example-history-operations-btc-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryTradesResponse historyTradesBMResponse =
+        parse("trade/example-history-trades-bm-data", BitMarketHistoryTradesResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsEurResponse =
+        parse(
+            "trade/example-history-operations-eur-data", BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse =
+        parse(
+            "trade/example-history-operations-btc-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito
-        .when(bitMarketAuthenticated.trades(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq("BTCEUR"), Mockito.eq(3500), Mockito.eq(500L)))
+    PowerMockito.when(
+            bitMarketAuthenticated.trades(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCEUR"),
+                Mockito.eq(3500),
+                Mockito.eq(500L)))
         .thenReturn(historyTradesBMResponse);
 
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.EUR.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.EUR.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsEurResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsBtcResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
-    UserTrades tradesBM = tradeService.getTradeHistory(new BitMarketHistoryParams(CurrencyPair.BTC_EUR, 500L, 3500));
+    UserTrades tradesBM =
+        tradeService.getTradeHistory(new BitMarketHistoryParams(CurrencyPair.BTC_EUR, 500L, 3500));
     List<UserTrade> userTrades = tradesBM.getUserTrades();
 
     // then
@@ -337,24 +504,43 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulTradeHistory() throws IOException {
     // given
-    BitMarketHistoryTradesResponse response = new BitMarketHistoryTradesResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L), 502,
-        "Invalid message hash");
+    BitMarketHistoryTradesResponse response =
+        new BitMarketHistoryTradesResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
-    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse = parse("trade/example-history-operations-data",
-        BitMarketHistoryOperationsResponse.class);
-    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse = parse("trade/example-history-operations-btc-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse =
+        parse("trade/example-history-operations-data", BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse =
+        parse(
+            "trade/example-history-operations-btc-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.trades(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq("BTCPLN"), Mockito.eq(1000), Mockito.eq(0L))).thenReturn(response);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.PLN.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.trades(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq("BTCPLN"),
+                Mockito.eq(1000),
+                Mockito.eq(0L)))
+        .thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.PLN.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsPlnResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsBtcResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
@@ -363,26 +549,40 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     tradeService.getTradeHistory(new DefaultTradeHistoryParamPaging(150));
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when open orders request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when open orders request was"
+            + " unsuccessful");
   }
 
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulOperationsHistory1() throws IOException {
     // given
-    BitMarketHistoryOperationsResponse errorResponse = new BitMarketHistoryOperationsResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L),
-        502, "Invalid message hash");
+    BitMarketHistoryOperationsResponse errorResponse =
+        new BitMarketHistoryOperationsResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
-    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse = parse("trade/example-history-operations-btc-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsBtcResponse =
+        parse(
+            "trade/example-history-operations-btc-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.PLN.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.PLN.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(errorResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsBtcResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
@@ -391,26 +591,39 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     tradeService.getBitMarketOperationHistory(new DefaultTradeHistoryParamPaging(150));
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when operations history request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when operations history request was"
+            + " unsuccessful");
   }
 
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulOperationsHistory2() throws IOException {
     // given
-    BitMarketHistoryOperationsResponse errorResponse = new BitMarketHistoryOperationsResponse(false, null, new BitMarketAPILimit(3, 100, 12345000L),
-        502, "Invalid message hash");
+    BitMarketHistoryOperationsResponse errorResponse =
+        new BitMarketHistoryOperationsResponse(
+            false, null, new BitMarketAPILimit(3, 100, 12345000L), 502, "Invalid message hash");
 
-    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse = parse("trade/example-history-operations-data",
-        BitMarketHistoryOperationsResponse.class);
+    BitMarketHistoryOperationsResponse marketHistoryOperationsPlnResponse =
+        parse("trade/example-history-operations-data", BitMarketHistoryOperationsResponse.class);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.PLN.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.PLN.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(marketHistoryOperationsPlnResponse);
-    PowerMockito
-        .when(bitMarketAuthenticated.history(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.anyInt(), Mockito.anyLong()))
+    PowerMockito.when(
+            bitMarketAuthenticated.history(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.anyInt(),
+                Mockito.anyLong()))
         .thenReturn(errorResponse);
 
     Whitebox.setInternalState(tradeService, "bitMarketAuthenticated", bitMarketAuthenticated);
@@ -419,7 +632,9 @@ public class BitMarketTradeTest extends BitMarketTestSupport {
     tradeService.getBitMarketOperationHistory(new DefaultTradeHistoryParamPaging(150));
 
     // then
-    fail("BitMarketTradeService should throw ExchangeException when operations history request was unsuccessful");
+    fail(
+        "BitMarketTradeService should throw ExchangeException when operations history request was"
+            + " unsuccessful");
   }
 
   @Test

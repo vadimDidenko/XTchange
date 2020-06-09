@@ -20,7 +20,8 @@ public class TaurusDigest extends BaseParamsDigest {
     this.apiKey = apiKey;
   }
 
-  public static TaurusDigest createInstance(String secretKeyBase64, String clientId, String apiKey) {
+  public static TaurusDigest createInstance(
+      String secretKeyBase64, String clientId, String apiKey) {
     return secretKeyBase64 == null ? null : new TaurusDigest(secretKeyBase64, clientId, apiKey);
   }
 

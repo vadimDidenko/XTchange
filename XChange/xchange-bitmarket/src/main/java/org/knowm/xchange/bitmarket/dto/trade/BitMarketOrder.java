@@ -9,9 +9,7 @@ import org.knowm.xchange.dto.Order;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketOrder {
 
   private final long id;
@@ -35,8 +33,13 @@ public class BitMarketOrder {
    * @param type
    * @param time
    */
-  public BitMarketOrder(@JsonProperty("id") long id, @JsonProperty("market") String market, @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("rate") BigDecimal rate, @JsonProperty("fiat") BigDecimal fiat, @JsonProperty("type") String type,
+  public BitMarketOrder(
+      @JsonProperty("id") long id,
+      @JsonProperty("market") String market,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("fiat") BigDecimal fiat,
+      @JsonProperty("type") String type,
       @JsonProperty("time") long time) {
 
     this.id = id;

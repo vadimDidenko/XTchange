@@ -12,13 +12,12 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.JsonNode;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseCentsDeserializer extends JsonDeserializer<CoinbaseMoney> {
 
   @Override
-  public CoinbaseMoney deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+  public CoinbaseMoney deserialize(JsonParser jp, DeserializationContext ctxt)
+      throws IOException, JsonProcessingException {
 
     final ObjectCodec oc = jp.getCodec();
     final JsonNode node = oc.readTree(jp);

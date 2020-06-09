@@ -7,9 +7,7 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 import si.mazi.rescu.ExceptionalReturnContentException;
 
-/**
- * @author Piotr Ładyżyński
- */
+/** @author Piotr Ładyżyński */
 public class BitsoOrderBook {
 
   private final Long timestamp;
@@ -23,7 +21,9 @@ public class BitsoOrderBook {
    * @param bids
    * @param asks
    */
-  public BitsoOrderBook(@JsonProperty("timestamp") Long timestamp, @JsonProperty("bids") List<List<BigDecimal>> bids,
+  public BitsoOrderBook(
+      @JsonProperty("timestamp") Long timestamp,
+      @JsonProperty("bids") List<List<BigDecimal>> bids,
       @JsonProperty("asks") List<List<BigDecimal>> asks) {
 
     if (asks == null) {
@@ -34,25 +34,19 @@ public class BitsoOrderBook {
     this.timestamp = timestamp;
   }
 
-  /**
-   * @return Timestamp in Unix milliseconds
-   */
+  /** @return Timestamp in Unix milliseconds */
   public Long getTimestamp() {
 
     return timestamp;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getBids() {
 
     return bids;
   }
 
-  /**
-   * (price, amount)
-   */
+  /** (price, amount) */
   public List<List<BigDecimal>> getAsks() {
 
     return asks;
@@ -63,5 +57,4 @@ public class BitsoOrderBook {
 
     return "BitsoOrderBook [timestamp=" + timestamp + ", bids=" + bids + ", asks=" + asks + "]";
   }
-
 }

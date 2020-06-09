@@ -30,11 +30,14 @@ public class BitcurexAccountService extends BitcurexAccountServiceRaw implements
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), BitcurexAdapters.adaptWallet(getFunds()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        BitcurexAdapters.adaptWallet(getFunds()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     throw new NotYetImplementedForExchangeException();
   }
@@ -56,8 +59,7 @@ public class BitcurexAccountService extends BitcurexAccountServiceRaw implements
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

@@ -7,8 +7,10 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BitZTradeCancelResult extends BitZResult<BitZTradeCancel> {
 
-  public BitZTradeCancelResult(@JsonProperty("code") int code, @JsonProperty("msg") String message, @JsonProperty("data") BitZTradeCancel data) {
+  public BitZTradeCancelResult(
+      @JsonProperty("code") int code,
+      @JsonProperty("msg") String message,
+      @JsonProperty("data") BitZTradeCancel data) {
     super(code, message, data);
   }
-
 }

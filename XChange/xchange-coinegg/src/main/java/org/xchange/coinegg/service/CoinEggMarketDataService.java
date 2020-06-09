@@ -11,25 +11,28 @@ import org.xchange.coinegg.CoinEggUtils;
 
 import java.io.IOException;
 
-public class CoinEggMarketDataService extends CoinEggMarketDataServiceRaw implements MarketDataService {
+public class CoinEggMarketDataService extends CoinEggMarketDataServiceRaw
+    implements MarketDataService {
 
-	public CoinEggMarketDataService(Exchange exchange) {
-		super(exchange);
-	}
+  public CoinEggMarketDataService(Exchange exchange) {
+    super(exchange);
+  }
 
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
-    return CoinEggAdapters.adaptTicker(getCoinEggTicker(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
+    return CoinEggAdapters.adaptTicker(
+        getCoinEggTicker(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
   }
 
   @Override
   public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws IOException {
-    return CoinEggAdapters.adaptOrders(getCoinEggOrders(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
+    return CoinEggAdapters.adaptOrders(
+        getCoinEggOrders(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
   }
 
   @Override
   public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
-    return CoinEggAdapters.adaptTrades(getCoinEggTrades(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
+    return CoinEggAdapters.adaptTrades(
+        getCoinEggTrades(CoinEggUtils.toBaseCoin(currencyPair)), currencyPair);
   }
-	
 }

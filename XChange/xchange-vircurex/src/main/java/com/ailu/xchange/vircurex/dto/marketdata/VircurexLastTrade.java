@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing depth from Vircurex
- */
+/** Data object representing depth from Vircurex */
 public class VircurexLastTrade {
 
   private final String base;
@@ -22,7 +20,10 @@ public class VircurexLastTrade {
    * @param value
    * @param status
    */
-  public VircurexLastTrade(@JsonProperty("base") String base, @JsonProperty("alt") String alt, @JsonProperty("value") BigDecimal value,
+  public VircurexLastTrade(
+      @JsonProperty("base") String base,
+      @JsonProperty("alt") String alt,
+      @JsonProperty("value") BigDecimal value,
       @JsonProperty("status") int status) {
     this.base = base;
     this.alt = alt;
@@ -48,7 +49,14 @@ public class VircurexLastTrade {
 
   @Override
   public String toString() {
-    return "VircurexLastTrade [base=" + base + ", alt=" + alt + ", value=" + value + ", status=" + status + "]";
+    return "VircurexLastTrade [base="
+        + base
+        + ", alt="
+        + alt
+        + ", value="
+        + value
+        + ", status="
+        + status
+        + "]";
   }
-
 }

@@ -4,15 +4,15 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author brox
- */
+/** @author brox */
 public class WexExchangeInfo {
 
   private final long serverTime;
   private final Map<String, WexPairInfo> pairs;
 
-  public WexExchangeInfo(@JsonProperty("server_time") long serverTime, @JsonProperty("pairs") Map<String, WexPairInfo> pairs) {
+  public WexExchangeInfo(
+      @JsonProperty("server_time") long serverTime,
+      @JsonProperty("pairs") Map<String, WexPairInfo> pairs) {
 
     this.serverTime = serverTime;
     this.pairs = pairs;
@@ -33,5 +33,4 @@ public class WexExchangeInfo {
 
     return "BTCEInfoV3 [serverTime=" + serverTime + ", pairs=" + pairs.toString() + "]";
   }
-
 }

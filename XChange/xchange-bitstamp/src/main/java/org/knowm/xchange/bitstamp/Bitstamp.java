@@ -21,7 +21,8 @@ import java.io.IOException;
 public interface Bitstamp {
 
   /**
-   * Returns "bids" and "asks". Each is a list of open orders and each order is represented as a list of price and amount.
+   * Returns "bids" and "asks". Each is a list of open orders and each order is represented as a
+   * list of price and amount.
    */
   @GET
   @Path("order_book/")
@@ -31,18 +32,13 @@ public interface Bitstamp {
   @Path("ticker/")
   BitstampTicker getTicker() throws IOException;
 
-  /**
-   * Returns descending list of transactions.
-   */
+  /** Returns descending list of transactions. */
   @GET
   @Path("transactions/")
   BitstampTransaction[] getTransactions() throws IOException;
 
-  /**
-   * Returns descending list of transactions.
-   */
+  /** Returns descending list of transactions. */
   @GET
   @Path("transactions/")
   BitstampTransaction[] getTransactions(@QueryParam("time") String time) throws IOException;
-
 }

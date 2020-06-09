@@ -28,19 +28,22 @@ public class VaultoroMarketDataServiceRaw extends VaultoroBaseService {
     return vaultoro.getLatest();
   }
 
-  public List<VaultoroOrderBook> getVaultoroOrderBook(CurrencyPair currencyPair) throws VaultoroException, IOException {
+  public List<VaultoroOrderBook> getVaultoroOrderBook(CurrencyPair currencyPair)
+      throws VaultoroException, IOException {
 
     return vaultoro.getVaultoroOrderBook().getData();
   }
 
-  public List<VaultoroTrade> getVaultoroTrades(CurrencyPair currencyPair) throws VaultoroException, IOException {
+  public List<VaultoroTrade> getVaultoroTrades(CurrencyPair currencyPair)
+      throws VaultoroException, IOException {
 
     return vaultoro.getVaultoroTrades("month");
   }
 
   public List<CurrencyPair> getExchangeSymbols() throws IOException {
 
-    // TODO put this in the vautoro.json file in resources and call a real endpoint for the data in addition
+    // TODO put this in the vautoro.json file in resources and call a real endpoint for the data in
+    // addition
     List<CurrencyPair> pairs = new ArrayList<>();
     pairs.add(new CurrencyPair("GLD", "BTC"));
     return pairs;

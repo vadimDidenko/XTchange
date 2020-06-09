@@ -24,11 +24,11 @@ public class VaultoroAccountServiceRaw extends VaultoroBaseService {
   public List<VaultoroBalance> getVaultoroBalances() throws VaultoroException, IOException {
 
     try {
-      VaultoroBalancesResponse response = vaultoro.getBalances(exchange.getNonceFactory(), apiKey, signatureCreator);
+      VaultoroBalancesResponse response =
+          vaultoro.getBalances(exchange.getNonceFactory(), apiKey, signatureCreator);
       return response.getData();
     } catch (VaultoroException e) {
       throw new ExchangeException(e);
     }
   }
-
 }

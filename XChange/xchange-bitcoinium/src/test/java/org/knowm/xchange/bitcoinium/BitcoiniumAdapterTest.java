@@ -18,16 +18,15 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Tests the BitcoiniumAdapter class
- */
+/** Tests the BitcoiniumAdapter class */
 public class BitcoiniumAdapterTest {
 
   @Test
   public void testOrderAdapterWithDepth() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitcoiniumDepthJSONTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
+    InputStream is =
+        BitcoiniumDepthJSONTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -46,7 +45,8 @@ public class BitcoiniumAdapterTest {
   public void testTickerAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitcoiniumTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        BitcoiniumTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -59,6 +59,5 @@ public class BitcoiniumAdapterTest {
     assertThat(ticker.getLow().toString()).isEqualTo("508.28");
     assertThat(ticker.getHigh().toString()).isEqualTo("523.09");
     assertThat(ticker.getVolume()).isEqualTo(new BigDecimal("3522"));
-
   }
 }

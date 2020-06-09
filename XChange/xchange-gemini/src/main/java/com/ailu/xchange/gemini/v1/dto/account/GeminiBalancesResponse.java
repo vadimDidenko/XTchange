@@ -19,8 +19,11 @@ public class GeminiBalancesResponse {
    * @param amount
    * @param available
    */
-  public GeminiBalancesResponse(@JsonProperty("type") String type, @JsonProperty("currency") String currency,
-      @JsonProperty("amount") BigDecimal amount, @JsonProperty("available") BigDecimal available) {
+  public GeminiBalancesResponse(
+      @JsonProperty("type") String type,
+      @JsonProperty("currency") String currency,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("available") BigDecimal available) {
 
     this.type = type;
     this.currency = currency;

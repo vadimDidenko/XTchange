@@ -22,13 +22,16 @@ public class BitcoinCoreAdaptersTest {
   public void adaptAccountInfoTest() throws JsonParseException, JsonMappingException, IOException {
     ObjectMapper mapper = new ObjectMapper();
 
-    // available balance 
+    // available balance
     InputStream getBalance = getClass().getResourceAsStream("/account/example-getbalance.json");
-    BitcoinCoreBalanceResponse available = mapper.readValue(getBalance, BitcoinCoreBalanceResponse.class);
+    BitcoinCoreBalanceResponse available =
+        mapper.readValue(getBalance, BitcoinCoreBalanceResponse.class);
 
     // unconfirmed balance
-    InputStream getUnconfirmedBalance = getClass().getResourceAsStream("/account/example-getunconfirmedbalance.json");
-    BitcoinCoreBalanceResponse unconfirmed = mapper.readValue(getUnconfirmedBalance, BitcoinCoreBalanceResponse.class);
+    InputStream getUnconfirmedBalance =
+        getClass().getResourceAsStream("/account/example-getunconfirmedbalance.json");
+    BitcoinCoreBalanceResponse unconfirmed =
+        mapper.readValue(getUnconfirmedBalance, BitcoinCoreBalanceResponse.class);
 
     AccountInfo account = BitcoinCoreAdapters.adaptAccountInfo(available, unconfirmed);
     Balance btc = account.getWallet().getBalance(Currency.BTC);
@@ -37,5 +40,4 @@ public class BitcoinCoreAdaptersTest {
     assertThat(btc.getFrozen()).isEqualTo(new BigDecimal("10.00000001"));
     assertThat(btc.getTotal()).isEqualTo(new BigDecimal("68490.47579047"));
   }
-
 }

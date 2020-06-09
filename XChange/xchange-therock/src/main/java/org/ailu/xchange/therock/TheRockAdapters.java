@@ -36,8 +36,7 @@ import static org.knowm.xchange.utils.DateUtils.fromISODateString;
 
 public final class TheRockAdapters {
 
-  private TheRockAdapters() {
-  }
+  private TheRockAdapters() {}
 
   public static TheRockOrder.Side adaptSide(OrderType type) {
     return type == BID ? TheRockOrder.Side.buy : TheRockOrder.Side.sell;
@@ -56,20 +55,29 @@ public final class TheRockAdapters {
     final List<LimitOrder> asks = new ArrayList<>();
     final List<LimitOrder> bids = new ArrayList<>();
     for (TheRockBid theRockBid : theRockOrderBook.getAsks()) {
-      asks.add(adaptBid(theRockOrderBook.getCurrencyPair(), ASK, theRockBid, theRockOrderBook.getDate()));
+      asks.add(
+          adaptBid(
+              theRockOrderBook.getCurrencyPair(), ASK, theRockBid, theRockOrderBook.getDate()));
     }
     for (TheRockBid theRockBid : theRockOrderBook.getBids()) {
-      bids.add(adaptBid(theRockOrderBook.getCurrencyPair(), BID, theRockBid, theRockOrderBook.getDate()));
+      bids.add(
+          adaptBid(
+              theRockOrderBook.getCurrencyPair(), BID, theRockBid, theRockOrderBook.getDate()));
     }
     return new OrderBook(theRockOrderBook.getDate(), asks, bids);
   }
 
-  private static LimitOrder adaptBid(CurrencyPair currencyPair, Order.OrderType orderType, TheRockBid theRockBid, Date timestamp) {
-    return new LimitOrder.Builder(orderType, currencyPair).limitPrice(theRockBid.getPrice()).originalAmount(theRockBid.getAmount())
-        .timestamp(timestamp).build();
+  private static LimitOrder adaptBid(
+      CurrencyPair currencyPair, Order.OrderType orderType, TheRockBid theRockBid, Date timestamp) {
+    return new LimitOrder.Builder(orderType, currencyPair)
+        .limitPrice(theRockBid.getPrice())
+        .originalAmount(theRockBid.getAmount())
+        .timestamp(timestamp)
+        .build();
   }
 
-  public static Trades adaptTrades(TheRockTrades trades, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static Trades adaptTrades(TheRockTrades trades, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
 
     List<Trade> tradesList = new ArrayList<>(trades.getCount());
     long lastTradeId = 0;
@@ -79,35 +87,51 @@ public final class TheRockAdapters {
         continue; // process buys and sells only
       }
       long tradeId = trade.getId();
-      if (tradeId > lastTradeId)
-        lastTradeId = tradeId;
+      if (tradeId > lastTradeId) lastTradeId = tradeId;
       tradesList.add(adaptTrade(trade, currencyPair));
     }
     return new Trades(tradesList, lastTradeId, Trades.TradeSortType.SortByID);
   }
 
-  public static Trade adaptTrade(TheRockTrade trade, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static Trade adaptTrade(TheRockTrade trade, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
     final String tradeId = String.valueOf(trade.getId());
-    return new Trade(trade.getSide() == Side.sell ? OrderType.ASK : BID, trade.getAmount(), currencyPair, trade.getPrice(), trade.getDate(), tradeId);
+    return new Trade(
+        trade.getSide() == Side.sell ? OrderType.ASK : BID,
+        trade.getAmount(),
+        currencyPair,
+        trade.getPrice(),
+        trade.getDate(),
+        tradeId);
   }
 
-  public static UserTrade adaptUserTrade(TheRockUserTrade trade, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static UserTrade adaptUserTrade(TheRockUserTrade trade, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
     final String tradeId = String.valueOf(trade.getId());
-    //return new UserTrade(trade.getSide() == Side.sell ? OrderType.ASK : BID, trade.getAmount(), currencyPair, trade.getPrice(), trade.getDate(), tradeId);
-    return new UserTrade.Builder().id(tradeId).originalAmount(trade.getAmount()).currencyPair(currencyPair).price(trade.getPrice())
-        .timestamp(trade.getDate()).orderId(String.valueOf(trade.getOrderId())).type(trade.getSide() == Side.buy ? OrderType.BID : OrderType.ASK)
-        .feeAmount(trade.getFeeAmount()).feeCurrency(trade.getFeeCurrency() == null ? null : new Currency(trade.getFeeCurrency())).build();
+    // return new UserTrade(trade.getSide() == Side.sell ? OrderType.ASK : BID, trade.getAmount(),
+    // currencyPair, trade.getPrice(), trade.getDate(), tradeId);
+    return new UserTrade.Builder()
+        .id(tradeId)
+        .originalAmount(trade.getAmount())
+        .currencyPair(currencyPair)
+        .price(trade.getPrice())
+        .timestamp(trade.getDate())
+        .orderId(String.valueOf(trade.getOrderId()))
+        .type(trade.getSide() == Side.buy ? OrderType.BID : OrderType.ASK)
+        .feeAmount(trade.getFeeAmount())
+        .feeCurrency(trade.getFeeCurrency() == null ? null : new Currency(trade.getFeeCurrency()))
+        .build();
   }
 
-  public static UserTrades adaptUserTrades(TheRockUserTrades trades, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static UserTrades adaptUserTrades(TheRockUserTrades trades, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
 
     List<UserTrade> tradesList = new ArrayList<>(trades.getCount());
     long lastTradeId = 0;
     for (int i = 0; i < trades.getCount(); i++) {
       TheRockUserTrade trade = trades.getTrades()[i];
       long tradeId = trade.getId();
-      if (tradeId > lastTradeId)
-        lastTradeId = tradeId;
+      if (tradeId > lastTradeId) lastTradeId = tradeId;
       tradesList.add(adaptUserTrade(trade, currencyPair));
     }
     return new UserTrades(tradesList, lastTradeId, Trades.TradeSortType.SortByID);

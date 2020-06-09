@@ -21,9 +21,7 @@ import org.knowm.xchange.wex.v3.WexAdapters;
 import org.knowm.xchange.wex.v3.dto.account.WexAccountInfo;
 import org.knowm.xchange.wex.v3.dto.trade.WexTransHistoryResult;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class WexAccountService extends WexAccountServiceRaw implements AccountService {
 
   /**
@@ -44,7 +42,8 @@ public class WexAccountService extends WexAccountServiceRaw implements AccountSe
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdraw(currency.toString(), amount, address);
   }
 
@@ -74,41 +73,43 @@ public class WexAccountService extends WexAccountServiceRaw implements AccountSe
 
     List<FundingRecord> fundingRecords = new ArrayList<>();
 
-    if (map == null)
-      return fundingRecords;
+    if (map == null) return fundingRecords;
 
     for (Long key : map.keySet()) {
       WexTransHistoryResult result = map.get(key);
 
       FundingRecord.Status status = FundingRecord.Status.COMPLETE;
 
-      if (result.getStatus().equals(WexTransHistoryResult.Status.entered))//looks like the enum has the wrong name maybe?
-        status = FundingRecord.Status.FAILED;
+      if (result
+          .getStatus()
+          .equals(
+              WexTransHistoryResult.Status
+                  .entered)) // looks like the enum has the wrong name maybe?
+      status = FundingRecord.Status.FAILED;
       else if (result.getStatus().equals(WexTransHistoryResult.Status.waiting))
         status = FundingRecord.Status.PROCESSING;
 
-      FundingRecord.Type type;//todo
+      FundingRecord.Type type; // todo
       if (result.getType().equals(WexTransHistoryResult.Type.BTC_deposit))
         type = FundingRecord.Type.DEPOSIT;
       else if (result.getType().equals(WexTransHistoryResult.Type.BTC_withdrawal))
         type = FundingRecord.Type.WITHDRAWAL;
-      else
-        continue;
+      else continue;
 
       Date date = DateUtils.fromUnixTime(result.getTimestamp());
-      fundingRecords.add(new FundingRecord(
-          null,
-          date,
-          Currency.getInstance(result.getCurrency()),
-          result.getAmount(),
-          String.valueOf(key),
-          null,
-          type,
-          status,
-          null,
-          null,
-          result.getDescription()
-      ));
+      fundingRecords.add(
+          new FundingRecord(
+              null,
+              date,
+              Currency.getInstance(result.getCurrency()),
+              result.getAmount(),
+              String.valueOf(key),
+              null,
+              type,
+              status,
+              null,
+              null,
+              result.getDescription()));
     }
 
     return fundingRecords;

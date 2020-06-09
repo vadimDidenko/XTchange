@@ -6,14 +6,14 @@ import org.knowm.xchange.coinbase.dto.CoinbaseBaseResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseToken extends CoinbaseBaseResponse {
 
   private final CoinbaseTokenInfo token;
 
-  private CoinbaseToken(@JsonProperty("token") final CoinbaseTokenInfo token, @JsonProperty("success") final boolean success,
+  private CoinbaseToken(
+      @JsonProperty("token") final CoinbaseTokenInfo token,
+      @JsonProperty("success") final boolean success,
       @JsonProperty("errors") final List<String> errors) {
 
     super(success, errors);
@@ -41,7 +41,9 @@ public class CoinbaseToken extends CoinbaseBaseResponse {
     private final String tokenId;
     private final String address;
 
-    private CoinbaseTokenInfo(@JsonProperty("token_id") final String tokenId, @JsonProperty("address") final String address) {
+    private CoinbaseTokenInfo(
+        @JsonProperty("token_id") final String tokenId,
+        @JsonProperty("address") final String address) {
 
       this.tokenId = tokenId;
       this.address = address;
@@ -62,6 +64,5 @@ public class CoinbaseToken extends CoinbaseBaseResponse {
 
       return "CoinbaseTokenInfo [tokenId=" + tokenId + ", address=" + address + "]";
     }
-
   }
 }

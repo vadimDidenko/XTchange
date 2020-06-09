@@ -18,14 +18,14 @@ import si.mazi.rescu.HttpStatusIOException;
 
 public class QuoineAccountServiceRaw extends QuoineBaseService {
 
-  /**
-   * Constructor
-   */
+  /** Constructor */
   protected QuoineAccountServiceRaw(Exchange exchange) {
 
     super(exchange);
 
-    Assert.notNull(exchange.getExchangeSpecification().getSslUri(), "Exchange specification URI cannot be null");
+    Assert.notNull(
+        exchange.getExchangeSpecification().getSslUri(),
+        "Exchange specification URI cannot be null");
   }
 
   public FiatAccount[] getQuoineFiatAccountInfo() throws IOException {
@@ -61,14 +61,31 @@ public class QuoineAccountServiceRaw extends QuoineBaseService {
     }
   }
 
-  public List<QuoineTransaction> depositHistory(Currency currency, Integer limit, Integer page) throws IOException {
-    QuoineTransactionsResponse response = quoine.transactions(QUOINE_API_VERSION, signatureCreator, contentType, currency.getCurrencyCode(), "funding", limit, page);
+  public List<QuoineTransaction> depositHistory(Currency currency, Integer limit, Integer page)
+      throws IOException {
+    QuoineTransactionsResponse response =
+        quoine.transactions(
+            QUOINE_API_VERSION,
+            signatureCreator,
+            contentType,
+            currency.getCurrencyCode(),
+            "funding",
+            limit,
+            page);
     return response.models;
   }
 
-  public List<QuoineTransaction> withdrawalHistory(Currency currency, Integer limit, Integer page) throws IOException {
-    QuoineTransactionsResponse response = quoine.transactions(QUOINE_API_VERSION, signatureCreator, contentType, currency.getCurrencyCode(), "withdrawal", limit, page);
+  public List<QuoineTransaction> withdrawalHistory(Currency currency, Integer limit, Integer page)
+      throws IOException {
+    QuoineTransactionsResponse response =
+        quoine.transactions(
+            QUOINE_API_VERSION,
+            signatureCreator,
+            contentType,
+            currency.getCurrencyCode(),
+            "withdrawal",
+            limit,
+            page);
     return response.models;
   }
-
 }

@@ -8,8 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class BTCMarketsTradeHistory extends BTCMarketsBaseResponse {
 
-  protected BTCMarketsTradeHistory(@JsonProperty("success") Boolean success, @JsonProperty("errorMessage") String errorMessage,
-      @JsonProperty("errorCode") Integer errorCode, @JsonProperty("trades") List<BTCMarketsUserTrade> trades) {
+  protected BTCMarketsTradeHistory(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("errorMessage") String errorMessage,
+      @JsonProperty("errorCode") Integer errorCode,
+      @JsonProperty("trades") List<BTCMarketsUserTrade> trades) {
     super(success, errorMessage, errorCode);
     this.trades = trades;
   }

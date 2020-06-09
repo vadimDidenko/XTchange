@@ -4,17 +4,16 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXCommission {
 
   private BigDecimal tradingVolume;
   private BigDecimal takerCommission;
   private BigDecimal makerCommission;
 
-  public DSXCommission(@JsonProperty("tradingVolume") BigDecimal tradingVolume, @JsonProperty("takerCommission") BigDecimal takerCommission,
+  public DSXCommission(
+      @JsonProperty("tradingVolume") BigDecimal tradingVolume,
+      @JsonProperty("takerCommission") BigDecimal takerCommission,
       @JsonProperty("makerCommission") BigDecimal makerCommission) {
     this.tradingVolume = tradingVolume;
     this.takerCommission = takerCommission;

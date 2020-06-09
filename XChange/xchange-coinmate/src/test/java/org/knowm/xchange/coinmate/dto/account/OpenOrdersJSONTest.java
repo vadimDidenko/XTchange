@@ -35,16 +35,15 @@ import org.knowm.xchange.coinmate.dto.trade.CoinmateOpenOrders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class OpenOrdersJSONTest {
 
   @Test
   public void testUnmarshall() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = OrderBookJSONTest.class.getResourceAsStream("/account/example-open-orders.json");
+    InputStream is =
+        OrderBookJSONTest.class.getResourceAsStream("/account/example-open-orders.json");
 
     ObjectMapper mapper = new ObjectMapper();
     CoinmateOpenOrders coinmateOrders = mapper.readValue(is, CoinmateOpenOrders.class);

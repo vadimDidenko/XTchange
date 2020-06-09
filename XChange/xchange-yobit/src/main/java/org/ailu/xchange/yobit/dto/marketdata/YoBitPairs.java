@@ -39,7 +39,8 @@ public class YoBitPairs {
   static class YoBitPricesDeserializer extends JsonDeserializer<YoBitPairs> {
 
     @Override
-    public YoBitPairs deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public YoBitPairs deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       Map<CurrencyPair, YoBitPair> priceMap = new HashMap<>();
       ObjectCodec oc = jp.getCodec();

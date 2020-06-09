@@ -10,7 +10,9 @@ public class BitfinexAccountInfosResponse {
   private final BigDecimal takerFees;
   private final BitfinexFee[] fees;
 
-  public BitfinexAccountInfosResponse(@JsonProperty("maker_fees") BigDecimal makerFees, @JsonProperty("taker_fees") BigDecimal takerFees,
+  public BitfinexAccountInfosResponse(
+      @JsonProperty("maker_fees") BigDecimal makerFees,
+      @JsonProperty("taker_fees") BigDecimal takerFees,
       @JsonProperty("fees") BitfinexFee[] fees) {
     this.makerFees = makerFees;
     this.takerFees = takerFees;

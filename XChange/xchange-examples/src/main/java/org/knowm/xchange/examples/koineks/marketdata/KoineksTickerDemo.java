@@ -11,8 +11,8 @@ import org.knowm.xchange.koineks.service.KoineksMarketDataService;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * @author semihunaldi
- * Demonstrate requesting Ticker at Koineks. You can access both the raw data from Koineks or the XChange generic DTO data format.
+ * @author semihunaldi Demonstrate requesting Ticker at Koineks. You can access both the raw data
+ *     from Koineks or the XChange generic DTO data format.
  */
 public class KoineksTickerDemo {
 

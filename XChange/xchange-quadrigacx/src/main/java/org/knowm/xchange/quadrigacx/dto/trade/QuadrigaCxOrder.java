@@ -13,10 +13,9 @@ public final class QuadrigaCxOrder {
 
   private final String id;
   private final String datetime;
-  /**
-   * 0 - buy (bid); 1 - sell (ask)
-   */
+  /** 0 - buy (bid); 1 - sell (ask) */
   private final int type;
+
   private final BigDecimal price;
   private final BigDecimal amount;
   private final String errorMessage;
@@ -30,9 +29,14 @@ public final class QuadrigaCxOrder {
    * @param price
    * @param amount
    */
-  public QuadrigaCxOrder(@JsonProperty("id") String id, @JsonProperty("datetime") String datetime, @JsonProperty("type") int type,
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("error") @JsonDeserialize(using = QuadrigaCxErrorDeserializer.class) String errorMessage) {
+  public QuadrigaCxOrder(
+      @JsonProperty("id") String id,
+      @JsonProperty("datetime") String datetime,
+      @JsonProperty("type") int type,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("error") @JsonDeserialize(using = QuadrigaCxErrorDeserializer.class)
+          String errorMessage) {
 
     this.id = id;
     this.datetime = datetime;
@@ -82,7 +86,10 @@ public final class QuadrigaCxOrder {
   @Override
   public String toString() {
 
-    return errorMessage != null ? errorMessage
-        : String.format("Order{id=%s, datetime=%s, type=%s, price=%s, amount=%s}", id, datetime, type, price, amount);
+    return errorMessage != null
+        ? errorMessage
+        : String.format(
+            "Order{id=%s, datetime=%s, type=%s, price=%s, amount=%s}",
+            id, datetime, type, price, amount);
   }
 }

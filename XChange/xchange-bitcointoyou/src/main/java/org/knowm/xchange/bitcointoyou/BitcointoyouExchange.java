@@ -18,7 +18,8 @@ import si.mazi.rescu.SynchronizedValueFactory;
  */
 public class BitcointoyouExchange extends BaseExchange implements Exchange {
 
-  private final SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2013NonceFactory();
+  private final SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2013NonceFactory();
 
   @Override
   protected void initServices() {
@@ -35,7 +36,8 @@ public class BitcointoyouExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://www.bitcointoyou.com/");
     exchangeSpecification.setHost("www.bitcointoyou.com");
     exchangeSpecification.setPort(443);

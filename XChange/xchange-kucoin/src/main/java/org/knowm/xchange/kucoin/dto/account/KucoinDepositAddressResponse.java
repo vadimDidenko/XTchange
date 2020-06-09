@@ -1,4 +1,3 @@
-
 package org.knowm.xchange.kucoin.dto.account;
 
 import java.util.HashMap;
@@ -13,60 +12,42 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({
-    "data"
-})
+@JsonPropertyOrder({"data"})
 public class KucoinDepositAddressResponse {
 
-    @JsonProperty("data")
-    private KucoinDepositAddress depositAddress;
-    @JsonIgnore
-    private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+  @JsonProperty("data")
+  private KucoinDepositAddress depositAddress;
 
-    /**
-     * No args constructor for use in serialization
-     * 
-     */
-    public KucoinDepositAddressResponse() {
-    }
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-    /**
-     * 
-     * @param depositAddress
-     */
-    public KucoinDepositAddressResponse(KucoinDepositAddress depositAddress) {
-        super();
-        this.depositAddress = depositAddress;
-    }
+  /** No args constructor for use in serialization */
+  public KucoinDepositAddressResponse() {}
 
-    /**
-     * 
-     * @return
-     *     The depositAddress
-     */
-    @JsonProperty("data")
-    public KucoinDepositAddress getDepositAddress() {
-        return depositAddress;
-    }
+  /** @param depositAddress */
+  public KucoinDepositAddressResponse(KucoinDepositAddress depositAddress) {
+    super();
+    this.depositAddress = depositAddress;
+  }
 
-    /**
-     * 
-     * @param depositAddress
-     *     The depositAddress
-     */
-    @JsonProperty("data")
-    public void setData(KucoinDepositAddress depositAddress) {
-        this.depositAddress = depositAddress;
-    }
+  /** @return The depositAddress */
+  @JsonProperty("data")
+  public KucoinDepositAddress getDepositAddress() {
+    return depositAddress;
+  }
 
-    @JsonAnyGetter
-    public Map<String, Object> getAdditionalProperties() {
-        return this.additionalProperties;
-    }
+  /** @param depositAddress The depositAddress */
+  @JsonProperty("data")
+  public void setData(KucoinDepositAddress depositAddress) {
+    this.depositAddress = depositAddress;
+  }
 
-    @JsonAnySetter
-    public void setAdditionalProperty(String name, Object value) {
-        this.additionalProperties.put(name, value);
-    }
+  @JsonAnyGetter
+  public Map<String, Object> getAdditionalProperties() {
+    return this.additionalProperties;
+  }
 
+  @JsonAnySetter
+  public void setAdditionalProperty(String name, Object value) {
+    this.additionalProperties.put(name, value);
+  }
 }

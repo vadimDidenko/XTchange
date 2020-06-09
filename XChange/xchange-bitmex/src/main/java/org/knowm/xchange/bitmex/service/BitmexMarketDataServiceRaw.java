@@ -24,11 +24,10 @@ import com.google.common.collect.BiMap;
 import com.google.common.collect.HashBiMap;
 
 /**
- * <p>
  * Implementation of the market data service for Bitmex
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
 public class BitmexMarketDataServiceRaw extends BitmexBaseService {
@@ -43,14 +42,14 @@ public class BitmexMarketDataServiceRaw extends BitmexBaseService {
     super(exchange);
   }
 
-  public BitmexDepth getBitmexDepth(CurrencyPair pair, BitmexPrompt prompt, Object... args) throws IOException {
+  public BitmexDepth getBitmexDepth(CurrencyPair pair, BitmexPrompt prompt, Object... args)
+      throws IOException {
 
     BitmexContract contract = new BitmexContract(pair, prompt);
     String bitmexSymbol = BitmexUtils.translateBitmexContract(contract);
     BitmexPublicOrder[] result = bitmex.getDepth(bitmexSymbol, 25d);
 
-    if (pair != null && prompt != null)
-      return BitmexAdapters.adaptDepth(result, pair);
+    if (pair != null && prompt != null) return BitmexAdapters.adaptDepth(result, pair);
 
     // return result;
     return null;
@@ -58,14 +57,14 @@ public class BitmexMarketDataServiceRaw extends BitmexBaseService {
     // return checkResult(result);
   }
 
-  public Trades getBitmexTrades(CurrencyPair pair, BitmexPrompt prompt, Object... args) throws IOException {
+  public Trades getBitmexTrades(CurrencyPair pair, BitmexPrompt prompt, Object... args)
+      throws IOException {
 
     BitmexContract contract = new BitmexContract(pair, prompt);
     String bitmexSymbol = BitmexUtils.translateBitmexContract(contract);
     BitmexPublicTrade[] result = bitmex.getTrades(bitmexSymbol, true);
 
-    if (pair != null && prompt != null)
-      return BitmexAdapters.adaptTrades(result, pair);
+    if (pair != null && prompt != null) return BitmexAdapters.adaptTrades(result, pair);
 
     // return result;
     return null;
@@ -91,7 +90,8 @@ public class BitmexMarketDataServiceRaw extends BitmexBaseService {
     }
   }
 
-  public BiMap<BitmexPrompt, String> getActivePrompts(List<BitmexTicker> tickers) throws IOException {
+  public BiMap<BitmexPrompt, String> getActivePrompts(List<BitmexTicker> tickers)
+      throws IOException {
 
     BiMap<BitmexPrompt, String> bitmexPromptsBiMap = HashBiMap.create();
     Map<String, BitmexPrompt> bitmexSymbolsToIntervalsMap = new HashMap<String, BitmexPrompt>();
@@ -103,20 +103,26 @@ public class BitmexMarketDataServiceRaw extends BitmexBaseService {
       // promptsAndSymbolsResult
       int index = 0;
       for (Object interval : promptsAndSymbolsResults.getIntervals()) {
-        BitmexPrompt prompt = BitmexPrompt.valueOf(interval.toString().split("\\:")[1].toUpperCase());
+        BitmexPrompt prompt =
+            BitmexPrompt.valueOf(interval.toString().split("\\:")[1].toUpperCase());
 
-        bitmexSymbolsToIntervalsMap.put(promptsAndSymbolsResults.getSymbols().get(index).toString(), prompt);
+        bitmexSymbolsToIntervalsMap.put(
+            promptsAndSymbolsResults.getSymbols().get(index).toString(), prompt);
         index++;
       }
       // QUOTECCY.BASECCY.BITMEXPROMPT
 
       for (BitmexTicker ticker : tickers) {
         String promptSymbol = ticker.getSymbol().replaceFirst(ticker.getRootSymbol(), "");
-        if (promptSymbol != null && bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()) != null && bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()) != BitmexPrompt.PERPETUAL
+        if (promptSymbol != null
+            && bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()) != null
+            && bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()) != BitmexPrompt.PERPETUAL
             && !bitmexPromptsToSymbolsMap.containsKey(ticker.getSymbol()))
-          bitmexPromptsToSymbolsMap.forcePut(bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()), promptSymbol);
+          bitmexPromptsToSymbolsMap.forcePut(
+              bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()), promptSymbol);
 
-        // bitmexTickersToIntervalsMap.put(ticker, bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()));
+        // bitmexTickersToIntervalsMap.put(ticker,
+        // bitmexSymbolsToIntervalsMap.get(ticker.getSymbol()));
       }
 
       return bitmexPromptsToSymbolsMap;
@@ -124,10 +130,10 @@ public class BitmexMarketDataServiceRaw extends BitmexBaseService {
     } catch (BitmexException e) {
       throw handleError(e);
     }
-
   }
 
-  protected <R> List<R> checkResult(BitmexSymbolsAndPromptsResult<R> bitmexSymbolsAndPromptsResult) {
+  protected <R> List<R> checkResult(
+      BitmexSymbolsAndPromptsResult<R> bitmexSymbolsAndPromptsResult) {
 
     if (!bitmexSymbolsAndPromptsResult.isSuccess()) {
       throw new ExchangeException("Unable to retieve prompts and symbols from bitmex");

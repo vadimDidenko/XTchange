@@ -11,9 +11,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author matthewdowney
- */
+/** @author matthewdowney */
 public class BitcoindeMarketDataServiceRaw extends BitcoindeBaseService {
 
   private final SynchronizedValueFactory<Long> nonceFactory;
@@ -25,27 +23,32 @@ public class BitcoindeMarketDataServiceRaw extends BitcoindeBaseService {
    */
   public BitcoindeMarketDataServiceRaw(Exchange exchange) {
 
-	 super(exchange);
-	 this.nonceFactory = exchange.getNonceFactory();
+    super(exchange);
+    this.nonceFactory = exchange.getNonceFactory();
   }
 
-  public BitcoindeOrderbookWrapper getBitcoindeOrderBook(CurrencyPair currencyPair) throws IOException {
-	 try {
-		return bitcoinde.getOrderBook(BitcoindeUtils.createBitcoindePair(currencyPair), apiKey, nonceFactory, signatureCreator);
-	 } catch (BitcoindeException e) {
-		throw handleError(e);
-	 }
+  public BitcoindeOrderbookWrapper getBitcoindeOrderBook(CurrencyPair currencyPair)
+      throws IOException {
+    try {
+      return bitcoinde.getOrderBook(
+          BitcoindeUtils.createBitcoindePair(currencyPair), apiKey, nonceFactory, signatureCreator);
+    } catch (BitcoindeException e) {
+      throw handleError(e);
+    }
   }
 
-  public BitcoindeTradesWrapper getBitcoindeTrades(CurrencyPair currencyPair, Integer since) throws IOException {
+  public BitcoindeTradesWrapper getBitcoindeTrades(CurrencyPair currencyPair, Integer since)
+      throws IOException {
 
-	 try {
-		return bitcoinde.getTrades(BitcoindeUtils.createBitcoindePair(currencyPair), since, apiKey, nonceFactory, signatureCreator);
-	 } catch (BitcoindeException e) {
-		throw handleError(e);
-	 }
+    try {
+      return bitcoinde.getTrades(
+          BitcoindeUtils.createBitcoindePair(currencyPair),
+          since,
+          apiKey,
+          nonceFactory,
+          signatureCreator);
+    } catch (BitcoindeException e) {
+      throw handleError(e);
+    }
   }
-
- 
-
 }

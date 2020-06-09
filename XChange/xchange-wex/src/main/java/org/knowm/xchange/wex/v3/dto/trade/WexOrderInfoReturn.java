@@ -20,10 +20,11 @@ public class WexOrderInfoReturn extends WexReturn<Map<Long, WexOrderInfoResult>>
    * @param value
    * @param error
    */
-  public WexOrderInfoReturn(@JsonProperty("success") boolean success, @JsonProperty("return") Map<Long, WexOrderInfoResult> value,
+  public WexOrderInfoReturn(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("return") Map<Long, WexOrderInfoResult> value,
       @JsonProperty("error") String error) {
 
     super(success, value, error);
   }
-
 }

@@ -19,10 +19,12 @@ public class LiquiActiveOrdersJSONTest {
 
   @Test
   public void testUnmarshall() throws Exception {
-    final InputStream is = LiquiTickerJSONTest.class.getResourceAsStream("/trade/example-activeorders-data.json");
+    final InputStream is =
+        LiquiTickerJSONTest.class.getResourceAsStream("/trade/example-activeorders-data.json");
 
     final ObjectMapper mapper = new ObjectMapper();
-    final LiquiActiveOrdersResult activeOrdersResult = mapper.readValue(is, LiquiActiveOrdersResult.class);
+    final LiquiActiveOrdersResult activeOrdersResult =
+        mapper.readValue(is, LiquiActiveOrdersResult.class);
     assertThat(activeOrdersResult.isSuccess()).isTrue();
 
     final Map<Long, LiquiOrderInfo> orders = activeOrdersResult.getResult();

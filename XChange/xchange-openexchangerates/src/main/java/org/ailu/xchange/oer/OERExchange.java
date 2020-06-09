@@ -17,12 +17,14 @@ public class OERExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setPlainTextUri("http://openexchangerates.org");
     exchangeSpecification.setHost("openexchangerates.org");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Open Exchange Rates");
-    exchangeSpecification.setExchangeDescription("Open Exchange Rates is an exchange rate provider for a wide range of currencies.");
+    exchangeSpecification.setExchangeDescription(
+        "Open Exchange Rates is an exchange rate provider for a wide range of currencies.");
 
     return exchangeSpecification;
   }

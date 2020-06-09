@@ -64,5 +64,4 @@ public class HitbtcMarketDataServiceIntegration extends BaseServiceTest {
 
     assertNotNull(orderBook);
   }
-
 }

@@ -16,10 +16,7 @@ import org.knowm.xchange.utils.nonce.TimestampIncrementingNonceFactory;
 
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author Zach Holmes
- */
-
+/** @author Zach Holmes */
 public class PoloniexExchange extends BaseExchange implements Exchange {
 
   private SynchronizedValueFactory<Long> nonceFactory = new TimestampIncrementingNonceFactory();
@@ -34,7 +31,8 @@ public class PoloniexExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://poloniex.com/");
     exchangeSpecification.setHost("poloniex.com");
     exchangeSpecification.setPort(80);
@@ -53,11 +51,16 @@ public class PoloniexExchange extends BaseExchange implements Exchange {
   @Override
   public void remoteInit() throws IOException {
 
-    PoloniexMarketDataServiceRaw poloniexMarketDataServiceRaw = (PoloniexMarketDataServiceRaw) marketDataService;
+    PoloniexMarketDataServiceRaw poloniexMarketDataServiceRaw =
+        (PoloniexMarketDataServiceRaw) marketDataService;
 
-    Map<String, PoloniexCurrencyInfo> poloniexCurrencyInfoMap = poloniexMarketDataServiceRaw.getPoloniexCurrencyInfo();
-    Map<String, PoloniexMarketData> poloniexMarketDataMap = poloniexMarketDataServiceRaw.getAllPoloniexTickers();
+    Map<String, PoloniexCurrencyInfo> poloniexCurrencyInfoMap =
+        poloniexMarketDataServiceRaw.getPoloniexCurrencyInfo();
+    Map<String, PoloniexMarketData> poloniexMarketDataMap =
+        poloniexMarketDataServiceRaw.getAllPoloniexTickers();
 
-    exchangeMetaData = PoloniexAdapters.adaptToExchangeMetaData(poloniexCurrencyInfoMap, poloniexMarketDataMap, exchangeMetaData);
+    exchangeMetaData =
+        PoloniexAdapters.adaptToExchangeMetaData(
+            poloniexCurrencyInfoMap, poloniexMarketDataMap, exchangeMetaData);
   }
 }

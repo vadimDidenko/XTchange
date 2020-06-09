@@ -6,25 +6,17 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
-/**
- * Order book of a symbol in Binance.
- */
+/** Order book of a symbol in Binance. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class OrderBook {
 
-  /**
-   * Last update id of this order book.
-   */
+  /** Last update id of this order book. */
   private long lastUpdateId;
 
-  /**
-   * List of bids (price/qty).
-   */
+  /** List of bids (price/qty). */
   private List<OrderBookEntry> bids;
 
-  /**
-   * List of asks (price/qty).
-   */
+  /** List of asks (price/qty). */
   private List<OrderBookEntry> asks;
 
   public long getLastUpdateId() {

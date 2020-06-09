@@ -16,9 +16,7 @@ public class ObjectMapperHelper {
 
   private static final ObjectMapper objectMapper = new ObjectMapper();
 
-  private ObjectMapperHelper() {
-
-  }
+  private ObjectMapperHelper() {}
 
   public static <T> T readValue(URL src, Class<T> valueType) throws IOException {
 
@@ -46,5 +44,4 @@ public class ObjectMapperHelper {
     }
     return json;
   }
-
 }

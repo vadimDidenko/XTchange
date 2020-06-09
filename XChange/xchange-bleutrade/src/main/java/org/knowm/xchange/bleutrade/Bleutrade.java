@@ -36,11 +36,14 @@ public interface Bleutrade {
 
   @GET
   @Path("public/getorderbook")
-  BleutradeOrderBookReturn getBleutradeOrderBook(@QueryParam("market") String market, @QueryParam("type") String type,
-                                                 @QueryParam("depth") int depth) throws IOException;
+  BleutradeOrderBookReturn getBleutradeOrderBook(
+      @QueryParam("market") String market,
+      @QueryParam("type") String type,
+      @QueryParam("depth") int depth)
+      throws IOException;
 
   @GET
   @Path("public/getmarkethistory")
-  BleutradeMarketHistoryReturn getBleutradeMarketHistory(@QueryParam("market") String market, @QueryParam("count") int count) throws IOException;
-
+  BleutradeMarketHistoryReturn getBleutradeMarketHistory(
+      @QueryParam("market") String market, @QueryParam("count") int count) throws IOException;
 }

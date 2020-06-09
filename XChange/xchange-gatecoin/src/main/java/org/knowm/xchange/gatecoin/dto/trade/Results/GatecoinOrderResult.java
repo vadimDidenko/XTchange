@@ -7,15 +7,15 @@ import org.knowm.xchange.gatecoin.dto.trade.GatecoinOrder;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author sumedha
- */
+/** @author sumedha */
 public class GatecoinOrderResult extends GatecoinResult {
 
   private final GatecoinOrder[] orders;
 
   @JsonCreator
-  public GatecoinOrderResult(@JsonProperty("orders") GatecoinOrder[] orders, @JsonProperty("responseStatus") ResponseStatus responseStatus) {
+  public GatecoinOrderResult(
+      @JsonProperty("orders") GatecoinOrder[] orders,
+      @JsonProperty("responseStatus") ResponseStatus responseStatus) {
     super(responseStatus);
     this.orders = orders;
   }

@@ -26,7 +26,8 @@ public class LiquiAccountService extends LiquiAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(final Currency currency, final BigDecimal amount, final String address) throws IOException {
+  public String withdrawFunds(
+      final Currency currency, final BigDecimal amount, final String address) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -36,7 +37,8 @@ public class LiquiAccountService extends LiquiAccountServiceRaw implements Accou
   }
 
   @Override
-  public String requestDepositAddress(final Currency currency, final String... args) throws IOException {
+  public String requestDepositAddress(final Currency currency, final String... args)
+      throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 

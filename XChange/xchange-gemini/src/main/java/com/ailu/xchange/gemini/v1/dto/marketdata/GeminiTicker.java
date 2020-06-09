@@ -40,7 +40,8 @@ public class GeminiTicker {
    * @param last
    * @param volume
    */
-  public GeminiTicker(@JsonProperty("bid") BigDecimal bid,
+  public GeminiTicker(
+      @JsonProperty("bid") BigDecimal bid,
       @JsonProperty("ask") BigDecimal ask,
       @JsonProperty("last") BigDecimal last,
       @JsonProperty("volume") Map<String, Object> volume) {
@@ -74,9 +75,14 @@ public class GeminiTicker {
   @Override
   public String toString() {
 
-    return "GeminiTicker [bid=" + bid + ", ask=" + ask + ", last=" + last + ", volume="
-        + volume + "]";
+    return "GeminiTicker [bid="
+        + bid
+        + ", ask="
+        + ask
+        + ", last="
+        + last
+        + ", volume="
+        + volume
+        + "]";
   }
-
 }
-

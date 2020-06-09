@@ -38,5 +38,4 @@ public class BTCTradeMarketDataServiceRaw extends BTCTradeBaseService {
 
     return btcTrade.getTrades(since);
   }
-
 }

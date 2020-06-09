@@ -6,14 +6,14 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamPaging;
 
 public class KucoinTradeHistoryParams
     implements TradeHistoryParamCurrencyPair, TradeHistoryParamPaging {
-  
+
   private CurrencyPair currencyPair;
   private Integer pageLength;
   private Integer pageNumber;
 
   @Override
   public void setPageLength(Integer pageLength) {
-    
+
     this.pageLength = pageLength;
   }
 
@@ -24,19 +24,19 @@ public class KucoinTradeHistoryParams
 
   @Override
   public void setPageNumber(Integer pageNumber) {
-    
+
     this.pageNumber = pageNumber;
   }
 
   @Override
   public Integer getPageNumber() {
-    
+
     return pageNumber;
   }
 
   @Override
   public void setCurrencyPair(CurrencyPair pair) {
-    
+
     this.currencyPair = pair;
   }
 
@@ -45,5 +45,4 @@ public class KucoinTradeHistoryParams
 
     return currencyPair;
   }
-
 }

@@ -25,12 +25,14 @@ public class CCEXExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://c-cex.com");
     exchangeSpecification.setHost("c-cex.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("C-CEX");
-    exchangeSpecification.setExchangeDescription("C-CEX.com - Crypto-currency exchange / MultiWallet");
+    exchangeSpecification.setExchangeDescription(
+        "C-CEX.com - Crypto-currency exchange / MultiWallet");
 
     return exchangeSpecification;
   }
@@ -44,9 +46,9 @@ public class CCEXExchange extends BaseExchange implements Exchange {
 
   @Override
   public void remoteInit() throws IOException {
-    List<CCEXMarket> products = ((CCEXMarketDataServiceRaw) marketDataService).getConbaseExProducts();
+    List<CCEXMarket> products =
+        ((CCEXMarketDataServiceRaw) marketDataService).getConbaseExProducts();
     exchangeMetaData = CCEXAdapters.adaptToExchangeMetaData(exchangeMetaData, products);
-    //System.out.println("JSON: " + ObjectMapperHelper.toJSON(exchangeMetaData));
+    // System.out.println("JSON: " + ObjectMapperHelper.toJSON(exchangeMetaData));
   }
-
 }

@@ -27,7 +27,9 @@ public class LendDepthDemo {
     // Get the latest order book data for USD swaps
     BitfinexLendDepth bitfinexDepth = marketDataService.getBitfinexLendBook("USD", 50, 50);
 
-    System.out.println("Current Order Book size for USD: " + (bitfinexDepth.getAsks().length + bitfinexDepth.getBids().length));
+    System.out.println(
+        "Current Order Book size for USD: "
+            + (bitfinexDepth.getAsks().length + bitfinexDepth.getBids().length));
 
     System.out.println("First Ask: " + bitfinexDepth.getAsks()[0].toString());
 

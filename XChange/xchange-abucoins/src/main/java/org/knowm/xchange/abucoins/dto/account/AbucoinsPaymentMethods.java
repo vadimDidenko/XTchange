@@ -7,11 +7,8 @@ import org.knowm.xchange.abucoins.service.AbucoinsArrayOrMessageDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * <p>POJO representing the output JSON for the Abucoins
- * <code>GET /payment-methods</code> endpoint.</p>
- *
- * Example:
- * <code><pre>
+ * POJO representing the output JSON for the Abucoins <code>GET /payment-methods</code> endpoint.
+ * Example: <code><pre>
  * [
  *     {
  *         "id": "sepa_pln",
@@ -45,14 +42,15 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
  *             "withdraw": 0.5
  *         }
  *     }
- * ] 
+ * ]
  * </pre></code>
+ *
  * @author bryant_harris
  */
 @JsonDeserialize(using = AbucoinsPaymentMethods.AbucoinsPaymentMethodsDeserializer.class)
 public class AbucoinsPaymentMethods {
   AbucoinsPaymentMethod[] paymentMethods;
-                
+
   public AbucoinsPaymentMethods(AbucoinsPaymentMethod[] paymentMethods) {
     this.paymentMethods = paymentMethods;
   }
@@ -67,11 +65,13 @@ public class AbucoinsPaymentMethods {
   }
 
   /**
-   * Deserializer handles the success case (array json) as well as the error case
-   * (json object with <em>message</em> field).
+   * Deserializer handles the success case (array json) as well as the error case (json object with
+   * <em>message</em> field).
+   *
    * @author bryant_harris
    */
-  static class AbucoinsPaymentMethodsDeserializer extends AbucoinsArrayOrMessageDeserializer<AbucoinsPaymentMethod, AbucoinsPaymentMethods> {
+  static class AbucoinsPaymentMethodsDeserializer
+      extends AbucoinsArrayOrMessageDeserializer<AbucoinsPaymentMethod, AbucoinsPaymentMethods> {
     public AbucoinsPaymentMethodsDeserializer() {
       super(AbucoinsPaymentMethod.class, AbucoinsPaymentMethods.class);
     }

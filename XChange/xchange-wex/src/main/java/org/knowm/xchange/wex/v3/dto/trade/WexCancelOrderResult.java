@@ -6,9 +6,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class WexCancelOrderResult {
 
   private final long orderId;
@@ -20,7 +18,9 @@ public class WexCancelOrderResult {
    * @param orderId
    * @param funds
    */
-  public WexCancelOrderResult(@JsonProperty("order_id") long orderId, @JsonProperty("funds") Map<String, BigDecimal> funds) {
+  public WexCancelOrderResult(
+      @JsonProperty("order_id") long orderId,
+      @JsonProperty("funds") Map<String, BigDecimal> funds) {
 
     this.orderId = orderId;
     this.funds = funds;
@@ -41,5 +41,4 @@ public class WexCancelOrderResult {
 
     return MessageFormat.format("WexCancelOrderResult[orderId={0}, funds={1}]", orderId, funds);
   }
-
 }

@@ -29,72 +29,71 @@ import static org.powermock.api.mockito.PowerMockito.when;
 
 public class AcxMarketDataServiceTest {
 
-    private AcxApi api;
-    private ObjectMapper objectMapper;
-    private MarketDataService service;
+  private AcxApi api;
+  private ObjectMapper objectMapper;
+  private MarketDataService service;
 
-    @Before
-    public void setUp() {
-        objectMapper = new ObjectMapper();
-        AcxMapper mapper = new AcxMapper();
-        api = mock(AcxApi.class);
-        service = new AcxMarketDataService(api, mapper);
-    }
+  @Before
+  public void setUp() {
+    objectMapper = new ObjectMapper();
+    AcxMapper mapper = new AcxMapper();
+    api = mock(AcxApi.class);
+    service = new AcxMarketDataService(api, mapper);
+  }
 
-    @Test
-    public void testTickers() throws IOException {
-        when(api.getTicker("ethaud"))
-                .thenReturn(read("/marketdata/tickers.json", AcxMarket.class));
+  @Test
+  public void testTickers() throws IOException {
+    when(api.getTicker("ethaud")).thenReturn(read("/marketdata/tickers.json", AcxMarket.class));
 
-        Ticker ticker = service.getTicker(CurrencyPair.ETH_AUD);
+    Ticker ticker = service.getTicker(CurrencyPair.ETH_AUD);
 
-        assertEquals(new BigDecimal("576.3302"), ticker.getVolume());
-        assertEquals(new BigDecimal("1119.33"), ticker.getBid());
-        assertEquals(new Date(1513687641000L), ticker.getTimestamp());
-    }
+    assertEquals(new BigDecimal("576.3302"), ticker.getVolume());
+    assertEquals(new BigDecimal("1119.33"), ticker.getBid());
+    assertEquals(new Date(1513687641000L), ticker.getTimestamp());
+  }
 
-    @Test
-    public void testOrderBooks() throws IOException {
-        when(api.getOrderBook("ethaud", AcxMarketDataService.MAX_LIMIT, AcxMarketDataService.MAX_LIMIT))
-                .thenReturn(read("/marketdata/order_book.json", AcxOrderBook.class));
+  @Test
+  public void testOrderBooks() throws IOException {
+    when(api.getOrderBook("ethaud", AcxMarketDataService.MAX_LIMIT, AcxMarketDataService.MAX_LIMIT))
+        .thenReturn(read("/marketdata/order_book.json", AcxOrderBook.class));
 
-        OrderBook orderBook = service.getOrderBook(CurrencyPair.ETH_AUD);
+    OrderBook orderBook = service.getOrderBook(CurrencyPair.ETH_AUD);
 
-        assertFalse(orderBook.getAsks().isEmpty());
-        assertFalse(orderBook.getBids().isEmpty());
-        assertEquals(new BigDecimal("1144.94"), orderBook.getAsks().get(0).getLimitPrice());
-        assertEquals(ASK, orderBook.getAsks().get(0).getType());
-        assertEquals(new BigDecimal("1128.88"), orderBook.getBids().get(0).getLimitPrice());
-        assertEquals(BID, orderBook.getBids().get(0).getType());
-    }
+    assertFalse(orderBook.getAsks().isEmpty());
+    assertFalse(orderBook.getBids().isEmpty());
+    assertEquals(new BigDecimal("1144.94"), orderBook.getAsks().get(0).getLimitPrice());
+    assertEquals(ASK, orderBook.getAsks().get(0).getType());
+    assertEquals(new BigDecimal("1128.88"), orderBook.getBids().get(0).getLimitPrice());
+    assertEquals(BID, orderBook.getBids().get(0).getType());
+  }
 
-    @Test
-    public void testOrderBooksArguments() throws IOException {
-        when(api.getOrderBook("ethaud", 5, 6))
-                .thenReturn(read("/marketdata/order_book.json", AcxOrderBook.class));
+  @Test
+  public void testOrderBooksArguments() throws IOException {
+    when(api.getOrderBook("ethaud", 5, 6))
+        .thenReturn(read("/marketdata/order_book.json", AcxOrderBook.class));
 
-        OrderBook orderBook = service.getOrderBook(CurrencyPair.ETH_AUD, 5, 6);
+    OrderBook orderBook = service.getOrderBook(CurrencyPair.ETH_AUD, 5, 6);
 
-        assertFalse(orderBook.getAsks().isEmpty());
-        assertFalse(orderBook.getBids().isEmpty());
-    }
+    assertFalse(orderBook.getAsks().isEmpty());
+    assertFalse(orderBook.getBids().isEmpty());
+  }
 
-    @Test
-    public void testTrades() throws IOException {
-        when(api.getTrades("ethaud"))
-                .thenReturn(read("/marketdata/trades.json", new TypeReference<List<AcxTrade>>(){}));
+  @Test
+  public void testTrades() throws IOException {
+    when(api.getTrades("ethaud"))
+        .thenReturn(read("/marketdata/trades.json", new TypeReference<List<AcxTrade>>() {}));
 
-        Trades trades = service.getTrades(CurrencyPair.ETH_AUD);
+    Trades trades = service.getTrades(CurrencyPair.ETH_AUD);
 
-        assertFalse(trades.getTrades().isEmpty());
-        assertEquals(new BigDecimal("0.0085"), trades.getTrades().get(0).getOriginalAmount());
-    }
+    assertFalse(trades.getTrades().isEmpty());
+    assertEquals(new BigDecimal("0.0085"), trades.getTrades().get(0).getOriginalAmount());
+  }
 
-    private <T> T read(String path, Class<T> clz) throws IOException {
-        return objectMapper.readValue(this.getClass().getResourceAsStream(path), clz);
-    }
+  private <T> T read(String path, Class<T> clz) throws IOException {
+    return objectMapper.readValue(this.getClass().getResourceAsStream(path), clz);
+  }
 
-    private <T> T read(String path, TypeReference<T> type) throws IOException {
-        return objectMapper.readValue(this.getClass().getResourceAsStream(path), type);
-    }
+  private <T> T read(String path, TypeReference<T> type) throws IOException {
+    return objectMapper.readValue(this.getClass().getResourceAsStream(path), type);
+  }
 }

@@ -23,7 +23,8 @@ public class ItBitHmacPostBodyDigest extends BaseParamsDigest {
    * Constructor
    *
    * @param secretKeyBase64
-   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded key is invalid).
+   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded
+   *     key is invalid).
    */
   private ItBitHmacPostBodyDigest(String apiKey, String secretKeyBase64) {
 
@@ -44,7 +45,8 @@ public class ItBitHmacPostBodyDigest extends BaseParamsDigest {
     try {
       md = MessageDigest.getInstance("SHA-256");
     } catch (NoSuchAlgorithmException e) {
-      throw new RuntimeException("Illegal algorithm for post body digest. Check the implementation.");
+      throw new RuntimeException(
+          "Illegal algorithm for post body digest. Check the implementation.");
     }
 
     Map<String, String> httpHeaders = restInvocation.getHttpHeadersFromParams();
@@ -61,8 +63,19 @@ public class ItBitHmacPostBodyDigest extends BaseParamsDigest {
 
     String verb = restInvocation.getHttpMethod().trim();
     String invocationUrl = restInvocation.getInvocationUrl().trim();
-    String jsonEncodedArray = new StringBuilder("[\"").append(verb).append(FIELD_SEPARATOR).append(invocationUrl).append(FIELD_SEPARATOR)
-        .append(requestBody).append(FIELD_SEPARATOR).append(currentNonce).append(FIELD_SEPARATOR).append(currentTimestamp).append("\"]").toString();
+    String jsonEncodedArray =
+        new StringBuilder("[\"")
+            .append(verb)
+            .append(FIELD_SEPARATOR)
+            .append(invocationUrl)
+            .append(FIELD_SEPARATOR)
+            .append(requestBody)
+            .append(FIELD_SEPARATOR)
+            .append(currentNonce)
+            .append(FIELD_SEPARATOR)
+            .append(currentTimestamp)
+            .append("\"]")
+            .toString();
     md.update(currentNonce.getBytes(charset));
     md.update(jsonEncodedArray.getBytes(charset));
     byte[] messageHash = md.digest();

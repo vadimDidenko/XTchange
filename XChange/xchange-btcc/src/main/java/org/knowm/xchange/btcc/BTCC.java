@@ -17,5 +17,4 @@ public interface BTCC {
   @GET
   @Path("ticker?symbol={symbol}")
   Map<String, BTCCTicker> getMarketTicker(@PathParam("symbol") String symbol) throws IOException;
-
 }

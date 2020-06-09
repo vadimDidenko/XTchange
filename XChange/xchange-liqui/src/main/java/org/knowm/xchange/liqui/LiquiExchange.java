@@ -20,8 +20,7 @@ public class LiquiExchange extends BaseExchange implements Exchange {
   // TODO do we need this?
   private final SynchronizedValueFactory<Long> nonceFactory = new CurrentTime1000NonceFactory();
 
-  public LiquiExchange() {
-  }
+  public LiquiExchange() {}
 
   @Override
   protected void initServices() {
@@ -48,8 +47,8 @@ public class LiquiExchange extends BaseExchange implements Exchange {
 
   @Override
   public void remoteInit() throws IOException, ExchangeException {
-    final Map<String, LiquiPairInfo> infos = ((LiquiMarketDataServiceRaw) marketDataService).getInfo();
+    final Map<String, LiquiPairInfo> infos =
+        ((LiquiMarketDataServiceRaw) marketDataService).getInfo();
     exchangeMetaData = LiquiAdapters.adaptToExchangeMetaData(infos);
-
   }
 }

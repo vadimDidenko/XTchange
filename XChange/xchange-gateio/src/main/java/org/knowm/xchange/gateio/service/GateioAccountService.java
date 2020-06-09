@@ -25,7 +25,6 @@ public class GateioAccountService extends GateioAccountServiceRaw implements Acc
   public GateioAccountService(Exchange exchange) {
 
     super(exchange);
-
   }
 
   @Override
@@ -35,14 +34,14 @@ public class GateioAccountService extends GateioAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
-  public String withdrawFunds(
-      WithdrawFundsParams params) throws IOException {
+  public String withdrawFunds(WithdrawFundsParams params) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -58,8 +57,7 @@ public class GateioAccountService extends GateioAccountServiceRaw implements Acc
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

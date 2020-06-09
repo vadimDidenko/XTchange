@@ -13,7 +13,8 @@ import org.knowm.xchange.dto.account.FundingRecord;
 import org.knowm.xchange.hitbtc.v2.BaseAuthenticatedServiceTest;
 
 /**
- * Test ignored in default build because it requires production authentication credentials. See {@link BaseAuthenticatedServiceTest}.
+ * Test ignored in default build because it requires production authentication credentials. See
+ * {@link BaseAuthenticatedServiceTest}.
  */
 @Ignore
 public class HitbtcAccountServiceIntegration extends BaseAuthenticatedServiceTest {
@@ -39,7 +40,8 @@ public class HitbtcAccountServiceIntegration extends BaseAuthenticatedServiceTes
   @Test
   public void testGetFundingHistory() throws IOException {
 
-    HitbtcFundingHistoryParams hitbtcTradeHistoryParams = HitbtcFundingHistoryParams.builder().build();
+    HitbtcFundingHistoryParams hitbtcTradeHistoryParams =
+        HitbtcFundingHistoryParams.builder().build();
 
     List<FundingRecord> records = service.getFundingHistory(hitbtcTradeHistoryParams);
 
@@ -49,13 +51,11 @@ public class HitbtcAccountServiceIntegration extends BaseAuthenticatedServiceTes
   @Test
   public void testGetFundingHistory_withParams() throws IOException {
 
-    HitbtcFundingHistoryParams hitbtcTradeHistoryParams = HitbtcFundingHistoryParams.builder()
-        .limit(2)
-        .build();
+    HitbtcFundingHistoryParams hitbtcTradeHistoryParams =
+        HitbtcFundingHistoryParams.builder().limit(2).build();
 
     List<FundingRecord> records = service.getFundingHistory(hitbtcTradeHistoryParams);
 
     Assert.assertTrue(!records.isEmpty());
   }
-
 }

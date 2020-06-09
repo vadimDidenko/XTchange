@@ -10,11 +10,10 @@ import org.knowm.xchange.bitcoinaverage.dto.marketdata.BitcoinAverageTickers;
 import si.mazi.rescu.RestProxyFactory;
 
 /**
- * <p>
  * Implementation of the raw market data service for BitcoinAverage
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
 public class BitcoinAverageMarketDataServiceRaw extends BitcoinAverageBaseService {
@@ -29,10 +28,15 @@ public class BitcoinAverageMarketDataServiceRaw extends BitcoinAverageBaseServic
   public BitcoinAverageMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-    this.bitcoinAverage = RestProxyFactory.createProxy(BitcoinAverage.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.bitcoinAverage =
+        RestProxyFactory.createProxy(
+            BitcoinAverage.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
   }
 
-  public BitcoinAverageTicker getBitcoinAverageTicker(String tradable, String currency) throws IOException {
+  public BitcoinAverageTicker getBitcoinAverageTicker(String tradable, String currency)
+      throws IOException {
 
     // Request data
     BitcoinAverageTicker bitcoinAverageTicker = bitcoinAverage.getTicker(tradable + currency);
@@ -47,5 +51,4 @@ public class BitcoinAverageMarketDataServiceRaw extends BitcoinAverageBaseServic
 
     return bitcoinAverageTicker;
   }
-
 }

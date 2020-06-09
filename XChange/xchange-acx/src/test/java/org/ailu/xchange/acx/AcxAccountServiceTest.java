@@ -21,34 +21,36 @@ import static org.powermock.api.mockito.PowerMockito.when;
 
 public class AcxAccountServiceTest {
 
-    private AcxApi api;
-    private ObjectMapper objectMapper;
-    private AccountService service;
-    private String accessKey;
+  private AcxApi api;
+  private ObjectMapper objectMapper;
+  private AccountService service;
+  private String accessKey;
 
-    @Before
-    public void setUp() {
-        objectMapper = new ObjectMapper();
-        AcxMapper mapper = new AcxMapper();
-        api = mock(AcxApi.class);
-        accessKey = "access_key";
-        service = new AcxAccountService(api, mapper, mock(AcxSignatureCreator.class), accessKey);
-    }
+  @Before
+  public void setUp() {
+    objectMapper = new ObjectMapper();
+    AcxMapper mapper = new AcxMapper();
+    api = mock(AcxApi.class);
+    accessKey = "access_key";
+    service = new AcxAccountService(api, mapper, mock(AcxSignatureCreator.class), accessKey);
+  }
 
-    @Test
-    public void testGetAccountInfo() throws IOException {
-        when(api.getAccountInfo(eq(accessKey), anyLong(), any()))
-                .thenReturn(read("/account/account_info.json", AcxAccountInfo.class));
+  @Test
+  public void testGetAccountInfo() throws IOException {
+    when(api.getAccountInfo(eq(accessKey), anyLong(), any()))
+        .thenReturn(read("/account/account_info.json", AcxAccountInfo.class));
 
-        AccountInfo accountInfo = service.getAccountInfo();
+    AccountInfo accountInfo = service.getAccountInfo();
 
-        assertEquals("Satoshi Nakamoto", accountInfo.getUsername());
-        assertEquals(new BigDecimal("2159091.0"), accountInfo.getWallet().getBalance(Currency.BTC).getTotal());
-        assertEquals(new BigDecimal("2159090.0"), accountInfo.getWallet().getBalance(Currency.BTC).getAvailable());
-    }
+    assertEquals("Satoshi Nakamoto", accountInfo.getUsername());
+    assertEquals(
+        new BigDecimal("2159091.0"), accountInfo.getWallet().getBalance(Currency.BTC).getTotal());
+    assertEquals(
+        new BigDecimal("2159090.0"),
+        accountInfo.getWallet().getBalance(Currency.BTC).getAvailable());
+  }
 
-
-    private <T> T read(String path, Class<T> clz) throws IOException {
-        return objectMapper.readValue(this.getClass().getResourceAsStream(path), clz);
-    }
+  private <T> T read(String path, Class<T> clz) throws IOException {
+    return objectMapper.readValue(this.getClass().getResourceAsStream(path), clz);
+  }
 }

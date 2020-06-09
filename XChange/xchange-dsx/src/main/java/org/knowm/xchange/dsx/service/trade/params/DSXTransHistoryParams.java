@@ -10,7 +10,12 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamsIdSpan;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
-public class DSXTransHistoryParams implements TradeHistoryParamsIdSpan, TradeHistoryParamsTimeSpan, TradeHistoryParamCurrency, TradeHistoryParamsSorted, TradeHistoryParamLimit {
+public class DSXTransHistoryParams
+    implements TradeHistoryParamsIdSpan,
+        TradeHistoryParamsTimeSpan,
+        TradeHistoryParamCurrency,
+        TradeHistoryParamsSorted,
+        TradeHistoryParamLimit {
 
   private DSXTransHistoryResult.Status status;
   private DSXTransHistoryResult.Type type;

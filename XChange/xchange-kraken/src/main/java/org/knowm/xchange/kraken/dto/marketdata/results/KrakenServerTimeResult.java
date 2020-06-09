@@ -13,7 +13,8 @@ public class KrakenServerTimeResult extends KrakenResult<KrakenServerTime> {
    * @param error
    * @param result
    */
-  public KrakenServerTimeResult(@JsonProperty("error") String[] error, @JsonProperty("result") KrakenServerTime result) {
+  public KrakenServerTimeResult(
+      @JsonProperty("error") String[] error, @JsonProperty("result") KrakenServerTime result) {
 
     super(result, error);
   }

@@ -15,10 +15,7 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXMarketDataService extends DSXMarketDataServiceRaw implements MarketDataService {
 
   /**
@@ -55,7 +52,8 @@ public class DSXMarketDataService extends DSXMarketDataServiceRaw implements Mar
     DSXTickerWrapper dsxTickerWrapper = getDSXTicker(pairs, accountType);
 
     // Adapt to XChange DTOs
-    return DSXAdapters.adaptTicker(dsxTickerWrapper.getTicker(DSXAdapters.getPair(currencyPair)), currencyPair);
+    return DSXAdapters.adaptTicker(
+        dsxTickerWrapper.getTicker(DSXAdapters.getPair(currencyPair)), currencyPair);
   }
 
   /**
@@ -83,10 +81,18 @@ public class DSXMarketDataService extends DSXMarketDataServiceRaw implements Mar
     DSXOrderbookWrapper dsxOrderbookWrapper = getDSXOrderbook(pairs, accountType);
 
     // Adapt to XChange DTOs
-    List<LimitOrder> asks = DSXAdapters.adaptOrders(dsxOrderbookWrapper.getOrderbook(DSXAdapters.getPair(currencyPair)).getAsks(), currencyPair,
-        "ask", "");
-    List<LimitOrder> bids = DSXAdapters.adaptOrders(dsxOrderbookWrapper.getOrderbook(DSXAdapters.getPair(currencyPair)).getBids(), currencyPair,
-        "bid", "");
+    List<LimitOrder> asks =
+        DSXAdapters.adaptOrders(
+            dsxOrderbookWrapper.getOrderbook(DSXAdapters.getPair(currencyPair)).getAsks(),
+            currencyPair,
+            "ask",
+            "");
+    List<LimitOrder> bids =
+        DSXAdapters.adaptOrders(
+            dsxOrderbookWrapper.getOrderbook(DSXAdapters.getPair(currencyPair)).getBids(),
+            currencyPair,
+            "bid",
+            "");
 
     return new OrderBook(null, asks, bids);
   }
@@ -95,7 +101,8 @@ public class DSXMarketDataService extends DSXMarketDataServiceRaw implements Mar
    * Get recent trades from exchange
    *
    * @param currencyPair
-   * @param args Optional arguments. Exchange-specific. This implementation assumes args[0] is integer value
+   * @param args Optional arguments. Exchange-specific. This implementation assumes args[0] is
+   *     integer value
    * @return Trades object
    * @throws IOException
    */
@@ -106,7 +113,11 @@ public class DSXMarketDataService extends DSXMarketDataServiceRaw implements Mar
     int numberOfItems = -1;
     try {
       if (args != null) {
-        numberOfItems = (Integer) args[0]; //can this really be args[0] if we are also using args[0] as a string below??
+        numberOfItems =
+            (Integer)
+                args[
+                    0]; // can this really be args[0] if we are also using args[0] as a string
+                        // below??
       }
     } catch (ArrayIndexOutOfBoundsException e) {
       // ignore, can happen if no argument given.
@@ -123,9 +134,12 @@ public class DSXMarketDataService extends DSXMarketDataServiceRaw implements Mar
     }
 
     if (numberOfItems == -1) {
-      dsxTrades = getDSXTrades(pairs, FULL_SIZE, accountType).getTrades(DSXAdapters.getPair(currencyPair));
+      dsxTrades =
+          getDSXTrades(pairs, FULL_SIZE, accountType).getTrades(DSXAdapters.getPair(currencyPair));
     } else {
-      dsxTrades = getDSXTrades(pairs, numberOfItems, accountType).getTrades(DSXAdapters.getPair(currencyPair));
+      dsxTrades =
+          getDSXTrades(pairs, numberOfItems, accountType)
+              .getTrades(DSXAdapters.getPair(currencyPair));
     }
     return DSXAdapters.adaptTrades(dsxTrades, currencyPair);
   }

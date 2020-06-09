@@ -62,8 +62,8 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public LunoAccountTransactions transactions(String id, int minRow, int maxRow) throws IOException,
-      LunoException {
+  public LunoAccountTransactions transactions(String id, int minRow, int maxRow)
+      throws IOException, LunoException {
     return luno.transactions(this.auth, id, minRow, maxRow);
   }
 
@@ -78,17 +78,33 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public LunoPostOrder postLimitOrder(String pair, OrderType type, BigDecimal volume, BigDecimal price,
-      String baseAccountId, String counterAccountId) throws IOException, LunoException {
-    assert type == OrderType.ASK || type == OrderType.BID : "The order type for limit order must be ASK or BID.";
-    return luno.postLimitOrder(this.auth, pair, type, volume, price, baseAccountId, counterAccountId);
+  public LunoPostOrder postLimitOrder(
+      String pair,
+      OrderType type,
+      BigDecimal volume,
+      BigDecimal price,
+      String baseAccountId,
+      String counterAccountId)
+      throws IOException, LunoException {
+    assert type == OrderType.ASK || type == OrderType.BID
+        : "The order type for limit order must be ASK or BID.";
+    return luno.postLimitOrder(
+        this.auth, pair, type, volume, price, baseAccountId, counterAccountId);
   }
 
   @Override
-  public LunoPostOrder postMarketOrder(String pair, OrderType type, BigDecimal counterVolume,
-      BigDecimal baseVolume, String baseAccountId, String counterAccountId) throws IOException, LunoException {
-    assert type == OrderType.BUY || type == OrderType.SELL : "The order type for limit order must be SELL or BUY.";
-    return luno.postMarketOrder(this.auth, pair, type, counterVolume, baseVolume, baseAccountId, counterAccountId);
+  public LunoPostOrder postMarketOrder(
+      String pair,
+      OrderType type,
+      BigDecimal counterVolume,
+      BigDecimal baseVolume,
+      String baseAccountId,
+      String counterAccountId)
+      throws IOException, LunoException {
+    assert type == OrderType.BUY || type == OrderType.SELL
+        : "The order type for limit order must be SELL or BUY.";
+    return luno.postMarketOrder(
+        this.auth, pair, type, counterVolume, baseVolume, baseAccountId, counterAccountId);
   }
 
   @Override
@@ -102,8 +118,8 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public org.knowm.xchange.luno.dto.trade.LunoUserTrades listTrades(String pair, Long since, Integer limit) throws IOException,
-      LunoException {
+  public org.knowm.xchange.luno.dto.trade.LunoUserTrades listTrades(
+      String pair, Long since, Integer limit) throws IOException, LunoException {
     return luno.listTrades(this.auth, pair, since, limit);
   }
 
@@ -113,7 +129,8 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public LunoFundingAddress getFundingAddress(String asset, String address) throws IOException, LunoException {
+  public LunoFundingAddress getFundingAddress(String asset, String address)
+      throws IOException, LunoException {
     return luno.getFundingAddress(this.auth, asset, address);
   }
 
@@ -127,8 +144,8 @@ public class LunoAPIImpl implements LunoAPI {
     return luno.withdrawals(this.auth);
   }
 
-  private static final Set<String> VALID_TYPES = new HashSet<String>(Arrays.asList(
-      "ZAR_EFT", "NAD_EFT", "KES_MPESA", "MYR_IBG", "IDR_LLG"));
+  private static final Set<String> VALID_TYPES =
+      new HashSet<String>(Arrays.asList("ZAR_EFT", "NAD_EFT", "KES_MPESA", "MYR_IBG", "IDR_LLG"));
 
   @Override
   public Withdrawal requestWithdrawal(String type, BigDecimal amount, String beneficiaryId)
@@ -148,15 +165,17 @@ public class LunoAPIImpl implements LunoAPI {
   }
 
   @Override
-  public LunoBoolean send(BigDecimal amount, String currency, String address, String description,
-      String message) throws IOException, LunoException {
+  public LunoBoolean send(
+      BigDecimal amount, String currency, String address, String description, String message)
+      throws IOException, LunoException {
     return luno.send(this.auth, amount, currency, address, description, message);
   }
 
   @Override
-  public LunoQuote createQuote(OrderType type, BigDecimal baseAmount, String pair) throws IOException,
-      LunoException {
-    assert type == OrderType.BUY || type == OrderType.SELL : "The type for quote must be SELL or BUY.";
+  public LunoQuote createQuote(OrderType type, BigDecimal baseAmount, String pair)
+      throws IOException, LunoException {
+    assert type == OrderType.BUY || type == OrderType.SELL
+        : "The type for quote must be SELL or BUY.";
     return luno.createQuote(this.auth, type, baseAmount, pair);
   }
 

@@ -12,9 +12,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Trades at Bitcurex
- */
+/** Demonstrate requesting Trades at Bitcurex */
 public class BitcurexTradesDemo {
 
   public static void main(String[] args) throws IOException {
@@ -38,7 +36,8 @@ public class BitcurexTradesDemo {
     raw((BitcurexMarketDataServiceRaw) marketDataService, pair.counter.getCurrencyCode());
   }
 
-  private static void generic(MarketDataService marketDataService, CurrencyPair pair) throws IOException {
+  private static void generic(MarketDataService marketDataService, CurrencyPair pair)
+      throws IOException {
 
     // Get the latest trade data for BTC/EUR
     Trades trades = marketDataService.getTrades(pair);
@@ -46,12 +45,12 @@ public class BitcurexTradesDemo {
     System.out.println(trades.toString());
   }
 
-  private static void raw(BitcurexMarketDataServiceRaw marketDataService, String currency) throws IOException {
+  private static void raw(BitcurexMarketDataServiceRaw marketDataService, String currency)
+      throws IOException {
 
     // Get the latest trade data for BTC/EUR
     BitcurexTrade[] trades = marketDataService.getBitcurexTrades(currency);
     System.out.println("Trades, default. Size= " + trades.length);
     System.out.println(Arrays.toString(trades));
   }
-
 }

@@ -12,19 +12,13 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class AssetBalance {
 
-  /**
-   * Asset symbol.
-   */
+  /** Asset symbol. */
   private String asset;
 
-  /**
-   * Available balance.
-   */
+  /** Available balance. */
   private String free;
 
-  /**
-   * Locked by open orders.
-   */
+  /** Locked by open orders. */
   private String locked;
 
   public String getAsset() {

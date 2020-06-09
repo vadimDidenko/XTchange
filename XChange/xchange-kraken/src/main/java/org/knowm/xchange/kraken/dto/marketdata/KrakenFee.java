@@ -44,7 +44,8 @@ public class KrakenFee {
   static class KrakenFeeDeserializer extends JsonDeserializer<KrakenFee> {
 
     @Override
-    public KrakenFee deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenFee deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

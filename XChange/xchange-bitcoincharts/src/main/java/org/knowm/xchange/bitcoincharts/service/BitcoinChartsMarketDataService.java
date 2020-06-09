@@ -15,10 +15,9 @@ import org.knowm.xchange.service.marketdata.MarketDataService;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author timmolter
- */
-public class BitcoinChartsMarketDataService extends BitcoinChartsBaseService implements MarketDataService {
+/** @author timmolter */
+public class BitcoinChartsMarketDataService extends BitcoinChartsBaseService
+    implements MarketDataService {
 
   private final BitcoinCharts bitcoinCharts;
 
@@ -30,7 +29,11 @@ public class BitcoinChartsMarketDataService extends BitcoinChartsBaseService imp
   public BitcoinChartsMarketDataService(Exchange exchange) {
 
     super(exchange);
-    this.bitcoinCharts = RestProxyFactory.createProxy(BitcoinCharts.class, exchange.getExchangeSpecification().getPlainTextUri(), getClientConfig());
+    this.bitcoinCharts =
+        RestProxyFactory.createProxy(
+            BitcoinCharts.class,
+            exchange.getExchangeSpecification().getPlainTextUri(),
+            getClientConfig());
   }
 
   @Override
@@ -57,5 +60,4 @@ public class BitcoinChartsMarketDataService extends BitcoinChartsBaseService imp
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

@@ -18,9 +18,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamLimit;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author Z. Dolezal
- */
+/** @author Z. Dolezal */
 public class BitbayAccountService extends BitbayAccountServiceRaw implements AccountService {
 
   public BitbayAccountService(Exchange exchange) {
@@ -29,25 +27,30 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    return BitbayAdapters.adaptAccountInfo(exchange.getExchangeSpecification().getUserName(), getBitbayAccountInfo());
+    return BitbayAdapters.adaptAccountInfo(
+        exchange.getExchangeSpecification().getUserName(), getBitbayAccountInfo());
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 
   @Override
   public String withdrawFunds(WithdrawFundsParams params) throws IOException {
-    if ( params instanceof DefaultWithdrawFundsParams) {
+    if (params instanceof DefaultWithdrawFundsParams) {
       DefaultWithdrawFundsParams defaultParams = (DefaultWithdrawFundsParams) params;
       transfer(defaultParams.currency, defaultParams.amount, defaultParams.address);
       return "Success";
-    }
-    else if ( params instanceof BitbayWithdrawFundsSwiftParams ) {
+    } else if (params instanceof BitbayWithdrawFundsSwiftParams) {
       BitbayWithdrawFundsSwiftParams bicParams = (BitbayWithdrawFundsSwiftParams) params;
-      withdraw(bicParams.getCurrency(), bicParams.getAmount(), bicParams.getAccount(), bicParams.isExpress(), bicParams.getBic());
+      withdraw(
+          bicParams.getCurrency(),
+          bicParams.getAmount(),
+          bicParams.getAccount(),
+          bicParams.isExpress(),
+          bicParams.getBic());
       return "Success";
     }
 
@@ -55,8 +58,7 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... args) throws IOException {
+  public String requestDepositAddress(Currency currency, String... args) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -81,7 +83,8 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
     return history(currency, limit);
   }
 
-  public static class BitbayFundingHistory implements TradeHistoryParamCurrency, TradeHistoryParamLimit {
+  public static class BitbayFundingHistory
+      implements TradeHistoryParamCurrency, TradeHistoryParamLimit {
 
     private Currency currency;
     private Integer limit;
@@ -91,8 +94,7 @@ public class BitbayAccountService extends BitbayAccountServiceRaw implements Acc
       this.limit = limit;
     }
 
-    public BitbayFundingHistory() {
-    }
+    public BitbayFundingHistory() {}
 
     @Override
     public void setCurrency(Currency currency) {

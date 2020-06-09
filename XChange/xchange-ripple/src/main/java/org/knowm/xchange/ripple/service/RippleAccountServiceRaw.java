@@ -31,7 +31,8 @@ public class RippleAccountServiceRaw extends RippleBaseService implements ITrans
     return getRippleAccountSettings(exchange.getExchangeSpecification().getApiKey());
   }
 
-  public RippleAccountSettings getRippleAccountSettings(final String address) throws RippleException, IOException {
+  public RippleAccountSettings getRippleAccountSettings(final String address)
+      throws RippleException, IOException {
     RippleAccountSettings settings = accountSettingsStore.get(address);
     if (settings == null) {
       settings = ripplePublic.getAccountSettings(address);

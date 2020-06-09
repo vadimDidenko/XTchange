@@ -8,7 +8,8 @@ public class BaseYoBitResponse {
   public final boolean success;
   public final Map returnData;
 
-  public BaseYoBitResponse(@JsonProperty("success") boolean success, @JsonProperty("return") Map returnData) {
+  public BaseYoBitResponse(
+      @JsonProperty("success") boolean success, @JsonProperty("return") Map returnData) {
     this.success = success;
     this.returnData = returnData;
   }

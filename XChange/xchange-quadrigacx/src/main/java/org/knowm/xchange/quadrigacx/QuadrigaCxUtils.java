@@ -8,9 +8,7 @@ import java.util.TimeZone;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.exceptions.ExchangeException;
 
-/**
- * A central place for shared QuadrigaCx properties
- */
+/** A central place for shared QuadrigaCx properties */
 public final class QuadrigaCxUtils {
 
   private static final String TIMEZONE = "UTC";
@@ -22,12 +20,8 @@ public final class QuadrigaCxUtils {
     DATE_FORMAT.setTimeZone(TimeZone.getTimeZone(TIMEZONE));
   }
 
-  /**
-   * private Constructor
-   */
-  private QuadrigaCxUtils() {
-
-  }
+  /** private Constructor */
+  private QuadrigaCxUtils() {}
 
   /**
    * Format a date String for QuadrigaCx
@@ -46,7 +40,8 @@ public final class QuadrigaCxUtils {
   }
 
   public static String currencyPairToBook(CurrencyPair currencyPair) {
-    return currencyPair.base.getCurrencyCode().toLowerCase() + "_" + currencyPair.counter.getCurrencyCode().toLowerCase();
+    return currencyPair.base.getCurrencyCode().toLowerCase()
+        + "_"
+        + currencyPair.counter.getCurrencyCode().toLowerCase();
   }
-
 }

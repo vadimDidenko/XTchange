@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitcoiniumTicker JSON parsing
- */
+/** Test BitcoiniumTicker JSON parsing */
 public class BitcoiniumTickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitcoiniumTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        BitcoiniumTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -31,5 +30,4 @@ public class BitcoiniumTickerJSONTest {
     assertThat(bitcoiniumTicker.getLow()).isEqualTo(new BigDecimal("508.28"));
     assertThat(bitcoiniumTicker.getVolume()).isEqualTo(new BigDecimal("3522"));
   }
-
 }

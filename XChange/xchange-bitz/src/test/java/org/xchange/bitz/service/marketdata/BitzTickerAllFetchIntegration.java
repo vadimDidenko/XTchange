@@ -15,17 +15,18 @@ public class BitzTickerAllFetchIntegration {
   @Test
   public void tickerFetchTest() throws Exception {
     // Get Specific Exchange
-    BitZExchange exchange = (BitZExchange) ExchangeFactory.INSTANCE.createExchange(BitZExchange.class.getName());
-    BitZMarketDataService marketDataService = (BitZMarketDataService) exchange.getMarketDataService();
-    
+    BitZExchange exchange =
+        (BitZExchange) ExchangeFactory.INSTANCE.createExchange(BitZExchange.class.getName());
+    BitZMarketDataService marketDataService =
+        (BitZMarketDataService) exchange.getMarketDataService();
+
     // Poll All Tickers
     List<Ticker> tickers = marketDataService.getTickers();
-    
+
     // Verify Not Null Values
     assertThat(tickers).isNotNull();
     assertThat(tickers).isNotEmpty();
-    
+
     // TODO: Logical Verification Of Values
   }
-
 }

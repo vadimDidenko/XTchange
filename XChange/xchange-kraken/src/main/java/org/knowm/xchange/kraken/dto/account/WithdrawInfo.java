@@ -14,7 +14,10 @@ public class WithdrawInfo {
   private final BigDecimal limit;
   private final String fee;
 
-  public WithdrawInfo(@JsonProperty("method") String method, @JsonProperty("limit") BigDecimal limit, @JsonProperty("fee") String fee) {
+  public WithdrawInfo(
+      @JsonProperty("method") String method,
+      @JsonProperty("limit") BigDecimal limit,
+      @JsonProperty("fee") String fee) {
     super();
     this.method = method;
     this.limit = limit;
@@ -37,5 +40,4 @@ public class WithdrawInfo {
   public String toString() {
     return "WithdrawInfo [method=" + method + ", limit=" + limit + ", fee=" + fee + "]";
   }
-
 }

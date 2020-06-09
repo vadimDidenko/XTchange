@@ -9,12 +9,11 @@ import org.knowm.xchange.lakebtc.service.LakeBTCTradeService;
 import org.knowm.xchange.utils.nonce.CurrentNanosecondTimeIncrementalNonceFactory;
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 public class LakeBTCExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new CurrentNanosecondTimeIncrementalNonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new CurrentNanosecondTimeIncrementalNonceFactory();
 
   @Override
   protected void initServices() {
@@ -27,7 +26,8 @@ public class LakeBTCExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.lakebtc.com/");
     exchangeSpecification.setHost("https://lakebtc.com");
     exchangeSpecification.setPort(80);

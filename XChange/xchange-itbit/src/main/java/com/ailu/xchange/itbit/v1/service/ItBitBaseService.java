@@ -29,21 +29,33 @@ public class ItBitBaseService extends BaseExchangeService implements BaseService
 
     super(exchange);
 
-    this.itBitAuthenticated = RestProxyFactory.createProxy(ItBitAuthenticated.class,
-        (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("authHost"), getClientConfig());
+    this.itBitAuthenticated =
+        RestProxyFactory.createProxy(
+            ItBitAuthenticated.class,
+            (String)
+                exchange.getExchangeSpecification().getExchangeSpecificParametersItem("authHost"),
+            getClientConfig());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = ItBitHmacPostBodyDigest.createInstance(apiKey, exchange.getExchangeSpecification().getSecretKey());
+    this.signatureCreator =
+        ItBitHmacPostBodyDigest.createInstance(
+            apiKey, exchange.getExchangeSpecification().getSecretKey());
 
-    this.itBitPublic = RestProxyFactory.createProxy(ItBit.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.itBitPublic =
+        RestProxyFactory.createProxy(
+            ItBit.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
 
-    this.userId = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("userId");
-    this.walletId = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("walletId");
+    this.userId =
+        (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("userId");
+    this.walletId =
+        (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("walletId");
 
-    if ((this.userId == null || this.walletId == null) && exchange.getExchangeSpecification().getUserName() != null) {
+    if ((this.userId == null || this.walletId == null)
+        && exchange.getExchangeSpecification().getUserName() != null) {
       String[] userIdAndWalletId = exchange.getExchangeSpecification().getUserName().split("/");
       if (userIdAndWalletId.length != 2) {
         throw new IllegalArgumentException(
-            "Please specify the userId and walletId either in the ExchangeSpecification specific parameters, or in the userName field as userId/walletId.");
+            "Please specify the userId and walletId either in the ExchangeSpecification specific"
+                + " parameters, or in the userName field as userId/walletId.");
       }
       this.userId = userIdAndWalletId[0];
       this.walletId = userIdAndWalletId[1];

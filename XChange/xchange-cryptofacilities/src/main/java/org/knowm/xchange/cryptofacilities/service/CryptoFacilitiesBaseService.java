@@ -8,10 +8,7 @@ import org.knowm.xchange.service.BaseService;
 import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
+/** @author Jean-Christophe Laruelle */
 public class CryptoFacilitiesBaseService extends BaseExchangeService implements BaseService {
 
   protected CryptoFacilitiesAuthenticated cryptoFacilities;
@@ -26,9 +23,12 @@ public class CryptoFacilitiesBaseService extends BaseExchangeService implements 
 
     super(exchange);
 
-    cryptoFacilities = RestProxyFactory.createProxy(CryptoFacilitiesAuthenticated.class, exchange.getExchangeSpecification().getSslUri(),
-        getClientConfig());
-    signatureCreator = CryptoFacilitiesDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    cryptoFacilities =
+        RestProxyFactory.createProxy(
+            CryptoFacilitiesAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
+    signatureCreator =
+        CryptoFacilitiesDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
-
 }

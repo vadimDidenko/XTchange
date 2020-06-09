@@ -11,16 +11,15 @@ import org.knowm.xchange.gatecoin.dto.marketdata.Results.GatecoinTransactionResu
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test Transaction[] JSON parsing
- */
+/** Test Transaction[] JSON parsing */
 public class TradesJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TradesJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
+    InputStream is =
+        TradesJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -29,8 +28,10 @@ public class TradesJSONTest {
     // Verify that the example data was unmarshalled correctly
     assertThat(transactions.getTransactions()[0].getTransacationTime()).isEqualTo(1435630071);
     assertThat(transactions.getTransactions()[0].getTransactionId()).isEqualTo(1392484);
-    assertThat(transactions.getTransactions()[0].getPrice().compareTo((BigDecimal.valueOf(229.29)))).isEqualTo(0);
-    assertThat(transactions.getTransactions()[0].getQuantity().compareTo((BigDecimal.valueOf(0.07)))).isEqualTo(0);
-
+    assertThat(transactions.getTransactions()[0].getPrice().compareTo((BigDecimal.valueOf(229.29))))
+        .isEqualTo(0);
+    assertThat(
+            transactions.getTransactions()[0].getQuantity().compareTo((BigDecimal.valueOf(0.07))))
+        .isEqualTo(0);
   }
 }

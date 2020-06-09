@@ -38,7 +38,9 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
     List<Wallet> wallets = new ArrayList<>();
     for (LunoBalance.Balance lb : lunoBalance.getBalance()) {
       List<Balance> balances = new ArrayList<>();
-      balances.add(new Balance(LunoUtil.fromLunoCurrency(lb.asset), lb.balance, lb.balance.subtract(lb.reserved)));
+      balances.add(
+          new Balance(
+              LunoUtil.fromLunoCurrency(lb.asset), lb.balance, lb.balance.subtract(lb.reserved)));
       wallets.add(new Wallet(lb.accountId, lb.name, balances));
     }
 
@@ -46,14 +48,16 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     String lunoCurrency = LunoUtil.toLunoCurrency(currency);
     switch (lunoCurrency) {
       case "XBT":
         lunoAPI.send(amount, lunoCurrency, address, null, null);
         return null; // unfortunately luno does not provide any withdrawal id in case of XBT
       default:
-        Withdrawal requestWithdrawal = lunoAPI.requestWithdrawal(LunoUtil.requestType(lunoCurrency), amount, null);
+        Withdrawal requestWithdrawal =
+            lunoAPI.requestWithdrawal(LunoUtil.requestType(lunoCurrency), amount, null);
         return requestWithdrawal.id;
     }
   }
@@ -80,13 +84,26 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws ExchangeException,
-      NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params)
+      throws ExchangeException, NotAvailableFromExchangeException,
+          NotYetImplementedForExchangeException, IOException {
     // currently no support for deposits!
 
     List<FundingRecord> result = new ArrayList<>();
     for (Withdrawal w : lunoAPI.withdrawals().getWithdrawals()) {
-      result.add(new FundingRecord(null, w.getCreatedAt(), LunoUtil.fromLunoCurrency(w.currency), w.amount, w.id, null, Type.WITHDRAWAL, convert(w.status), null, w.fee, null));
+      result.add(
+          new FundingRecord(
+              null,
+              w.getCreatedAt(),
+              LunoUtil.fromLunoCurrency(w.currency),
+              w.amount,
+              w.id,
+              null,
+              Type.WITHDRAWAL,
+              convert(w.status),
+              null,
+              w.fee,
+              null));
     }
     return result;
   }
@@ -104,5 +121,4 @@ public class LunoAccountService extends LunoBaseService implements AccountServic
         throw new ExchangeException("Unknown status for luno withdrawal: " + status);
     }
   }
-
 }

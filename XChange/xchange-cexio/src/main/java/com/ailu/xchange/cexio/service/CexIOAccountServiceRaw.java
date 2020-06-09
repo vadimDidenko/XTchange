@@ -27,11 +27,12 @@ public class CexIOAccountServiceRaw extends CexIOBaseService {
 
     return info;
   }
-  
+
   public CexIOCryptoAddress getCexIOCryptoAddress(String isoCode) throws IOException {
-    CexIOCryptoAddress cryptoAddress = cexIOAuthenticated.getCryptoAddress(signatureCreator, new CexioCryptoAddressRequest(isoCode));
-    if ( cryptoAddress.getOk().equals("ok"))
-      return cryptoAddress;
+    CexIOCryptoAddress cryptoAddress =
+        cexIOAuthenticated.getCryptoAddress(
+            signatureCreator, new CexioCryptoAddressRequest(isoCode));
+    if (cryptoAddress.getOk().equals("ok")) return cryptoAddress;
 
     throw new ExchangeException(cryptoAddress.getE() + ": " + cryptoAddress.getError());
   }
@@ -43,5 +44,4 @@ public class CexIOAccountServiceRaw extends CexIOBaseService {
   public Map<String, GHashIOWorker> getWorkers() throws IOException {
     return cexIOAuthenticated.getWorkers(signatureCreator).getWorkers();
   }
-
 }

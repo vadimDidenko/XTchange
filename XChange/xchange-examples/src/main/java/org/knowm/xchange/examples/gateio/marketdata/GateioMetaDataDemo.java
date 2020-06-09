@@ -18,7 +18,5 @@ public class GateioMetaDataDemo {
     System.out.println(exchange.getExchangeSpecification().isShouldLoadRemoteMetaData());
     System.out.println(exchange.getExchangeMetaData().toString());
     System.out.println(exchange.getExchangeSymbols());
-
   }
-
 }

@@ -6,11 +6,12 @@ public class OkCoinPriceLimitResult extends OkCoinErrorResult {
 
   private final OkCoinPriceLimit priceLimit;
 
-  public OkCoinPriceLimitResult(@JsonProperty("result") final boolean result, @JsonProperty("error_code") final int errorCode,
+  public OkCoinPriceLimitResult(
+      @JsonProperty("result") final boolean result,
+      @JsonProperty("error_code") final int errorCode,
       @JsonProperty("priceLimit") final OkCoinPriceLimit priceLimit) {
 
     super(result, errorCode);
     this.priceLimit = priceLimit;
   }
-
 }

@@ -10,7 +10,8 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 
 /**
- * Deserializes an ISO formatted Date String to a Java Date ISO format: 'yyyy-MM-dd'T'HH:mm:ss.SSS'Z''
+ * Deserializes an ISO formatted Date String to a Java Date ISO format:
+ * 'yyyy-MM-dd'T'HH:mm:ss.SSS'Z''
  *
  * @author jamespedwards42
  */

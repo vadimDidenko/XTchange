@@ -34,5 +34,4 @@ public class BitflyerAccountDemo {
     List<BitflyerMarginTransaction> marginHistory = accountServiceRaw.getBitflyerMarginHistory();
     System.out.println(marginHistory);
   }
-
 }

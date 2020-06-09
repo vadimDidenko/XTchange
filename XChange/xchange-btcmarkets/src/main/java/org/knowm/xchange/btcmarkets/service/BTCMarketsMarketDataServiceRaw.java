@@ -16,14 +16,18 @@ public class BTCMarketsMarketDataServiceRaw extends BTCMarketsBaseService {
 
   public BTCMarketsMarketDataServiceRaw(Exchange exchange) {
     super(exchange);
-    this.btcmarkets = RestProxyFactory.createProxy(BTCMarkets.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.btcmarkets =
+        RestProxyFactory.createProxy(
+            BTCMarkets.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public BTCMarketsTicker getBTCMarketsTicker(CurrencyPair currencyPair) throws IOException {
-    return btcmarkets.getTicker(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
+    return btcmarkets.getTicker(
+        currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
   }
 
   public BTCMarketsOrderBook getBTCMarketsOrderBook(CurrencyPair currencyPair) throws IOException {
-    return btcmarkets.getOrderBook(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
+    return btcmarkets.getOrderBook(
+        currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
   }
 }

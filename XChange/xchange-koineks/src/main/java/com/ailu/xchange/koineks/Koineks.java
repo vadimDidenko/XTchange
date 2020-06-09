@@ -8,10 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * Created by semihunaldi on 05/12/2017
- */
-
+/** Created by semihunaldi on 05/12/2017 */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Koineks {

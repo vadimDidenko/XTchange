@@ -27,7 +27,8 @@ public class YoBitAccountService extends YoBitAccountServiceRaw {
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdrawFunds(new DefaultWithdrawFundsParams(address, currency, amount));
   }
 
@@ -46,8 +47,7 @@ public class YoBitAccountService extends YoBitAccountServiceRaw {
   public String requestDepositAddress(Currency currency, String... args) throws IOException {
     BaseYoBitResponse response = getDepositAddress(currency);
 
-    if (!response.success)
-      throw new ExchangeException("failed to withdraw funds");
+    if (!response.success) throw new ExchangeException("failed to withdraw funds");
 
     return response.returnData.get("address").toString();
   }

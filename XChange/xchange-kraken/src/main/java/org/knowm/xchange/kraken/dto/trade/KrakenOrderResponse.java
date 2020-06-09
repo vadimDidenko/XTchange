@@ -15,7 +15,9 @@ public class KrakenOrderResponse {
    * @param description
    * @param transactionId
    */
-  public KrakenOrderResponse(@JsonProperty("descr") KrakenOrderResponseDescription description, @JsonProperty("txid") List<String> transactionId) {
+  public KrakenOrderResponse(
+      @JsonProperty("descr") KrakenOrderResponseDescription description,
+      @JsonProperty("txid") List<String> transactionId) {
 
     this.description = description;
     this.transactionIds = transactionId;
@@ -34,7 +36,11 @@ public class KrakenOrderResponse {
   @Override
   public String toString() {
 
-    return "KrakenOrderResponse [description=" + description + ", transactionId=" + transactionIds + "]";
+    return "KrakenOrderResponse [description="
+        + description
+        + ", transactionId="
+        + transactionIds
+        + "]";
   }
 
   public static class KrakenOrderResponseDescription {
@@ -48,7 +54,9 @@ public class KrakenOrderResponse {
      * @param orderDescription
      * @param closeDescription
      */
-    public KrakenOrderResponseDescription(@JsonProperty("order") String orderDescription, @JsonProperty("close") String closeDescription) {
+    public KrakenOrderResponseDescription(
+        @JsonProperty("order") String orderDescription,
+        @JsonProperty("close") String closeDescription) {
 
       this.orderDescription = orderDescription;
       this.closeDescription = closeDescription;
@@ -67,8 +75,11 @@ public class KrakenOrderResponse {
     @Override
     public String toString() {
 
-      return "KrakenOrderResponseDescription [orderDescription=" + orderDescription + ", closeDescription=" + closeDescription + "]";
+      return "KrakenOrderResponseDescription [orderDescription="
+          + orderDescription
+          + ", closeDescription="
+          + closeDescription
+          + "]";
     }
-
   }
 }

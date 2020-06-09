@@ -28,5 +28,4 @@ public class CCEXDigest extends BaseParamsDigest {
 
     return String.format("%0128x", new BigInteger(1, mac.doFinal()));
   }
-
 }

@@ -14,24 +14,21 @@ import retrofit2.Retrofit;
  */
 public class APIRetrofit {
 
+  private APIConfiguration config;
+  private OkHttpClient client;
 
-    private APIConfiguration config;
-    private OkHttpClient client;
+  public APIRetrofit(APIConfiguration config, OkHttpClient client) {
+    this.config = config;
+    this.client = client;
+  }
 
-    public APIRetrofit(APIConfiguration config, OkHttpClient client) {
-        this.config = config;
-        this.client = client;
-    }
-
-    /**
-     * Get a retrofit 2 object.
-     */
-    public Retrofit retrofit() {
-        Retrofit.Builder builder = new Retrofit.Builder();
-        builder.client(this.client);
-        builder.addConverterFactory(new CustomConvertFactory());
-        builder.addConverterFactory(new Retrofit2ConverterFactory());
-        builder.baseUrl(this.config.getEndpoint());
-        return builder.build();
-    }
+  /** Get a retrofit 2 object. */
+  public Retrofit retrofit() {
+    Retrofit.Builder builder = new Retrofit.Builder();
+    builder.client(this.client);
+    builder.addConverterFactory(new CustomConvertFactory());
+    builder.addConverterFactory(new Retrofit2ConverterFactory());
+    builder.baseUrl(this.config.getEndpoint());
+    return builder.build();
+  }
 }

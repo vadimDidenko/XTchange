@@ -33,13 +33,18 @@ public class QuoineBaseService extends BaseExchangeService implements BaseServic
 
     super(exchange);
 
-    quoine = RestProxyFactory.createProxy(QuoineAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    quoine =
+        RestProxyFactory.createProxy(
+            QuoineAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
 
     this.tokenID = exchange.getExchangeSpecification().getApiKey();
     this.secret = exchange.getExchangeSpecification().getSecretKey();
 
     if (this.tokenID != null && this.secret != null) {
-      this.signatureCreator = new QuoineSignatureDigest(this.tokenID, this.secret, exchange.getNonceFactory());
+      this.signatureCreator =
+          new QuoineSignatureDigest(this.tokenID, this.secret, exchange.getNonceFactory());
     } else {
       this.signatureCreator = null;
     }

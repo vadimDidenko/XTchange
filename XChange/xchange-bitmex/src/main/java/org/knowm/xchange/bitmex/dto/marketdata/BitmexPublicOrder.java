@@ -14,7 +14,11 @@ public class BitmexPublicOrder {
   private final BigDecimal id;
   private final BitmexSide side;
 
-  public BitmexPublicOrder(@JsonProperty("price") BigDecimal price, @JsonProperty("id") BigDecimal id, @JsonProperty("size") BigDecimal size, @JsonProperty("side") BitmexSide side,
+  public BitmexPublicOrder(
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("id") BigDecimal id,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("side") BitmexSide side,
       @JsonProperty("symbol") String symbol) {
 
     this.symbol = symbol;
@@ -22,7 +26,6 @@ public class BitmexPublicOrder {
     this.side = side;
     this.size = size;
     this.price = price;
-
   }
 
   public BigDecimal getPrice() {
@@ -53,7 +56,14 @@ public class BitmexPublicOrder {
   @Override
   public String toString() {
 
-    return "BitmexOrder [price=" + price + ", volume=" + size + ", symbol=" + symbol + ", side=" + side + "]";
+    return "BitmexOrder [price="
+        + price
+        + ", volume="
+        + size
+        + ", symbol="
+        + symbol
+        + ", side="
+        + side
+        + "]";
   }
-
 }

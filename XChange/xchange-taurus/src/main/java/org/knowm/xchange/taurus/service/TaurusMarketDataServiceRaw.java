@@ -16,7 +16,9 @@ public class TaurusMarketDataServiceRaw extends TaurusBaseService {
 
   public TaurusMarketDataServiceRaw(Exchange exchange) {
     super(exchange);
-    this.taurus = RestProxyFactory.createProxy(Taurus.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.taurus =
+        RestProxyFactory.createProxy(
+            Taurus.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public TaurusTicker getTaurusTicker() throws IOException {

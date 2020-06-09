@@ -10,15 +10,16 @@ import org.knowm.xchange.campbx.dto.account.MyFunds;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitStamp Full Depth JSON parsing
- */
+/** Test BitStamp Full Depth JSON parsing */
 public class MyFundsJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
-    MyFunds myFunds = new ObjectMapper().readValue(MyFundsJSONTest.class.getResourceAsStream("/account/myfunds.json"), MyFunds.class);
+    MyFunds myFunds =
+        new ObjectMapper()
+            .readValue(
+                MyFundsJSONTest.class.getResourceAsStream("/account/myfunds.json"), MyFunds.class);
 
     // Verify that the example data was unmarshalled correctly
     assertThat(myFunds.getLiquidUSD()).isEqualTo(new BigDecimal("0.00"));

@@ -15,7 +15,9 @@ public class OKCoinWithdraw extends OkCoinErrorResult {
   /*
    * withdraw_id: withdrawal request ID result: true means request successful
    */
-  public OKCoinWithdraw(@JsonProperty("result") final boolean result, @JsonProperty("error_code") final int errorCode,
+  public OKCoinWithdraw(
+      @JsonProperty("result") final boolean result,
+      @JsonProperty("error_code") final int errorCode,
       @JsonProperty("withdraw_id") final String withdrawId) {
     super(result, errorCode);
     this.withdrawId = withdrawId;
@@ -29,5 +31,4 @@ public class OKCoinWithdraw extends OkCoinErrorResult {
   public String toString() {
     return "Withdraw [refid=" + withdrawId + "]";
   }
-
 }

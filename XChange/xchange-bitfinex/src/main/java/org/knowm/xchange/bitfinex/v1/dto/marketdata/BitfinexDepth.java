@@ -15,7 +15,8 @@ public class BitfinexDepth {
    * @param asks
    * @param bids
    */
-  public BitfinexDepth(@JsonProperty("asks") BitfinexLevel[] asks, @JsonProperty("bids") BitfinexLevel[] bids) {
+  public BitfinexDepth(
+      @JsonProperty("asks") BitfinexLevel[] asks, @JsonProperty("bids") BitfinexLevel[] bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -36,5 +37,4 @@ public class BitfinexDepth {
 
     return "BitfinexDepth [asks=" + Arrays.toString(asks) + ", bids=" + Arrays.toString(bids) + "]";
   }
-
 }

@@ -15,7 +15,8 @@ public class BittrexDepth {
    * @param asks
    * @param bids
    */
-  public BittrexDepth(@JsonProperty("sell") BittrexLevel[] asks, @JsonProperty("buy") BittrexLevel[] bids) {
+  public BittrexDepth(
+      @JsonProperty("sell") BittrexLevel[] asks, @JsonProperty("buy") BittrexLevel[] bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -36,5 +37,4 @@ public class BittrexDepth {
 
     return "BittrexDepth [asks=" + Arrays.toString(asks) + ", bids=" + Arrays.toString(bids) + "]";
   }
-
 }

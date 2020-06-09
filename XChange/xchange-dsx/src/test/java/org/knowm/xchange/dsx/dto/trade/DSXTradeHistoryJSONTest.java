@@ -11,15 +11,14 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class DSXTradeHistoryJSONTest {
 
   @Test
   public void testUnmarhal() throws IOException {
 
-    InputStream is = DSXTradeHistoryJSONTest.class.getResourceAsStream("/trade/example-trade-history-data.json");
+    InputStream is =
+        DSXTradeHistoryJSONTest.class.getResourceAsStream("/trade/example-trade-history-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     DSXTradeHistoryReturn transactions = mapper.readValue(is, DSXTradeHistoryReturn.class);

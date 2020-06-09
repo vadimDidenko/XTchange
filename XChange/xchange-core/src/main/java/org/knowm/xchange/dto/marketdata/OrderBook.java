@@ -10,30 +10,23 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 
-/**
- * DTO representing the exchange order book
- */
+/** DTO representing the exchange order book */
 public final class OrderBook implements Serializable {
 
-  /**
-   * the timestamp of the orderbook according to the exchange's server, null if not provided
-   */
+  /** the timestamp of the orderbook according to the exchange's server, null if not provided */
   private Date timeStamp;
 
-  /**
-   * the asks
-   */
+  /** the asks */
   private final List<LimitOrder> asks;
 
-  /**
-   * the bids
-   */
+  /** the bids */
   private final List<LimitOrder> bids;
 
   /**
    * Constructor
    *
-   * @param timeStamp - the timestamp of the orderbook according to the exchange's server, null if not provided
+   * @param timeStamp - the timestamp of the orderbook according to the exchange's server, null if
+   *     not provided
    * @param asks The ASK orders
    * @param bids The BID orders
    */
@@ -65,8 +58,9 @@ public final class OrderBook implements Serializable {
   }
 
   /**
-   * Given a new LimitOrder, it will replace a matching limit order in the orderbook if one is found, or add the new LimitOrder if one is not.
-   * timeStamp will be updated if the new timestamp is non-null and in the future.
+   * Given a new LimitOrder, it will replace a matching limit order in the orderbook if one is
+   * found, or add the new LimitOrder if one is not. timeStamp will be updated if the new timestamp
+   * is non-null and in the future.
    *
    * @param limitOrder the new LimitOrder
    */
@@ -89,8 +83,9 @@ public final class OrderBook implements Serializable {
   }
 
   /**
-   * Given an OrderBookUpdate, it will replace a matching limit order in the orderbook if one is found, or add a new if one is not. timeStamp will be
-   * updated if the new timestamp is non-null and in the future.
+   * Given an OrderBookUpdate, it will replace a matching limit order in the orderbook if one is
+   * found, or add a new if one is not. timeStamp will be updated if the new timestamp is non-null
+   * and in the future.
    *
    * @param orderBookUpdate the new OrderBookUpdate
    */
@@ -157,7 +152,9 @@ public final class OrderBook implements Serializable {
       return false;
     }
     final OrderBook other = (OrderBook) obj;
-    if (this.timeStamp == null ? other.timeStamp != null : !this.timeStamp.equals(other.timeStamp)) {
+    if (this.timeStamp == null
+        ? other.timeStamp != null
+        : !this.timeStamp.equals(other.timeStamp)) {
       return false;
     }
     if (this.bids.size() != other.bids.size()) {
@@ -180,9 +177,10 @@ public final class OrderBook implements Serializable {
   }
 
   /**
-   * Identical to {@link #equals(Object) equals} method except that this ignores different timestamps. In other words, this version of equals returns
-   * true if the order internal to the OrderBooks are equal but their timestamps are unequal. It returns false if false if any order between the two
-   * are different.
+   * Identical to {@link #equals(Object) equals} method except that this ignores different
+   * timestamps. In other words, this version of equals returns true if the order internal to the
+   * OrderBooks are equal but their timestamps are unequal. It returns false if false if any order
+   * between the two are different.
    *
    * @param ob
    * @return
@@ -201,6 +199,12 @@ public final class OrderBook implements Serializable {
   @Override
   public String toString() {
 
-    return "OrderBook [timestamp: " + timeStamp + ", asks=" + asks.toString() + ", bids=" + bids.toString() + "]";
+    return "OrderBook [timestamp: "
+        + timeStamp
+        + ", asks="
+        + asks.toString()
+        + ", bids="
+        + bids.toString()
+        + "]";
   }
 }

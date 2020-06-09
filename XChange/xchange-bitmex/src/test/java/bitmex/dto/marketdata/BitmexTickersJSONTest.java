@@ -9,9 +9,7 @@ import java.io.InputStream;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class BitmexTickersJSONTest {
 
   @Test

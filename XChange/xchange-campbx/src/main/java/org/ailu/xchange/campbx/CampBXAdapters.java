@@ -13,9 +13,7 @@ import java.text.MessageFormat;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * Various adapters for converting from CampBX DTOs to XChange DTOs
- */
+/** Various adapters for converting from CampBX DTOs to XChange DTOs */
 public final class CampBXAdapters {
 
   /**
@@ -32,19 +30,23 @@ public final class CampBXAdapters {
     return new OrderBook(null, asks, bids);
   }
 
-  public static List<LimitOrder> createOrders(CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
+  public static List<LimitOrder> createOrders(
+      CurrencyPair currencyPair, Order.OrderType orderType, List<List<BigDecimal>> orders) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
     for (List<BigDecimal> ask : orders) {
-      checkArgument(ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
+      checkArgument(
+          ask.size() == 2, "Expected a pair (price, amount) but got {0} elements.", ask.size());
       limitOrders.add(createOrder(currencyPair, ask, orderType));
     }
     return limitOrders;
   }
 
-  public static LimitOrder createOrder(CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
+  public static LimitOrder createOrder(
+      CurrencyPair currencyPair, List<BigDecimal> priceAndAmount, Order.OrderType orderType) {
 
-    return new LimitOrder(orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
+    return new LimitOrder(
+        orderType, priceAndAmount.get(1), currencyPair, "", null, priceAndAmount.get(0));
   }
 
   public static void checkArgument(boolean argument, String msgPattern, Object... msgArgs) {
@@ -68,7 +70,5 @@ public final class CampBXAdapters {
     BigDecimal ask = campbxTicker.getAsk();
 
     return new Ticker.Builder().currencyPair(currencyPair).last(last).bid(bid).ask(ask).build();
-
   }
-
 }

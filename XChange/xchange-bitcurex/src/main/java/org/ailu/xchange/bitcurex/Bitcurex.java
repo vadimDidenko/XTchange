@@ -26,5 +26,4 @@ public interface Bitcurex {
   @GET
   @Path("{currency}/trades.json")
   BitcurexTrade[] getTrades(@PathParam("currency") String currency) throws IOException;
-
 }

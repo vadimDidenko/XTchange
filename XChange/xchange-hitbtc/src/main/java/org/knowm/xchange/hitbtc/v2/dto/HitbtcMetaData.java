@@ -26,9 +26,12 @@ public class HitbtcMetaData extends ExchangeMetaData {
    * @param shareRateLimits
    * @param minPollDelay
    */
-  public HitbtcMetaData(@JsonProperty("currency_pairs") Map<CurrencyPair, CurrencyPairMetaData> currencyPairs,
-      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currencies, @JsonProperty("public_rate_limits") RateLimit[] publicRateLimits,
-      @JsonProperty("private_rate_limits") RateLimit[] privateRateLimits, @JsonProperty("share_rate_limits") Boolean shareRateLimits,
+  public HitbtcMetaData(
+      @JsonProperty("currency_pairs") Map<CurrencyPair, CurrencyPairMetaData> currencyPairs,
+      @JsonProperty("currencies") Map<Currency, CurrencyMetaData> currencies,
+      @JsonProperty("public_rate_limits") RateLimit[] publicRateLimits,
+      @JsonProperty("private_rate_limits") RateLimit[] privateRateLimits,
+      @JsonProperty("share_rate_limits") Boolean shareRateLimits,
       @JsonProperty("min_poll_delay") int minPollDelay) {
     super(currencyPairs, currencies, publicRateLimits, privateRateLimits, shareRateLimits);
 

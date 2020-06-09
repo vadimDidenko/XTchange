@@ -13,7 +13,9 @@ public class LiquiInfoResult extends LiquiResult<Map<String, LiquiPairInfo>> {
 
   private final long serverTime;
 
-  public LiquiInfoResult(@JsonProperty("server_time") final long serverTime, @JsonProperty("pairs") final Map<String, LiquiPairInfo> pairInfo,
+  public LiquiInfoResult(
+      @JsonProperty("server_time") final long serverTime,
+      @JsonProperty("pairs") final Map<String, LiquiPairInfo> pairInfo,
       @JsonProperty("error") final String error) {
     super(pairInfo, error);
     this.serverTime = serverTime;

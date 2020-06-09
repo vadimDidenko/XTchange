@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Created by cristian.lucaci on 12/19/2014.
- */
+/** Created by cristian.lucaci on 12/19/2014. */
 public class LakeBTCOrder {
 
   private final BigDecimal trades;
@@ -19,8 +17,11 @@ public class LakeBTCOrder {
 
   private final BigDecimal ppc;
 
-  public LakeBTCOrder(@JsonProperty("trades") BigDecimal trades, @JsonProperty("total_traded_btc") BigDecimal totalTradedBtc,
-      @JsonProperty("total_traded_currency") BigDecimal totalTradedCurrency, @JsonProperty("currency") String currency,
+  public LakeBTCOrder(
+      @JsonProperty("trades") BigDecimal trades,
+      @JsonProperty("total_traded_btc") BigDecimal totalTradedBtc,
+      @JsonProperty("total_traded_currency") BigDecimal totalTradedCurrency,
+      @JsonProperty("currency") String currency,
       @JsonProperty("ppc") BigDecimal ppc) {
     this.trades = trades;
     this.totalTradedBtc = totalTradedBtc;

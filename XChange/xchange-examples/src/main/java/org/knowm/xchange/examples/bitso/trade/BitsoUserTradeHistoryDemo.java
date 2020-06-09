@@ -11,12 +11,11 @@ import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamPaging;
 
 /**
- * <p>
  * Example showing the following:
- * </p>
+ *
  * <ul>
- * <li>Connect to Bitso exchange with authentication</li>
- * <li>get user trade history</li>
+ *   <li>Connect to Bitso exchange with authentication
+ *   <li>get user trade history
  * </ul>
  */
 public class BitsoUserTradeHistoryDemo {
@@ -56,5 +55,4 @@ public class BitsoUserTradeHistoryDemo {
       System.out.println(trade);
     }
   }
-
 }

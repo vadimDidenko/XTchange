@@ -19,7 +19,8 @@ import org.slf4j.LoggerFactory;
 
 public class CryptopiaMarketDataServiceIntegration {
 
-  private static final Logger log = LoggerFactory.getLogger(CryptopiaMarketDataServiceIntegration.class);
+  private static final Logger log =
+      LoggerFactory.getLogger(CryptopiaMarketDataServiceIntegration.class);
 
   private static MarketDataService marketDataService;
 
@@ -60,5 +61,4 @@ public class CryptopiaMarketDataServiceIntegration {
 
     assertThat(ticker).isNotNull();
   }
-
 }

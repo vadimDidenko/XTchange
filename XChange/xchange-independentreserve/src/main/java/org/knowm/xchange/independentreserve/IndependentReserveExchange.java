@@ -24,13 +24,15 @@ public class IndependentReserveExchange extends BaseExchange implements Exchange
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.independentreserve.com");
     exchangeSpecification.setHost("https://api.independentreserve.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("IndependentReserve");
     exchangeSpecification.setExchangeDescription(
-        "Independent Reserve is a registered Australian company, underpinned by Australia's highly regulated financial sector.");
+        "Independent Reserve is a registered Australian company, underpinned by Australia's highly"
+            + " regulated financial sector.");
     return exchangeSpecification;
   }
 

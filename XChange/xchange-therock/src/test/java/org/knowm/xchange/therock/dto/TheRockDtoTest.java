@@ -82,7 +82,8 @@ public class TheRockDtoTest {
     final TheRockException json = parse(TheRockException.class);
     assertThat(json.getMessage()).contains("CNYUSD is not a valid value for param fund_id");
     assertThat(json.getErrors()).hasSize(1);
-    assertThat(json.getErrors().get(0).getMessage()).isEqualTo("CNYUSD is not a valid value for param fund_id");
+    assertThat(json.getErrors().get(0).getMessage())
+        .isEqualTo("CNYUSD is not a valid value for param fund_id");
     assertThat(json.getErrors().get(0).getCode()).isEqualTo(11);
   }
 

@@ -7,13 +7,12 @@ import org.knowm.xchange.campbx.dto.CampBXResponse;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public final class CampBXOrderBook extends CampBXResponse {
 
   @JsonProperty("Bids")
   private List<List<BigDecimal>> bids;
+
   @JsonProperty("Asks")
   private List<List<BigDecimal>> asks;
 
@@ -40,8 +39,16 @@ public final class CampBXOrderBook extends CampBXResponse {
   @Override
   public String toString() {
 
-    return "CampBXOrderBook [bids=" + bids + ", asks=" + asks + ", getSuccess()=" + getSuccess() + ", getInfo()=" + getInfo() + ", getError()="
-        + getError() + "]";
+    return "CampBXOrderBook [bids="
+        + bids
+        + ", asks="
+        + asks
+        + ", getSuccess()="
+        + getSuccess()
+        + ", getInfo()="
+        + getInfo()
+        + ", getError()="
+        + getError()
+        + "]";
   }
-
 }

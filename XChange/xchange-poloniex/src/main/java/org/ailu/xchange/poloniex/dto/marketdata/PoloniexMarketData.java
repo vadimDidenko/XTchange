@@ -15,27 +15,41 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 
 @JsonInclude(JsonInclude.Include.NON_NULL)
 @Generated("org.jsonschema2pojo")
-@JsonPropertyOrder({"last", "lowestAsk", "highestBid", "percentChange", "baseVolume", "quoteVolume"})
+@JsonPropertyOrder({
+  "last",
+  "lowestAsk",
+  "highestBid",
+  "percentChange",
+  "baseVolume",
+  "quoteVolume"
+})
 public class PoloniexMarketData {
 
   @JsonProperty("high24hr")
   private BigDecimal high24hr;
+
   @JsonProperty("low24hr")
   private BigDecimal low24hr;
+
   @JsonProperty("last")
   private BigDecimal last;
+
   @JsonProperty("lowestAsk")
   private BigDecimal lowestAsk;
+
   @JsonProperty("highestBid")
   private BigDecimal highestBid;
+
   @JsonProperty("percentChange")
   private BigDecimal percentChange;
+
   @JsonProperty("baseVolume")
   private BigDecimal baseVolume;
+
   @JsonProperty("quoteVolume")
   private BigDecimal quoteVolume;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   public BigDecimal getHigh24hr() {
     return high24hr;
@@ -140,8 +154,20 @@ public class PoloniexMarketData {
   @Override
   public String toString() {
 
-    return "PoloniexMarketData [last=" + last + ", lowestAsk=" + lowestAsk + ", highestBid=" + highestBid + ", percentChange=" + percentChange
-        + ", baseVolume=" + baseVolume + ", quoteVolume=" + quoteVolume + ", additionalProperties=" + additionalProperties + "]";
+    return "PoloniexMarketData [last="
+        + last
+        + ", lowestAsk="
+        + lowestAsk
+        + ", highestBid="
+        + highestBid
+        + ", percentChange="
+        + percentChange
+        + ", baseVolume="
+        + baseVolume
+        + ", quoteVolume="
+        + quoteVolume
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

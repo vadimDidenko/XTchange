@@ -14,7 +14,8 @@ import com.fasterxml.jackson.databind.JsonNode;
 public class CurrencyPairDeserializer extends JsonDeserializer<CurrencyPair> {
 
   @Override
-  public CurrencyPair deserialize(JsonParser jsonParser, final DeserializationContext ctxt) throws IOException {
+  public CurrencyPair deserialize(JsonParser jsonParser, final DeserializationContext ctxt)
+      throws IOException {
 
     final ObjectCodec oc = jsonParser.getCodec();
     final JsonNode node = oc.readTree(jsonParser);
@@ -32,7 +33,8 @@ public class CurrencyPairDeserializer extends JsonDeserializer<CurrencyPair> {
     /*
      * Preserve case if exchange is sending mixed-case, otherwise toUpperCase()
      */
-    final boolean isMixedCase = currencyPairString.matches(".*[a-z]+.*") && currencyPairString.matches(".*[A-Z]+.*");
+    final boolean isMixedCase =
+        currencyPairString.matches(".*[a-z]+.*") && currencyPairString.matches(".*[A-Z]+.*");
     if (!isMixedCase) {
       currencyPairString = currencyPairString.toUpperCase();
     }
@@ -60,7 +62,8 @@ public class CurrencyPairDeserializer extends JsonDeserializer<CurrencyPair> {
     int bestGuess = currencyPairString.length() / 2;
     int bestLength = 0;
     for (int i = 1; i < currencyPairString.length() - 1; ++i) {
-      final Currency tradeCurrency = Currency.getInstanceNoCreate(currencyPairString.substring(0, i));
+      final Currency tradeCurrency =
+          Currency.getInstanceNoCreate(currencyPairString.substring(0, i));
       final Currency priceCurrency = Currency.getInstanceNoCreate(currencyPairString.substring(i));
       if (tradeCurrency != null) {
         if (priceCurrency != null) {

@@ -16,7 +16,8 @@ public class KrakenExchangeSymbolsDemo {
   public static void main(String[] args) throws IOException {
 
     // Use the factory to get Kraken exchange API using default settings
-    Exchange krakenExchange = ExchangeFactory.INSTANCE.createExchange(KrakenExchange.class.getName());
+    Exchange krakenExchange =
+        ExchangeFactory.INSTANCE.createExchange(KrakenExchange.class.getName());
 
     generic(krakenExchange);
     raw(krakenExchange);
@@ -26,19 +27,18 @@ public class KrakenExchangeSymbolsDemo {
 
     // Interested in the public market data feed (no authentication)
     MarketDataService krakenMarketDataService = krakenExchange.getMarketDataService();
-
   }
 
   private static void raw(Exchange krakenExchange) throws IOException {
 
     // Interested in the public market data feed (no authentication)
-    KrakenMarketDataServiceRaw krakenMarketDataService = (KrakenMarketDataServiceRaw) krakenExchange.getMarketDataService();
+    KrakenMarketDataServiceRaw krakenMarketDataService =
+        (KrakenMarketDataServiceRaw) krakenExchange.getMarketDataService();
 
     KrakenAssetPairs krakenAssetPairs = krakenMarketDataService.getKrakenAssetPairs();
-    for (Entry<String, KrakenAssetPair> assetPairEntry : krakenAssetPairs.getAssetPairMap().entrySet()) {
+    for (Entry<String, KrakenAssetPair> assetPairEntry :
+        krakenAssetPairs.getAssetPairMap().entrySet()) {
       System.out.println(assetPairEntry.getKey() + ": " + assetPairEntry.getValue());
     }
-
   }
-
 }

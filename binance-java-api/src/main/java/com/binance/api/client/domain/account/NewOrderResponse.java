@@ -21,19 +21,15 @@ import java.util.stream.Collectors;
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class NewOrderResponse {
 
-  /**
-   * Order symbol.
-   */
+  /** Order symbol. */
   private String symbol;
 
-  /**
-   * Order id.
-   */
+  /** Order id. */
   private Long orderId;
 
   /**
-   * This will be either a generated one, or the newClientOrderId parameter
-   * which was passed when creating the new order.
+   * This will be either a generated one, or the newClientOrderId parameter which was passed when
+   * creating the new order.
    */
   private String clientOrderId;
 
@@ -56,9 +52,7 @@ public class NewOrderResponse {
   // @JsonSetter(nulls = Nulls.AS_EMPTY)
   private List<Trade> fills;
 
-  /**
-   * Transact time for this order.
-   */
+  /** Transact time for this order. */
   private Long transactTime;
 
   public String getSymbol() {
@@ -179,10 +173,11 @@ public class NewOrderResponse {
         .append("timeInForce", timeInForce)
         .append("type", type)
         .append("side", side)
-        .append("fills", Optional.ofNullable(fills).orElse(Collections.emptyList())
-            .stream()
-            .map(Object::toString)
-            .collect(Collectors.joining(", ")))
+        .append(
+            "fills",
+            Optional.ofNullable(fills).orElse(Collections.emptyList()).stream()
+                .map(Object::toString)
+                .collect(Collectors.joining(", ")))
         .toString();
   }
 }

@@ -33,8 +33,7 @@ public class LakeBTCTradeService extends LakeBTCTradeServiceRaw implements Trade
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 
@@ -86,9 +85,7 @@ public class LakeBTCTradeService extends LakeBTCTradeServiceRaw implements Trade
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

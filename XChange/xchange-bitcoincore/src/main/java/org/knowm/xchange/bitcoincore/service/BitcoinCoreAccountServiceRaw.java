@@ -21,7 +21,8 @@ public class BitcoinCoreAccountServiceRaw extends BaseExchangeService {
   private final BitcoinCore bitcoinCore;
 
   private final BitcoinCoreBalanceRequest balanceRequest = new BitcoinCoreBalanceRequest();
-  private final BitcoinCoreUnconfirmedBalanceRequest unconfirmedBalanceRequest = new BitcoinCoreUnconfirmedBalanceRequest();
+  private final BitcoinCoreUnconfirmedBalanceRequest unconfirmedBalanceRequest =
+      new BitcoinCoreUnconfirmedBalanceRequest();
 
   protected BitcoinCoreAccountServiceRaw(Exchange exchange) {
     super(exchange);
@@ -30,9 +31,11 @@ public class BitcoinCoreAccountServiceRaw extends BaseExchangeService {
 
     ClientConfig config = getClientConfig();
     String user = specification.getUserName();
-    ClientConfigUtil.addBasicAuthCredentials(config, user == null ? "" : user, specification.getPassword());
+    ClientConfigUtil.addBasicAuthCredentials(
+        config, user == null ? "" : user, specification.getPassword());
 
-    bitcoinCore = RestProxyFactory.createProxy(BitcoinCore.class, specification.getPlainTextUri(), config);
+    bitcoinCore =
+        RestProxyFactory.createProxy(BitcoinCore.class, specification.getPlainTextUri(), config);
   }
 
   public BitcoinCoreBalanceResponse getBalance() throws IOException {

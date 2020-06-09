@@ -19,8 +19,11 @@ public class GateioAccountServiceRaw extends GateioBaseService {
 
   public GateioFunds getGateioAccountInfo() throws IOException {
 
-    GateioFunds gateioFunds = bter.getFunds(exchange.getExchangeSpecification().getApiKey(), signatureCreator, exchange.getNonceFactory());
+    GateioFunds gateioFunds =
+        bter.getFunds(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory());
     return handleResponse(gateioFunds);
   }
-
 }

@@ -14,9 +14,7 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 import java.io.IOException;
 
-/**
- * @author Benedikt Bünz
- */
+/** @author Benedikt Bünz */
 public class KrakenExchange extends BaseExchange implements Exchange {
 
   private final SynchronizedValueFactory<Long> nonceFactory = new CurrentTimeNonceFactory();
@@ -31,12 +29,14 @@ public class KrakenExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.kraken.com");
     exchangeSpecification.setHost("api.kraken.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Kraken");
-    exchangeSpecification.setExchangeDescription("Kraken is a Bitcoin exchange operated by Payward, Inc.");
+    exchangeSpecification.setExchangeDescription(
+        "Kraken is a Bitcoin exchange operated by Payward, Inc.");
     return exchangeSpecification;
   }
 
@@ -49,10 +49,13 @@ public class KrakenExchange extends BaseExchange implements Exchange {
   @Override
   public void remoteInit() throws IOException {
 
-    KrakenAssetPairs assetPairs = ((KrakenMarketDataServiceRaw) marketDataService).getKrakenAssetPairs();
+    KrakenAssetPairs assetPairs =
+        ((KrakenMarketDataServiceRaw) marketDataService).getKrakenAssetPairs();
     KrakenAssets assets = ((KrakenMarketDataServiceRaw) marketDataService).getKrakenAssets();
     // other endpoints?
     // hard-coded meta data from json file not available at an endpoint?
-    exchangeMetaData = KrakenAdapters.adaptToExchangeMetaData(exchangeMetaData, assetPairs.getAssetPairMap(), assets.getAssetPairMap());
+    exchangeMetaData =
+        KrakenAdapters.adaptToExchangeMetaData(
+            exchangeMetaData, assetPairs.getAssetPairMap(), assets.getAssetPairMap());
   }
 }

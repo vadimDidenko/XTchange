@@ -12,7 +12,9 @@ public class OkCoinFunds {
   private final Map<String, BigDecimal> freezed;
   private final Map<String, BigDecimal> borrow;
 
-  public OkCoinFunds(@JsonProperty("free") final Map<String, BigDecimal> free, @JsonProperty("freezed") final Map<String, BigDecimal> freezed,
+  public OkCoinFunds(
+      @JsonProperty("free") final Map<String, BigDecimal> free,
+      @JsonProperty("freezed") final Map<String, BigDecimal> freezed,
       @JsonProperty(value = "borrow", required = false) final Map<String, BigDecimal> borrow) {
 
     this.free = free;

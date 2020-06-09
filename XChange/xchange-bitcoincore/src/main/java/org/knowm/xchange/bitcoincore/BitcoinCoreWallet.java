@@ -13,7 +13,8 @@ public class BitcoinCoreWallet extends BaseExchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification specification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification specification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     specification.setShouldLoadRemoteMetaData(false);
     specification.setPlainTextUri("http://localhost:8332/");
     specification.setExchangeName("BitcoinCore");

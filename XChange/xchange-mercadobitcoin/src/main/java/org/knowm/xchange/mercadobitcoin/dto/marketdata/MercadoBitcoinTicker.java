@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Felipe Micaroni Lalli
- */
+/** @author Felipe Micaroni Lalli */
 public class MercadoBitcoinTicker {
 
   private final Ticker ticker;
@@ -37,8 +35,13 @@ public class MercadoBitcoinTicker {
     private final BigDecimal sell;
     private final long date;
 
-    public Ticker(@JsonProperty("last") BigDecimal last, @JsonProperty("high") BigDecimal high, @JsonProperty("low") BigDecimal low,
-        @JsonProperty("vol") BigDecimal vol, @JsonProperty("buy") BigDecimal buy, @JsonProperty("sell") BigDecimal sell,
+    public Ticker(
+        @JsonProperty("last") BigDecimal last,
+        @JsonProperty("high") BigDecimal high,
+        @JsonProperty("low") BigDecimal low,
+        @JsonProperty("vol") BigDecimal vol,
+        @JsonProperty("buy") BigDecimal buy,
+        @JsonProperty("sell") BigDecimal sell,
         @JsonProperty("date") long date) {
 
       this.last = last;
@@ -88,7 +91,21 @@ public class MercadoBitcoinTicker {
     @Override
     public String toString() {
 
-      return "Ticker [" + "last=" + last + ", high=" + high + ", low=" + low + ", vol=" + vol + ", buy=" + buy + ", sell=" + sell + ", date=" + date
+      return "Ticker ["
+          + "last="
+          + last
+          + ", high="
+          + high
+          + ", low="
+          + low
+          + ", vol="
+          + vol
+          + ", buy="
+          + buy
+          + ", sell="
+          + sell
+          + ", date="
+          + date
           + ']';
     }
   }

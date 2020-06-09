@@ -21,12 +21,14 @@ public class BittrexTradeHistoryResponse {
 
   @JsonProperty("success")
   private Boolean success;
+
   @JsonProperty("message")
   private String message;
+
   @JsonProperty("result")
   private List<BittrexUserTrade> result = new ArrayList<BittrexUserTrade>();
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("success")
   public Boolean getSuccess() {
@@ -75,5 +77,4 @@ public class BittrexTradeHistoryResponse {
 
     this.additionalProperties.put(name, value);
   }
-
 }

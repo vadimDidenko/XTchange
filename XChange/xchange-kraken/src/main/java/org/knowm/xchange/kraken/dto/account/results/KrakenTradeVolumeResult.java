@@ -13,7 +13,8 @@ public class KrakenTradeVolumeResult extends KrakenResult<KrakenTradeVolume> {
    * @param result
    * @param error
    */
-  public KrakenTradeVolumeResult(@JsonProperty("result") KrakenTradeVolume result, @JsonProperty("error") String[] error) {
+  public KrakenTradeVolumeResult(
+      @JsonProperty("result") KrakenTradeVolume result, @JsonProperty("error") String[] error) {
 
     super(result, error);
   }

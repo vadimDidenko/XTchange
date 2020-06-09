@@ -15,8 +15,7 @@ public class TheRockException extends HttpStatusExceptionSupport {
     return errors;
   }
 
-  protected TheRockException() {
-  }
+  protected TheRockException() {}
 
   public TheRockException(@JsonProperty("errors") List<Error> errors) {
     super(getFirstMessage(errors));

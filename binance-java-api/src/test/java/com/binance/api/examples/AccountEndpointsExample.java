@@ -7,13 +7,12 @@ import com.binance.api.client.domain.account.Trade;
 
 import java.util.List;
 
-/**
- * Examples on how to get account information.
- */
+/** Examples on how to get account information. */
 public class AccountEndpointsExample {
 
   public static void main(String[] args) {
-    BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
+    BinanceApiClientFactory factory =
+        BinanceApiClientFactory.newInstance("YOUR_API_KEY", "YOUR_SECRET");
     BinanceApiRestClient client = factory.newRestClient();
 
     // Get account balances

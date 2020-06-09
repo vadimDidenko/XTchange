@@ -5,9 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing depth from Wex
- */
+/** Data object representing depth from Wex */
 public class WexDepth {
 
   private final List<BigDecimal[]> asks;
@@ -19,7 +17,9 @@ public class WexDepth {
    * @param asks
    * @param bids
    */
-  public WexDepth(@JsonProperty("asks") List<BigDecimal[]> asks, @JsonProperty("bids") List<BigDecimal[]> bids) {
+  public WexDepth(
+      @JsonProperty("asks") List<BigDecimal[]> asks,
+      @JsonProperty("bids") List<BigDecimal[]> bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -50,5 +50,4 @@ public class WexDepth {
 
     return sb.toString();
   }
-
 }

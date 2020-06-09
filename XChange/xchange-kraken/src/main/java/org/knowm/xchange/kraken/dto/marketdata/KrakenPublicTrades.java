@@ -50,7 +50,8 @@ public class KrakenPublicTrades {
   static class KrakenTradesDeserializer extends JsonDeserializer<KrakenPublicTrades> {
 
     @Override
-    public KrakenPublicTrades deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenPublicTrades deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       List<KrakenPublicTrade> krakenTrades = new ArrayList<>();
       long last = 0;
@@ -72,12 +73,12 @@ public class KrakenPublicTrades {
             KrakenOrderType orderType = KrakenOrderType.fromString(tradeJsonNode.path(4).asText());
             String miscellaneous = tradeJsonNode.path(5).asText();
 
-            krakenTrades.add(new KrakenPublicTrade(price, volume, time, type, orderType, miscellaneous));
+            krakenTrades.add(
+                new KrakenPublicTrade(price, volume, time, type, orderType, miscellaneous));
           }
         }
       }
       return new KrakenPublicTrades(krakenTrades, last);
     }
-
   }
 }

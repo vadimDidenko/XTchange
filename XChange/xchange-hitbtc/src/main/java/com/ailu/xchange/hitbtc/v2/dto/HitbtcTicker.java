@@ -18,9 +18,17 @@ public class HitbtcTicker {
   private final BigDecimal volume;
   private final BigDecimal volumeQuote;
 
-  public HitbtcTicker(@JsonProperty("ask") BigDecimal ask, @JsonProperty("bid") BigDecimal bid, @JsonProperty("last") BigDecimal last,
-      @JsonProperty("low") BigDecimal low, @JsonProperty("high") BigDecimal high, @JsonProperty("open") BigDecimal open,
-      @JsonProperty("symbol") String symbol, @JsonProperty("timestamp") Date timestamp, @JsonProperty("volume") BigDecimal volume, @JsonProperty("volumeQuote") BigDecimal volumeQuote) {
+  public HitbtcTicker(
+      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("open") BigDecimal open,
+      @JsonProperty("symbol") String symbol,
+      @JsonProperty("timestamp") Date timestamp,
+      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("volumeQuote") BigDecimal volumeQuote) {
 
     this.ask = ask;
     this.bid = bid;
@@ -76,17 +84,28 @@ public class HitbtcTicker {
 
   @Override
   public String toString() {
-    return "HitbtcTicker{" +
-        "ask=" + ask +
-        ", bid=" + bid +
-        ", last=" + last +
-        ", low=" + low +
-        ", high=" + high +
-        ", open=" + open +
-        ", symbol='" + symbol + '\'' +
-        ", timestamp=" + timestamp +
-        ", volume=" + volume +
-        ", volumeQuote=" + volumeQuote +
-        '}';
+    return "HitbtcTicker{"
+        + "ask="
+        + ask
+        + ", bid="
+        + bid
+        + ", last="
+        + last
+        + ", low="
+        + low
+        + ", high="
+        + high
+        + ", open="
+        + open
+        + ", symbol='"
+        + symbol
+        + '\''
+        + ", timestamp="
+        + timestamp
+        + ", volume="
+        + volume
+        + ", volumeQuote="
+        + volumeQuote
+        + '}';
   }
 }

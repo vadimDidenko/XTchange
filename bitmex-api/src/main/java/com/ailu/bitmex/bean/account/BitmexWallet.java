@@ -11,54 +11,79 @@ public final class BitmexWallet {
 
   @JSONField(name = "account")
   private Integer account;
+
   @JSONField(name = "currency")
   private String currency;
+
   @JSONField(name = "prevDeposited")
   private BigDecimal prevDeposited;
+
   @JSONField(name = "prevWithdrawn")
   private BigDecimal prevWithdrawn;
+
   @JSONField(name = "prevTransferIn")
   private BigDecimal prevTransferIn;
+
   @JSONField(name = "prevTransferOut")
   private BigDecimal prevTransferOut;
+
   @JSONField(name = "prevAmount")
   private BigDecimal prevAmount;
+
   @JSONField(name = "prevTimestamp")
   private String prevTimestamp;
+
   @JSONField(name = "deltaDeposited")
   private BigDecimal deltaDeposited;
+
   @JSONField(name = "deltaWithdrawn")
   private BigDecimal deltaWithdrawn;
+
   @JSONField(name = "deltaTransferIn")
   private BigDecimal deltaTransferIn;
+
   @JSONField(name = "deltaTransferOut")
   private BigDecimal deltaTransferOut;
+
   @JSONField(name = "deltaAmount")
   private BigDecimal deltaAmount;
+
   @JSONField(name = "deposited")
   private BigDecimal deposited;
+
   @JSONField(name = "withdrawn")
   private BigDecimal withdrawn;
+
   @JSONField(name = "transferIn")
   private BigDecimal transferIn;
+
   @JSONField(name = "transferOut")
   private BigDecimal transferOut;
+
   @JSONField(name = "amount")
   private BigDecimal amount;
+
   @JSONField(name = "pendingCredit")
   private BigDecimal pendingCredit;
+
   @JSONField(name = "pendingDebit")
   private BigDecimal pendingDebit;
+
   @JSONField(name = "confirmedDebit")
   private BigDecimal confirmedDebit;
+
   @JSONField(name = "timestamp")
   private String timestamp;
+
   @JSONField(name = "addr")
   private String addr;
+
   @JSONField(name = "script")
   private String script;
+
   @JSONField(name = "withdrawalLock")
   private List<String> withdrawalLock = null;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
 

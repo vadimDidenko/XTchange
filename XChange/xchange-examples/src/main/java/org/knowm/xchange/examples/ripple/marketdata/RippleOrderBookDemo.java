@@ -13,7 +13,8 @@ import org.knowm.xchange.ripple.service.params.RippleMarketDataParams;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * Demonstrate requesting an order book from Ripple. You can access both the raw data from Ripple or the XChange generic DTO data format.
+ * Demonstrate requesting an order book from Ripple. You can access both the raw data from Ripple or
+ * the XChange generic DTO data format.
  */
 public class RippleOrderBookDemo {
 
@@ -67,7 +68,8 @@ public class RippleOrderBookDemo {
     params.setLimit(10);
 
     // fetch SnapSwap's EUR/USD order book
-    final RippleOrderBook orderBook = marketDataService.getRippleOrderBook(CurrencyPair.EUR_USD, params);
+    final RippleOrderBook orderBook =
+        marketDataService.getRippleOrderBook(CurrencyPair.EUR_USD, params);
     System.out.println(orderBook.toString());
   }
 }

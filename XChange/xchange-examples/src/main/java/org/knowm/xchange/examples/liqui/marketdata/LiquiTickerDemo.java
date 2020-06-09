@@ -36,7 +36,8 @@ public class LiquiTickerDemo {
 
   private static void raw(final Exchange liquiExchange) throws IOException {
 
-    final LiquiMarketDataServiceRaw liquiMarketDataServiceRaw = (LiquiMarketDataServiceRaw) liquiExchange.getMarketDataService();
+    final LiquiMarketDataServiceRaw liquiMarketDataServiceRaw =
+        (LiquiMarketDataServiceRaw) liquiExchange.getMarketDataService();
 
     final LiquiTicker ticker = liquiMarketDataServiceRaw.getTicker(CurrencyPair.LTC_BTC);
 

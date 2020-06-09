@@ -16,8 +16,11 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = KrakenOrderStatusDeserializer.class)
 public enum KrakenOrderStatus {
-
-  PENDING, OPEN, CLOSED, CANCELED, EXPIRED;
+  PENDING,
+  OPEN,
+  CLOSED,
+  CANCELED,
+  EXPIRED;
 
   @Override
   public String toString() {
@@ -40,7 +43,8 @@ public enum KrakenOrderStatus {
   static class KrakenOrderStatusDeserializer extends JsonDeserializer<KrakenOrderStatus> {
 
     @Override
-    public KrakenOrderStatus deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenOrderStatus deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

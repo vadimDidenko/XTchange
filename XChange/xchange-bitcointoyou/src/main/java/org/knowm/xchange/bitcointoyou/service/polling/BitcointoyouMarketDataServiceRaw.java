@@ -44,13 +44,11 @@ class BitcointoyouMarketDataServiceRaw extends BitcointoyouBasePollingService {
       data = marketData.entrySet().iterator().next().getValue();
     }
 
-    if (data == null)
-      throw new ExchangeException(currencyPair + " not available");
+    if (data == null) throw new ExchangeException(currencyPair + " not available");
 
     return new BitcointoyouTicker(data, currencyPair);
-
   }
-  
+
   BitcointoyouOrderBook getBitcointoyouOrderBook() throws IOException {
 
     try {
@@ -67,7 +65,8 @@ class BitcointoyouMarketDataServiceRaw extends BitcointoyouBasePollingService {
    * @return an array of {@link BitcointoyouPublicTrade}
    * @throws IOException
    */
-  BitcointoyouPublicTrade[] getBitcointoyouPublicTrades(CurrencyPair currencyPair) throws IOException {
+  BitcointoyouPublicTrade[] getBitcointoyouPublicTrades(CurrencyPair currencyPair)
+      throws IOException {
 
     try {
       return getBitcointoyouPublicTrades(currencyPair, null, null);
@@ -85,7 +84,8 @@ class BitcointoyouMarketDataServiceRaw extends BitcointoyouBasePollingService {
    * @return an array of {@link BitcointoyouPublicTrade}
    * @throws IOException
    */
-  BitcointoyouPublicTrade[] getBitcointoyouPublicTrades(CurrencyPair currencyPair, Long tradeTimestamp, Long minTradeId) throws IOException {
+  BitcointoyouPublicTrade[] getBitcointoyouPublicTrades(
+      CurrencyPair currencyPair, Long tradeTimestamp, Long minTradeId) throws IOException {
 
     String currency = currencyPair.base.toString();
 
@@ -95,5 +95,4 @@ class BitcointoyouMarketDataServiceRaw extends BitcointoyouBasePollingService {
       throw new ExchangeException(e.getError());
     }
   }
-
 }

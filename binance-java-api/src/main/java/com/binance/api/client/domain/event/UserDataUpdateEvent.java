@@ -8,7 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * User data update event which can be of two types:
  *
- * 1) outboundAccountInfo, whenever there is a change in the account (e.g. balance of an asset)
+ * <p>1) outboundAccountInfo, whenever there is a change in the account (e.g. balance of an asset)
  * 2) executionReport, whenever there is a trade or an order
  */
 @JsonIgnoreProperties(ignoreUnknown = true)
@@ -57,9 +57,10 @@ public class UserDataUpdateEvent {
 
   @Override
   public String toString() {
-    ToStringBuilder sb = new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
-        .append("eventType", eventType)
-        .append("eventTime", eventTime);
+    ToStringBuilder sb =
+        new ToStringBuilder(this, BinanceApiConstants.TO_STRING_BUILDER_STYLE)
+            .append("eventType", eventType)
+            .append("eventTime", eventTime);
     if (eventType == UserDataUpdateEventType.ACCOUNT_UPDATE) {
       sb.append("accountUpdateEvent", accountUpdateEvent);
     } else {
@@ -88,7 +89,8 @@ public class UserDataUpdateEvent {
       } else if (ORDER_TRADE_UPDATE.eventTypeId.equals(eventTypeId)) {
         return ORDER_TRADE_UPDATE;
       }
-      throw new IllegalArgumentException("Unrecognized user data update event type id: " + eventTypeId);
+      throw new IllegalArgumentException(
+          "Unrecognized user data update event type id: " + eventTypeId);
     }
   }
 }

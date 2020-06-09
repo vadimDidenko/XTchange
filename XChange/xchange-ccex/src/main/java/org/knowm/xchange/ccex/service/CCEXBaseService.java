@@ -8,9 +8,7 @@ import org.knowm.xchange.service.BaseService;
 import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author Andraž Prinčič
- */
+/** @author Andraž Prinčič */
 public class CCEXBaseService extends BaseExchangeService implements BaseService {
 
   protected final String apiKey;
@@ -26,9 +24,13 @@ public class CCEXBaseService extends BaseExchangeService implements BaseService 
 
     super(exchange);
 
-    this.cCEXAuthenticated = RestProxyFactory.createProxy(CCEXAuthenticated.class, exchange.getExchangeSpecification().getSslUri(),
-        getClientConfig());
+    this.cCEXAuthenticated =
+        RestProxyFactory.createProxy(
+            CCEXAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = CCEXDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    this.signatureCreator =
+        CCEXDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 }

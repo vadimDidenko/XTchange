@@ -34,5 +34,4 @@ public class BTCTradeBaseTradeService extends BTCTradeBaseService {
 
     return session.getSignatureCreator();
   }
-
 }

@@ -4,8 +4,8 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 /**
- * Class encapsulates server time and ticker.
- * Instances of this type are immutable, constructed with a dedicated Builder implementation.
+ * Class encapsulates server time and ticker. Instances of this type are immutable, constructed with
+ * a dedicated Builder implementation.
  *
  * @author Dat Bui
  */
@@ -18,11 +18,8 @@ public class KunaTimeTicker {
   private Long timestamp;
   private KunaTicker ticker;
 
-  /**
-   * Hide default constructor.
-   */
-  private KunaTimeTicker() {
-  }
+  /** Hide default constructor. */
+  private KunaTimeTicker() {}
 
   /**
    * Returns server time.
@@ -53,10 +50,7 @@ public class KunaTimeTicker {
 
   @Override
   public String toString() {
-    return "KunaTimeTicker{" +
-        "timestamp=" + timestamp +
-        ", ticker=" + ticker +
-        '}';
+    return "KunaTimeTicker{" + "timestamp=" + timestamp + ", ticker=" + ticker + '}';
   }
 
   public static class Builder {

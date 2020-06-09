@@ -9,7 +9,8 @@ import java.io.IOException;
 /**
  * Market data stream endpoints examples.
  *
- * It illustrates how to create a stream to obtain updates on market data such as executed trades.
+ * <p>It illustrates how to create a stream to obtain updates on market data such as executed
+ * trades.
  */
 public class MarketDataStreamExample {
 
@@ -23,6 +24,7 @@ public class MarketDataStreamExample {
     client.onDepthEvent("ethbtc", response -> System.out.println(response));
 
     // Obtain 1m candlesticks in real-time for ETH/BTC
-    client.onCandlestickEvent("ethbtc", CandlestickInterval.ONE_MINUTE, response -> System.out.println(response));
+    client.onCandlestickEvent(
+        "ethbtc", CandlestickInterval.ONE_MINUTE, response -> System.out.println(response));
   }
 }

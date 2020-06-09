@@ -16,7 +16,9 @@ public class BitcurexDepth {
    * @param asks
    * @param bids
    */
-  public BitcurexDepth(@JsonProperty("asks") List<BigDecimal[]> asks, @JsonProperty("bids") List<BigDecimal[]> bids) {
+  public BitcurexDepth(
+      @JsonProperty("asks") List<BigDecimal[]> asks,
+      @JsonProperty("bids") List<BigDecimal[]> bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -37,5 +39,4 @@ public class BitcurexDepth {
 
     return "BitcurexDepth [asks=" + asks.toString() + ", bids=" + bids.toString() + "]";
   }
-
 }

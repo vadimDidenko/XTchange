@@ -18,10 +18,7 @@ import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.exceptions.NotYetImplementedForExchangeException;
 import org.knowm.xchange.service.trade.TradeService;
 
-/**
- * Author: brox Since: 2/6/14
- */
-
+/** Author: brox Since: 2/6/14 */
 public class TradeDemo {
 
   public static void main(String[] args) throws IOException {
@@ -31,17 +28,22 @@ public class TradeDemo {
 
     generic(tradeService);
     raw((CexIOTradeServiceRaw) tradeService);
-
   }
 
-  private static void generic(
-      TradeService tradeService) throws NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  private static void generic(TradeService tradeService)
+      throws NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
 
     printOpenOrders(tradeService);
 
     // place a limit buy order
-    LimitOrder limitOrder = new LimitOrder(Order.OrderType.BID, BigDecimal.ONE, new CurrencyPair(Currency.GHs, Currency.BTC), "", null,
-        new BigDecimal("0.00015600"));
+    LimitOrder limitOrder =
+        new LimitOrder(
+            Order.OrderType.BID,
+            BigDecimal.ONE,
+            new CurrencyPair(Currency.GHs, Currency.BTC),
+            "",
+            null,
+            new BigDecimal("0.00015600"));
     System.out.println("Trying to place: " + limitOrder);
     String orderId = "0";
     try {

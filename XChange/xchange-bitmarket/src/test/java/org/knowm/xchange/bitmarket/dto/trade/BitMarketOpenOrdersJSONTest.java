@@ -8,14 +8,13 @@ import java.math.BigDecimal;
 import org.junit.Test;
 import org.knowm.xchange.bitmarket.dto.BitMarketDtoTestSupport;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketOpenOrdersJSONTest extends BitMarketDtoTestSupport {
   @Test
   public void testUnmarshal() throws IOException {
     // when
-    BitMarketOrdersResponse response = parse("trade/example-orders-data", BitMarketOrdersResponse.class);
+    BitMarketOrdersResponse response =
+        parse("trade/example-orders-data", BitMarketOrdersResponse.class);
 
     // then
     BitMarketOrder buyOrderBTCPLN = response.getData().get("BTCPLN").get("buy").get(0);

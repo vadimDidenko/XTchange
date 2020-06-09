@@ -20,9 +20,7 @@ import org.knowm.xchange.therock.dto.account.TheRockWithdrawalResponse;
 import org.knowm.xchange.therock.dto.trade.TheRockTransaction;
 import org.knowm.xchange.therock.dto.trade.TheRockTransactions;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class TheRockAccountService extends TheRockAccountServiceRaw implements AccountService {
 
   public TheRockAccountService(Exchange exchange) {
@@ -31,11 +29,13 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    return TheRockAdapters.adaptAccountInfo(balances(), exchange.getExchangeSpecification().getUserName());
+    return TheRockAdapters.adaptAccountInfo(
+        balances(), exchange.getExchangeSpecification().getUserName());
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     final TheRockWithdrawalResponse response = withdrawDefault(currency, amount, address);
     return String.format("%d", response.getTransactionId());
   }
@@ -60,8 +60,7 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
 
     Currency currency = null;
     if (params instanceof TradeHistoryParamCurrency) {
@@ -74,8 +73,7 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
     int page = 1;
     while (true) {
       TheRockTransactions txns = deposits(currency, null, null, page++);
-      if (txns.getTransactions().length == 0)
-        break;
+      if (txns.getTransactions().length == 0) break;
 
       for (TheRockTransaction txn : txns.getTransactions()) {
         all.add(adapt(txn, FundingRecord.Type.DEPOSIT));
@@ -85,8 +83,7 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
     page = 1;
     while (true) {
       TheRockTransactions txns = withdrawls(currency, null, null, page++);
-      if (txns.getTransactions().length == 0)
-        break;
+      if (txns.getTransactions().length == 0) break;
 
       for (TheRockTransaction txn : txns.getTransactions()) {
         all.add(adapt(txn, FundingRecord.Type.WITHDRAWAL));
@@ -117,7 +114,6 @@ public class TheRockAccountService extends TheRockAccountServiceRaw implements A
         FundingRecord.Status.COMPLETE,
         null,
         null,
-        null
-    );
+        null);
   }
 }

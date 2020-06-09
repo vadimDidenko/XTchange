@@ -6,9 +6,7 @@ import org.knowm.xchange.exceptions.*;
 import org.knowm.xchange.service.BaseExchangeService;
 import org.knowm.xchange.service.BaseService;
 
-/**
- * @author timmolter
- */
+/** @author timmolter */
 public class BitstampBaseService extends BaseExchangeService implements BaseService {
 
   /**
@@ -20,8 +18,6 @@ public class BitstampBaseService extends BaseExchangeService implements BaseServ
 
     super(exchange);
   }
-
-
 
   protected ExchangeException handleError(BitstampException exception) {
 

@@ -13,5 +13,3 @@ public class YoBitOrderBooksReturn {
     this.orderBooks = tickers;
   }
 }
-
-

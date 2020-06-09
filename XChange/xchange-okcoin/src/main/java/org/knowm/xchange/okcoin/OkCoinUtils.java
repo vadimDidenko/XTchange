@@ -7,7 +7,7 @@ import java.util.TimeZone;
 public class OkCoinUtils {
 
   public static Long toEpoch(Date dateTime, String timeZone) {
-    //Epoch of midnight in local time zone
+    // Epoch of midnight in local time zone
     Calendar timeOffset = Calendar.getInstance(TimeZone.getTimeZone(timeZone));
     timeOffset.set(Calendar.MILLISECOND, 0);
     timeOffset.set(Calendar.SECOND, 0);
@@ -23,7 +23,6 @@ public class OkCoinUtils {
   public static String getErrorMessage(int errorCode) {
 
     switch (errorCode) {
-
       case (10000):
         return "Required field can not be null";
       case (10001):
@@ -101,7 +100,8 @@ public class OkCoinUtils {
       case (20021):
         return "Index information does not exist";
       case (20022):
-        return "Wrong API interface (Cross margin mode shall call cross margin API, fixed margin mode shall call fixed margin API)";
+        return "Wrong API interface (Cross margin mode shall call cross margin API, fixed margin"
+                   + " mode shall call fixed margin API)";
       case (20023):
         return "Account in fixed-margin mode";
       case (20024):

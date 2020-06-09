@@ -20,7 +20,8 @@ public class TrueFxAdaptersTest {
     InputStream is = getClass().getResourceAsStream("/marketdata/example-ticker.csv");
 
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(TrueFxExchange.class.getName());
-    TrueFxMarketDataServiceRaw rawService = (TrueFxMarketDataServiceRaw) exchange.getMarketDataService();
+    TrueFxMarketDataServiceRaw rawService =
+        (TrueFxMarketDataServiceRaw) exchange.getMarketDataService();
     ObjectMapper mapper = rawService.createObjectMapper();
 
     TrueFxTicker rawTicker = mapper.readValue(is, TrueFxTicker.class);

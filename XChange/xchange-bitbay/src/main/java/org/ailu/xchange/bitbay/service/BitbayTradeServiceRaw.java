@@ -13,9 +13,7 @@ import org.knowm.xchange.dto.Order;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.exceptions.ExchangeException;
 
-/**
- * @author Z. Dolezal
- */
+/** @author Z. Dolezal */
 public class BitbayTradeServiceRaw extends BitbayBaseService {
 
   BitbayTradeServiceRaw(Exchange exchange) {
@@ -26,8 +24,15 @@ public class BitbayTradeServiceRaw extends BitbayBaseService {
     return bitbayAuthenticated.orders(apiKey, sign, exchange.getNonceFactory());
   }
 
-  public List<Map> getBitbayTransactions(CurrencyPair currencyPair) throws IOException, ExchangeException {
-    return bitbayAuthenticated.transactions(apiKey, sign, exchange.getNonceFactory(), currencyPair == null ? null : currencyPair.base.toString()+"-"+currencyPair.counter.toString());
+  public List<Map> getBitbayTransactions(CurrencyPair currencyPair)
+      throws IOException, ExchangeException {
+    return bitbayAuthenticated.transactions(
+        apiKey,
+        sign,
+        exchange.getNonceFactory(),
+        currencyPair == null
+            ? null
+            : currencyPair.base.toString() + "-" + currencyPair.counter.toString());
   }
 
   public BitbayTradeResponse placeBitbayOrder(LimitOrder order) throws IOException {
@@ -35,8 +40,16 @@ public class BitbayTradeServiceRaw extends BitbayBaseService {
     String paymentCurrency = order.getCurrencyPair().counter.toString();
     String type = order.getType() == Order.OrderType.ASK ? "ask" : "bid";
 
-    BitbayTradeResponse response = bitbayAuthenticated.trade(apiKey, sign, exchange.getNonceFactory(), type, currency, order.getOriginalAmount(),
-        paymentCurrency, order.getLimitPrice());
+    BitbayTradeResponse response =
+        bitbayAuthenticated.trade(
+            apiKey,
+            sign,
+            exchange.getNonceFactory(),
+            type,
+            currency,
+            order.getOriginalAmount(),
+            paymentCurrency,
+            order.getLimitPrice());
 
     checkError(response);
 
@@ -44,7 +57,8 @@ public class BitbayTradeServiceRaw extends BitbayBaseService {
   }
 
   public BitbayCancelResponse cancelBitbayOrder(long id) throws IOException {
-    BitbayCancelResponse response = bitbayAuthenticated.cancel(apiKey, sign, exchange.getNonceFactory(), id);
+    BitbayCancelResponse response =
+        bitbayAuthenticated.cancel(apiKey, sign, exchange.getNonceFactory(), id);
 
     checkError(response);
 

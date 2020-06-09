@@ -17,9 +17,7 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class BitsoAccountService extends BitsoAccountServiceRaw implements AccountService {
 
   public BitsoAccountService(Exchange exchange) {
@@ -30,11 +28,14 @@ public class BitsoAccountService extends BitsoAccountServiceRaw implements Accou
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), BitsoAdapters.adaptWallet(getBitsoBalance()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        BitsoAdapters.adaptWallet(getBitsoBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     return withdrawBitsoFunds(amount, address);
   }
@@ -49,14 +50,14 @@ public class BitsoAccountService extends BitsoAccountServiceRaw implements Accou
   }
 
   /**
-   * This returns the currently set deposit address. It will not generate a new address (ie. repeated calls will return the same address).
+   * This returns the currently set deposit address. It will not generate a new address (ie.
+   * repeated calls will return the same address).
    */
   @Override
   public String requestDepositAddress(Currency currency, String... arguments) throws IOException {
 
     final BitsoDepositAddress response = getBitsoBitcoinDepositAddress();
     return response.getDepositAddress();
-
   }
 
   @Override
@@ -65,8 +66,7 @@ public class BitsoAccountService extends BitsoAccountServiceRaw implements Accou
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

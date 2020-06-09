@@ -28,12 +28,14 @@ public class ANXExchange extends BaseExchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://anxpro.com");
     exchangeSpecification.setHost("anxpro.com");
     exchangeSpecification.setPort(443);
     exchangeSpecification.setExchangeName("ANXPRO");
-    exchangeSpecification.setExchangeDescription("Asia Nexgen is a Bitcoin exchange registered in Hong Kong.");
+    exchangeSpecification.setExchangeDescription(
+        "Asia Nexgen is a Bitcoin exchange registered in Hong Kong.");
 
     return exchangeSpecification;
   }

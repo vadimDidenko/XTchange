@@ -19,16 +19,17 @@ public class BitcoinChartsRawDataDemo {
   public static void main(String[] args) throws IOException {
 
     // Use the factory to get BitcoinCharts exchange API using default settings
-    Exchange bitcoinChartsExchange = ExchangeFactory.INSTANCE.createExchange(BitcoinChartsExchange.class.getName());
+    Exchange bitcoinChartsExchange =
+        ExchangeFactory.INSTANCE.createExchange(BitcoinChartsExchange.class.getName());
     // Interested in the public market data feed (no authentication)
     MarketDataService marketDataService = bitcoinChartsExchange.getMarketDataService();
 
-    BitcoinChartsMarketDataService marketDataServiceRaw = (BitcoinChartsMarketDataService) marketDataService;
+    BitcoinChartsMarketDataService marketDataServiceRaw =
+        (BitcoinChartsMarketDataService) marketDataService;
 
     BitcoinChartsTicker[] marketData = marketDataServiceRaw.getBitcoinChartsTickers();
     for (BitcoinChartsTicker data : marketData) {
       System.out.println(data.getSymbol() + ": " + data);
     }
-
   }
 }

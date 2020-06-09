@@ -14,13 +14,15 @@ public class GDAXPlaceOrderTest {
   @Test
   public void flagTest() {
 
-    GDAXPlaceOrder orderFlagsNull = new GDAXPlaceOrder(BigDecimal.ZERO, BigDecimal.ZERO, "side", "productId", "type", null);
+    GDAXPlaceOrder orderFlagsNull =
+        new GDAXPlaceOrder(BigDecimal.ZERO, BigDecimal.ZERO, "side", "productId", "type", null);
     assertThat(orderFlagsNull.isPostOnly()).isEqualTo(null);
     assertThat(orderFlagsNull.getTimeInForce()).isEqualTo(null);
 
     Set<IOrderFlags> flags = new HashSet<>();
 
-    GDAXPlaceOrder order = new GDAXPlaceOrder(BigDecimal.ZERO, BigDecimal.ZERO, "side", "productId", "type", flags);
+    GDAXPlaceOrder order =
+        new GDAXPlaceOrder(BigDecimal.ZERO, BigDecimal.ZERO, "side", "productId", "type", flags);
     assertThat(order.isPostOnly()).isEqualTo(null);
     assertThat(order.getTimeInForce()).isEqualTo(null);
 

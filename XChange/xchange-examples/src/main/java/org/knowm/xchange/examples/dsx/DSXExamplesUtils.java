@@ -7,9 +7,7 @@ import org.knowm.xchange.ExchangeFactory;
 import org.knowm.xchange.ExchangeSpecification;
 import org.knowm.xchange.dsx.DSXExchange;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class DSXExamplesUtils {
 
   public static Exchange createExchange() throws IOException {

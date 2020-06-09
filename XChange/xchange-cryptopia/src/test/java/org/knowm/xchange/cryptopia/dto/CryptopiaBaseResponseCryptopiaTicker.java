@@ -8,8 +8,11 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class CryptopiaBaseResponseCryptopiaTicker extends CryptopiaBaseResponse<CryptopiaTicker> {
 
   @JsonCreator
-  public CryptopiaBaseResponseCryptopiaTicker(@JsonProperty("Success") boolean success, @JsonProperty("Message") String message,
-      @JsonProperty("Data") CryptopiaTicker data, @JsonProperty("Error") String error) {
+  public CryptopiaBaseResponseCryptopiaTicker(
+      @JsonProperty("Success") boolean success,
+      @JsonProperty("Message") String message,
+      @JsonProperty("Data") CryptopiaTicker data,
+      @JsonProperty("Error") String error) {
     super(success, message, data, error);
   }
 }

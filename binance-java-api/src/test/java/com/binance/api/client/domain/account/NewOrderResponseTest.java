@@ -8,12 +8,9 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.containsString;
-import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-/**
- * @see NewOrderResponse
- */
+/** @see NewOrderResponse */
 public class NewOrderResponseTest {
 
   private NewOrderResponse newOrderResponse;
@@ -46,4 +43,4 @@ public class NewOrderResponseTest {
   private static List<Trade> trades(final Trade... trades) {
     return Arrays.asList(trades);
   }
-} 
+}

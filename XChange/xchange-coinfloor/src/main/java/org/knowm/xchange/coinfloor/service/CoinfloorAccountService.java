@@ -32,11 +32,13 @@ public class CoinfloorAccountService extends CoinfloorAccountServiceRaw implemen
       CoinfloorBalance balance = getCoinfloorBalance(pair);
       rawBalances.add(balance);
     }
-    return CoinfloorAdapters.adaptAccountInfo(exchange.getExchangeMetaData().getCurrencies().keySet(), rawBalances);
+    return CoinfloorAdapters.adaptAccountInfo(
+        exchange.getExchangeMetaData().getCurrencies().keySet(), rawBalances);
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws NotAvailableFromExchangeException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws NotAvailableFromExchangeException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -46,7 +48,8 @@ public class CoinfloorAccountService extends CoinfloorAccountServiceRaw implemen
   }
 
   @Override
-  public String requestDepositAddress(Currency currency, String... args) throws NotAvailableFromExchangeException {
+  public String requestDepositAddress(Currency currency, String... args)
+      throws NotAvailableFromExchangeException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -56,8 +59,7 @@ public class CoinfloorAccountService extends CoinfloorAccountServiceRaw implemen
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

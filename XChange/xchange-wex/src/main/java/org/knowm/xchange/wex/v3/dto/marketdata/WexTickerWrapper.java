@@ -5,7 +5,8 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonCreator;
 
 /**
- * Author: brox Since: 11/12/13 11:00 PM Data object representing multi-currency market data from Wex API v.3
+ * Author: brox Since: 11/12/13 11:00 PM Data object representing multi-currency market data from
+ * Wex API v.3
  */
 public class WexTickerWrapper {
 
@@ -41,5 +42,4 @@ public class WexTickerWrapper {
 
     return "BTCETickerV3 [map=" + tickerMap.toString() + "]";
   }
-
 }

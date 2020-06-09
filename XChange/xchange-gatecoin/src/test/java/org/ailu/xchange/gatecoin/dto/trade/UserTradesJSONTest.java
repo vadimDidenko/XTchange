@@ -17,11 +17,13 @@ public class UserTradesJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = UserTradesJSONTest.class.getResourceAsStream("/trade/example-user-trades.json");
+    InputStream is =
+        UserTradesJSONTest.class.getResourceAsStream("/trade/example-user-trades.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    GatecoinTradeHistoryResult tradesHistoryResult = mapper.readValue(is, GatecoinTradeHistoryResult.class);
+    GatecoinTradeHistoryResult tradesHistoryResult =
+        mapper.readValue(is, GatecoinTradeHistoryResult.class);
     GatecoinTradeHistory[] tradesHistory = tradesHistoryResult.getTransactions();
 
     assertThat(tradesHistoryResult.getResponseStatus().getMessage()).isEqualTo("OK");
@@ -31,6 +33,5 @@ public class UserTradesJSONTest {
     assertThat(tradesHistory[0].getAskOrderID()).isEqualTo("BK11432053513");
 
     assertThat(tradesHistory[1].getPrice()).isEqualTo(new BigDecimal("125"));
-
   }
 }

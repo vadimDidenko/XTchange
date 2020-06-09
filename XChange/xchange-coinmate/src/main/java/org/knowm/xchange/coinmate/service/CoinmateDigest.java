@@ -47,7 +47,8 @@ public class CoinmateDigest extends BaseParamsDigest {
    *
    * @param secretKeyBase64
    * @param clientId
-   * @param publicApiKey @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded key is invalid).
+   * @param publicApiKey @throws IllegalArgumentException if key is invalid (cannot be
+   *     base-64-decoded or the decoded key is invalid).
    */
   private CoinmateDigest(String secretKeyBase64, String clientId, String publicApiKey) {
 
@@ -56,9 +57,12 @@ public class CoinmateDigest extends BaseParamsDigest {
     this.publicApiKey = publicApiKey;
   }
 
-  public static CoinmateDigest createInstance(String secretKeyBase64, String clientId, String publicApiKey) {
+  public static CoinmateDigest createInstance(
+      String secretKeyBase64, String clientId, String publicApiKey) {
 
-    return secretKeyBase64 == null ? null : new CoinmateDigest(secretKeyBase64, clientId, publicApiKey);
+    return secretKeyBase64 == null
+        ? null
+        : new CoinmateDigest(secretKeyBase64, clientId, publicApiKey);
   }
 
   @Override

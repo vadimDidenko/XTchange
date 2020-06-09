@@ -21,8 +21,12 @@ public class BitfinexLendLevel {
    * @param timestamp
    * @param frr
    */
-  public BitfinexLendLevel(@JsonProperty("rate") BigDecimal rate, @JsonProperty("amount") BigDecimal amount, @JsonProperty("period") int period,
-      @JsonProperty("timestamp") float timestamp, @JsonProperty("frr") String frr) {
+  public BitfinexLendLevel(
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("period") int period,
+      @JsonProperty("timestamp") float timestamp,
+      @JsonProperty("frr") String frr) {
 
     this.rate = rate;
     this.amount = amount;
@@ -59,6 +63,16 @@ public class BitfinexLendLevel {
   @Override
   public String toString() {
 
-    return "BitfinexLendLevel [rate=" + rate + ", amount=" + amount + ", period=" + period + ", timestamp=" + timestamp + ", frr=" + frr + "]";
+    return "BitfinexLendLevel [rate="
+        + rate
+        + ", amount="
+        + amount
+        + ", period="
+        + period
+        + ", timestamp="
+        + timestamp
+        + ", frr="
+        + frr
+        + "]";
   }
 }

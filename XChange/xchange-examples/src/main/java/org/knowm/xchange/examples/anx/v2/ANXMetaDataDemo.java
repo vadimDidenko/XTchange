@@ -16,8 +16,12 @@ public class ANXMetaDataDemo {
     Exchange anx = ExchangeFactory.INSTANCE.createExchange(ANXExchange.class.getName());
     ExchangeMetaData exchangeMetaData = anx.getExchangeMetaData();
     System.out.println(exchangeMetaData.toString());
-    System.out.println("private poll delay ms: " + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPrivateRateLimits()));
-    System.out.println("public  poll delay ms: " + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPublicRateLimits()));
+    System.out.println(
+        "private poll delay ms: "
+            + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPrivateRateLimits()));
+    System.out.println(
+        "public  poll delay ms: "
+            + ExchangeMetaData.getPollDelayMillis(exchangeMetaData.getPublicRateLimits()));
 
     //    anx.
 
@@ -26,7 +30,5 @@ public class ANXMetaDataDemo {
     exSpec.setMetaDataJsonFileOverride("/tmp/anxpro.json");
     anx = ExchangeFactory.INSTANCE.createExchange(exSpec);
     System.out.println(anx.getExchangeMetaData().toString());
-
   }
-
 }

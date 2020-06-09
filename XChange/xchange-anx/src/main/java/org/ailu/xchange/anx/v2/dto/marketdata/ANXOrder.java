@@ -4,9 +4,7 @@ import java.math.BigDecimal;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing a buy or sell order from ANX
- */
+/** Data object representing a buy or sell order from ANX */
 public final class ANXOrder {
 
   private final BigDecimal price;
@@ -24,8 +22,12 @@ public final class ANXOrder {
    * @param amountInt
    * @param stamp
    */
-  public ANXOrder(@JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount, @JsonProperty("price_int") long priceInt,
-      @JsonProperty("amount_int") long amountInt, @JsonProperty("stamp") long stamp) {
+  public ANXOrder(
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("price_int") long priceInt,
+      @JsonProperty("amount_int") long amountInt,
+      @JsonProperty("stamp") long stamp) {
 
     this.price = price;
     this.amount = amount;
@@ -62,7 +64,16 @@ public final class ANXOrder {
   @Override
   public String toString() {
 
-    return "ANXOrder [price=" + price + ", amount=" + amount + ", priceInt=" + priceInt + ", amountInt=" + amountInt + ", stamp=" + stamp + "]";
+    return "ANXOrder [price="
+        + price
+        + ", amount="
+        + amount
+        + ", priceInt="
+        + priceInt
+        + ", amountInt="
+        + amountInt
+        + ", stamp="
+        + stamp
+        + "]";
   }
-
 }

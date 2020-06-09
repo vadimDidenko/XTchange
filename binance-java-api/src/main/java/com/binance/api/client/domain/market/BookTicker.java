@@ -4,35 +4,23 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Represents the best price/qty on the order book for a given symbol.
- */
+/** Represents the best price/qty on the order book for a given symbol. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class BookTicker {
 
-  /**
-   * Ticker symbol.
-   */
+  /** Ticker symbol. */
   private String symbol;
 
-  /**
-   * Bid price.
-   */
+  /** Bid price. */
   private String bidPrice;
 
-  /**
-   * Bid quantity
-   */
+  /** Bid quantity */
   private String bidQty;
 
-  /**
-   * Ask price.
-   */
+  /** Ask price. */
   private String askPrice;
 
-  /**
-   * Ask quantity.
-   */
+  /** Ask quantity. */
   private String askQty;
 
   public String getSymbol() {

@@ -29,7 +29,7 @@ public class BitmexOrder {
 
   /**
    * Constructor
-   * 
+   *
    * @param refId
    * @param userRefId
    * @param status
@@ -50,11 +50,26 @@ public class BitmexOrder {
    * @param closeTimestamp
    * @param closeReason
    */
-  public BitmexOrder(@JSONField(name = "refid") String refId, @JSONField(name = "userref") String userRefId, @JSONField(name = "status") String status, @JSONField(name = "opentm") double openTimestamp,
-                     @JSONField(name = "starttm") double startTimestamp, @JSONField(name = "expiretm") double expireTimestamp, @JSONField(name = "descr") BitmexOrderDescription orderDescription,
-                     @JSONField(name = "vol") BigDecimal volume, @JSONField(name = "vol_exec") BigDecimal volumeExecuted, @JSONField(name = "cost") BigDecimal cost, @JSONField(name = "fee") BigDecimal fee,
-                     @JSONField(name = "price") BigDecimal price, @JSONField(name = "stopprice") BigDecimal stopPrice, @JSONField(name = "limitprice") BigDecimal limitPrice, @JSONField(name = "misc") String misc,
-                     @JSONField(name = "oflags") List<String> orderFLags, @JSONField(name = "trades") List<String> tradeIds, @JSONField(name = "closetm") double closeTimestamp, @JSONField(name = "reason") String closeReason) {
+  public BitmexOrder(
+      @JSONField(name = "refid") String refId,
+      @JSONField(name = "userref") String userRefId,
+      @JSONField(name = "status") String status,
+      @JSONField(name = "opentm") double openTimestamp,
+      @JSONField(name = "starttm") double startTimestamp,
+      @JSONField(name = "expiretm") double expireTimestamp,
+      @JSONField(name = "descr") BitmexOrderDescription orderDescription,
+      @JSONField(name = "vol") BigDecimal volume,
+      @JSONField(name = "vol_exec") BigDecimal volumeExecuted,
+      @JSONField(name = "cost") BigDecimal cost,
+      @JSONField(name = "fee") BigDecimal fee,
+      @JSONField(name = "price") BigDecimal price,
+      @JSONField(name = "stopprice") BigDecimal stopPrice,
+      @JSONField(name = "limitprice") BigDecimal limitPrice,
+      @JSONField(name = "misc") String misc,
+      @JSONField(name = "oflags") List<String> orderFLags,
+      @JSONField(name = "trades") List<String> tradeIds,
+      @JSONField(name = "closetm") double closeTimestamp,
+      @JSONField(name = "reason") String closeReason) {
 
     this.refId = refId;
     this.userRefId = userRefId;
@@ -175,9 +190,44 @@ public class BitmexOrder {
   @Override
   public String toString() {
 
-    return "BitmexOrder [refId=" + refId + ", userRefId=" + userRefId + ", status=" + status + ", openTimestamp=" + openTimestamp + ", startTimestamp=" + startTimestamp + ", expireTimestamp="
-        + expireTimestamp + ", orderDescription=" + orderDescription + ", volume=" + volume + ", volumeExecuted=" + volumeExecuted + ", cost=" + cost + ", fee=" + fee + ", price=" + price
-        + ", stopPrice=" + stopPrice + ", limitPrice=" + limitPrice + ", miscellaneous=" + miscellaneous + ", orderFlags=" + orderFlags + ", tradeIds=" + tradeIds + ", closeTimestamp="
-        + closeTimestamp + ", closeReason=" + closeReason + "]";
+    return "BitmexOrder [refId="
+        + refId
+        + ", userRefId="
+        + userRefId
+        + ", status="
+        + status
+        + ", openTimestamp="
+        + openTimestamp
+        + ", startTimestamp="
+        + startTimestamp
+        + ", expireTimestamp="
+        + expireTimestamp
+        + ", orderDescription="
+        + orderDescription
+        + ", volume="
+        + volume
+        + ", volumeExecuted="
+        + volumeExecuted
+        + ", cost="
+        + cost
+        + ", fee="
+        + fee
+        + ", price="
+        + price
+        + ", stopPrice="
+        + stopPrice
+        + ", limitPrice="
+        + limitPrice
+        + ", miscellaneous="
+        + miscellaneous
+        + ", orderFlags="
+        + orderFlags
+        + ", tradeIds="
+        + tradeIds
+        + ", closeTimestamp="
+        + closeTimestamp
+        + ", closeReason="
+        + closeReason
+        + "]";
   }
 }

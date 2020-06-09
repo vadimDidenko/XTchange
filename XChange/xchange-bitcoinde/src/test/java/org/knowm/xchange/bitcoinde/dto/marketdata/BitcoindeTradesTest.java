@@ -15,14 +15,16 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class BitcoindeTradesTest {
 
   @Test
-  public void testBitcoindeOrderBook() throws JsonParseException, JsonMappingException, IOException {
+  public void testBitcoindeOrderBook()
+      throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
     InputStream is = BitcoindeTradesTest.class.getResourceAsStream("/trades.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    BitcoindeTradesWrapper bitcoindeTradesWrapper = mapper.readValue(is, BitcoindeTradesWrapper.class);
+    BitcoindeTradesWrapper bitcoindeTradesWrapper =
+        mapper.readValue(is, BitcoindeTradesWrapper.class);
     System.out.println("bitcoindeTradesWrapper = " + bitcoindeTradesWrapper);
 
     // Make sure trade values are correct

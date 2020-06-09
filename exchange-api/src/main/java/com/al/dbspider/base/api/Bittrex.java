@@ -5,9 +5,7 @@ import retrofit2.http.GET;
 
 public interface Bittrex {
 
-
-    // 一次查询所有交易对
-    @GET("v2.0/pub/Markets/GetMarketSummaries")
-    Call<String> ticker();
-
+  // 一次查询所有交易对
+  @GET("v2.0/pub/Markets/GetMarketSummaries")
+  Call<String> ticker();
 }

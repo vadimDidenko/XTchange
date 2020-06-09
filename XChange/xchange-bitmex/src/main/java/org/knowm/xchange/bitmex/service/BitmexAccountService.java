@@ -5,7 +5,6 @@ import java.math.BigDecimal;
 import java.util.List;
 
 import org.knowm.xchange.Exchange;
-import org.knowm.xchange.bitmex.Bitmex;
 import org.knowm.xchange.bitmex.dto.account.BitmexAccount;
 import org.knowm.xchange.bitmex.dto.account.BitmexWallet;
 import org.knowm.xchange.currency.Currency;
@@ -40,7 +39,8 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 
@@ -63,5 +63,4 @@ public class BitmexAccountService extends BitmexAccountServiceRaw implements Acc
   public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

@@ -15,22 +15,26 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @JsonDeserialize(using = CoinbaseBuySellLevelDeserializer.class)
 @JsonSerialize(using = EnumLowercaseJsonSerializer.class)
 public enum CoinbaseBuySellLevel {
-
-  ONE, TWO, THREE;
+  ONE,
+  TWO,
+  THREE;
 
   static class CoinbaseBuySellLevelDeserializer extends JsonDeserializer<CoinbaseBuySellLevel> {
 
-    private static final EnumFromStringHelper<CoinbaseBuySellLevel> FROM_STRING_HELPER = new EnumFromStringHelper<>(CoinbaseBuySellLevel.class)
-        .addJsonStringMapping("1", ONE).addJsonStringMapping("2", TWO).addJsonStringMapping("3", THREE);
+    private static final EnumFromStringHelper<CoinbaseBuySellLevel> FROM_STRING_HELPER =
+        new EnumFromStringHelper<>(CoinbaseBuySellLevel.class)
+            .addJsonStringMapping("1", ONE)
+            .addJsonStringMapping("2", TWO)
+            .addJsonStringMapping("3", THREE);
 
     @Override
-    public CoinbaseBuySellLevel deserialize(JsonParser jsonParser, final DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseBuySellLevel deserialize(
+        JsonParser jsonParser, final DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jsonParser.getCodec();
       final JsonNode node = oc.readTree(jsonParser);

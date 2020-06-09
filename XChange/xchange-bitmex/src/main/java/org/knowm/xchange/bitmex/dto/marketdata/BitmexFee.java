@@ -44,7 +44,8 @@ public class BitmexFee {
   static class BitmexFeeDeserializer extends JsonDeserializer<BitmexFee> {
 
     @Override
-    public BitmexFee deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitmexFee deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

@@ -13,9 +13,10 @@ public class KrakenTradeBalanceInfoResult extends KrakenResult<KrakenTradeBalanc
    * @param result
    * @param error
    */
-  public KrakenTradeBalanceInfoResult(@JsonProperty("result") KrakenTradeBalanceInfo result, @JsonProperty("error") String[] error) {
+  public KrakenTradeBalanceInfoResult(
+      @JsonProperty("result") KrakenTradeBalanceInfo result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
-
 }

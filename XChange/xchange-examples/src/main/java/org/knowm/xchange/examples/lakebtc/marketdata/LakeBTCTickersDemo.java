@@ -11,9 +11,7 @@ import org.knowm.xchange.lakebtc.dto.marketdata.LakeBTCTickers;
 import org.knowm.xchange.lakebtc.service.LakeBTCMarketDataServiceRaw;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Created by Cristi on 12/22/2014.
- */
+/** Created by Cristi on 12/22/2014. */
 public class LakeBTCTickersDemo {
 
   public static void main(String[] args) throws IOException {
@@ -41,11 +39,11 @@ public class LakeBTCTickersDemo {
     System.out.println("Volume: " + ticker.getVolume().toString());
     System.out.println("High: " + ticker.getHigh().toString());
     System.out.println("Low: " + ticker.getLow().toString());
-
   }
 
   private static void raw(Exchange lakeBtcExchange) throws IOException {
-    LakeBTCMarketDataServiceRaw marketDataService = (LakeBTCMarketDataServiceRaw) lakeBtcExchange.getMarketDataService();
+    LakeBTCMarketDataServiceRaw marketDataService =
+        (LakeBTCMarketDataServiceRaw) lakeBtcExchange.getMarketDataService();
     LakeBTCTickers tickers = marketDataService.getLakeBTCTickers();
 
     System.out.println("Ticker: " + tickers.getCny().toString());
@@ -61,6 +59,5 @@ public class LakeBTCTickersDemo {
     System.out.println("Volume: " + tickers.getUsd().getVolume().toString());
     System.out.println("High: " + tickers.getUsd().getHigh().toString());
     System.out.println("Low: " + tickers.getUsd().getLow().toString());
-
   }
 }

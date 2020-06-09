@@ -7,11 +7,8 @@ import org.knowm.xchange.abucoins.dto.trade.AbucoinsOrder;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
 /**
- * <p>POJO representing the output JSON for the Abucoins
- * <code>GET /products/&lt;product-id&gt;/trades</code> endpoint.</p>
- *
- * Example:
- * <code><pre>
+ * POJO representing the output JSON for the Abucoins <code>GET /products/&lt;product-id&gt;/trades
+ * </code> endpoint. Example: <code><pre>
  * [
  *     {
  *         "time": "2017-09-21T12:33:03Z",
@@ -29,34 +26,38 @@ import com.fasterxml.jackson.annotation.JsonProperty;
  *     }
  * ]
  * </pre></code>
+ *
  * @author bryant_harris
  */
 public class AbucoinsTrade {
   /** time in UTC */
   String time;
-  
+
   /** identifier of the last trade */
   String tradeID;
-  
+
   /** last price */
   BigDecimal price;
 
   /** size of the last trade */
   BigDecimal size;
-  
+
   /** maker order side(sell or buy) */
   AbucoinsOrder.Side side;
 
   /**
-   * 
    * @param time time in UTC
    * @param tradeID identifier of the last trade
    * @param price last price
    * @param size size of the last trade
    * @param side maker order side(sell or buy)
    */
-  public AbucoinsTrade(@JsonProperty("time") String time, @JsonProperty("trade_id") String tradeID, @JsonProperty("price") BigDecimal price,
-                       @JsonProperty("size") BigDecimal size, @JsonProperty("side") AbucoinsOrder.Side side) {
+  public AbucoinsTrade(
+      @JsonProperty("time") String time,
+      @JsonProperty("trade_id") String tradeID,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("side") AbucoinsOrder.Side side) {
 
     this.time = time;
     this.tradeID = tradeID;
@@ -92,7 +93,16 @@ public class AbucoinsTrade {
 
   @Override
   public String toString() {
-    return "AbucoinsTrade [time=" + time + ", tradeID=" + tradeID + ", price=" + price + ", size=" + size + ", side="
-        + side + "]";
+    return "AbucoinsTrade [time="
+        + time
+        + ", tradeID="
+        + tradeID
+        + ", price="
+        + price
+        + ", size="
+        + size
+        + ", side="
+        + side
+        + "]";
   }
 }

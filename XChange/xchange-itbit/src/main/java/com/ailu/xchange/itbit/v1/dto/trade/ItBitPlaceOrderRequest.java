@@ -22,7 +22,13 @@ public class ItBitPlaceOrderRequest {
   @JsonProperty("instrument")
   private String instrument;
 
-  public ItBitPlaceOrderRequest(String side, String type, String baseCurrency, String amount, String price, String instrument) {
+  public ItBitPlaceOrderRequest(
+      String side,
+      String type,
+      String baseCurrency,
+      String amount,
+      String price,
+      String instrument) {
 
     super();
     this.side = side;

@@ -10,9 +10,9 @@ public class BitcoinChartsMetaDataDemo {
 
   public static void main(String[] args) throws IOException {
 
-    Exchange exchange = ExchangeFactory.INSTANCE.createExchange(BitcoinChartsExchange.class.getName());
+    Exchange exchange =
+        ExchangeFactory.INSTANCE.createExchange(BitcoinChartsExchange.class.getName());
     exchange.remoteInit();
     System.out.println(exchange.getExchangeMetaData().toString());
   }
-
 }

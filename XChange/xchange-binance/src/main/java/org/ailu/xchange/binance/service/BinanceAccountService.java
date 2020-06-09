@@ -36,22 +36,27 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    Long recvWindow = (Long) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
+    Long recvWindow =
+        (Long) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
     BinanceAccountInformation acc = super.account(recvWindow, getTimestamp());
-    List<Balance> balances = acc.balances.stream().map(b -> new Balance(b.getCurrency(), b.getTotal(), b.getAvailable()))
-        .collect(Collectors.toList());
+    List<Balance> balances =
+        acc.balances.stream()
+            .map(b -> new Balance(b.getCurrency(), b.getTotal(), b.getAvailable()))
+            .collect(Collectors.toList());
     return new AccountInfo(new Wallet(balances));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws ExchangeException, NotAvailableFromExchangeException,
+          NotYetImplementedForExchangeException, IOException {
     return super.withdraw(currency.getCurrencyCode(), address, amount);
   }
 
   @Override
-  public String withdrawFunds(
-      WithdrawFundsParams params) throws ExchangeException, NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  public String withdrawFunds(WithdrawFundsParams params)
+      throws ExchangeException, NotAvailableFromExchangeException,
+          NotYetImplementedForExchangeException, IOException {
     if (!(params instanceof DefaultWithdrawFundsParams)) {
       throw new RuntimeException("DefaultWithdrawFundsParams must be provided.");
     }
@@ -59,7 +64,12 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
     if (params instanceof RippleWithdrawFundsParams) {
       RippleWithdrawFundsParams rippleParams = null;
       rippleParams = (RippleWithdrawFundsParams) params;
-      id = super.withdraw(rippleParams.currency.getCurrencyCode(), rippleParams.address, rippleParams.tag, rippleParams.amount);
+      id =
+          super.withdraw(
+              rippleParams.currency.getCurrencyCode(),
+              rippleParams.address,
+              rippleParams.tag,
+              rippleParams.amount);
     } else {
       DefaultWithdrawFundsParams p = (DefaultWithdrawFundsParams) params;
       id = super.withdraw(p.currency.getCurrencyCode(), p.address, p.amount);
@@ -86,7 +96,8 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
         asset = cp.getCurrency().getCurrencyCode();
       }
     }
-    Long recvWindow = (Long) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
+    Long recvWindow =
+        (Long) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("recvWindow");
 
     boolean withdrawals = true;
     boolean deposits = true;
@@ -113,25 +124,49 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
 
     List<FundingRecord> result = new ArrayList<>();
     if (withdrawals) {
-      super.withdrawHistory(asset, startTime, endTime, recvWindow, getTimestamp()).forEach(w -> {
-        result.add(new FundingRecord(w.address, new Date(w.applyTime), Currency.getInstance(w.asset), w.amount, w.id, w.txId, Type.WITHDRAWAL,
-            withdrawStatus(w.status), null, null, null));
-      });
+      super.withdrawHistory(asset, startTime, endTime, recvWindow, getTimestamp())
+          .forEach(
+              w -> {
+                result.add(
+                    new FundingRecord(
+                        w.address,
+                        new Date(w.applyTime),
+                        Currency.getInstance(w.asset),
+                        w.amount,
+                        w.id,
+                        w.txId,
+                        Type.WITHDRAWAL,
+                        withdrawStatus(w.status),
+                        null,
+                        null,
+                        null));
+              });
     }
 
     if (deposits) {
-      super.depositHistory(asset, startTime, endTime, recvWindow, getTimestamp()).forEach(d -> {
-        result.add(new FundingRecord(d.address, new Date(d.insertTime), Currency.getInstance(d.asset), d.amount, null, d.txId, Type.DEPOSIT,
-            depositStatus(d.status), null, null, null));
-      });
+      super.depositHistory(asset, startTime, endTime, recvWindow, getTimestamp())
+          .forEach(
+              d -> {
+                result.add(
+                    new FundingRecord(
+                        d.address,
+                        new Date(d.insertTime),
+                        Currency.getInstance(d.asset),
+                        d.amount,
+                        null,
+                        d.txId,
+                        Type.DEPOSIT,
+                        depositStatus(d.status),
+                        null,
+                        null,
+                        null));
+              });
     }
 
     return result;
   }
 
-  /**
-   * (0:Email Sent,1:Cancelled 2:Awaiting Approval 3:Rejected 4:Processing 5:Failure 6Completed)
-   */
+  /** (0:Email Sent,1:Cancelled 2:Awaiting Approval 3:Rejected 4:Processing 5:Failure 6Completed) */
   private static FundingRecord.Status withdrawStatus(int status) {
     switch (status) {
       case 0:
@@ -150,9 +185,7 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
     }
   }
 
-  /**
-   * (0:pending,1:success)
-   */
+  /** (0:pending,1:success) */
   private static FundingRecord.Status depositStatus(int status) {
     switch (status) {
       case 0:
@@ -163,5 +196,4 @@ public class BinanceAccountService extends BinanceAccountServiceRaw implements A
         throw new RuntimeException("Unknown binance deposit status: " + status);
     }
   }
-
 }

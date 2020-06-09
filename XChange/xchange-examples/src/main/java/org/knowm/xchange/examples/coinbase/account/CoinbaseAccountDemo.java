@@ -25,9 +25,7 @@ import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.examples.coinbase.CoinbaseDemoUtils;
 import org.knowm.xchange.service.account.AccountService;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseAccountDemo {
 
   public static void main(String[] args) throws IOException {
@@ -73,7 +71,8 @@ public class CoinbaseAccountDemo {
     demoRecurringPayments(accountService);
   }
 
-  private static void demoRecurringPayments(CoinbaseAccountService accountService) throws IOException {
+  private static void demoRecurringPayments(CoinbaseAccountService accountService)
+      throws IOException {
 
     CoinbaseRecurringPayments recurringPayments = accountService.getCoinbaseRecurringPayments();
     System.out.println(recurringPayments);
@@ -96,7 +95,9 @@ public class CoinbaseAccountDemo {
     user = accountService.updateCoinbaseUser(user);
     System.out.println("Updated User: " + user);
 
-    CoinbaseUser newUser = CoinbaseUser.createCoinbaseNewUserWithReferrerId("demo@demo.com", "pass1234", "527d2a1ffedcb8b73b000028");
+    CoinbaseUser newUser =
+        CoinbaseUser.createCoinbaseNewUserWithReferrerId(
+            "demo@demo.com", "pass1234", "527d2a1ffedcb8b73b000028");
     String oauthClientId = ""; // optional
     CoinbaseUser createdUser = accountService.createCoinbaseUser(newUser, oauthClientId);
     System.out.println("Newly created user: " + createdUser);
@@ -116,7 +117,8 @@ public class CoinbaseAccountDemo {
     CoinbaseAddress receiveAddress = accountService.getCoinbaseReceiveAddress();
     System.out.println(receiveAddress);
 
-    CoinbaseAddress generatedReceiveAddress = accountService.generateCoinbaseReceiveAddress("http://www.example.com/callback", "test");
+    CoinbaseAddress generatedReceiveAddress =
+        accountService.generateCoinbaseReceiveAddress("http://www.example.com/callback", "test");
     System.out.println(generatedReceiveAddress);
 
     CoinbaseAddresses addresses = accountService.getCoinbaseAddresses();
@@ -125,15 +127,19 @@ public class CoinbaseAccountDemo {
 
   private static void demoTransactions(CoinbaseAccountService accountService) throws IOException {
 
-    CoinbaseRequestMoneyRequest moneyRequest = CoinbaseTransaction.createMoneyRequest("xchange@demo.com", "BTC", new BigDecimal(".001"))
-        .withNotes("test");
-    CoinbaseTransaction pendingTransaction = accountService.requestMoneyCoinbaseRequest(moneyRequest);
+    CoinbaseRequestMoneyRequest moneyRequest =
+        CoinbaseTransaction.createMoneyRequest("xchange@demo.com", "BTC", new BigDecimal(".001"))
+            .withNotes("test");
+    CoinbaseTransaction pendingTransaction =
+        accountService.requestMoneyCoinbaseRequest(moneyRequest);
     System.out.println(pendingTransaction);
 
-    CoinbaseBaseResponse resendResponse = accountService.resendCoinbaseRequest(pendingTransaction.getId());
+    CoinbaseBaseResponse resendResponse =
+        accountService.resendCoinbaseRequest(pendingTransaction.getId());
     System.out.println(resendResponse);
 
-    CoinbaseBaseResponse cancelResponse = accountService.cancelCoinbaseRequest(pendingTransaction.getId());
+    CoinbaseBaseResponse cancelResponse =
+        accountService.cancelCoinbaseRequest(pendingTransaction.getId());
     System.out.println(cancelResponse);
 
     // CoinbaseSendMoneyRequest sendMoneyRequest = CoinbaseTransaction
@@ -142,14 +148,16 @@ public class CoinbaseAccountDemo {
     // CoinbaseTransaction sendTransaction = accountService.sendMoney(sendMoneyRequest);
     // System.out.println(sendTransaction);
 
-    // CoinbaseTransaction completedTransaction = accountService.completeRequest("530010d62b342891e2000083");
+    // CoinbaseTransaction completedTransaction =
+    // accountService.completeRequest("530010d62b342891e2000083");
     // System.out.println(completedTransaction);
 
     CoinbaseTransactions transactions = accountService.getCoinbaseTransactions();
     System.out.println(transactions);
 
     if (transactions.getTotalCount() > 0) {
-      CoinbaseTransaction transaction = accountService.getCoinbaseTransaction(transactions.getTransactions().get(0).getId());
+      CoinbaseTransaction transaction =
+          accountService.getCoinbaseTransaction(transactions.getTransactions().get(0).getId());
       System.out.println(transaction);
     }
   }

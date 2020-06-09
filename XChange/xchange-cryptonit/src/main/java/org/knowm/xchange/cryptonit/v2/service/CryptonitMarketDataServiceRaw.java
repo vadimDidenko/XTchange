@@ -29,7 +29,9 @@ public class CryptonitMarketDataServiceRaw extends CryptonitBaseService {
   public CryptonitTicker getCryptonitTicker(CurrencyPair currencyPair) throws IOException {
 
     // Request data
-    CryptonitTicker cryptonitTicker = cryptonit.getTicker(currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode());
+    CryptonitTicker cryptonitTicker =
+        cryptonit.getTicker(
+            currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode());
 
     // Adapt to XChange DTOs
     return cryptonitTicker;
@@ -38,8 +40,12 @@ public class CryptonitMarketDataServiceRaw extends CryptonitBaseService {
   public CryptonitOrders getCryptonitAsks(CurrencyPair currencyPair, int limit) throws IOException {
 
     // Request data
-    CryptonitOrders cryptonitDepth = cryptonit.getOrders(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode(), "placed",
-        String.valueOf(limit));
+    CryptonitOrders cryptonitDepth =
+        cryptonit.getOrders(
+            currencyPair.base.getCurrencyCode(),
+            currencyPair.counter.getCurrencyCode(),
+            "placed",
+            String.valueOf(limit));
 
     return cryptonitDepth;
   }
@@ -47,17 +53,26 @@ public class CryptonitMarketDataServiceRaw extends CryptonitBaseService {
   public CryptonitOrders getCryptonitBids(CurrencyPair currencyPair, int limit) throws IOException {
 
     // Request data
-    CryptonitOrders cryptonitDepth = cryptonit.getOrders(currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode(), "placed",
-        String.valueOf(limit));
+    CryptonitOrders cryptonitDepth =
+        cryptonit.getOrders(
+            currencyPair.counter.getCurrencyCode(),
+            currencyPair.base.getCurrencyCode(),
+            "placed",
+            String.valueOf(limit));
 
     return cryptonitDepth;
   }
 
-  public CryptonitOrders getCryptonitTrades(CurrencyPair currencyPair, int limit) throws IOException {
+  public CryptonitOrders getCryptonitTrades(CurrencyPair currencyPair, int limit)
+      throws IOException {
 
     // Request data
-    CryptonitOrders cryptonitTrades = cryptonit.getOrders(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode(), "filled",
-        String.valueOf(limit));
+    CryptonitOrders cryptonitTrades =
+        cryptonit.getOrders(
+            currencyPair.base.getCurrencyCode(),
+            currencyPair.counter.getCurrencyCode(),
+            "filled",
+            String.valueOf(limit));
 
     return cryptonitTrades;
   }

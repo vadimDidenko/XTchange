@@ -10,9 +10,7 @@ import org.knowm.xchange.examples.coinbase.CoinbaseDemoUtils;
 import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.DefaultTradeHistoryParamPaging;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseTradeDemo {
 
   public static void main(String[] args) throws IOException {
@@ -26,7 +24,8 @@ public class CoinbaseTradeDemo {
 
   public static void generic(TradeService tradeService) throws IOException {
 
-    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new BigDecimal(".01"), Currency.BTC, Currency.USD);
+    // MarketOrder marketOrder = new MarketOrder(OrderType.BID, new BigDecimal(".01"), Currency.BTC,
+    // Currency.USD);
     // String orderId = tradeService.placeMarketOrder(marketOrder);
     // System.out.println("Order Id: " + orderId);
 

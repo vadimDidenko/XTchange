@@ -16,9 +16,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 import org.knowm.xchange.taurus.TaurusAdapters;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class TaurusAccountService extends TaurusAccountServiceRaw implements AccountService {
 
   public TaurusAccountService(Exchange exchange) {
@@ -27,11 +25,13 @@ public class TaurusAccountService extends TaurusAccountServiceRaw implements Acc
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
-    return TaurusAdapters.adaptAccountInfo(getTaurusBalance(), exchange.getExchangeSpecification().getUserName());
+    return TaurusAdapters.adaptAccountInfo(
+        getTaurusBalance(), exchange.getExchangeSpecification().getUserName());
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdrawTaurusFunds(amount, address);
   }
 
@@ -55,8 +55,7 @@ public class TaurusAccountService extends TaurusAccountServiceRaw implements Acc
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

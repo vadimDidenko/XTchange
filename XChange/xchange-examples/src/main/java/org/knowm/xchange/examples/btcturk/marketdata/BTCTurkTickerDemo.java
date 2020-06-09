@@ -11,8 +11,8 @@ import org.knowm.xchange.examples.btcturk.BTCTurkDemoUtils;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * @author semihunaldi
- * Demonstrate requesting Ticker at BTCTurk. You can access both the raw data from BTCTurk or the XChange generic DTO data format.
+ * @author semihunaldi Demonstrate requesting Ticker at BTCTurk. You can access both the raw data
+ *     from BTCTurk or the XChange generic DTO data format.
  */
 public class BTCTurkTickerDemo {
 

@@ -51,6 +51,8 @@ public class RippleOrderCancelResponseBody {
 
   @Override
   public String toString() {
-    return String.format("%s [account=%s fee=%s, offerSequence=%d sequence=%d]", getClass().getSimpleName(), account, fee, offerSequence, sequence);
+    return String.format(
+        "%s [account=%s fee=%s, offerSequence=%d sequence=%d]",
+        getClass().getSimpleName(), account, fee, offerSequence, sequence);
   }
 }

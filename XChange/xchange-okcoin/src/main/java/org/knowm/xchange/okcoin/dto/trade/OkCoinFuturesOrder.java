@@ -21,11 +21,20 @@ public class OkCoinFuturesOrder {
   private final BigDecimal unitAmount;
   private final int leverRate;
 
-  public OkCoinFuturesOrder(@JsonProperty("amount") BigDecimal amount, @JsonProperty("contract_name") String contractName,
-      @JsonProperty("create_date") Date createdDate, @JsonProperty("deal_amount") BigDecimal dealAmount, @JsonProperty("fee") BigDecimal fee,
-      @JsonProperty("order_id") String orderId, @JsonProperty("price") BigDecimal price, @JsonProperty("price_avg") BigDecimal avgPrice,
-      @JsonProperty("status") int status, @JsonProperty("symbol") String symbol, @JsonProperty("type") String type,
-      @JsonProperty("unit_amount") BigDecimal unitAmount, @JsonProperty("lever_rate") int leverRate) {
+  public OkCoinFuturesOrder(
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("contract_name") String contractName,
+      @JsonProperty("create_date") Date createdDate,
+      @JsonProperty("deal_amount") BigDecimal dealAmount,
+      @JsonProperty("fee") BigDecimal fee,
+      @JsonProperty("order_id") String orderId,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("price_avg") BigDecimal avgPrice,
+      @JsonProperty("status") int status,
+      @JsonProperty("symbol") String symbol,
+      @JsonProperty("type") String type,
+      @JsonProperty("unit_amount") BigDecimal unitAmount,
+      @JsonProperty("lever_rate") int leverRate) {
 
     this.amount = amount;
     this.contractName = contractName;
@@ -106,5 +115,4 @@ public class OkCoinFuturesOrder {
 
     return leverRate;
   }
-
 }

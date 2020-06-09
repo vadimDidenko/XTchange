@@ -19,9 +19,7 @@ import org.knowm.xchange.utils.nonce.CurrentTimeNonceFactory;
 
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author allenday
- */
+/** @author allenday */
 public class CoinMarketCapExchange extends BaseExchange implements Exchange {
 
   private SynchronizedValueFactory<Long> nonceFactory = new CurrentTimeNonceFactory();
@@ -34,18 +32,19 @@ public class CoinMarketCapExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    final ExchangeSpecification defaultExchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    final ExchangeSpecification defaultExchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     defaultExchangeSpecification.setSslUri("https://api.coinmarketcap.com");
     defaultExchangeSpecification.setHost("coinmarketcap.com");
     defaultExchangeSpecification.setExchangeName("CoinMarketCap");
-    defaultExchangeSpecification.setExchangeDescription("Cryptocurrency market cap rankings, charts, and more.");
+    defaultExchangeSpecification.setExchangeDescription(
+        "Cryptocurrency market cap rankings, charts, and more.");
     return defaultExchangeSpecification;
   }
 
   @Override
   public ExchangeSpecification getExchangeSpecification() {
-    if (exchangeSpecification == null)
-      exchangeSpecification = getDefaultExchangeSpecification();
+    if (exchangeSpecification == null) exchangeSpecification = getDefaultExchangeSpecification();
     return exchangeSpecification;
   }
 

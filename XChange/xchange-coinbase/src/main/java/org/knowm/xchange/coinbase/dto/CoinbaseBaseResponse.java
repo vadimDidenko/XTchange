@@ -5,15 +5,15 @@ import java.util.List;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseBaseResponse {
 
   private final boolean success;
   private final List<String> errors;
 
-  protected CoinbaseBaseResponse(@JsonProperty("success") final boolean success, @JsonProperty("errors") final List<String> errors) {
+  protected CoinbaseBaseResponse(
+      @JsonProperty("success") final boolean success,
+      @JsonProperty("errors") final List<String> errors) {
 
     this.success = success;
     this.errors = errors;

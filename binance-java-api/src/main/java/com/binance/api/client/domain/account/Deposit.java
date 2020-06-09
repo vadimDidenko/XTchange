@@ -4,35 +4,23 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * A deposit that was done to a Binance account.
- */
+/** A deposit that was done to a Binance account. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Deposit {
 
-  /**
-   * Amount deposited.
-   */
+  /** Amount deposited. */
   private String amount;
 
-  /**
-   * Symbol.
-   */
+  /** Symbol. */
   private String asset;
 
-  /**
-   * Deposit time.
-   */
+  /** Deposit time. */
   private String insertTime;
 
-  /**
-   * Transaction id
-   */
+  /** Transaction id */
   private String txId;
 
-  /**
-   * (0:pending,1:success)
-   */
+  /** (0:pending,1:success) */
   private int status;
 
   public String getAmount() {

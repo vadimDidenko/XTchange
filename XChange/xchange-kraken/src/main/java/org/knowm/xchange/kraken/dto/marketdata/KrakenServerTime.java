@@ -18,8 +18,10 @@ public class KrakenServerTime {
    * @param unixTime
    * @param rfc1123Time
    */
-  public KrakenServerTime(@JsonProperty("unixtime") long unixTime,
-      @JsonProperty("rfc1123") @JsonDeserialize(using = Rfc1123DateDeserializer.class) Date rfc1123Time) {
+  public KrakenServerTime(
+      @JsonProperty("unixtime") long unixTime,
+      @JsonProperty("rfc1123") @JsonDeserialize(using = Rfc1123DateDeserializer.class)
+          Date rfc1123Time) {
 
     this.unixTime = unixTime;
     this.rfc1123Time = rfc1123Time;
@@ -40,5 +42,4 @@ public class KrakenServerTime {
 
     return "KrakenServerTime [unixTime=" + unixTime + ", rfc1123Time=" + rfc1123Time + "]";
   }
-
 }

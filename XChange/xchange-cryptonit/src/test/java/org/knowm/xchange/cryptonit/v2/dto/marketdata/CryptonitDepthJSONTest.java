@@ -10,22 +10,22 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test CryptonitDepth JSON parsing
- */
+/** Test CryptonitDepth JSON parsing */
 public class CryptonitDepthJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CryptonitDepthJSONTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
+    InputStream is =
+        CryptonitDepthJSONTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
     CryptonitOrders cryptonitDepth = mapper.readValue(is, CryptonitOrders.class);
 
     // Verify that the example data was unmarshalled correctly
-    assertThat(cryptonitDepth.getOrder(60751).getAskAmount()).isEqualTo(new BigDecimal("8.74000000"));
+    assertThat(cryptonitDepth.getOrder(60751).getAskAmount())
+        .isEqualTo(new BigDecimal("8.74000000"));
   }
 }

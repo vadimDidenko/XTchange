@@ -7,9 +7,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
-/**
- * Symbol information (base/quote).
- */
+/** Symbol information (base/quote). */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class SymbolInfo {
 

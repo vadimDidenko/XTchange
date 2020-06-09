@@ -4,39 +4,27 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * A withdraw that was done to a Binance account.
- */
+/** A withdraw that was done to a Binance account. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Withdraw {
 
-  /**
-   * Amount withdrawn.
-   */
+  /** Amount withdrawn. */
   private String amount;
 
-  /**
-   * Destination address.
-   */
+  /** Destination address. */
   private String address;
 
-  /**
-   * Symbol.
-   */
+  /** Symbol. */
   private String asset;
 
   private String applyTime;
 
   private String successTime;
 
-  /**
-   * Transaction id.
-   */
+  /** Transaction id. */
   private String txId;
 
-  /**
-   * Id.
-   */
+  /** Id. */
   private String id;
 
   /**

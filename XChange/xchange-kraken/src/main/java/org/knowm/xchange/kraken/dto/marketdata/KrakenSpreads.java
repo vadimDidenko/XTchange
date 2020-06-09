@@ -48,7 +48,8 @@ public class KrakenSpreads {
   static class KrakenSpreadsDeserializer extends JsonDeserializer<KrakenSpreads> {
 
     @Override
-    public KrakenSpreads deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenSpreads deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       List<KrakenSpread> krakenTrades = new ArrayList<>();
       long last = 0;
@@ -73,6 +74,5 @@ public class KrakenSpreads {
       }
       return new KrakenSpreads(krakenTrades, last);
     }
-
   }
 }

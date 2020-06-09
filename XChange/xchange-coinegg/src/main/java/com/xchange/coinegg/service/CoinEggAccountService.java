@@ -16,9 +16,9 @@ import java.util.List;
 
 public class CoinEggAccountService extends CoinEggAccountServiceRaw implements AccountService {
 
-	public CoinEggAccountService(Exchange exchange) {
-		super(exchange);
-	}
+  public CoinEggAccountService(Exchange exchange) {
+    super(exchange);
+  }
 
   @Override
   public AccountInfo getAccountInfo() throws IOException {
@@ -26,7 +26,8 @@ public class CoinEggAccountService extends CoinEggAccountServiceRaw implements A
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 

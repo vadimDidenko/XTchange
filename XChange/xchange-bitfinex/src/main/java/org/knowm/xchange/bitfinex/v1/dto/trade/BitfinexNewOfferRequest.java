@@ -27,7 +27,13 @@ public class BitfinexNewOfferRequest {
   @JsonProperty("direction")
   protected String direction;
 
-  public BitfinexNewOfferRequest(String nonce, String currency, BigDecimal amount, BigDecimal rate, int period, String direction) {
+  public BitfinexNewOfferRequest(
+      String nonce,
+      String currency,
+      BigDecimal amount,
+      BigDecimal rate,
+      int period,
+      String direction) {
 
     this.request = "/v1/offer/new";
     this.nonce = nonce;
@@ -82,5 +88,4 @@ public class BitfinexNewOfferRequest {
 
     return direction;
   }
-
 }

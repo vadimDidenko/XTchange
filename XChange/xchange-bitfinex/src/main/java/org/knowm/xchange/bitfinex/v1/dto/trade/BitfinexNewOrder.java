@@ -24,7 +24,13 @@ public class BitfinexNewOrder {
   @JsonProperty("price")
   protected BigDecimal price;
 
-  public BitfinexNewOrder(String symbol, String exchange, String side, String type, BigDecimal amount, BigDecimal price) {
+  public BitfinexNewOrder(
+      String symbol,
+      String exchange,
+      String side,
+      String type,
+      BigDecimal amount,
+      BigDecimal price) {
 
     this.symbol = symbol;
     this.exchange = exchange;
@@ -93,5 +99,4 @@ public class BitfinexNewOrder {
 
     this.price = price;
   }
-
 }

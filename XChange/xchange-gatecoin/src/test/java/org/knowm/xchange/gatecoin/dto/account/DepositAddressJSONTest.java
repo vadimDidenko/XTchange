@@ -10,20 +10,20 @@ import org.knowm.xchange.gatecoin.dto.account.Results.GatecoinDepositAddressResu
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author sumedha
- */
+/** @author sumedha */
 public class DepositAddressJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = WithdrawFundsJSONTest.class.getResourceAsStream("/account/example-deposit-response.json");
+    InputStream is =
+        WithdrawFundsJSONTest.class.getResourceAsStream("/account/example-deposit-response.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    GatecoinDepositAddressResult gatecoinDepositAddressResult = mapper.readValue(is, GatecoinDepositAddressResult.class);
+    GatecoinDepositAddressResult gatecoinDepositAddressResult =
+        mapper.readValue(is, GatecoinDepositAddressResult.class);
     GatecoinDepositAddress[] gatecoinDepositAddress = gatecoinDepositAddressResult.getAddresses();
 
     // Verify that the example data was unmarshalled correctly
@@ -31,7 +31,7 @@ public class DepositAddressJSONTest {
     assertThat(gatecoinDepositAddressResult.getResponseStatus().getMessage()).isEqualTo("OK");
 
     assertThat(gatecoinDepositAddress[0].getCurrency()).isEqualTo("BTC");
-    assertThat(gatecoinDepositAddress[0].getAddress()).isEqualTo("n3v78gsrYPd1Qt8GYgfbFNFruBeuauudEj");
-
+    assertThat(gatecoinDepositAddress[0].getAddress())
+        .isEqualTo("n3v78gsrYPd1Qt8GYgfbFNFruBeuauudEj");
   }
 }

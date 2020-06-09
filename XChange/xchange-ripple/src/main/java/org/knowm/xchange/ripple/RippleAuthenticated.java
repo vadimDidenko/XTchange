@@ -10,29 +10,29 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * See https://github.com/ripple/ripple-rest for up-to-date documentation.
- */
+/** See https://github.com/ripple/ripple-rest for up-to-date documentation. */
 @Path("v1")
 @Produces(MediaType.APPLICATION_JSON)
 public interface RippleAuthenticated {
 
-  /**
-   * Places an order
-   */
+  /** Places an order */
   @POST
   @Path("accounts/{address}/orders")
   @Consumes(MediaType.APPLICATION_JSON)
-  RippleOrderEntryResponse orderEntry(@PathParam("address") final String address, @QueryParam("validated") final boolean validated,
-                                      final RippleOrderEntryRequest request) throws IOException, RippleException;
+  RippleOrderEntryResponse orderEntry(
+      @PathParam("address") final String address,
+      @QueryParam("validated") final boolean validated,
+      final RippleOrderEntryRequest request)
+      throws IOException, RippleException;
 
-  /**
-   * Cancel an order
-   */
+  /** Cancel an order */
   @DELETE
   @Path("accounts/{address}/orders/{orderId}")
   @Consumes(MediaType.APPLICATION_JSON)
-  RippleOrderCancelResponse orderCancel(@PathParam("address") final String address, @PathParam("orderId") final long orderId,
-                                        @QueryParam("validated") final boolean validated, final RippleOrderCancelRequest request) throws IOException, RippleException;
-
+  RippleOrderCancelResponse orderCancel(
+      @PathParam("address") final String address,
+      @PathParam("orderId") final long orderId,
+      @QueryParam("validated") final boolean validated,
+      final RippleOrderCancelRequest request)
+      throws IOException, RippleException;
 }

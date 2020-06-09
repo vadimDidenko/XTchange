@@ -12,7 +12,8 @@ public class TrueFxExchange extends BaseExchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification specification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification specification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     specification.setShouldLoadRemoteMetaData(false);
     specification.setPlainTextUri("http://webrates.truefx.com/");
     specification.setExchangeName("TrueFX");

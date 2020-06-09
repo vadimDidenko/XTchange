@@ -43,9 +43,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class CoinmateAccountService extends CoinmateAccountServiceRaw implements AccountService {
 
   public static final int DEFAULT_RESULT_LIMIT = 100;
@@ -60,8 +58,8 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount,
-      String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     CoinmateTradeResponse response = coinmateBitcoinWithdrawal(amount, address);
 
     return Long.toString(response.getData());
@@ -77,8 +75,7 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public String requestDepositAddress(Currency currency,
-      String... args) throws IOException {
+  public String requestDepositAddress(Currency currency, String... args) throws IOException {
     CoinmateDepositAddresses addresses = coinmateBitcoinDepositAddresses();
 
     if (addresses.getData().isEmpty()) {
@@ -95,8 +92,7 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
 
     TradeHistoryParamsSorted.Order order = TradeHistoryParamsSorted.Order.asc;
     int limit = 1000;
@@ -114,10 +110,11 @@ public class CoinmateAccountService extends CoinmateAccountServiceRaw implements
       order = ((TradeHistoryParamsSorted) params).getOrder();
     }
 
-    CoinmateTransactionHistory coinmateTransactionHistory = getCoinmateTransactionHistory(offset, limit, CoinmateAdapters.adaptSortOrder(order));
+    CoinmateTransactionHistory coinmateTransactionHistory =
+        getCoinmateTransactionHistory(offset, limit, CoinmateAdapters.adaptSortOrder(order));
     return CoinmateAdapters.adaptFundingHistory(coinmateTransactionHistory);
   }
 
-  public static class CoinmateFundingHistoryParams extends CoinmateTradeService.CoinmateTradeHistoryHistoryParams {
-  }
+  public static class CoinmateFundingHistoryParams
+      extends CoinmateTradeService.CoinmateTradeHistoryHistoryParams {}
 }

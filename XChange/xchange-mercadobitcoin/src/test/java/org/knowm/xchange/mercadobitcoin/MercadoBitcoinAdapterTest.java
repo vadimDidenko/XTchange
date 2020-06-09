@@ -40,13 +40,17 @@ public class MercadoBitcoinAdapterTest {
   public void testOrderBookAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = MercadoBitcoinAdapterTest.class.getResourceAsStream("/marketdata/example-full-depth-data.json");
+    InputStream is =
+        MercadoBitcoinAdapterTest.class.getResourceAsStream(
+            "/marketdata/example-full-depth-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinOrderBook mercadoBitcoinOrderBook = mapper.readValue(is, MercadoBitcoinOrderBook.class);
+    MercadoBitcoinOrderBook mercadoBitcoinOrderBook =
+        mapper.readValue(is, MercadoBitcoinOrderBook.class);
 
-    OrderBook orderBook = MercadoBitcoinAdapters.adaptOrderBook(mercadoBitcoinOrderBook, CurrencyPair.BTC_BRL);
+    OrderBook orderBook =
+        MercadoBitcoinAdapters.adaptOrderBook(mercadoBitcoinOrderBook, CurrencyPair.BTC_BRL);
     assertThat(orderBook.getBids().size()).isEqualTo(127);
 
     // verify all fields filled
@@ -60,11 +64,13 @@ public class MercadoBitcoinAdapterTest {
   public void testTradesAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = MercadoBitcoinAdapterTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
+    InputStream is =
+        MercadoBitcoinAdapterTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinTransaction[] transactions = mapper.readValue(is, MercadoBitcoinTransaction[].class);
+    MercadoBitcoinTransaction[] transactions =
+        mapper.readValue(is, MercadoBitcoinTransaction[].class);
 
     Trades trades = MercadoBitcoinAdapters.adaptTrades(transactions, CurrencyPair.BTC_BRL);
     assertThat(trades.getTrades().size()).isEqualTo(1000);
@@ -81,7 +87,8 @@ public class MercadoBitcoinAdapterTest {
   public void testTickerAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = MercadoBitcoinAdapterTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        MercadoBitcoinAdapterTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -100,38 +107,50 @@ public class MercadoBitcoinAdapterTest {
   public void testAccountInfoAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = MercadoBitcoinAdapterTest.class.getResourceAsStream("/account/example-accountinfo-data.json");
+    InputStream is =
+        MercadoBitcoinAdapterTest.class.getResourceAsStream(
+            "/account/example-accountinfo-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo> mercadoBitcoinAccountInfo = mapper.readValue(is,
-        new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo>>() {
-        });
+    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo> mercadoBitcoinAccountInfo =
+        mapper.readValue(
+            is,
+            new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinAccountInfo>>() {});
 
-    AccountInfo accountInfo = MercadoBitcoinAdapters.adaptAccountInfo(mercadoBitcoinAccountInfo, "Nina Tufão & Bit");
+    AccountInfo accountInfo =
+        MercadoBitcoinAdapters.adaptAccountInfo(mercadoBitcoinAccountInfo, "Nina Tufão & Bit");
     assertThat(accountInfo.getUsername()).isEqualTo("Nina Tufão & Bit");
     assertThat(accountInfo.getWallet().getBalances()).hasSize(3);
-    assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getCurrency()).isEqualTo(Currency.BRL);
-    assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getTotal()).isEqualTo(new BigDecimal("248.29516"));
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency()).isEqualTo(Currency.BTC);
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal()).isEqualTo(new BigDecimal("0.25000000"));
-    assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getCurrency()).isEqualTo(Currency.LTC);
-    assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getTotal()).isEqualTo(new BigDecimal("0.00000000"));
+    assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getCurrency())
+        .isEqualTo(Currency.BRL);
+    assertThat(accountInfo.getWallet().getBalance(Currency.BRL).getTotal())
+        .isEqualTo(new BigDecimal("248.29516"));
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency())
+        .isEqualTo(Currency.BTC);
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal())
+        .isEqualTo(new BigDecimal("0.25000000"));
+    assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getCurrency())
+        .isEqualTo(Currency.LTC);
+    assertThat(accountInfo.getWallet().getBalance(Currency.LTC).getTotal())
+        .isEqualTo(new BigDecimal("0.00000000"));
   }
 
   @Test
   public void testOrdersAdapter() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = MercadoBitcoinAdapterTest.class.getResourceAsStream("/trade/example-userorders.json");
+    InputStream is =
+        MercadoBitcoinAdapterTest.class.getResourceAsStream("/trade/example-userorders.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders> apiResult = mapper.readValue(is,
-        new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders>>() {
-        });
+    MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders> apiResult =
+        mapper.readValue(
+            is, new TypeReference<MercadoBitcoinBaseTradeApiResult<MercadoBitcoinUserOrders>>() {});
 
-    List<LimitOrder> orders = MercadoBitcoinAdapters.adaptOrders(new CurrencyPair(Currency.LTC, Currency.BRL), apiResult);
+    List<LimitOrder> orders =
+        MercadoBitcoinAdapters.adaptOrders(new CurrencyPair(Currency.LTC, Currency.BRL), apiResult);
 
     Map<String, LimitOrder> orderById = new HashMap<>();
 
@@ -143,6 +162,7 @@ public class MercadoBitcoinAdapterTest {
     assertThat(orderById.get("1212").getTimestamp()).isEqualTo(new Date(1378929161000L));
     assertThat(orderById.get("1212").getLimitPrice()).isEqualTo(new BigDecimal("6.00000"));
     assertThat(orderById.get("1212").getOriginalAmount()).isEqualTo(new BigDecimal("165.47309607"));
-    assertThat(orderById.get("1212").getCurrencyPair()).isEqualTo(new CurrencyPair(Currency.LTC, Currency.BRL));
+    assertThat(orderById.get("1212").getCurrencyPair())
+        .isEqualTo(new CurrencyPair(Currency.LTC, Currency.BRL));
   }
 }

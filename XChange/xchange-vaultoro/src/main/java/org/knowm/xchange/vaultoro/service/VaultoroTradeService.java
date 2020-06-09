@@ -31,8 +31,7 @@ public class VaultoroTradeService extends VaultoroTradeServiceRaw implements Tra
   }
 
   @Override
-  public boolean cancelOrder(
-      String arg0) throws IOException {
+  public boolean cancelOrder(String arg0) throws IOException {
 
     try {
       VaultoroCancelOrderResponse response = super.cancelVaultoroOrder(arg0);
@@ -72,8 +71,7 @@ public class VaultoroTradeService extends VaultoroTradeServiceRaw implements Tra
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return VaultoroAdapters.adaptVaultoroOpenOrders(getVaultoroOrders());
   }
 
@@ -84,12 +82,12 @@ public class VaultoroTradeService extends VaultoroTradeServiceRaw implements Tra
   }
 
   @Override
-  public String placeLimitOrder(
-      LimitOrder arg0) throws IOException {
+  public String placeLimitOrder(LimitOrder arg0) throws IOException {
 
-    VaultoroNewOrderResponse response = super.placeLimitOrder(arg0.getCurrencyPair(), arg0.getType(), arg0.getOriginalAmount(), arg0.getLimitPrice());
+    VaultoroNewOrderResponse response =
+        super.placeLimitOrder(
+            arg0.getCurrencyPair(), arg0.getType(), arg0.getOriginalAmount(), arg0.getLimitPrice());
     return response.getData().getOrderID();
-
   }
 
   @Override
@@ -98,20 +96,16 @@ public class VaultoroTradeService extends VaultoroTradeServiceRaw implements Tra
   }
 
   @Override
-  public String placeMarketOrder(
-      MarketOrder arg0) throws IOException {
+  public String placeMarketOrder(MarketOrder arg0) throws IOException {
 
-    VaultoroNewOrderResponse response = super.placeMarketOrder(arg0.getCurrencyPair(), arg0.getType(), arg0.getOriginalAmount());
+    VaultoroNewOrderResponse response =
+        super.placeMarketOrder(arg0.getCurrencyPair(), arg0.getType(), arg0.getOriginalAmount());
     return response.getData().getOrderID();
-
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... arg0) throws IOException {
+  public Collection<Order> getOrder(String... arg0) throws IOException {
 
     throw new NotAvailableFromExchangeException();
-
   }
-
 }

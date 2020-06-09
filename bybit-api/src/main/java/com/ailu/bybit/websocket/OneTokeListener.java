@@ -1,14 +1,14 @@
-//package com.ailu.bybit.websocket.md;
+// package com.ailu.bybit.websocket.md;
 //
-//import com.ailu.bybit.api.OneToken;
-//import com.alibaba.fastjson.support.retrofit.Retrofit2ConverterFactory;
-//import retrofit2.Retrofit;
-//import retrofit2.converter.scalars.ScalarsConverterFactory;
+// import com.ailu.bybit.api.OneToken;
+// import com.alibaba.fastjson.support.retrofit.Retrofit2ConverterFactory;
+// import retrofit2.Retrofit;
+// import retrofit2.converter.scalars.ScalarsConverterFactory;
 //
-//import java.net.InetSocketAddress;
-//import java.net.Proxy;
+// import java.net.InetSocketAddress;
+// import java.net.Proxy;
 //
-///**
+/// **
 // * NOTE:
 // *
 // * @Version 1.0
@@ -17,7 +17,7 @@
 // * @Company Henan ailu
 // * @Date 2018/12/14 10:17
 // */
-//public class OneTokeListener {
+// public class OneTokeListener {
 //
 //    public interface OneTokenApi{
 //        /**
@@ -30,7 +30,8 @@
 //         *
 //         * Api-Key: 你的 onetoken API key
 //         *
-//         * Api-Signature: 请求签名，计算方法hex(HMAC_SHA256(ot_secret, verb + path + nonce + data))，这里的path为/ws/{account_name}，
+//         * Api-Signature: 请求签名，计算方法hex(HMAC_SHA256(ot_secret, verb + path + nonce +
+// data))，这里的path为/ws/{account_name}，
 //         * 例如/ws/ot-user1，ot-user1是account symbol中的账户名部分。
 //         *
 //         * Api-Meta: OT Account name（可选）.
@@ -64,7 +65,8 @@
 //         * //错误信息格式
 //         * {"action": "sub-info", "status": "failed", "message": "error message"}
 //         */
-//        String SEND_MSG = "{\"uri\":\"batch-subscribe\",\"contracts\":[\"okef/btc.usd.t\",\"okef/ltc.usd.t\",\"okef/eth.usd.t\",\"okef/etc.usd.t\",\"okef/bch.usd.t\",\"okef/eos.usd.t\",\"okef/xrp.usd.t\",\"okef/btg.usd.t\"]}";
+//        String SEND_MSG =
+// "{\"uri\":\"batch-subscribe\",\"contracts\":[\"okef/btc.usd.t\",\"okef/ltc.usd.t\",\"okef/eth.usd.t\",\"okef/etc.usd.t\",\"okef/bch.usd.t\",\"okef/eos.usd.t\",\"okef/xrp.usd.t\",\"okef/btg.usd.t\"]}";
 //
 //        /**
 //         * 1token websocket接口, {@link WSListener#start()} 方法最后调用
@@ -114,4 +116,4 @@
 //        }
 //    }
 //
-//}
+// }

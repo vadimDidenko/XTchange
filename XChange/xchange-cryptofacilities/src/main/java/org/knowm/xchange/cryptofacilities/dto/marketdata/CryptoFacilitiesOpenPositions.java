@@ -9,19 +9,21 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Panchen
- */
-
+/** @author Panchen */
 public class CryptoFacilitiesOpenPositions extends CryptoFacilitiesResult {
 
-  private static final SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
+  private static final SimpleDateFormat DATE_FORMAT =
+      new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
 
   private final Date serverTime;
   private final List<CryptoFacilitiesOpenPosition> openPositions;
 
-  public CryptoFacilitiesOpenPositions(@JsonProperty("result") String result, @JsonProperty("serverTime") String strServerTime,
-      @JsonProperty("error") String error, @JsonProperty("openPositions") List<CryptoFacilitiesOpenPosition> openPositions) throws ParseException {
+  public CryptoFacilitiesOpenPositions(
+      @JsonProperty("result") String result,
+      @JsonProperty("serverTime") String strServerTime,
+      @JsonProperty("error") String error,
+      @JsonProperty("openPositions") List<CryptoFacilitiesOpenPosition> openPositions)
+      throws ParseException {
 
     super(result, error);
 
@@ -41,7 +43,11 @@ public class CryptoFacilitiesOpenPositions extends CryptoFacilitiesResult {
   public String toString() {
 
     if (isSuccess()) {
-      StringBuilder res = new StringBuilder("CryptoFacilitiesOpenPositions [serverTime=" + DATE_FORMAT.format(serverTime) + ", openPositions=");
+      StringBuilder res =
+          new StringBuilder(
+              "CryptoFacilitiesOpenPositions [serverTime="
+                  + DATE_FORMAT.format(serverTime)
+                  + ", openPositions=");
       for (CryptoFacilitiesOpenPosition openPosition : openPositions)
         res.append(openPosition.toString()).append(", ");
       res.append(" ]");
@@ -51,5 +57,4 @@ public class CryptoFacilitiesOpenPositions extends CryptoFacilitiesResult {
       return super.toString();
     }
   }
-
 }

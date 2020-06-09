@@ -20,7 +20,8 @@ public class RippleAccountOrders extends RippleCommon {
 
   @Override
   public String toString() {
-    return String.format("%s [success=%b, validated=%b, ledger=%s, order=%s]", getClass().getSimpleName(), success, validated, ledger, orders);
+    return String.format(
+        "%s [success=%b, validated=%b, ledger=%s, order=%s]",
+        getClass().getSimpleName(), success, validated, ledger, orders);
   }
-
 }

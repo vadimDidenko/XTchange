@@ -10,9 +10,7 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test Transaction[] JSON parsing
- */
+/** Test Transaction[] JSON parsing */
 public class OpenOrdersJSONTest {
 
   @Test
@@ -31,6 +29,5 @@ public class OpenOrdersJSONTest {
     assertThat(orders[1].getId()).isEqualTo(1262468);
     assertThat(orders[1].getPrice()).isEqualTo(new BigDecimal("12.15"));
     assertThat(orders[1].getAmount()).isEqualTo(new BigDecimal("3.00000000"));
-
   }
 }

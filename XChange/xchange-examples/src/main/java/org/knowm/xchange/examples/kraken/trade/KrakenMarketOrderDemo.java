@@ -20,7 +20,6 @@ public class KrakenMarketOrderDemo {
 
     generic(krakenExchange);
     raw(krakenExchange);
-
   }
 
   private static void generic(Exchange krakenExchange) throws IOException {

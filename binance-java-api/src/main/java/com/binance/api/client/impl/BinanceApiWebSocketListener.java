@@ -9,9 +9,7 @@ import com.binance.api.client.exception.BinanceApiException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Binance API WebSocket listener.
- */
+/** Binance API WebSocket listener. */
 public class BinanceApiWebSocketListener<T> extends WebSocketListener {
 
   private BinanceApiCallback<T> callback;
@@ -27,7 +25,8 @@ public class BinanceApiWebSocketListener<T> extends WebSocketListener {
     this.eventClass = eventClass;
   }
 
-  public BinanceApiWebSocketListener(BinanceApiCallback<T> callback, TypeReference<T> eventTypeReference) {
+  public BinanceApiWebSocketListener(
+      BinanceApiCallback<T> callback, TypeReference<T> eventTypeReference) {
     this.callback = callback;
     this.eventTypeReference = eventTypeReference;
   }

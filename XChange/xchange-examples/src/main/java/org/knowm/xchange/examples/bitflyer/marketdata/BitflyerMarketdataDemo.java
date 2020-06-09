@@ -31,7 +31,5 @@ public class BitflyerMarketdataDemo {
 
     ticker = serviceRaw.getTicker("BTC_USD");
     System.out.println(ticker);
-
   }
-
 }

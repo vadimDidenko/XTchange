@@ -14,7 +14,8 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-public class BleutradeMarketDataService extends BleutradeMarketDataServiceRaw implements MarketDataService {
+public class BleutradeMarketDataService extends BleutradeMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -68,5 +69,4 @@ public class BleutradeMarketDataService extends BleutradeMarketDataServiceRaw im
     List<BleutradeTrade> bleutradeTrades = getBleutradeMarketHistory(currencyPair, count);
     return BleutradeAdapters.adaptBleutradeMarketHistory(bleutradeTrades, currencyPair);
   }
-
 }

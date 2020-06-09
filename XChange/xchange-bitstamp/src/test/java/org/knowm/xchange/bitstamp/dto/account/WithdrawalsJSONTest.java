@@ -22,7 +22,10 @@ public class WithdrawalsJSONTest {
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    List<WithdrawalRequest> withdrawals = mapper.readValue(is, mapper.getTypeFactory().constructCollectionType(List.class, WithdrawalRequest.class));
+    List<WithdrawalRequest> withdrawals =
+        mapper.readValue(
+            is,
+            mapper.getTypeFactory().constructCollectionType(List.class, WithdrawalRequest.class));
 
     assertThat(withdrawals.size()).isEqualTo(4);
     assertThat(withdrawals.get(0).getType()).isEqualTo(Type.bitcoin);

@@ -7,17 +7,17 @@ package com.okcoin.okex.open.api.enums;
  * @date Created in 2018/1/31 13:00
  */
 public enum AlgorithmEnum {
+  HMAC_SHA256("HmacSHA256"),
+  MD5("MD5"),
+  ;
 
-    HMAC_SHA256("HmacSHA256"),
-    MD5("MD5"),;
+  private String algorithm;
 
-    private String algorithm;
+  AlgorithmEnum(String algorithm) {
+    this.algorithm = algorithm;
+  }
 
-    AlgorithmEnum(String algorithm) {
-        this.algorithm = algorithm;
-    }
-
-    public String algorithm() {
-        return algorithm;
-    }
+  public String algorithm() {
+    return algorithm;
+  }
 }

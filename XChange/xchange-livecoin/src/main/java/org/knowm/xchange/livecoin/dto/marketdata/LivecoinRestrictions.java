@@ -10,7 +10,9 @@ public class LivecoinRestrictions {
   private final Boolean success;
   private List<LivecoinRestriction> restrictions = new ArrayList<>();
 
-  public LivecoinRestrictions(@JsonProperty("success") Boolean success, @JsonProperty("restrictions") List<LivecoinRestriction> restrictions) {
+  public LivecoinRestrictions(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("restrictions") List<LivecoinRestriction> restrictions) {
     super();
     this.success = success;
     this.restrictions = restrictions;
@@ -23,5 +25,4 @@ public class LivecoinRestrictions {
   public List<LivecoinRestriction> getRestrictions() {
     return restrictions;
   }
-
 }

@@ -31,10 +31,11 @@ public class LunoTrades {
     public final BigDecimal volume;
     public final boolean buy;
 
-    public Trade(@JsonProperty(value = "timestamp", required = true) long timestamp
-        , @JsonProperty(value = "price", required = true) BigDecimal price
-        , @JsonProperty(value = "volume", required = true) BigDecimal volume
-        , @JsonProperty(value = "is_buy", required = true) boolean buy) {
+    public Trade(
+        @JsonProperty(value = "timestamp", required = true) long timestamp,
+        @JsonProperty(value = "price", required = true) BigDecimal price,
+        @JsonProperty(value = "volume", required = true) BigDecimal volume,
+        @JsonProperty(value = "is_buy", required = true) boolean buy) {
       this.timestamp = timestamp;
       this.price = price;
       this.volume = volume;
@@ -47,7 +48,15 @@ public class LunoTrades {
 
     @Override
     public String toString() {
-      return "Trade [timestamp=" + getTimestamp() + ", price=" + price + ", volume=" + volume + ", buy=" + buy + "]";
+      return "Trade [timestamp="
+          + getTimestamp()
+          + ", price="
+          + price
+          + ", volume="
+          + volume
+          + ", buy="
+          + buy
+          + "]";
     }
   }
 }

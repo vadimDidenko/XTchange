@@ -6,9 +6,7 @@ import org.knowm.xchange.anx.v2.dto.ANXValue;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing a ANX Wallet History Entry
- */
+/** Data object representing a ANX Wallet History Entry */
 public final class ANXWalletHistoryEntry {
 
   private final int index;
@@ -33,9 +31,15 @@ public final class ANXWalletHistoryEntry {
    * @param info
    * @param trade
    */
-  public ANXWalletHistoryEntry(@JsonProperty("Index") int index, @JsonProperty("Date") String date, @JsonProperty("Type") String type,
-      @JsonProperty("Info") String info, @JsonProperty("Link") String[] link, @JsonProperty("Value") ANXValue value,
-      @JsonProperty("Balance") ANXValue balance, @JsonProperty("Trade") ANXWalletHistoryEntryTrade trade,
+  public ANXWalletHistoryEntry(
+      @JsonProperty("Index") int index,
+      @JsonProperty("Date") String date,
+      @JsonProperty("Type") String type,
+      @JsonProperty("Info") String info,
+      @JsonProperty("Link") String[] link,
+      @JsonProperty("Value") ANXValue value,
+      @JsonProperty("Balance") ANXValue balance,
+      @JsonProperty("Trade") ANXWalletHistoryEntryTrade trade,
       @JsonProperty("TransactionId") String transactionId) {
 
     this.index = index;
@@ -96,8 +100,24 @@ public final class ANXWalletHistoryEntry {
   @Override
   public String toString() {
 
-    return "ANXWalletHistoryEntry{" + "index=" + index + ", date=" + date + ", type=" + type + ", value=" + value + ", balance=" + balance + ", info="
-        + info + ", link=" + Arrays.toString(link) + ", trade=" + trade + '}';
+    return "ANXWalletHistoryEntry{"
+        + "index="
+        + index
+        + ", date="
+        + date
+        + ", type="
+        + type
+        + ", value="
+        + value
+        + ", balance="
+        + balance
+        + ", info="
+        + info
+        + ", link="
+        + Arrays.toString(link)
+        + ", trade="
+        + trade
+        + '}';
   }
 
   public static class ANXWalletHistoryEntryTrade {
@@ -108,8 +128,12 @@ public final class ANXWalletHistoryEntry {
     private final String properties;
     private final ANXValue amount;
 
-    public ANXWalletHistoryEntryTrade(@JsonProperty("oid") String oid, @JsonProperty("tid") String tid, @JsonProperty("app") String app,
-        @JsonProperty("Properties") String properties, @JsonProperty("Amount") ANXValue amount) {
+    public ANXWalletHistoryEntryTrade(
+        @JsonProperty("oid") String oid,
+        @JsonProperty("tid") String tid,
+        @JsonProperty("app") String app,
+        @JsonProperty("Properties") String properties,
+        @JsonProperty("Amount") ANXValue amount) {
 
       this.oid = oid;
       this.tid = tid;
@@ -146,9 +170,18 @@ public final class ANXWalletHistoryEntry {
     @Override
     public String toString() {
 
-      return "ANXWalletHistoryEntryTrade{" + "oid=" + oid + ", tid=" + tid + ", app=" + app + ", properties=" + properties + ", amount=" + amount
+      return "ANXWalletHistoryEntryTrade{"
+          + "oid="
+          + oid
+          + ", tid="
+          + tid
+          + ", app="
+          + app
+          + ", properties="
+          + properties
+          + ", amount="
+          + amount
           + '}';
     }
-
   }
 }

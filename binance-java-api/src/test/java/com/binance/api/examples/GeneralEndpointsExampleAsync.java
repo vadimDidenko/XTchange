@@ -6,9 +6,7 @@ import com.binance.api.client.domain.general.FilterType;
 import com.binance.api.client.domain.general.SymbolFilter;
 import com.binance.api.client.domain.general.SymbolInfo;
 
-/**
- * Examples on how to use the general endpoints.
- */
+/** Examples on how to use the general endpoints. */
 public class GeneralEndpointsExampleAsync {
 
   public static void main(String[] args) throws InterruptedException {
@@ -22,21 +20,27 @@ public class GeneralEndpointsExampleAsync {
     client.getServerTime(response -> System.out.println(response.getServerTime()));
 
     // Exchange info
-    client.getExchangeInfo(exchangeInfo -> {
-      System.out.println(exchangeInfo.getTimezone());
-      System.out.println(exchangeInfo.getSymbols());
+    client.getExchangeInfo(
+        exchangeInfo -> {
+          System.out.println(exchangeInfo.getTimezone());
+          System.out.println(exchangeInfo.getSymbols());
 
-      // Obtain symbol information
-      SymbolInfo symbolInfo = exchangeInfo.getSymbolInfo("ETHBTC");
-      System.out.println(symbolInfo.getStatus());
+          // Obtain symbol information
+          SymbolInfo symbolInfo = exchangeInfo.getSymbolInfo("ETHBTC");
+          System.out.println(symbolInfo.getStatus());
 
-      SymbolFilter priceFilter = symbolInfo.getSymbolFilter(FilterType.PRICE_FILTER);
-      System.out.println(priceFilter.getMinPrice());
-      System.out.println(priceFilter.getTickSize());
-    });
+          SymbolFilter priceFilter = symbolInfo.getSymbolFilter(FilterType.PRICE_FILTER);
+          System.out.println(priceFilter.getMinPrice());
+          System.out.println(priceFilter.getTickSize());
+        });
 
     // Obtain asset information
-    client.getAllAssets(allAssets ->
-        System.out.println(allAssets.stream().filter(asset -> asset.getAssetCode().equals("BNB")).findFirst().get()));
+    client.getAllAssets(
+        allAssets ->
+            System.out.println(
+                allAssets.stream()
+                    .filter(asset -> asset.getAssetCode().equals("BNB"))
+                    .findFirst()
+                    .get()));
   }
 }

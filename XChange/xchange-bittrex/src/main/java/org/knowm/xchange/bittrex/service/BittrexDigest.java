@@ -14,7 +14,8 @@ public class BittrexDigest extends BaseParamsDigest {
    * Constructor
    *
    * @param secretKeyBase64
-   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded key is invalid).
+   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded
+   *     key is invalid).
    */
   private BittrexDigest(String secretKeyBase64) {
 

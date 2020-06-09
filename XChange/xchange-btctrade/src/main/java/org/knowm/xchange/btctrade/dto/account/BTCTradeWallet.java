@@ -8,7 +8,10 @@ public class BTCTradeWallet extends BTCTradeResult {
 
   private final String address;
 
-  public BTCTradeWallet(@JsonProperty("result") Boolean result, @JsonProperty("message") String message, @JsonProperty("address") String address) {
+  public BTCTradeWallet(
+      @JsonProperty("result") Boolean result,
+      @JsonProperty("message") String message,
+      @JsonProperty("address") String address) {
 
     super(result, message);
     this.address = address;
@@ -18,5 +21,4 @@ public class BTCTradeWallet extends BTCTradeResult {
 
     return address;
   }
-
 }

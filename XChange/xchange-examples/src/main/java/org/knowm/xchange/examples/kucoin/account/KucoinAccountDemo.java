@@ -34,17 +34,18 @@ public class KucoinAccountDemo {
     System.out.println(balances);
 
     System.out.println(accountService.requestDepositAddress(Currency.BTC));
-
   }
 
   private static void raw(KucoinAccountServiceRaw accountService) throws IOException {
 
     System.out.println("------------RAW-----------");
 
-    KucoinSimpleResponse<KucoinCoinBalances> responseBalances = accountService.getKucoinBalances(20, 1);
+    KucoinSimpleResponse<KucoinCoinBalances> responseBalances =
+        accountService.getKucoinBalances(20, 1);
     System.out.println(responseBalances.getData());
 
-    KucoinResponse<KucoinDepositAddress> responseAddress = accountService.getKucoinDepositAddress(Currency.BTC);
+    KucoinResponse<KucoinDepositAddress> responseAddress =
+        accountService.getKucoinDepositAddress(Currency.BTC);
     System.out.println(responseAddress.getData().getAddress());
   }
 }

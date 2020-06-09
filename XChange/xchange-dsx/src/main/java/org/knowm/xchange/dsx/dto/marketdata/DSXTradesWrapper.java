@@ -4,10 +4,7 @@ import java.util.Map;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXTradesWrapper {
 
   private final Map<String, DSXTrade[]> tradesMap;
@@ -35,8 +32,6 @@ public class DSXTradesWrapper {
   @Override
   public String toString() {
 
-    return "DSXTradesWrapper{" +
-        "tradesMap=" + tradesMap +
-        '}';
+    return "DSXTradesWrapper{" + "tradesMap=" + tradesMap + '}';
   }
 }

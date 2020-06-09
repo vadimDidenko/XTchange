@@ -27,7 +27,8 @@ public class BinanceExchange extends BaseExchange {
 
   private static final int DEFAULT_PRECISION = 8;
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongCurrentTimeIncrementalNonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongCurrentTimeIncrementalNonceFactory();
   private Long deltaServerTime;
 
   @Override
@@ -62,16 +63,21 @@ public class BinanceExchange extends BaseExchange {
       Map<CurrencyPair, CurrencyPairMetaData> currencyPairs = exchangeMetaData.getCurrencyPairs();
       Map<Currency, CurrencyMetaData> currencies = exchangeMetaData.getCurrencies();
 
-      BinanceMarketDataService marketDataService = (BinanceMarketDataService) this.marketDataService;
+      BinanceMarketDataService marketDataService =
+          (BinanceMarketDataService) this.marketDataService;
       BinanceExchangeInfo exchangeInfo = marketDataService.getExchangeInfo();
       Symbol[] symbols = exchangeInfo.getSymbols();
 
       for (BinancePrice price : marketDataService.tickerAllPrices()) {
         CurrencyPair pair = price.getCurrencyPair();
-        currencyPairs.put(price.getCurrencyPair(), new CurrencyPairMetaData(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, 8));
+        currencyPairs.put(
+            price.getCurrencyPair(),
+            new CurrencyPairMetaData(BigDecimal.ZERO, BigDecimal.ZERO, BigDecimal.ZERO, 8));
 
         for (Symbol symbol : symbols) {
-          if (symbol.getSymbol().equals(pair.base.getCurrencyCode() + pair.counter.getCurrencyCode())) {
+          if (symbol
+              .getSymbol()
+              .equals(pair.base.getCurrencyCode() + pair.counter.getCurrencyCode())) {
 
             int basePrecision = DEFAULT_PRECISION;
             int counterPrecision = DEFAULT_PRECISION;
@@ -107,7 +113,8 @@ public class BinanceExchange extends BaseExchange {
 
   public long deltaServerTime() throws IOException {
     if (deltaServerTime == null) {
-      Binance binance = RestProxyFactory.createProxy(Binance.class, getExchangeSpecification().getSslUri());
+      Binance binance =
+          RestProxyFactory.createProxy(Binance.class, getExchangeSpecification().getSslUri());
       deltaServerTime = binance.time().getServerTime().getTime() - System.currentTimeMillis();
     }
     return deltaServerTime;

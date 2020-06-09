@@ -17,7 +17,8 @@ public class KrakenAccountRawSpecificDemo {
 
     Exchange krakenExchange = KrakenExampleUtils.createTestExchange();
 
-    KrakenAccountServiceRaw rawKrakenAcctService = (KrakenAccountServiceRaw) krakenExchange.getAccountService();
+    KrakenAccountServiceRaw rawKrakenAcctService =
+        (KrakenAccountServiceRaw) krakenExchange.getAccountService();
 
     KrakenTradeBalanceInfo balanceInfo = rawKrakenAcctService.getKrakenTradeBalance();
     System.out.println(balanceInfo);

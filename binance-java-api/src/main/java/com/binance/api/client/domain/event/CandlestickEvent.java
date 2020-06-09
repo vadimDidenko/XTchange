@@ -8,7 +8,8 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
 /**
- * An interval candlestick for a symbol providing informations on price that can be used to produce candlestick charts.
+ * An interval candlestick for a symbol providing informations on price that can be used to produce
+ * candlestick charts.
  */
 @JsonDeserialize(using = CandlestickEventDeserializer.class)
 @JsonSerialize(using = CandlestickEventSerializer.class)

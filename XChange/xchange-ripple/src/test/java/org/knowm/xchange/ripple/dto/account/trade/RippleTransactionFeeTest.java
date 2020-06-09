@@ -16,7 +16,8 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class RippleTransactionFeeTest {
 
   @Test
-  public void transactionFeeUnmarshalTest() throws JsonParseException, JsonMappingException, IOException {
+  public void transactionFeeUnmarshalTest()
+      throws JsonParseException, JsonMappingException, IOException {
     // Read in the JSON from the example resources
     final InputStream is = getClass().getResourceAsStream("/trade/example-transaction-fee.json");
     final ObjectMapper mapper = new ObjectMapper();

@@ -1,347 +1,349 @@
 package com.ailu.bybit.bean;
 
 import com.alibaba.fastjson.annotation.JSONField;
-import com.google.gson.Gson;
 import lombok.Data;
 
 import java.math.BigDecimal;
 
-
 @Data
 public class Position {
 
+  /**
+   * id : 1 user_id : 1 risk_id : 1 symbol : BTCUSD side : None size : 0 position_value : 0
+   * entry_price : 0 leverage : 1 auto_add_margin : 0 position_margin : 0 liq_price : 999999
+   * bust_price : 999999 occ_closing_fee : 0 take_profit : 0 stop_loss : 0 trailing_stop : 0
+   * position_status : Normal deleverage_indicator : 1 oc_calc_data :
+   * {'blq':'0','bmp':'0','slq':'0','smp':'0'} order_margin : 0 wallet_balance : 0 unrealised_pnl :
+   * 0 realised_pnl : 0 cum_realised_pnl : 0 cum_commission : 0 cross_seq : 0 position_seq : 2
+   * created_at : 2018-10-18T07:15:51.000Z updated_at : 2018-10-20T13:43:21.000Z
+   */
+  @JSONField(name = "id")
+  private Long id;
 
-    /**
-     * id : 1
-     * user_id : 1
-     * risk_id : 1
-     * symbol : BTCUSD
-     * side : None
-     * size : 0
-     * position_value : 0
-     * entry_price : 0
-     * leverage : 1
-     * auto_add_margin : 0
-     * position_margin : 0
-     * liq_price : 999999
-     * bust_price : 999999
-     * occ_closing_fee : 0
-     * take_profit : 0
-     * stop_loss : 0
-     * trailing_stop : 0
-     * position_status : Normal
-     * deleverage_indicator : 1
-     * oc_calc_data : {'blq':'0','bmp':'0','slq':'0','smp':'0'}
-     * order_margin : 0
-     * wallet_balance : 0
-     * unrealised_pnl : 0
-     * realised_pnl : 0
-     * cum_realised_pnl : 0
-     * cum_commission : 0
-     * cross_seq : 0
-     * position_seq : 2
-     * created_at : 2018-10-18T07:15:51.000Z
-     * updated_at : 2018-10-20T13:43:21.000Z
-     */
+  @JSONField(name = "user_id")
+  private Long userId;
 
-    @JSONField(name = "id")
-    private Long id;
-    @JSONField(name = "user_id")
-    private Long userId;
-    @JSONField(name = "risk_id")
-    private Long riskId;
-    @JSONField(name = "symbol")
-    private String symbol;
-    @JSONField(name = "side")
-    private String side;
-    @JSONField(name = "size")
-    private BigDecimal size;
-    @JSONField(name = "position_value")
-    private BigDecimal positionValue;
-    @JSONField(name = "entry_price")
-    private BigDecimal entryPrice;
-    @JSONField(name = "leverage")
-    private int leverage;
-    @JSONField(name = "auto_add_margin")
-    private int autoAddMargin;
-    @JSONField(name = "position_margin")
-    private BigDecimal positionMargin;
-    @JSONField(name = "liq_price")
-    private BigDecimal liqPrice;
-    @JSONField(name = "bust_price")
-    private BigDecimal bustPrice;
-    @JSONField(name = "occ_closing_fee")
-    private BigDecimal occClosingFee;
-    @JSONField(name = "take_profit")
-    private BigDecimal takeProfit;
-    @JSONField(name = "stop_loss")
-    private BigDecimal stopLoss;
-    @JSONField(name = "trailing_stop")
-    private BigDecimal trailingStop;
-    @JSONField(name = "position_status")
-    private String positionStatus;
-    @JSONField(name = "deleverage_indicator")
-    private int deleverageIndicator;
-    @JSONField(name = "oc_calc_data")
-    private String ocCalcData;
-    @JSONField(name = "order_margin")
-    private BigDecimal orderMargin;
-    @JSONField(name = "wallet_balance")
-    private BigDecimal walletBalance;
-    @JSONField(name = "unrealised_pnl")
-    private BigDecimal unrealisedPnl;
-    @JSONField(name = "realised_pnl")
-    private BigDecimal realisedPnl;
-    @JSONField(name = "cum_realised_pnl")
-    private BigDecimal cumRealisedPnl;
-    @JSONField(name = "cum_commission")
-    private BigDecimal cumCommission;
-    @JSONField(name = "cross_seq")
-    private int crossSeq;
-    @JSONField(name = "position_seq")
-    private int positionSeq;
-    @JSONField(name = "created_at")
-    private String createdAt;
-    @JSONField(name = "updated_at")
-    private String updatedAt;
+  @JSONField(name = "risk_id")
+  private Long riskId;
 
-    public Long getId() {
-        return id;
-    }
+  @JSONField(name = "symbol")
+  private String symbol;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+  @JSONField(name = "side")
+  private String side;
 
-    public Long getUserId() {
-        return userId;
-    }
+  @JSONField(name = "size")
+  private BigDecimal size;
 
-    public void setUserId(Long userId) {
-        this.userId = userId;
-    }
+  @JSONField(name = "position_value")
+  private BigDecimal positionValue;
 
-    public Long getRiskId() {
-        return riskId;
-    }
+  @JSONField(name = "entry_price")
+  private BigDecimal entryPrice;
 
-    public void setRiskId(Long riskId) {
-        this.riskId = riskId;
-    }
+  @JSONField(name = "leverage")
+  private int leverage;
 
-    public String getSymbol() {
-        return symbol;
-    }
+  @JSONField(name = "auto_add_margin")
+  private int autoAddMargin;
 
-    public void setSymbol(String symbol) {
-        this.symbol = symbol;
-    }
+  @JSONField(name = "position_margin")
+  private BigDecimal positionMargin;
 
-    public String getSide() {
-        return side;
-    }
+  @JSONField(name = "liq_price")
+  private BigDecimal liqPrice;
 
-    public void setSide(String side) {
-        this.side = side;
-    }
+  @JSONField(name = "bust_price")
+  private BigDecimal bustPrice;
 
-    public BigDecimal getSize() {
-        return size;
-    }
+  @JSONField(name = "occ_closing_fee")
+  private BigDecimal occClosingFee;
 
-    public void setSize(BigDecimal size) {
-        this.size = size;
-    }
+  @JSONField(name = "take_profit")
+  private BigDecimal takeProfit;
 
-    public BigDecimal getPositionValue() {
-        return positionValue;
-    }
+  @JSONField(name = "stop_loss")
+  private BigDecimal stopLoss;
 
-    public void setPositionValue(BigDecimal positionValue) {
-        this.positionValue = positionValue;
-    }
+  @JSONField(name = "trailing_stop")
+  private BigDecimal trailingStop;
 
-    public BigDecimal getEntryPrice() {
-        return entryPrice;
-    }
+  @JSONField(name = "position_status")
+  private String positionStatus;
 
-    public void setEntryPrice(BigDecimal entryPrice) {
-        this.entryPrice = entryPrice;
-    }
+  @JSONField(name = "deleverage_indicator")
+  private int deleverageIndicator;
 
-    public int getLeverage() {
-        return leverage;
-    }
+  @JSONField(name = "oc_calc_data")
+  private String ocCalcData;
 
-    public void setLeverage(int leverage) {
-        this.leverage = leverage;
-    }
+  @JSONField(name = "order_margin")
+  private BigDecimal orderMargin;
 
-    public int getAutoAddMargin() {
-        return autoAddMargin;
-    }
+  @JSONField(name = "wallet_balance")
+  private BigDecimal walletBalance;
 
-    public void setAutoAddMargin(int autoAddMargin) {
-        this.autoAddMargin = autoAddMargin;
-    }
+  @JSONField(name = "unrealised_pnl")
+  private BigDecimal unrealisedPnl;
 
-    public BigDecimal getPositionMargin() {
-        return positionMargin;
-    }
+  @JSONField(name = "realised_pnl")
+  private BigDecimal realisedPnl;
 
-    public void setPositionMargin(BigDecimal positionMargin) {
-        this.positionMargin = positionMargin;
-    }
+  @JSONField(name = "cum_realised_pnl")
+  private BigDecimal cumRealisedPnl;
 
-    public BigDecimal getLiqPrice() {
-        return liqPrice;
-    }
+  @JSONField(name = "cum_commission")
+  private BigDecimal cumCommission;
 
-    public void setLiqPrice(BigDecimal liqPrice) {
-        this.liqPrice = liqPrice;
-    }
+  @JSONField(name = "cross_seq")
+  private int crossSeq;
 
-    public BigDecimal getBustPrice() {
-        return bustPrice;
-    }
+  @JSONField(name = "position_seq")
+  private int positionSeq;
 
-    public void setBustPrice(BigDecimal bustPrice) {
-        this.bustPrice = bustPrice;
-    }
+  @JSONField(name = "created_at")
+  private String createdAt;
 
-    public BigDecimal getOccClosingFee() {
-        return occClosingFee;
-    }
+  @JSONField(name = "updated_at")
+  private String updatedAt;
 
-    public void setOccClosingFee(BigDecimal occClosingFee) {
-        this.occClosingFee = occClosingFee;
-    }
+  public Long getId() {
+    return id;
+  }
 
-    public BigDecimal getTakeProfit() {
-        return takeProfit;
-    }
+  public void setId(Long id) {
+    this.id = id;
+  }
 
-    public void setTakeProfit(BigDecimal takeProfit) {
-        this.takeProfit = takeProfit;
-    }
+  public Long getUserId() {
+    return userId;
+  }
 
-    public BigDecimal getStopLoss() {
-        return stopLoss;
-    }
+  public void setUserId(Long userId) {
+    this.userId = userId;
+  }
 
-    public void setStopLoss(BigDecimal stopLoss) {
-        this.stopLoss = stopLoss;
-    }
+  public Long getRiskId() {
+    return riskId;
+  }
 
-    public BigDecimal getTrailingStop() {
-        return trailingStop;
-    }
+  public void setRiskId(Long riskId) {
+    this.riskId = riskId;
+  }
 
-    public void setTrailingStop(BigDecimal trailingStop) {
-        this.trailingStop = trailingStop;
-    }
+  public String getSymbol() {
+    return symbol;
+  }
 
-    public String getPositionStatus() {
-        return positionStatus;
-    }
+  public void setSymbol(String symbol) {
+    this.symbol = symbol;
+  }
 
-    public void setPositionStatus(String positionStatus) {
-        this.positionStatus = positionStatus;
-    }
+  public String getSide() {
+    return side;
+  }
 
-    public int getDeleverageIndicator() {
-        return deleverageIndicator;
-    }
+  public void setSide(String side) {
+    this.side = side;
+  }
 
-    public void setDeleverageIndicator(int deleverageIndicator) {
-        this.deleverageIndicator = deleverageIndicator;
-    }
+  public BigDecimal getSize() {
+    return size;
+  }
 
-    public String getOcCalcData() {
-        return ocCalcData;
-    }
+  public void setSize(BigDecimal size) {
+    this.size = size;
+  }
 
-    public void setOcCalcData(String ocCalcData) {
-        this.ocCalcData = ocCalcData;
-    }
+  public BigDecimal getPositionValue() {
+    return positionValue;
+  }
 
-    public BigDecimal getOrderMargin() {
-        return orderMargin;
-    }
+  public void setPositionValue(BigDecimal positionValue) {
+    this.positionValue = positionValue;
+  }
 
-    public void setOrderMargin(BigDecimal orderMargin) {
-        this.orderMargin = orderMargin;
-    }
+  public BigDecimal getEntryPrice() {
+    return entryPrice;
+  }
 
-    public BigDecimal getWalletBalance() {
-        return walletBalance;
-    }
+  public void setEntryPrice(BigDecimal entryPrice) {
+    this.entryPrice = entryPrice;
+  }
 
-    public void setWalletBalance(BigDecimal walletBalance) {
-        this.walletBalance = walletBalance;
-    }
+  public int getLeverage() {
+    return leverage;
+  }
 
-    public BigDecimal getUnrealisedPnl() {
-        return unrealisedPnl;
-    }
+  public void setLeverage(int leverage) {
+    this.leverage = leverage;
+  }
 
-    public void setUnrealisedPnl(BigDecimal unrealisedPnl) {
-        this.unrealisedPnl = unrealisedPnl;
-    }
+  public int getAutoAddMargin() {
+    return autoAddMargin;
+  }
 
-    public BigDecimal getRealisedPnl() {
-        return realisedPnl;
-    }
+  public void setAutoAddMargin(int autoAddMargin) {
+    this.autoAddMargin = autoAddMargin;
+  }
 
-    public void setRealisedPnl(BigDecimal realisedPnl) {
-        this.realisedPnl = realisedPnl;
-    }
+  public BigDecimal getPositionMargin() {
+    return positionMargin;
+  }
 
-    public BigDecimal getCumRealisedPnl() {
-        return cumRealisedPnl;
-    }
+  public void setPositionMargin(BigDecimal positionMargin) {
+    this.positionMargin = positionMargin;
+  }
 
-    public void setCumRealisedPnl(BigDecimal cumRealisedPnl) {
-        this.cumRealisedPnl = cumRealisedPnl;
-    }
+  public BigDecimal getLiqPrice() {
+    return liqPrice;
+  }
 
-    public BigDecimal getCumCommission() {
-        return cumCommission;
-    }
+  public void setLiqPrice(BigDecimal liqPrice) {
+    this.liqPrice = liqPrice;
+  }
 
-    public void setCumCommission(BigDecimal cumCommission) {
-        this.cumCommission = cumCommission;
-    }
+  public BigDecimal getBustPrice() {
+    return bustPrice;
+  }
 
-    public int getCrossSeq() {
-        return crossSeq;
-    }
+  public void setBustPrice(BigDecimal bustPrice) {
+    this.bustPrice = bustPrice;
+  }
 
-    public void setCrossSeq(int crossSeq) {
-        this.crossSeq = crossSeq;
-    }
+  public BigDecimal getOccClosingFee() {
+    return occClosingFee;
+  }
 
-    public int getPositionSeq() {
-        return positionSeq;
-    }
+  public void setOccClosingFee(BigDecimal occClosingFee) {
+    this.occClosingFee = occClosingFee;
+  }
 
-    public void setPositionSeq(int positionSeq) {
-        this.positionSeq = positionSeq;
-    }
+  public BigDecimal getTakeProfit() {
+    return takeProfit;
+  }
 
-    public String getCreatedAt() {
-        return createdAt;
-    }
+  public void setTakeProfit(BigDecimal takeProfit) {
+    this.takeProfit = takeProfit;
+  }
 
-    public void setCreatedAt(String createdAt) {
-        this.createdAt = createdAt;
-    }
+  public BigDecimal getStopLoss() {
+    return stopLoss;
+  }
 
-    public String getUpdatedAt() {
-        return updatedAt;
-    }
+  public void setStopLoss(BigDecimal stopLoss) {
+    this.stopLoss = stopLoss;
+  }
 
-    public void setUpdatedAt(String updatedAt) {
-        this.updatedAt = updatedAt;
-    }
+  public BigDecimal getTrailingStop() {
+    return trailingStop;
+  }
+
+  public void setTrailingStop(BigDecimal trailingStop) {
+    this.trailingStop = trailingStop;
+  }
+
+  public String getPositionStatus() {
+    return positionStatus;
+  }
+
+  public void setPositionStatus(String positionStatus) {
+    this.positionStatus = positionStatus;
+  }
+
+  public int getDeleverageIndicator() {
+    return deleverageIndicator;
+  }
+
+  public void setDeleverageIndicator(int deleverageIndicator) {
+    this.deleverageIndicator = deleverageIndicator;
+  }
+
+  public String getOcCalcData() {
+    return ocCalcData;
+  }
+
+  public void setOcCalcData(String ocCalcData) {
+    this.ocCalcData = ocCalcData;
+  }
+
+  public BigDecimal getOrderMargin() {
+    return orderMargin;
+  }
+
+  public void setOrderMargin(BigDecimal orderMargin) {
+    this.orderMargin = orderMargin;
+  }
+
+  public BigDecimal getWalletBalance() {
+    return walletBalance;
+  }
+
+  public void setWalletBalance(BigDecimal walletBalance) {
+    this.walletBalance = walletBalance;
+  }
+
+  public BigDecimal getUnrealisedPnl() {
+    return unrealisedPnl;
+  }
+
+  public void setUnrealisedPnl(BigDecimal unrealisedPnl) {
+    this.unrealisedPnl = unrealisedPnl;
+  }
+
+  public BigDecimal getRealisedPnl() {
+    return realisedPnl;
+  }
+
+  public void setRealisedPnl(BigDecimal realisedPnl) {
+    this.realisedPnl = realisedPnl;
+  }
+
+  public BigDecimal getCumRealisedPnl() {
+    return cumRealisedPnl;
+  }
+
+  public void setCumRealisedPnl(BigDecimal cumRealisedPnl) {
+    this.cumRealisedPnl = cumRealisedPnl;
+  }
+
+  public BigDecimal getCumCommission() {
+    return cumCommission;
+  }
+
+  public void setCumCommission(BigDecimal cumCommission) {
+    this.cumCommission = cumCommission;
+  }
+
+  public int getCrossSeq() {
+    return crossSeq;
+  }
+
+  public void setCrossSeq(int crossSeq) {
+    this.crossSeq = crossSeq;
+  }
+
+  public int getPositionSeq() {
+    return positionSeq;
+  }
+
+  public void setPositionSeq(int positionSeq) {
+    this.positionSeq = positionSeq;
+  }
+
+  public String getCreatedAt() {
+    return createdAt;
+  }
+
+  public void setCreatedAt(String createdAt) {
+    this.createdAt = createdAt;
+  }
+
+  public String getUpdatedAt() {
+    return updatedAt;
+  }
+
+  public void setUpdatedAt(String updatedAt) {
+    this.updatedAt = updatedAt;
+  }
 }

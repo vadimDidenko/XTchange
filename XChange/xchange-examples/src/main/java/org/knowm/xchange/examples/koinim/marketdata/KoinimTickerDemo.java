@@ -11,8 +11,8 @@ import org.knowm.xchange.koinim.service.KoinimMarketDataService;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * @author ahmetoz
- * Demonstrate requesting Ticker at www.koinim.com. You can access both the raw data from Koinim or the XChange generic DTO data format.
+ * @author ahmetoz Demonstrate requesting Ticker at www.koinim.com. You can access both the raw data
+ *     from Koinim or the XChange generic DTO data format.
  */
 public class KoinimTickerDemo {
 

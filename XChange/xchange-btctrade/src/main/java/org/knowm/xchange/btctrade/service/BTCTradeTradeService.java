@@ -41,8 +41,7 @@ public class BTCTradeTradeService extends BTCTradeTradeServiceRaw implements Tra
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return BTCTradeAdapters.adaptOpenOrders(getBTCTradeOrders(0, "open"));
   }
 
@@ -87,10 +86,10 @@ public class BTCTradeTradeService extends BTCTradeTradeServiceRaw implements Tra
 
   /**
    * Optional parameters: start time (default 0 = all) of {@link TradeHistoryParamsTimeSpan}
-   * <p/>
-   * Required parameters: none
-   * <p/>
-   * Note this method makes 1+N remote calls, where N is the number of returned trades
+   *
+   * <p>Required parameters: none
+   *
+   * <p>Note this method makes 1+N remote calls, where N is the number of returned trades
    */
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
@@ -105,9 +104,7 @@ public class BTCTradeTradeService extends BTCTradeTradeServiceRaw implements Tra
     return BTCTradeAdapters.adaptTrades(orders, orderDetails);
   }
 
-  /**
-   * @return an instance of {@link TradeHistoryParamsTimeSpan}
-   */
+  /** @return an instance of {@link TradeHistoryParamsTimeSpan} */
   @Override
   public TradeHistoryParams createTradeHistoryParams() {
     return new DefaultTradeHistoryParamsTimeSpan(new Date(0));
@@ -119,9 +116,7 @@ public class BTCTradeTradeService extends BTCTradeTradeServiceRaw implements Tra
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

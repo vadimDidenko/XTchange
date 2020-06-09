@@ -32,7 +32,8 @@ public class CoinfloorUserTradesIntegration {
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(specification);
 
     TradeService service = exchange.getTradeService();
-    CoinfloorTradeHistoryParams params = (CoinfloorTradeHistoryParams) service.createTradeHistoryParams();
+    CoinfloorTradeHistoryParams params =
+        (CoinfloorTradeHistoryParams) service.createTradeHistoryParams();
     UserTrades trades = service.getTradeHistory(params);
     logger.info("{}", trades);
   }

@@ -12,8 +12,12 @@ public class ItBitWithdrawalResponse {
   private final String address;
   private final String completionDate;
 
-  public ItBitWithdrawalResponse(@JsonProperty("id") String id, @JsonProperty("currency") String currency, @JsonProperty("amount") BigDecimal amount,
-      @JsonProperty("address") String address, @JsonProperty("completionDate") String completionDate) {
+  public ItBitWithdrawalResponse(
+      @JsonProperty("id") String id,
+      @JsonProperty("currency") String currency,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("address") String address,
+      @JsonProperty("completionDate") String completionDate) {
 
     this.id = id;
     this.currency = currency;

@@ -13,7 +13,8 @@ import org.knowm.xchange.gatecoin.service.GatecoinMarketDataServiceRaw;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * Demonstrate requesting Ticker at Gatecoin. You can access both the raw data from Gatecoin or the XChange generic DTO data format.
+ * Demonstrate requesting Ticker at Gatecoin. You can access both the raw data from Gatecoin or the
+ * XChange generic DTO data format.
  */
 public class GatecoinDepthDemo {
 
@@ -37,7 +38,8 @@ public class GatecoinDepthDemo {
 
   private static void raw(GatecoinMarketDataServiceRaw marketDataService) throws IOException {
 
-    GatecoinDepth[] asks = marketDataService.getGatecoinOrderBook(CurrencyPair.BTC_USD.toString()).getAsks();
+    GatecoinDepth[] asks =
+        marketDataService.getGatecoinOrderBook(CurrencyPair.BTC_USD.toString()).getAsks();
 
     System.out.println(Arrays.toString(asks));
   }

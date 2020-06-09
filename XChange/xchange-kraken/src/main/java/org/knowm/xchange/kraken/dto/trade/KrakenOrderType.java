@@ -16,9 +16,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = KrakenOrderTypeDeserializer.class)
 public enum KrakenOrderType {
-
-  MARKET, LIMIT, STOP_LOSS, TAKE_PROFIT, STOP_LOSS_PROFIT, STOP_LOSS_PROFIT_LIMIT, STOP_LOSS_LIMIT, TAKE_PROFIT_LIMIT,
-  TRAILING_STOP, TRAILING_STOP_LIMIT, STOP_LOSS_AND_LIMIT, SETTLE_POSITION;
+  MARKET,
+  LIMIT,
+  STOP_LOSS,
+  TAKE_PROFIT,
+  STOP_LOSS_PROFIT,
+  STOP_LOSS_PROFIT_LIMIT,
+  STOP_LOSS_LIMIT,
+  TAKE_PROFIT_LIMIT,
+  TRAILING_STOP,
+  TRAILING_STOP_LIMIT,
+  STOP_LOSS_AND_LIMIT,
+  SETTLE_POSITION;
 
   @Override
   public String toString() {
@@ -39,8 +48,7 @@ public enum KrakenOrderType {
   private static final Map<String, KrakenOrderType> fromString = new HashMap<>();
 
   static {
-    for (KrakenOrderType orderType : values())
-      fromString.put(orderType.toString(), orderType);
+    for (KrakenOrderType orderType : values()) fromString.put(orderType.toString(), orderType);
 
     fromString.put("l", LIMIT);
     fromString.put("m", MARKET);
@@ -49,7 +57,8 @@ public enum KrakenOrderType {
   static class KrakenOrderTypeDeserializer extends JsonDeserializer<KrakenOrderType> {
 
     @Override
-    public KrakenOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public KrakenOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

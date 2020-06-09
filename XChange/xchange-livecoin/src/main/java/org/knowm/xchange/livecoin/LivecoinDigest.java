@@ -33,8 +33,7 @@ public class LivecoinDigest extends BaseParamsDigest {
     Params params;
     if (restInvocation.getHttpMethod().equals("GET"))
       params = restInvocation.getParamsMap().get(QueryParam.class);
-    else
-      params = restInvocation.getParamsMap().get(FormParam.class);
+    else params = restInvocation.getParamsMap().get(FormParam.class);
 
     Map<String, String> sorted = new TreeMap<>(params.asHttpHeaders());
     String queryString = buildQueryString(sorted);
@@ -49,8 +48,7 @@ public class LivecoinDigest extends BaseParamsDigest {
     try {
       StringBuilder result = new StringBuilder();
       for (String hashKey : args.keySet()) {
-        if (result.length() > 0)
-          result.append('&');
+        if (result.length() > 0) result.append('&');
         result.append(hashKey).append("=").append(URLEncoder.encode(args.get(hashKey), "UTF-8"));
       }
       return result.toString();

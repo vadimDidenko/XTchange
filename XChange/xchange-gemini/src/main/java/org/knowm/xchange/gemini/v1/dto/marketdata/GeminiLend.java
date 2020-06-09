@@ -17,7 +17,9 @@ public class GeminiLend {
    * @param amountLent
    * @param timestamp
    */
-  public GeminiLend(@JsonProperty("rate") BigDecimal rate, @JsonProperty("amount_lent") BigDecimal amountLent,
+  public GeminiLend(
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount_lent") BigDecimal amountLent,
       @JsonProperty("timestamp") long timestamp) {
 
     this.rate = rate;
@@ -43,7 +45,12 @@ public class GeminiLend {
   @Override
   public String toString() {
 
-    return "GeminiLend [rate=" + rate + ", amountLent=" + amountLent + ", timestamp=" + timestamp + "]";
+    return "GeminiLend [rate="
+        + rate
+        + ", amountLent="
+        + amountLent
+        + ", timestamp="
+        + timestamp
+        + "]";
   }
-
 }

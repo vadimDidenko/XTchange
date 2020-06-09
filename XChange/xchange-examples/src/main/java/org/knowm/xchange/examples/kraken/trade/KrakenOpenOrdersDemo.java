@@ -38,6 +38,5 @@ public class KrakenOpenOrdersDemo {
     // Get the open orders
     Map<String, KrakenOrder> openOrders = tradeService.getKrakenOpenOrders();
     System.out.println(openOrders);
-
   }
 }

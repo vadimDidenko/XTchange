@@ -13,10 +13,7 @@ import org.knowm.xchange.dto.Order.OrderType;
 import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.exceptions.ExchangeException;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
+/** @author Jean-Christophe Laruelle */
 public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService {
 
   /**
@@ -39,8 +36,16 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
     BigDecimal size = order.getOriginalAmount();
     BigDecimal limitPrice = order.getLimitPrice();
 
-    CryptoFacilitiesOrder ord = cryptoFacilities.sendOrder(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-        exchange.getNonceFactory(), orderType, symbol, side, size, limitPrice);
+    CryptoFacilitiesOrder ord =
+        cryptoFacilities.sendOrder(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory(),
+            orderType,
+            symbol,
+            side,
+            size,
+            limitPrice);
 
     if (ord.isSuccess()) {
       return ord;
@@ -50,8 +55,12 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
   }
 
   public CryptoFacilitiesCancel cancelCryptoFacilitiesOrder(String uid) throws IOException {
-    CryptoFacilitiesCancel res = cryptoFacilities.cancelOrder(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-        exchange.getNonceFactory(), uid);
+    CryptoFacilitiesCancel res =
+        cryptoFacilities.cancelOrder(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory(),
+            uid);
 
     if (res.isSuccess()) {
       return res;
@@ -61,8 +70,11 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
   }
 
   public CryptoFacilitiesOpenOrders getCryptoFacilitiesOpenOrders() throws IOException {
-    CryptoFacilitiesOpenOrders openOrders = cryptoFacilities.openOrders(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-        exchange.getNonceFactory());
+    CryptoFacilitiesOpenOrders openOrders =
+        cryptoFacilities.openOrders(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory());
 
     if (openOrders.isSuccess()) {
       return openOrders;
@@ -72,8 +84,11 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
   }
 
   public CryptoFacilitiesFills getCryptoFacilitiesFills() throws IOException {
-    CryptoFacilitiesFills fills = cryptoFacilities.fills(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-        exchange.getNonceFactory());
+    CryptoFacilitiesFills fills =
+        cryptoFacilities.fills(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory());
 
     if (fills.isSuccess()) {
       return fills;
@@ -83,8 +98,11 @@ public class CryptoFacilitiesTradeServiceRaw extends CryptoFacilitiesBaseService
   }
 
   public CryptoFacilitiesOpenPositions getCryptoFacilitiesOpenPositions() throws IOException {
-    CryptoFacilitiesOpenPositions openPositions = cryptoFacilities.openPositions(exchange.getExchangeSpecification().getApiKey(), signatureCreator,
-        exchange.getNonceFactory());
+    CryptoFacilitiesOpenPositions openPositions =
+        cryptoFacilities.openPositions(
+            exchange.getExchangeSpecification().getApiKey(),
+            signatureCreator,
+            exchange.getNonceFactory());
 
     if (openPositions.isSuccess()) {
       return openPositions;

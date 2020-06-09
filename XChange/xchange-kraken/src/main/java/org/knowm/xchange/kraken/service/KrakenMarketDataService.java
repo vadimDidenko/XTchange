@@ -13,7 +13,8 @@ import org.knowm.xchange.kraken.dto.marketdata.KrakenDepth;
 import org.knowm.xchange.kraken.dto.marketdata.KrakenPublicTrades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-public class KrakenMarketDataService extends KrakenMarketDataServiceRaw implements MarketDataService {
+public class KrakenMarketDataService extends KrakenMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -67,7 +68,7 @@ public class KrakenMarketDataService extends KrakenMarketDataServiceRaw implemen
     }
 
     KrakenPublicTrades krakenTrades = getKrakenTrades(currencyPair, since);
-    return KrakenAdapters.adaptTrades(krakenTrades.getTrades(), currencyPair, krakenTrades.getLast());
+    return KrakenAdapters.adaptTrades(
+        krakenTrades.getTrades(), currencyPair, krakenTrades.getLast());
   }
-
 }

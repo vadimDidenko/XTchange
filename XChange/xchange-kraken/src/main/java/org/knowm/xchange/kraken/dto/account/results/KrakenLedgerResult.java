@@ -16,7 +16,8 @@ public class KrakenLedgerResult extends KrakenResult<KrakenLedgers> {
    * @param result
    * @param error
    */
-  public KrakenLedgerResult(@JsonProperty("result") KrakenLedgers result, @JsonProperty("error") String[] error) {
+  public KrakenLedgerResult(
+      @JsonProperty("result") KrakenLedgers result, @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
@@ -43,7 +44,9 @@ public class KrakenLedgerResult extends KrakenResult<KrakenLedgers> {
      * @param ledgerMap
      * @param count
      */
-    public KrakenLedgers(@JsonProperty("ledger") Map<String, KrakenLedger> ledgerMap, @JsonProperty("count") int count) {
+    public KrakenLedgers(
+        @JsonProperty("ledger") Map<String, KrakenLedger> ledgerMap,
+        @JsonProperty("count") int count) {
 
       this.ledgerMap = ledgerMap;
       this.count = count;
@@ -64,6 +67,5 @@ public class KrakenLedgerResult extends KrakenResult<KrakenLedgers> {
 
       return "KrakenLedgers [ledgerMap=" + ledgerMap + ", count=" + count + "]";
     }
-
   }
 }

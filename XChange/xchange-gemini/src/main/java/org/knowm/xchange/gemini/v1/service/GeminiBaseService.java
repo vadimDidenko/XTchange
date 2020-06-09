@@ -27,18 +27,20 @@ public class GeminiBaseService extends BaseExchangeService implements BaseServic
 
     super(exchange);
 
-    this.Gemini = RestProxyFactory.createProxy(GeminiAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.Gemini =
+        RestProxyFactory.createProxy(
+            GeminiAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = GeminiHmacPostBodyDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    this.signatureCreator =
+        GeminiHmacPostBodyDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
     this.payloadCreator = new GeminiPayloadDigest();
   }
 
   protected ExchangeException handleException(GeminiException e) {
-    if(e.getMessage().contains("due to insufficient funds"))
-      return new FundsExceededException(e);
-
+    if (e.getMessage().contains("due to insufficient funds")) return new FundsExceededException(e);
 
     return new ExchangeException(e);
   }
-
 }

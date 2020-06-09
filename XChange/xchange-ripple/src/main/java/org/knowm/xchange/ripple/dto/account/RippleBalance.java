@@ -10,8 +10,10 @@ public final class RippleBalance {
 
   @JsonProperty("value")
   private BigDecimal value;
+
   @JsonProperty("currency")
   private String currency;
+
   @JsonProperty("counterparty")
   private String counterparty;
 
@@ -41,6 +43,8 @@ public final class RippleBalance {
 
   @Override
   public String toString() {
-    return String.format("%s [currency=%s, counterparty=%s, value=%s]", getClass().getSimpleName(), currency, counterparty, value);
+    return String.format(
+        "%s [currency=%s, counterparty=%s, value=%s]",
+        getClass().getSimpleName(), currency, counterparty, value);
   }
 }

@@ -11,9 +11,7 @@ import com.fasterxml.jackson.databind.DeserializationContext;
 import com.fasterxml.jackson.databind.JsonDeserializer;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
-/**
- * Describe a call rate limit as a number of calls per some time span.
- */
+/** Describe a call rate limit as a number of calls per some time span. */
 public class RateLimit implements Serializable {
 
   @JsonProperty("calls")
@@ -26,11 +24,8 @@ public class RateLimit implements Serializable {
   @JsonDeserialize(using = TimeUnitDeserializer.class)
   public TimeUnit timeUnit = TimeUnit.SECONDS;
 
-  /**
-   * Constructor
-   */
-  public RateLimit() {
-  }
+  /** Constructor */
+  public RateLimit() {}
 
   /**
    * Constructor
@@ -39,8 +34,11 @@ public class RateLimit implements Serializable {
    * @param timeSpan
    * @param timeUnit
    */
-  public RateLimit(@JsonProperty("calls") int calls, @JsonProperty("time_span") int timeSpan,
-      @JsonProperty("time_unit") @JsonDeserialize(using = TimeUnitDeserializer.class) TimeUnit timeUnit) {
+  public RateLimit(
+      @JsonProperty("calls") int calls,
+      @JsonProperty("time_span") int timeSpan,
+      @JsonProperty("time_unit") @JsonDeserialize(using = TimeUnitDeserializer.class)
+          TimeUnit timeUnit) {
 
     this.calls = calls;
     this.timeUnit = timeUnit;
@@ -48,8 +46,9 @@ public class RateLimit implements Serializable {
   }
 
   /**
-   * @return this rate limit as a number of milliseconds required between any two remote calls, assuming the client makes consecutive calls without
-   * any bursts or breaks for an infinite period of time.
+   * @return this rate limit as a number of milliseconds required between any two remote calls,
+   *     assuming the client makes consecutive calls without any bursts or breaks for an infinite
+   *     period of time.
    */
   @JsonIgnore
   public long getPollDelayMillis() {
@@ -67,5 +66,4 @@ public class RateLimit implements Serializable {
   public String toString() {
     return "RateLimit [calls=" + calls + ", timeSpan=" + timeSpan + ", timeUnit=" + timeUnit + "]";
   }
-
 }

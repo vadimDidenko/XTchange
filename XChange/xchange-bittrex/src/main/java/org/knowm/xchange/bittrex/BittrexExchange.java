@@ -17,7 +17,8 @@ import java.util.List;
 
 public class BittrexExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2013NonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2013NonceFactory();
 
   @Override
   protected void initServices() {
@@ -30,7 +31,8 @@ public class BittrexExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://bittrex.com/api/");
     exchangeSpecification.setHost("bittrex.com");
     exchangeSpecification.setPort(80);
@@ -53,5 +55,4 @@ public class BittrexExchange extends BaseExchange implements Exchange {
     List<BittrexSymbol> bittrexSymbols = dataService.getBittrexSymbols();
     exchangeMetaData = BittrexAdapters.adaptMetaData(bittrexSymbols, exchangeMetaData);
   }
-
 }

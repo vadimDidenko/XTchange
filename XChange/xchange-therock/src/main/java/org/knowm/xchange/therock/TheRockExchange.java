@@ -9,13 +9,9 @@ import org.knowm.xchange.therock.service.TheRockTradeService;
 import org.knowm.xchange.utils.nonce.TimestampIncrementingNonceFactory;
 import si.mazi.rescu.SynchronizedValueFactory;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class TheRockExchange extends BaseExchange implements Exchange {
-  /**
-   * @deprecated use TheRockCancelOrderParams instead
-   */
+  /** @deprecated use TheRockCancelOrderParams instead */
   public static final String CURRENCY_PAIR = "CURRENCY_PAIR";
 
   private SynchronizedValueFactory<Long> nonceFactory = new TimestampIncrementingNonceFactory();
@@ -36,7 +32,8 @@ public class TheRockExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.therocktrading.com");
     exchangeSpecification.setHost("api.therocktrading.com");
     exchangeSpecification.setPort(80);

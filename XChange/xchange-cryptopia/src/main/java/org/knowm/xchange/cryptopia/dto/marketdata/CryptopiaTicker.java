@@ -23,12 +23,23 @@ public final class CryptopiaTicker {
   private final BigDecimal buyBaseVolume;
   private final BigDecimal sellBaseVolume;
 
-  public CryptopiaTicker(@JsonProperty("TradePairId") long tradePairId, @JsonProperty("Label") String label, @JsonProperty("AskPrice") BigDecimal ask,
-      @JsonProperty("BidPrice") BigDecimal bid, @JsonProperty("Low") BigDecimal low, @JsonProperty("High") BigDecimal high,
-      @JsonProperty("Volume") BigDecimal volume, @JsonProperty("LastPrice") BigDecimal last, @JsonProperty("BuyVolume") BigDecimal buyVolume,
-      @JsonProperty("SellVolume") BigDecimal sellVolume, @JsonProperty("Change") BigDecimal change, @JsonProperty("Open") BigDecimal open,
-      @JsonProperty("Close") BigDecimal close, @JsonProperty("BaseVolume") BigDecimal baseVolume,
-      @JsonProperty("BuyBaseVolume") BigDecimal buyBaseVolume, @JsonProperty("SellBaseVolume") BigDecimal sellBaseVolume) {
+  public CryptopiaTicker(
+      @JsonProperty("TradePairId") long tradePairId,
+      @JsonProperty("Label") String label,
+      @JsonProperty("AskPrice") BigDecimal ask,
+      @JsonProperty("BidPrice") BigDecimal bid,
+      @JsonProperty("Low") BigDecimal low,
+      @JsonProperty("High") BigDecimal high,
+      @JsonProperty("Volume") BigDecimal volume,
+      @JsonProperty("LastPrice") BigDecimal last,
+      @JsonProperty("BuyVolume") BigDecimal buyVolume,
+      @JsonProperty("SellVolume") BigDecimal sellVolume,
+      @JsonProperty("Change") BigDecimal change,
+      @JsonProperty("Open") BigDecimal open,
+      @JsonProperty("Close") BigDecimal close,
+      @JsonProperty("BaseVolume") BigDecimal baseVolume,
+      @JsonProperty("BuyBaseVolume") BigDecimal buyBaseVolume,
+      @JsonProperty("SellBaseVolume") BigDecimal sellBaseVolume) {
     this.tradePairId = tradePairId;
     this.label = label;
     this.ask = ask;
@@ -113,23 +124,40 @@ public final class CryptopiaTicker {
 
   @Override
   public String toString() {
-    return "CryptopiaTicker{" +
-        "tradePairId=" + tradePairId +
-        ", label='" + label + '\'' +
-        ", ask=" + ask +
-        ", bid=" + bid +
-        ", low=" + low +
-        ", high=" + high +
-        ", volume=" + volume +
-        ", last=" + last +
-        ", buyVolume=" + buyVolume +
-        ", sellVolume=" + sellVolume +
-        ", change=" + change +
-        ", open=" + open +
-        ", close=" + close +
-        ", baseVolume=" + baseVolume +
-        ", buyBaseVolume=" + buyBaseVolume +
-        ", sellBaseVolume=" + sellBaseVolume +
-        '}';
+    return "CryptopiaTicker{"
+        + "tradePairId="
+        + tradePairId
+        + ", label='"
+        + label
+        + '\''
+        + ", ask="
+        + ask
+        + ", bid="
+        + bid
+        + ", low="
+        + low
+        + ", high="
+        + high
+        + ", volume="
+        + volume
+        + ", last="
+        + last
+        + ", buyVolume="
+        + buyVolume
+        + ", sellVolume="
+        + sellVolume
+        + ", change="
+        + change
+        + ", open="
+        + open
+        + ", close="
+        + close
+        + ", baseVolume="
+        + baseVolume
+        + ", buyBaseVolume="
+        + buyBaseVolume
+        + ", sellBaseVolume="
+        + sellBaseVolume
+        + '}';
   }
 }

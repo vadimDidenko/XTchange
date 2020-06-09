@@ -12,20 +12,21 @@ import static junit.framework.TestCase.assertEquals;
 import static junit.framework.TestCase.assertTrue;
 import static junit.framework.TestCase.fail;
 
-/**
- * Test deserialization of a withdraw/deposit history.
- */
+/** Test deserialization of a withdraw/deposit history. */
 public class WithdrawHistoryDeserializerTest {
 
   @Test
   public void testWithdrawHistoryDeserialziation() {
-    String withdrawHistoryJson = "{\"withdrawList\":\n" +
-        "[{\"amount\":0.1,\"address\":\"0x456\",\"successTime\":\"2017-10-13 21:20:09\",\n" +
-        "\"txId\":\"0x123\",\"id\":\"1\",\"asset\":\"ETH\",\"applyTime\":\"2017-10-13 20:59:38\",\"userId\":\"1\",\"status\":6}],\n" +
-        "\"success\":true}";
+    String withdrawHistoryJson =
+        "{\"withdrawList\":\n"
+            + "[{\"amount\":0.1,\"address\":\"0x456\",\"successTime\":\"2017-10-13 21:20:09\",\n"
+            + "\"txId\":\"0x123\",\"id\":\"1\",\"asset\":\"ETH\",\"applyTime\":\"2017-10-13"
+            + " 20:59:38\",\"userId\":\"1\",\"status\":6}],\n"
+            + "\"success\":true}";
     ObjectMapper mapper = new ObjectMapper();
     try {
-      WithdrawHistory withdrawHistory = mapper.readValue(withdrawHistoryJson, WithdrawHistory.class);
+      WithdrawHistory withdrawHistory =
+          mapper.readValue(withdrawHistoryJson, WithdrawHistory.class);
       assertTrue(withdrawHistory.isSuccess());
       List<Withdraw> withdrawList = withdrawHistory.getWithdrawList();
       assertEquals(withdrawHistory.getWithdrawList().size(), 1);

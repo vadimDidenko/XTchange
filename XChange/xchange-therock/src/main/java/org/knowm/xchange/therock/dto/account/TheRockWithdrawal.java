@@ -10,9 +10,7 @@ public class TheRockWithdrawal {
 
   private String currency;
 
-  /**
-   * Should be null for the default method (ie. not Ripple)
-   */
+  /** Should be null for the default method (ie. not Ripple) */
   private Method withdrawMethod;
 
   private String destinationAddress;
@@ -25,7 +23,12 @@ public class TheRockWithdrawal {
     this(currency, amount, destinationAddress, null, null);
   }
 
-  private TheRockWithdrawal(String currency, BigDecimal amount, String destinationAddress, Method withdrawMethod, Long destinationTag) {
+  private TheRockWithdrawal(
+      String currency,
+      BigDecimal amount,
+      String destinationAddress,
+      Method withdrawMethod,
+      Long destinationTag) {
     this.currency = currency;
     this.amount = amount;
     this.destinationAddress = destinationAddress;
@@ -33,11 +36,14 @@ public class TheRockWithdrawal {
     this.destinationTag = destinationTag;
   }
 
-  public static TheRockWithdrawal createRippleWithdrawal(String currency, BigDecimal amount, String destinationAddress, Long destinationTag) {
-    return new TheRockWithdrawal(currency, amount, destinationAddress, Method.RIPPLE, destinationTag);
+  public static TheRockWithdrawal createRippleWithdrawal(
+      String currency, BigDecimal amount, String destinationAddress, Long destinationTag) {
+    return new TheRockWithdrawal(
+        currency, amount, destinationAddress, Method.RIPPLE, destinationTag);
   }
 
-  public static TheRockWithdrawal createDefaultWithdrawal(String currency, BigDecimal amount, String destinationAddress) {
+  public static TheRockWithdrawal createDefaultWithdrawal(
+      String currency, BigDecimal amount, String destinationAddress) {
     return new TheRockWithdrawal(currency, amount, destinationAddress);
   }
 
@@ -63,8 +69,12 @@ public class TheRockWithdrawal {
 
   @Override
   public String toString() {
-    return String.format("TheRockWithdrawal{currency='%s', withdrawMethod='%s', destinationAddress='%s', amount=%s}", currency,
-        withdrawMethod == null ? "<default>" : withdrawMethod, destinationAddress, amount);
+    return String.format(
+        "TheRockWithdrawal{currency='%s', withdrawMethod='%s', destinationAddress='%s', amount=%s}",
+        currency,
+        withdrawMethod == null ? "<default>" : withdrawMethod,
+        destinationAddress,
+        amount);
   }
 
   public enum Method {

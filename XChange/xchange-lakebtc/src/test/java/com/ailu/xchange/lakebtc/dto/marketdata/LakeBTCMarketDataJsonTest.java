@@ -16,7 +16,8 @@ public class LakeBTCMarketDataJsonTest {
   public void testDeserializeTicker() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = LakeBTCMarketDataJsonTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        LakeBTCMarketDataJsonTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -38,14 +39,15 @@ public class LakeBTCMarketDataJsonTest {
     assertThat(usdTicker.getHigh()).isEqualTo("573.83");
     assertThat(usdTicker.getLow()).isEqualTo("557.7");
     assertThat(usdTicker.getVolume()).isEqualTo("3521.2782");
-
   }
 
   @Test
   public void testDeserializeOrderBook() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = LakeBTCMarketDataJsonTest.class.getResourceAsStream("/marketdata/example-orderbook-data.json");
+    InputStream is =
+        LakeBTCMarketDataJsonTest.class.getResourceAsStream(
+            "/marketdata/example-orderbook-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

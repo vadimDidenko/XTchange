@@ -8,20 +8,19 @@ package com.okcoin.okex.open.api.enums;
  * @date 2018/1/31 17:49
  */
 public enum ContentTypeEnum {
+  APPLICATION_JSON("application/json"),
+  APPLICATION_JSON_UTF8("application/json; charset=UTF-8"),
+  // The server does not support types
+  APPLICATION_FORM("application/x-www-form-urlencoded; charset=UTF-8"),
+  ;
 
-    APPLICATION_JSON("application/json"),
-    APPLICATION_JSON_UTF8("application/json; charset=UTF-8"),
-    // The server does not support types
-    APPLICATION_FORM("application/x-www-form-urlencoded; charset=UTF-8"),;
+  private String contentType;
 
+  ContentTypeEnum(String contentType) {
+    this.contentType = contentType;
+  }
 
-    private String contentType;
-
-    ContentTypeEnum(String contentType) {
-        this.contentType = contentType;
-    }
-
-    public String contentType() {
-        return contentType;
-    }
+  public String contentType() {
+    return contentType;
+  }
 }

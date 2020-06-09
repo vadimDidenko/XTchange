@@ -28,29 +28,64 @@ public class BTCMarketsTradeServiceRaw extends BTCMarketsBaseService {
   public BTCMarketsTradeServiceRaw(Exchange exchange) {
     super(exchange);
     final ExchangeSpecification spec = exchange.getExchangeSpecification();
-    this.btcm = RestProxyFactory.createProxy(BTCMarketsAuthenticated.class, spec.getSslUri(), getClientConfig());
+    this.btcm =
+        RestProxyFactory.createProxy(
+            BTCMarketsAuthenticated.class, spec.getSslUri(), getClientConfig());
     this.signer = new BTCMarketsDigest(spec.getSecretKey());
     this.nonceFactory = exchange.getNonceFactory();
   }
 
-  public BTCMarketsPlaceOrderResponse placeBTCMarketsOrder(CurrencyPair currencyPair, BigDecimal amount, BigDecimal price, BTCMarketsOrder.Side side,
-      BTCMarketsOrder.Type type) throws IOException {
-    return btcm.placeOrder(exchange.getExchangeSpecification().getApiKey(), nonceFactory, this.signer,
-        new BTCMarketsOrder(amount, price, currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode(), side, type, newReqId()));
+  public BTCMarketsPlaceOrderResponse placeBTCMarketsOrder(
+      CurrencyPair currencyPair,
+      BigDecimal amount,
+      BigDecimal price,
+      BTCMarketsOrder.Side side,
+      BTCMarketsOrder.Type type)
+      throws IOException {
+    return btcm.placeOrder(
+        exchange.getExchangeSpecification().getApiKey(),
+        nonceFactory,
+        this.signer,
+        new BTCMarketsOrder(
+            amount,
+            price,
+            currencyPair.counter.getCurrencyCode(),
+            currencyPair.base.getCurrencyCode(),
+            side,
+            type,
+            newReqId()));
   }
 
-  public BTCMarketsOrders getBTCMarketsOpenOrders(CurrencyPair currencyPair, Integer limit, Long since) throws IOException {
-    BTCMarketsOpenOrdersAndTradeHistoryRequest request = new BTCMarketsOpenOrdersAndTradeHistoryRequest(currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode(), limit, since);
-    return btcm.getOpenOrders(exchange.getExchangeSpecification().getApiKey(), nonceFactory, signer, request);
+  public BTCMarketsOrders getBTCMarketsOpenOrders(
+      CurrencyPair currencyPair, Integer limit, Long since) throws IOException {
+    BTCMarketsOpenOrdersAndTradeHistoryRequest request =
+        new BTCMarketsOpenOrdersAndTradeHistoryRequest(
+            currencyPair.counter.getCurrencyCode(),
+            currencyPair.base.getCurrencyCode(),
+            limit,
+            since);
+    return btcm.getOpenOrders(
+        exchange.getExchangeSpecification().getApiKey(), nonceFactory, signer, request);
   }
 
   public BTCMarketsBaseResponse cancelBTCMarketsOrder(Long orderId) throws IOException {
-    return btcm.cancelOrder(exchange.getExchangeSpecification().getApiKey(), nonceFactory, signer, new BTCMarketsCancelOrderRequest(orderId));
+    return btcm.cancelOrder(
+        exchange.getExchangeSpecification().getApiKey(),
+        nonceFactory,
+        signer,
+        new BTCMarketsCancelOrderRequest(orderId));
   }
 
-  public BTCMarketsTradeHistory getBTCMarketsUserTransactions(CurrencyPair currencyPair, Integer limit, Long since) throws IOException {
-    BTCMarketsOpenOrdersAndTradeHistoryRequest request = new BTCMarketsOpenOrdersAndTradeHistoryRequest(currencyPair.counter.getCurrencyCode(), currencyPair.base.getCurrencyCode(), limit, since);
-    return btcm.getTradeHistory(exchange.getExchangeSpecification().getApiKey(), nonceFactory, signer, request);
+  public BTCMarketsTradeHistory getBTCMarketsUserTransactions(
+      CurrencyPair currencyPair, Integer limit, Long since) throws IOException {
+    BTCMarketsOpenOrdersAndTradeHistoryRequest request =
+        new BTCMarketsOpenOrdersAndTradeHistoryRequest(
+            currencyPair.counter.getCurrencyCode(),
+            currencyPair.base.getCurrencyCode(),
+            limit,
+            since);
+    return btcm.getTradeHistory(
+        exchange.getExchangeSpecification().getApiKey(), nonceFactory, signer, request);
   }
 
   private String newReqId() {

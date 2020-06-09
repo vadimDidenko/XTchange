@@ -39,11 +39,14 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
   @Override
   public AccountInfo getAccountInfo() throws IOException {
 
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), KrakenAdapters.adaptWallet(getKrakenBalance()));
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        KrakenAdapters.adaptWallet(getKrakenBalance()));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     return withdraw(null, currency.toString(), address, amount).getRefid();
   }
 
@@ -58,7 +61,8 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
 
   @Override
   public String requestDepositAddress(Currency currency, String... args) throws IOException {
-    KrakenDepositAddress[] depositAddresses = getDepositAddresses(currency.toString(), "Bitcoin", false);
+    KrakenDepositAddress[] depositAddresses =
+        getDepositAddresses(currency.toString(), "Bitcoin", false);
     return KrakenAdapters.adaptKrakenDepositAddress(depositAddresses);
   }
 
@@ -94,15 +98,21 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
     LedgerType ledgerType = null;
     if (params instanceof HistoryParamsFundingType) {
       final FundingRecord.Type type = ((HistoryParamsFundingType) params).getType();
-      ledgerType = type == FundingRecord.Type.DEPOSIT ? LedgerType.DEPOSIT : type == FundingRecord.Type.WITHDRAWAL ? LedgerType.WITHDRAWAL : null;
+      ledgerType =
+          type == FundingRecord.Type.DEPOSIT
+              ? LedgerType.DEPOSIT
+              : type == FundingRecord.Type.WITHDRAWAL ? LedgerType.WITHDRAWAL : null;
     }
 
     if (ledgerType == null) {
-      Map<String, KrakenLedger> ledgerEntries = getKrakenLedgerInfo(LedgerType.DEPOSIT, startTime, endTime, offset, currencies);
-      ledgerEntries.putAll(getKrakenLedgerInfo(LedgerType.WITHDRAWAL, startTime, endTime, offset, currencies));
+      Map<String, KrakenLedger> ledgerEntries =
+          getKrakenLedgerInfo(LedgerType.DEPOSIT, startTime, endTime, offset, currencies);
+      ledgerEntries.putAll(
+          getKrakenLedgerInfo(LedgerType.WITHDRAWAL, startTime, endTime, offset, currencies));
       return KrakenAdapters.adaptFundingHistory(ledgerEntries);
     } else {
-      return KrakenAdapters.adaptFundingHistory(getKrakenLedgerInfo(ledgerType, startTime, endTime, offset, currencies));
+      return KrakenAdapters.adaptFundingHistory(
+          getKrakenLedgerInfo(ledgerType, startTime, endTime, offset, currencies));
     }
   }
 
@@ -113,7 +123,8 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
     private Currency[] currencies;
     private FundingRecord.Type type;
 
-    public KrakenFundingHistoryParams(final Date startTime, final Date endTime, final Long offset, final Currency... currencies) {
+    public KrakenFundingHistoryParams(
+        final Date startTime, final Date endTime, final Long offset, final Currency... currencies) {
       super(startTime, endTime);
       this.offset = offset;
       this.currencies = currencies;
@@ -149,5 +160,4 @@ public class KrakenAccountService extends KrakenAccountServiceRaw implements Acc
       this.type = type;
     }
   }
-
 }

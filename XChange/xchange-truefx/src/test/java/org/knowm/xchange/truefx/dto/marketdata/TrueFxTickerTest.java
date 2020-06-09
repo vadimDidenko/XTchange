@@ -21,7 +21,8 @@ public class TrueFxTickerTest {
   @Test
   public void unmarshalTest1() throws IOException {
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(TrueFxExchange.class.getName());
-    TrueFxMarketDataServiceRaw rawService = (TrueFxMarketDataServiceRaw) exchange.getMarketDataService();
+    TrueFxMarketDataServiceRaw rawService =
+        (TrueFxMarketDataServiceRaw) exchange.getMarketDataService();
     ObjectMapper mapper = rawService.createObjectMapper();
 
     InputStream is = getClass().getResourceAsStream("/marketdata/example-ticker.csv");
@@ -35,7 +36,8 @@ public class TrueFxTickerTest {
     CsvSchema schema = mapper.schemaFor(TrueFxTicker.class);
 
     InputStream is = getClass().getResourceAsStream("/marketdata/example-ticker.csv");
-    List<Object> tickers = mapper.readerFor(TrueFxTicker.class).with(schema).readValues(is).readAll();
+    List<Object> tickers =
+        mapper.readerFor(TrueFxTicker.class).with(schema).readValues(is).readAll();
     assertThat(tickers).hasSize(1);
 
     TrueFxTicker ticker = (TrueFxTicker) tickers.get(0);

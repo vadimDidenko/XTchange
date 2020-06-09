@@ -33,7 +33,8 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
 
   public List<BittrexBalance> getBittrexBalances() throws IOException {
 
-    BittrexBalancesResponse response = bittrexAuthenticated.getBalances(apiKey, signatureCreator, exchange.getNonceFactory());
+    BittrexBalancesResponse response =
+        bittrexAuthenticated.getBalances(apiKey, signatureCreator, exchange.getNonceFactory());
 
     if (response.getSuccess()) {
       return response.getResult();
@@ -43,8 +44,12 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
   }
 
   public BittrexBalance getBittrexBalance(Currency currency) throws IOException {
-    BittrexBalanceResponse response = bittrexAuthenticated.getBalance(apiKey, signatureCreator, exchange.getNonceFactory(), currency == null ? null
-        : currency.getCurrencyCode());
+    BittrexBalanceResponse response =
+        bittrexAuthenticated.getBalance(
+            apiKey,
+            signatureCreator,
+            exchange.getNonceFactory(),
+            currency == null ? null : currency.getCurrencyCode());
     System.out.println(currency.getCurrencyCode());
     if (response.getSuccess()) {
       return response.getResult();
@@ -54,7 +59,8 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
   }
 
   public BittrexOrder getBittrexOrder(String uuid) throws IOException {
-    BittrexOrderResponse response = bittrexAuthenticated.getOrder(apiKey, signatureCreator, exchange.getNonceFactory(), uuid);
+    BittrexOrderResponse response =
+        bittrexAuthenticated.getOrder(apiKey, signatureCreator, exchange.getNonceFactory(), uuid);
 
     if (response.getSuccess()) {
       return response.getResult();
@@ -65,7 +71,9 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
 
   public String getBittrexDepositAddress(String currency) throws IOException {
 
-    BittrexDepositAddressResponse response = bittrexAuthenticated.getdepositaddress(apiKey, signatureCreator, exchange.getNonceFactory(), currency);
+    BittrexDepositAddressResponse response =
+        bittrexAuthenticated.getdepositaddress(
+            apiKey, signatureCreator, exchange.getNonceFactory(), currency);
     if (response.getSuccess()) {
       return response.getResult().getAddress();
     } else {
@@ -73,9 +81,15 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
     }
   }
 
-  public List<BittrexWithdrawalHistory> getWithdrawalsHistory(Currency currency) throws IOException {
+  public List<BittrexWithdrawalHistory> getWithdrawalsHistory(Currency currency)
+      throws IOException {
 
-    BittrexWithdrawalsHistoryResponse response = bittrexAuthenticated.getwithdrawalhistory(apiKey, signatureCreator, exchange.getNonceFactory(), currency == null ? null : currency.getCurrencyCode());
+    BittrexWithdrawalsHistoryResponse response =
+        bittrexAuthenticated.getwithdrawalhistory(
+            apiKey,
+            signatureCreator,
+            exchange.getNonceFactory(),
+            currency == null ? null : currency.getCurrencyCode());
     if (response.getSuccess()) {
       return response.getResult();
     } else {
@@ -85,7 +99,12 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
 
   public List<BittrexDepositHistory> getDepositsHistory(Currency currency) throws IOException {
 
-    BittrexDepositsHistoryResponse response = bittrexAuthenticated.getdeposithistory(apiKey, signatureCreator, exchange.getNonceFactory(), currency == null ? null : currency.getCurrencyCode());
+    BittrexDepositsHistoryResponse response =
+        bittrexAuthenticated.getdeposithistory(
+            apiKey,
+            signatureCreator,
+            exchange.getNonceFactory(),
+            currency == null ? null : currency.getCurrencyCode());
     if (response.getSuccess()) {
       return response.getResult();
     } else {
@@ -93,15 +112,22 @@ public class BittrexAccountServiceRaw extends BittrexBaseService {
     }
   }
 
-  public String withdraw(String currencyCode, BigDecimal amount, String address, String paymentId) throws IOException {
+  public String withdraw(String currencyCode, BigDecimal amount, String address, String paymentId)
+      throws IOException {
 
-    BittrexWithdrawResponse response = bittrexAuthenticated.withdraw(apiKey, signatureCreator, exchange.getNonceFactory(), currencyCode,
-        amount.toPlainString(), address, paymentId);
+    BittrexWithdrawResponse response =
+        bittrexAuthenticated.withdraw(
+            apiKey,
+            signatureCreator,
+            exchange.getNonceFactory(),
+            currencyCode,
+            amount.toPlainString(),
+            address,
+            paymentId);
     if (response.getSuccess()) {
       return response.getResult().getUuid();
     } else {
       throw new ExchangeException(response.getMessage());
     }
   }
-
 }

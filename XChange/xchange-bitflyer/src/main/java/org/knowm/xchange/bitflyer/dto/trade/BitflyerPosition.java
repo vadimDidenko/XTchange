@@ -7,22 +7,31 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 public class BitflyerPosition {
   @JsonProperty("product_code")
   public String productCode;
+
   @JsonProperty("side")
   public String side;
+
   @JsonProperty("price")
   public BigDecimal price;
+
   @JsonProperty("size")
   public BigDecimal size;
+
   @JsonProperty("commission")
   public BigDecimal commission;
+
   @JsonProperty("swap_point_accumulate")
   public BigDecimal swapPointAccumulate;
+
   @JsonProperty("require_collateral")
   public BigDecimal requireCollateral;
+
   @JsonProperty("open_date")
   public String openDate;
+
   @JsonProperty("leverage")
   public BigDecimal leverage;
+
   @JsonProperty("pnl")
   public BigDecimal pnl;
 
@@ -68,17 +77,30 @@ public class BitflyerPosition {
 
   @Override
   public String toString() {
-    return "BitflyerPosition{" +
-        "productCode='" + productCode + '\'' +
-        ", side='" + side + '\'' +
-        ", price=" + price +
-        ", size=" + size +
-        ", commission=" + commission +
-        ", swapPointAccumulate=" + swapPointAccumulate +
-        ", requireCollateral=" + requireCollateral +
-        ", openDate='" + openDate + '\'' +
-        ", leverage=" + leverage +
-        ", pnl=" + pnl +
-        '}';
+    return "BitflyerPosition{"
+        + "productCode='"
+        + productCode
+        + '\''
+        + ", side='"
+        + side
+        + '\''
+        + ", price="
+        + price
+        + ", size="
+        + size
+        + ", commission="
+        + commission
+        + ", swapPointAccumulate="
+        + swapPointAccumulate
+        + ", requireCollateral="
+        + requireCollateral
+        + ", openDate='"
+        + openDate
+        + '\''
+        + ", leverage="
+        + leverage
+        + ", pnl="
+        + pnl
+        + '}';
   }
 }

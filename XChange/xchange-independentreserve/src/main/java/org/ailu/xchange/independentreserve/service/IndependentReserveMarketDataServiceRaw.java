@@ -9,19 +9,21 @@ import org.knowm.xchange.independentreserve.dto.marketdata.IndependentReserveTic
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * Author: Kamil Zbikowski Date: 4/9/15
- */
+/** Author: Kamil Zbikowski Date: 4/9/15 */
 public class IndependentReserveMarketDataServiceRaw extends IndependentReserveBaseService {
   private final IndependentReserve independentReserve;
 
   public IndependentReserveMarketDataServiceRaw(Exchange exchange) {
     super(exchange);
-    this.independentReserve = RestProxyFactory.createProxy(IndependentReserve.class, exchange.getExchangeSpecification().getSslUri(),
-        getClientConfig());
+    this.independentReserve =
+        RestProxyFactory.createProxy(
+            IndependentReserve.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
   }
 
-  public IndependentReserveTicker getIndependentReserveTicker(String baseSymbol, String counterSymbol) throws IOException {
+  public IndependentReserveTicker getIndependentReserveTicker(
+      String baseSymbol, String counterSymbol) throws IOException {
 
     // Independent Reserve works with Xbt
     if (baseSymbol.equals("BTC")) {
@@ -31,7 +33,8 @@ public class IndependentReserveMarketDataServiceRaw extends IndependentReserveBa
     return independentReserve.getMarketSummary(baseSymbol, counterSymbol);
   }
 
-  public IndependentReserveOrderBook getIndependentReserveOrderBook(String baseSymbol, String counterSymbol) throws IOException {
+  public IndependentReserveOrderBook getIndependentReserveOrderBook(
+      String baseSymbol, String counterSymbol) throws IOException {
 
     // Independent Reserve works with Xbt
     if (baseSymbol.equals("BTC")) {

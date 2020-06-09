@@ -14,7 +14,8 @@ public class CoinfloorMarketOrderResponseTest {
   public void unmarshalTest() throws IOException {
     InputStream is = getClass().getResourceAsStream("/trade/example-place-market-order.json");
     ObjectMapper mapper = new ObjectMapper();
-    CoinfloorMarketOrderResponse response = mapper.readValue(is, CoinfloorMarketOrderResponse.class);
+    CoinfloorMarketOrderResponse response =
+        mapper.readValue(is, CoinfloorMarketOrderResponse.class);
 
     assertThat(response.getRemaining()).isEqualTo("0.0000");
   }

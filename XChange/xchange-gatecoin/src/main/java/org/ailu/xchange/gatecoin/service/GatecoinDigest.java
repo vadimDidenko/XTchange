@@ -20,7 +20,10 @@ public class GatecoinDigest extends BaseParamsDigest {
 
   @Override
   public String digestParams(RestInvocation restInvocation) {
-    return digest(restInvocation.getHttpMethod(), restInvocation.getInvocationUrl(), restInvocation.getReqContentType(),
+    return digest(
+        restInvocation.getHttpMethod(),
+        restInvocation.getInvocationUrl(),
+        restInvocation.getReqContentType(),
         restInvocation.getParamValue(HeaderParam.class, "API_REQUEST_DATE").toString());
   }
 

@@ -34,8 +34,7 @@ public class EmpoExTradeService extends EmpoExTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return EmpoExAdapters.adaptOpenOrders(super.getEmpoExOpenOrders());
   }
 
@@ -93,9 +92,7 @@ public class EmpoExTradeService extends EmpoExTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

@@ -19,9 +19,7 @@ import org.knowm.xchange.service.trade.TradeService;
 import org.knowm.xchange.service.trade.params.*;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author Z. Dolezal
- */
+/** @author Z. Dolezal */
 public class BitbayTradeService extends BitbayTradeServiceRaw implements TradeService {
 
   public BitbayTradeService(Exchange exchange) {
@@ -34,22 +32,19 @@ public class BitbayTradeService extends BitbayTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     List<BitbayOrder> response = getBitbayOpenOrders();
     return BitbayAdapters.adaptOpenOrders(response);
   }
 
   @Override
-  public String placeMarketOrder(
-      MarketOrder marketOrder) throws IOException {
+  public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
 
     throw new NotAvailableFromExchangeException();
   }
 
   @Override
-  public String placeLimitOrder(
-      LimitOrder limitOrder) throws IOException {
+  public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
 
     BitbayTradeResponse response = placeBitbayOrder(limitOrder);
     return String.valueOf(response.getOrderId());
@@ -61,8 +56,7 @@ public class BitbayTradeService extends BitbayTradeServiceRaw implements TradeSe
   }
 
   @Override
-  public boolean cancelOrder(
-      String orderId) throws IOException {
+  public boolean cancelOrder(String orderId) throws IOException {
     cancelBitbayOrder(Long.parseLong(orderId));
     return true;
   }

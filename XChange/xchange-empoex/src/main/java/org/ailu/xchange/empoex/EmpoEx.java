@@ -27,10 +27,11 @@ public interface EmpoEx {
 
   @GET
   @Path("markethistory/{pairString}/")
-  Map<String, List<EmpoExTrade>> getEmpoExTrades(@PathParam("pairString") String pairString) throws IOException;
+  Map<String, List<EmpoExTrade>> getEmpoExTrades(@PathParam("pairString") String pairString)
+      throws IOException;
 
   @GET
   @Path("orderbook/{pairString}/")
-  Map<String, Map<String, List<EmpoExLevel>>> getEmpoExDepth(@PathParam("pairString") String pairString) throws IOException;
-
+  Map<String, Map<String, List<EmpoExLevel>>> getEmpoExDepth(
+      @PathParam("pairString") String pairString) throws IOException;
 }

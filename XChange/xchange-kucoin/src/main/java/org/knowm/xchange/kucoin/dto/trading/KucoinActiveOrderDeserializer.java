@@ -30,5 +30,4 @@ public class KucoinActiveOrderDeserializer extends JsonDeserializer<KucoinActive
       throw new RuntimeException("KucoinDealOrder should have an array as root node!");
     }
   }
-
 }

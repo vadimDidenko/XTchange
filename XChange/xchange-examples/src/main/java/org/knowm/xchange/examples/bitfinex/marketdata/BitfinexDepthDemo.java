@@ -11,9 +11,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.OrderBook;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Order Book at Bitfinex
- */
+/** Demonstrate requesting Order Book at Bitfinex */
 public class BitfinexDepthDemo {
 
   public static void main(String[] args) throws Exception {
@@ -26,7 +24,6 @@ public class BitfinexDepthDemo {
 
     generic(marketDataService);
     raw((BitfinexMarketDataServiceRaw) marketDataService);
-
   }
 
   private static void generic(MarketDataService marketDataService) throws IOException {
@@ -34,7 +31,9 @@ public class BitfinexDepthDemo {
     // Get the latest order book data for CurrencyPair.BTC_USD
     OrderBook orderBook = marketDataService.getOrderBook(CurrencyPair.BTC_USD, 10000, 10000);
 
-    System.out.println("Current Order Book size for BTC / USD: " + (orderBook.getAsks().size() + orderBook.getBids().size()));
+    System.out.println(
+        "Current Order Book size for BTC / USD: "
+            + (orderBook.getAsks().size() + orderBook.getBids().size()));
 
     System.out.println("First Ask: " + orderBook.getAsks().get(0).toString());
 
@@ -48,7 +47,9 @@ public class BitfinexDepthDemo {
     // Get the latest order book data for BTC/CAD
     BitfinexDepth bitfinexDepth = marketDataService.getBitfinexOrderBook("btcusd", 50, 50);
 
-    System.out.println("Current Order Book size for BTC / USD: " + (bitfinexDepth.getAsks().length + bitfinexDepth.getBids().length));
+    System.out.println(
+        "Current Order Book size for BTC / USD: "
+            + (bitfinexDepth.getAsks().length + bitfinexDepth.getBids().length));
 
     System.out.println("First Ask: " + bitfinexDepth.getAsks()[0].toString());
 
@@ -56,5 +57,4 @@ public class BitfinexDepthDemo {
 
     System.out.println(bitfinexDepth.toString());
   }
-
 }

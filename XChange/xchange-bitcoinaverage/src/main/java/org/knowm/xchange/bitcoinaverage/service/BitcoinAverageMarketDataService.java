@@ -13,14 +13,14 @@ import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * <p>
  * Implementation of the generic market data service for BitcoinAverage
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class BitcoinAverageMarketDataService extends BitcoinAverageMarketDataServiceRaw implements MarketDataService {
+public class BitcoinAverageMarketDataService extends BitcoinAverageMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -36,7 +36,9 @@ public class BitcoinAverageMarketDataService extends BitcoinAverageMarketDataSer
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
     // Request data
-    BitcoinAverageTicker bitcoinAverageTicker = getBitcoinAverageTicker(currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
+    BitcoinAverageTicker bitcoinAverageTicker =
+        getBitcoinAverageTicker(
+            currencyPair.base.getCurrencyCode(), currencyPair.counter.getCurrencyCode());
 
     // Adapt to XChange DTOs
     return BitcoinAverageAdapters.adaptTicker(bitcoinAverageTicker, currencyPair);
@@ -53,5 +55,4 @@ public class BitcoinAverageMarketDataService extends BitcoinAverageMarketDataSer
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

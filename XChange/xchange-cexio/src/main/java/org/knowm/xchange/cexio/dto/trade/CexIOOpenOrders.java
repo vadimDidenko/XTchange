@@ -56,7 +56,8 @@ public class CexIOOpenOrders {
   static class CexIOOpenOrdersDeserializer extends JsonDeserializer<CexIOOpenOrders> {
 
     @Override
-    public CexIOOpenOrders deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CexIOOpenOrders deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       final ObjectCodec oc = jp.getCodec();
       final JsonNode openOrdersNode = oc.readTree(jp);

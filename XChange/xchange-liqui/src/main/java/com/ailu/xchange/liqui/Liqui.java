@@ -44,7 +44,8 @@ public interface Liqui {
   @GET
   @Path("trades/{pairs}")
   @Produces(MediaType.APPLICATION_JSON)
-  LiquiPublicTradesResult getTrades(@PathParam("pairs") Pairs pairs, @QueryParam("limit") int limit);
+  LiquiPublicTradesResult getTrades(
+      @PathParam("pairs") Pairs pairs, @QueryParam("limit") int limit);
 
   class Pairs {
 
@@ -65,7 +66,9 @@ public interface Liqui {
 
       final Pairs pairs = (Pairs) o;
 
-      return currencyPairs != null ? currencyPairs.equals(pairs.currencyPairs) : pairs.currencyPairs == null;
+      return currencyPairs != null
+          ? currencyPairs.equals(pairs.currencyPairs)
+          : pairs.currencyPairs == null;
     }
 
     @Override
@@ -77,8 +80,11 @@ public interface Liqui {
     public String toString() {
       final StringBuilder builder = new StringBuilder();
       for (int i = 0; i < currencyPairs.size(); i++) {
-        builder.append(String.format("%s_%s", currencyPairs.get(i).base.getCurrencyCode().toLowerCase(),
-            currencyPairs.get(i).counter.getCurrencyCode().toLowerCase()));
+        builder.append(
+            String.format(
+                "%s_%s",
+                currencyPairs.get(i).base.getCurrencyCode().toLowerCase(),
+                currencyPairs.get(i).counter.getCurrencyCode().toLowerCase()));
 
         if (i < currencyPairs.size() - 1) {
           builder.append("-");

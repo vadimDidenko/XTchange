@@ -24,7 +24,8 @@ public class QuoineExchange extends BaseExchange implements Exchange {
   @Override
   protected void initServices() {
 
-    boolean useMargin = (Boolean) exchangeSpecification.getExchangeSpecificParametersItem("Use_Margin");
+    boolean useMargin =
+        (Boolean) exchangeSpecification.getExchangeSpecificParametersItem("Use_Margin");
 
     this.marketDataService = new QuoineMarketDataService(this);
     this.accountService = new QuoineAccountService(this, useMargin);
@@ -34,7 +35,8 @@ public class QuoineExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.quoine.com");
     exchangeSpecification.setExchangeName("Quoine");
     exchangeSpecification.setExchangeSpecificParametersItem("Use_Margin", false);
@@ -52,7 +54,8 @@ public class QuoineExchange extends BaseExchange implements Exchange {
   public void remoteInit() throws IOException, ExchangeException {
     super.remoteInit();
 
-    QuoineProduct[] quoineProducts = ((QuoineMarketDataService) marketDataService).getQuoineProducts();
+    QuoineProduct[] quoineProducts =
+        ((QuoineMarketDataService) marketDataService).getQuoineProducts();
     Map<CurrencyPair, Integer> products = new HashMap<>();
     for (QuoineProduct quoineProduct : quoineProducts) {
       int id = quoineProduct.getId();
@@ -67,5 +70,4 @@ public class QuoineExchange extends BaseExchange implements Exchange {
   public Integer getProductId(CurrencyPair currencyPair) {
     return products.get(currencyPair);
   }
-
 }

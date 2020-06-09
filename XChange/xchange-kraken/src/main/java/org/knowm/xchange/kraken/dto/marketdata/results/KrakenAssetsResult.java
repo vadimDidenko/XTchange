@@ -15,7 +15,9 @@ public class KrakenAssetsResult extends KrakenResult<Map<String, KrakenAsset>> {
    * @param result
    * @param error
    */
-  public KrakenAssetsResult(@JsonProperty("result") Map<String, KrakenAsset> result, @JsonProperty("error") String[] error) {
+  public KrakenAssetsResult(
+      @JsonProperty("result") Map<String, KrakenAsset> result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }

@@ -11,8 +11,11 @@ public class PaymiumMarketOrder {
   private final BigDecimal price;
   private final BigDecimal amount;
 
-  public PaymiumMarketOrder(@JsonProperty("currency") String currency, @JsonProperty("timestamp") long timestamp,
-      @JsonProperty("price") BigDecimal price, @JsonProperty("amount") BigDecimal amount) {
+  public PaymiumMarketOrder(
+      @JsonProperty("currency") String currency,
+      @JsonProperty("timestamp") long timestamp,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount) {
 
     this.currency = currency;
     this.timestamp = timestamp;
@@ -43,6 +46,16 @@ public class PaymiumMarketOrder {
   @Override
   public String toString() {
 
-    return "PaymiumMarketOrder{" + "currency='" + currency + '\'' + ", timestamp=" + timestamp + ", price=" + price + ", amount=" + amount + '}';
+    return "PaymiumMarketOrder{"
+        + "currency='"
+        + currency
+        + '\''
+        + ", timestamp="
+        + timestamp
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + '}';
   }
 }

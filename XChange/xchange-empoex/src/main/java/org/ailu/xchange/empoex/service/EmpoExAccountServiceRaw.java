@@ -29,5 +29,4 @@ public class EmpoExAccountServiceRaw extends EmpoExBaseService {
       throw new ExchangeException(e.getError(), e);
     }
   }
-
 }

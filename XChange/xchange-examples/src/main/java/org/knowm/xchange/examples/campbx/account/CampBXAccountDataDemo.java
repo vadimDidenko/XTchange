@@ -10,9 +10,7 @@ import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.service.account.AccountService;
 
-/**
- * Demonstrate requesting Market Data from CampBX
- */
+/** Demonstrate requesting Market Data from CampBX */
 public class CampBXAccountDataDemo {
 
   public static void main(String[] args) throws IOException {
@@ -34,5 +32,4 @@ public class CampBXAccountDataDemo {
     String txid = accountService.withdrawFunds(Currency.BTC, new BigDecimal("0.1"), "XXX");
     System.out.println("See the withdrawal transaction: http://blockchain.info/tx-index/" + txid);
   }
-
 }

@@ -12,77 +12,64 @@ import java.util.List;
 
 public class SpotProductAPITest extends SpotAPIBaseTests {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SpotProductAPITest.class);
+  private static final Logger LOG = LoggerFactory.getLogger(SpotProductAPITest.class);
 
-    private SpotProductAPIService spotProductAPIService;
+  private SpotProductAPIService spotProductAPIService;
 
-    @Before
-    public void before() {
-        this.config = this.config();
-        this.spotProductAPIService = new SpotProductAPIServiceImpl(this.config);
+  @Before
+  public void before() {
+    this.config = this.config();
+    this.spotProductAPIService = new SpotProductAPIServiceImpl(this.config);
+  }
+
+  /** 币对信息 */
+  @Test
+  public void getProducts() {
+    final List<Product> products = this.spotProductAPIService.getProducts();
+    this.toResultString(SpotProductAPITest.LOG, "products", products);
+  }
+
+  /** 深度数据 */
+  @Test
+  public void bookProductsByProductId() {
+    for (int i = 0; i < 1; i++) {
+      final Book book = this.spotProductAPIService.bookProductsByProductId("BTC-usdt", "10", null);
+      this.toResultString(SpotProductAPITest.LOG, "book", book);
+      System.out.println("==========i=" + i);
+      try {
+        Thread.sleep(400);
+      } catch (final InterruptedException e) {
+        e.printStackTrace();
+      }
     }
+  }
 
-    /**
-     * 币对信息
-     */
-    @Test
-    public void getProducts() {
-        final List<Product> products = this.spotProductAPIService.getProducts();
-        this.toResultString(SpotProductAPITest.LOG, "products", products);
-    }
+  /** 全部ticker数据 */
+  @Test
+  public void getTickers() {
+    final List<Ticker> tickers = this.spotProductAPIService.getTickers();
+    this.toResultString(SpotProductAPITest.LOG, "tickers", tickers);
+  }
 
-    /**
-     * 深度数据
-     */
-    @Test
-    public void bookProductsByProductId() {
-        for (int i = 0; i < 1; i++) {
-            final Book book = this.spotProductAPIService.bookProductsByProductId("BTC-usdt", "10", null);
-            this.toResultString(SpotProductAPITest.LOG, "book", book);
-            System.out.println("==========i=" + i);
-            try {
-                Thread.sleep(400);
-            } catch (final InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-    }
+  /** 单个币对ticker数据 */
+  @Test
+  public void getTickerByProductId() {
+    final Ticker ticker = this.spotProductAPIService.getTickerByProductId("btc-USDt");
+    this.toResultString(SpotProductAPITest.LOG, "ticker", ticker);
+  }
 
-    /**
-     * 全部ticker数据
-     */
-    @Test
-    public void getTickers() {
-        final List<Ticker> tickers = this.spotProductAPIService.getTickers();
-        this.toResultString(SpotProductAPITest.LOG, "tickers", tickers);
+  /** 成交数据 */
+  @Test
+  public void getTrades() {
+    final List<Trade> trades = this.spotProductAPIService.getTrades("btc-USDt", null, null, "2");
+    this.toResultString(SpotProductAPITest.LOG, "trades", trades);
+  }
 
-    }
-
-    /**
-     * 单个币对ticker数据
-     */
-    @Test
-    public void getTickerByProductId() {
-        final Ticker ticker = this.spotProductAPIService.getTickerByProductId("btc-USDt");
-        this.toResultString(SpotProductAPITest.LOG, "ticker", ticker);
-    }
-
-    /**
-     * 成交数据
-     */
-    @Test
-    public void getTrades() {
-        final List<Trade> trades = this.spotProductAPIService.getTrades("btc-USDt", null, null, "2");
-        this.toResultString(SpotProductAPITest.LOG, "trades", trades);
-    }
-
-    /**
-     * Kline数据
-     */
-    @Test
-    public void getCandles() {
-        final List<KlineDto> klines = this.spotProductAPIService.getCandles("BTC-usdt", "60", null, null);
-        this.toResultString(SpotProductAPITest.LOG, "klines", klines);
-    }
-
+  /** Kline数据 */
+  @Test
+  public void getCandles() {
+    final List<KlineDto> klines =
+        this.spotProductAPIService.getCandles("BTC-usdt", "60", null, null);
+    this.toResultString(SpotProductAPITest.LOG, "klines", klines);
+  }
 }

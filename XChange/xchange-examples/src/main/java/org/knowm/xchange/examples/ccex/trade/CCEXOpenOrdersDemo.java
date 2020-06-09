@@ -26,5 +26,4 @@ public class CCEXOpenOrdersDemo {
       System.out.println(temp.toString());
     }
   }
-
 }

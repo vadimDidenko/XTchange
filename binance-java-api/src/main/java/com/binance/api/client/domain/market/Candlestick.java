@@ -6,9 +6,7 @@ import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Kline/Candlestick bars for a symbol. Klines are uniquely identified by their open time.
- */
+/** Kline/Candlestick bars for a symbol. Klines are uniquely identified by their open time. */
 @JsonFormat(shape = JsonFormat.Shape.ARRAY)
 @JsonPropertyOrder()
 @JsonIgnoreProperties(ignoreUnknown = true)

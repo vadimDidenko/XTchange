@@ -44,19 +44,23 @@ public class HitbtcExchange extends BaseExchange implements org.knowm.xchange.Ex
   protected void loadExchangeMetaData(InputStream is) {
 
     hitbtcMetaData = loadMetaData(is, HitbtcMetaData.class);
-    exchangeMetaData = HitbtcAdapters.adaptToExchangeMetaData(null, hitbtcMetaData.getCurrencies(), hitbtcMetaData.getCurrencyPairs());
+    exchangeMetaData =
+        HitbtcAdapters.adaptToExchangeMetaData(
+            null, hitbtcMetaData.getCurrencies(), hitbtcMetaData.getCurrencyPairs());
   }
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.hitbtc.com");
     exchangeSpecification.setHost("hitbtc.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("Hitbtc");
     exchangeSpecification.setExchangeDescription("Hitbtc is a Bitcoin exchange.");
-    exchangeSpecification.setExchangeSpecificParametersItem("demo-api", "http://demo-api.hitbtc.com");
+    exchangeSpecification.setExchangeSpecificParametersItem(
+        "demo-api", "http://demo-api.hitbtc.com");
 
     return exchangeSpecification;
   }
@@ -69,8 +73,11 @@ public class HitbtcExchange extends BaseExchange implements org.knowm.xchange.Ex
 
   @Override
   public void remoteInit() throws IOException {
-    List<HitbtcSymbol> hitbtcSymbols = ((HitbtcMarketDataServiceRaw) marketDataService).getHitbtcSymbols();
-    exchangeMetaData = HitbtcAdapters.adaptToExchangeMetaData(hitbtcSymbols, hitbtcMetaData.getCurrencies(), hitbtcMetaData.getCurrencyPairs());
+    List<HitbtcSymbol> hitbtcSymbols =
+        ((HitbtcMarketDataServiceRaw) marketDataService).getHitbtcSymbols();
+    exchangeMetaData =
+        HitbtcAdapters.adaptToExchangeMetaData(
+            hitbtcSymbols, hitbtcMetaData.getCurrencies(), hitbtcMetaData.getCurrencyPairs());
   }
 
   private static void setupPatchSupport() {
@@ -90,10 +97,11 @@ public class HitbtcExchange extends BaseExchange implements org.knowm.xchange.Ex
       String[] methods = {"GET", "POST", "HEAD", "OPTIONS", "PUT", "DELETE", "TRACE", "PATCH"};
       // set the new methods - including patch
       methodsField.set(null, methods);
-    } catch (SecurityException | IllegalArgumentException | IllegalAccessException | NoSuchFieldException e) {
+    } catch (SecurityException
+        | IllegalArgumentException
+        | IllegalAccessException
+        | NoSuchFieldException e) {
       LOGGER.error("Error while setting up PATCH support");
     }
-
   }
-
 }

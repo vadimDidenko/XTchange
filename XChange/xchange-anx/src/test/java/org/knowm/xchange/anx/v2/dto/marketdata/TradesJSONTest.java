@@ -16,7 +16,8 @@ public class TradesJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TickerJSONTest.class.getResourceAsStream("/v2/marketdata/example-trades-data.json");
+    InputStream is =
+        TickerJSONTest.class.getResourceAsStream("/v2/marketdata/example-trades-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

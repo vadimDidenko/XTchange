@@ -10,15 +10,14 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Created by semihunaldi on 26/11/2017
- */
+/** Created by semihunaldi on 26/11/2017 */
 public class BTCTurkOHLCTest {
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BTCTurkTickerTest.class.getResourceAsStream("/marketdata/example-ohlc-data.json");
+    InputStream is =
+        BTCTurkTickerTest.class.getResourceAsStream("/marketdata/example-ohlc-data.json");
     ObjectMapper mapper = new ObjectMapper();
     BTCTurkOHLC[] btcTurkOHLCs = mapper.readValue(is, BTCTurkOHLC[].class);
 

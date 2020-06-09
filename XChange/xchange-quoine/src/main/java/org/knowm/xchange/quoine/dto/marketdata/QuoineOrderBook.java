@@ -5,9 +5,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author timmolter
- */
+/** @author timmolter */
 public final class QuoineOrderBook {
 
   private final List<BigDecimal[]> buyPriceLevels;
@@ -20,7 +18,8 @@ public final class QuoineOrderBook {
    * @param buyPriceLevels
    * @param sellPriceLevels
    */
-  public QuoineOrderBook(@JsonProperty("buy_price_levels") List<BigDecimal[]> buyPriceLevels,
+  public QuoineOrderBook(
+      @JsonProperty("buy_price_levels") List<BigDecimal[]> buyPriceLevels,
       @JsonProperty("sell_price_levels") List<BigDecimal[]> sellPriceLevels) {
 
     this.buyPriceLevels = buyPriceLevels;
@@ -37,7 +36,10 @@ public final class QuoineOrderBook {
 
   @Override
   public String toString() {
-    return "QuoineOrderBook [buyPriceLevels=" + buyPriceLevels + ", sellPriceLevels=" + sellPriceLevels + "]";
+    return "QuoineOrderBook [buyPriceLevels="
+        + buyPriceLevels
+        + ", sellPriceLevels="
+        + sellPriceLevels
+        + "]";
   }
-
 }

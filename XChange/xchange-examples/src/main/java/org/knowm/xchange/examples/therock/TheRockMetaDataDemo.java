@@ -20,7 +20,5 @@ public class TheRockMetaDataDemo {
     for (CurrencyPair currencyPair : exchangeMetaData.getCurrencyPairs().keySet()) {
       System.out.println(currencyPair.toString());
     }
-
   }
-
 }

@@ -22,6 +22,8 @@ public final class RippleAccountBalances extends RippleCommon {
 
   @Override
   public String toString() {
-    return String.format("%s [ledger=%s, validated=%s, success=%s, balances=%s]", getClass().getSimpleName(), ledger, validated, success, balances);
+    return String.format(
+        "%s [ledger=%s, validated=%s, success=%s, balances=%s]",
+        getClass().getSimpleName(), ledger, validated, success, balances);
   }
 }

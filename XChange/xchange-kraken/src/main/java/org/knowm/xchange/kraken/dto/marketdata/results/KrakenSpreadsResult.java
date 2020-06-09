@@ -13,7 +13,8 @@ public class KrakenSpreadsResult extends KrakenResult<KrakenSpreads> {
    * @param error List of errors
    * @param result Recent spreads
    */
-  public KrakenSpreadsResult(@JsonProperty("error") String[] error, @JsonProperty("result") KrakenSpreads result) {
+  public KrakenSpreadsResult(
+      @JsonProperty("error") String[] error, @JsonProperty("result") KrakenSpreads result) {
 
     super(result, error);
   }

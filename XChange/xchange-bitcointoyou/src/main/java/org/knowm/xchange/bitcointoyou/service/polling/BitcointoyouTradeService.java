@@ -90,8 +90,8 @@ public class BitcointoyouTradeService extends BitcointoyouTradeServiceRaw implem
   }
 
   /**
-   * @param params Can optionally implement {@link TradeHistoryParamCurrencyPair} and {@link TradeHistoryParamsTimeSpan}. All other TradeHistoryParams
-   *        types will be ignored.
+   * @param params Can optionally implement {@link TradeHistoryParamCurrencyPair} and {@link
+   *     TradeHistoryParamsTimeSpan}. All other TradeHistoryParams types will be ignored.
    */
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
@@ -99,7 +99,8 @@ public class BitcointoyouTradeService extends BitcointoyouTradeServiceRaw implem
   }
 
   /**
-   * Create {@link TradeHistoryParams} that supports {@link TradeHistoryParamsTimeSpan} and {@link TradeHistoryParamCurrencyPair}.
+   * Create {@link TradeHistoryParams} that supports {@link TradeHistoryParamsTimeSpan} and {@link
+   * TradeHistoryParamCurrencyPair}.
    */
   @Override
   public TradeHistoryParams createTradeHistoryParams() {
@@ -107,7 +108,8 @@ public class BitcointoyouTradeService extends BitcointoyouTradeServiceRaw implem
     return new BitcointoyouTradeHistoryParams();
   }
 
-  public static class BitcointoyouTradeHistoryParams implements TradeHistoryParamCurrencyPair, TradeHistoryParamsTimeSpan {
+  public static class BitcointoyouTradeHistoryParams
+      implements TradeHistoryParamCurrencyPair, TradeHistoryParamsTimeSpan {
 
     private final TradeHistoryParamsAll all = new TradeHistoryParamsAll();
 
@@ -148,27 +150,29 @@ public class BitcointoyouTradeService extends BitcointoyouTradeServiceRaw implem
     }
   }
 
-	@Override
-	public Collection<Order> getOrder(String... orderIds) throws ExchangeException, NotAvailableFromExchangeException,
-			NotYetImplementedForExchangeException, IOException {
+  @Override
+  public Collection<Order> getOrder(String... orderIds)
+      throws ExchangeException, NotAvailableFromExchangeException,
+          NotYetImplementedForExchangeException, IOException {
 
     if (orderIds.length == 1) {
-      return BitcointoyouAdapters.adaptBitcointoyouOrderToOrdersCollection(returnOrderById(orderIds[0]));
+      return BitcointoyouAdapters.adaptBitcointoyouOrderToOrdersCollection(
+          returnOrderById(orderIds[0]));
     }
 
     // Bitcointoyou API doesn't support multiple-orders ID.
     throw new NotAvailableFromExchangeException();
-	}
+  }
 
-	@Override
-	public OpenOrders getOpenOrders(OpenOrdersParams params) throws ExchangeException,
-			NotAvailableFromExchangeException, NotYetImplementedForExchangeException, IOException {
+  @Override
+  public OpenOrders getOpenOrders(OpenOrdersParams params)
+      throws ExchangeException, NotAvailableFromExchangeException,
+          NotYetImplementedForExchangeException, IOException {
     throw new NotAvailableFromExchangeException();
-	}
+  }
 
-	@Override
-	public OpenOrdersParams createOpenOrdersParams() {
+  @Override
+  public OpenOrdersParams createOpenOrdersParams() {
     throw new NotAvailableFromExchangeException();
-	}
-
+  }
 }

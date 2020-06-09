@@ -2,9 +2,7 @@ package com.binance.api.client.domain.event;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * Dummy type to wrap a listen key from a server response.
- */
+/** Dummy type to wrap a listen key from a server response. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class ListenKey {
 

@@ -15,8 +15,7 @@ import org.knowm.xchange.hitbtc.v2.dto.HitbtcBalance;
 
 public class HitbtcAdaptersTest {
 
-  @Rule
-  public final ExpectedException exception = ExpectedException.none();
+  @Rule public final ExpectedException exception = ExpectedException.none();
 
   @Test
   public void testAdaptWallet_getBalance() {
@@ -26,15 +25,17 @@ public class HitbtcAdaptersTest {
     List<HitbtcBalance> trading = new ArrayList<>();
     trading.add(new HitbtcBalance("BTC", new BigDecimal("0.111"), BigDecimal.ZERO));
 
-    AccountInfo accountInfo = new AccountInfo(HitbtcAdapters.adaptWallet("Main", main), HitbtcAdapters.adaptWallet("Trading", trading));
+    AccountInfo accountInfo =
+        new AccountInfo(
+            HitbtcAdapters.adaptWallet("Main", main),
+            HitbtcAdapters.adaptWallet("Trading", trading));
 
     assertThat(accountInfo).isNotNull();
 
-    //Getting balance with two wallets not supported
+    // Getting balance with two wallets not supported
     exception.expect(UnsupportedOperationException.class);
     exception.expectMessage("2 wallets in account");
 
     accountInfo.getWallet().getBalance(Currency.BTC);
   }
-
 }

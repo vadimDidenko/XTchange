@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitstampTicker JSON parsing
- */
+/** Test BitstampTicker JSON parsing */
 public class TickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        TickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     ObjectMapper mapper = new ObjectMapper();
     BitstampTicker bitstampTicker = mapper.readValue(is, BitstampTicker.class);
@@ -34,5 +33,4 @@ public class TickerJSONTest {
     assertThat(bitstampTicker.getAsk()).isEqualTo(new BigDecimal("134.92"));
     assertThat(bitstampTicker.getTimestamp()).isEqualTo(1381787133L);
   }
-
 }

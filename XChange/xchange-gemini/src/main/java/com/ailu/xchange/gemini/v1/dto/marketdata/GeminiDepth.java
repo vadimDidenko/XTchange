@@ -15,7 +15,8 @@ public class GeminiDepth {
    * @param asks
    * @param bids
    */
-  public GeminiDepth(@JsonProperty("asks") GeminiLevel[] asks, @JsonProperty("bids") GeminiLevel[] bids) {
+  public GeminiDepth(
+      @JsonProperty("asks") GeminiLevel[] asks, @JsonProperty("bids") GeminiLevel[] bids) {
 
     this.asks = asks;
     this.bids = bids;
@@ -36,5 +37,4 @@ public class GeminiDepth {
 
     return "GeminiDepth [asks=" + Arrays.toString(asks) + ", bids=" + Arrays.toString(bids) + "]";
   }
-
 }

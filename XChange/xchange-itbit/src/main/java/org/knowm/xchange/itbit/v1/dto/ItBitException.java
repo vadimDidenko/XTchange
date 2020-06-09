@@ -10,7 +10,9 @@ public class ItBitException extends HttpStatusExceptionSupport {
 
   private String requestId;
 
-  public ItBitException(@JsonProperty("code") String code, @JsonProperty("description") String description,
+  public ItBitException(
+      @JsonProperty("code") String code,
+      @JsonProperty("description") String description,
       @JsonProperty("requestId") String requestId) {
     super(description);
     this.code = code;

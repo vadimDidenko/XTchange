@@ -14,8 +14,13 @@ public final class CryptopiaMarketHistory {
   private final BigDecimal total;
   private final long timestamp;
 
-  public CryptopiaMarketHistory(@JsonProperty("TradePairId") long tradePairId, @JsonProperty("Label") String label, @JsonProperty("Type") String type,
-      @JsonProperty("Price") BigDecimal price, @JsonProperty("Amount") BigDecimal amount, @JsonProperty("Total") BigDecimal total,
+  public CryptopiaMarketHistory(
+      @JsonProperty("TradePairId") long tradePairId,
+      @JsonProperty("Label") String label,
+      @JsonProperty("Type") String type,
+      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("Amount") BigDecimal amount,
+      @JsonProperty("Total") BigDecimal total,
       @JsonProperty("Timestamp") long timestamp) {
     this.tradePairId = tradePairId;
     this.label = label;
@@ -56,14 +61,23 @@ public final class CryptopiaMarketHistory {
 
   @Override
   public String toString() {
-    return "CryptopiaMarketHistory{" +
-        "tradePairId=" + tradePairId +
-        ", label='" + label + '\'' +
-        ", type='" + type + '\'' +
-        ", price=" + price +
-        ", amount=" + amount +
-        ", total=" + total +
-        ", timestamp=" + timestamp +
-        '}';
+    return "CryptopiaMarketHistory{"
+        + "tradePairId="
+        + tradePairId
+        + ", label='"
+        + label
+        + '\''
+        + ", type='"
+        + type
+        + '\''
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + ", total="
+        + total
+        + ", timestamp="
+        + timestamp
+        + '}';
   }
 }

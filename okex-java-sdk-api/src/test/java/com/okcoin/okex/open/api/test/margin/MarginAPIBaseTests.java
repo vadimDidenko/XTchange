@@ -13,28 +13,27 @@ import com.okcoin.okex.open.api.test.BaseTests;
  */
 public class MarginAPIBaseTests extends BaseTests {
 
-    public APIConfiguration config() {
-        APIConfiguration config = new APIConfiguration();
+  public APIConfiguration config() {
+    APIConfiguration config = new APIConfiguration();
 
-        config.setEndpoint("https://www.okex.com");
+    config.setEndpoint("https://www.okex.com");
 
+    config.setApiKey("");
+    config.setSecretKey("");
 
-        config.setApiKey("");
-        config.setSecretKey("");
+    config.setPassphrase("");
+    config.setPrint(true);
+    config.setI18n(I18nEnum.ENGLISH);
+    config.setEnableProxy(true);
+    config.setProxyUrl("127.0.0.1");
+    config.setProxyPort(1087);
+    return config;
+  }
 
-        config.setPassphrase("");
-        config.setPrint(true);
-        config.setI18n(I18nEnum.ENGLISH);
-        config.setEnableProxy(true);
-        config.setProxyUrl("127.0.0.1");
-        config.setProxyPort(1087);
-        return config;
-    }
-    String from = "0";
-    String to = "0";
-    String limit = "0";
-    String status = "all";
+  String from = "0";
+  String to = "0";
+  String limit = "0";
+  String status = "all";
 
-    String instrument_id = "ETH-USDT";
-
+  String instrument_id = "ETH-USDT";
 }

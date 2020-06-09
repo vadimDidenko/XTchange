@@ -43,7 +43,9 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
 
   @Before
   public void setUp() {
-    BitMarketExchange exchange = (BitMarketExchange) ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
+    BitMarketExchange exchange =
+        (BitMarketExchange)
+            ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
     ExchangeSpecification specification = exchange.getExchangeSpecification();
     specification.setUserName(SPECIFICATION_USERNAME);
     specification.setApiKey(SPECIFICATION_API_KEY);
@@ -54,7 +56,8 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
 
   @Test
   public void constructor() {
-    assertThat((String) Whitebox.getInternalState(accountService, "apiKey")).isEqualTo(SPECIFICATION_API_KEY);
+    assertThat((String) Whitebox.getInternalState(accountService, "apiKey"))
+        .isEqualTo(SPECIFICATION_API_KEY);
   }
 
   @Test
@@ -62,12 +65,20 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
     // given
     final Balance[] expectedBalances = expectedBalances();
 
-    BitMarketAccountInfoResponse response = new BitMarketAccountInfoResponse(true,
-        new BitMarketAccountInfo(new BitMarketBalance(createAvailable(), createBlocked())), new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketAccountInfoResponse response =
+        new BitMarketAccountInfoResponse(
+            true,
+            new BitMarketAccountInfo(new BitMarketBalance(createAvailable(), createBlocked())),
+            new BitMarketAPILimit(3, 100, 12345000L),
+            0,
+            null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
     PowerMockito.when(
-        bitMarketAuthenticated.info(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class), Mockito.any(SynchronizedValueFactory.class)))
+            bitMarketAuthenticated.info(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class)))
         .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
@@ -82,18 +93,23 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
 
     assertThat(balances).hasSize(3);
     for (int i = 0; i < balances.size(); i++) {
-      BitMarketAssert.assertEquals(balances.get(expectedBalances[i].getCurrency()), expectedBalances[i]);
+      BitMarketAssert.assertEquals(
+          balances.get(expectedBalances[i].getCurrency()), expectedBalances[i]);
     }
   }
 
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulGetAccountInfo() throws IOException {
     // given
-    BitMarketAccountInfoResponse response = new BitMarketAccountInfoResponse(false, null, null, 502, "Invalid message hash");
+    BitMarketAccountInfoResponse response =
+        new BitMarketAccountInfoResponse(false, null, null, 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
     PowerMockito.when(
-        bitMarketAuthenticated.info(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class), Mockito.any(SynchronizedValueFactory.class)))
+            bitMarketAuthenticated.info(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class)))
         .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
@@ -101,18 +117,27 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
     accountService.getAccountInfo();
 
     // then
-    fail("BitMarketAccountService should throw ExchangeException when account info request was unsuccessful");
+    fail(
+        "BitMarketAccountService should throw ExchangeException when account info request was"
+            + " unsuccessful");
   }
 
   @Test
   public void shouldWithdrawFunds() throws IOException {
     // given
-    BitMarketWithdrawResponse response = new BitMarketWithdrawResponse(true, "12345", new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketWithdrawResponse response =
+        new BitMarketWithdrawResponse(
+            true, "12345", new BitMarketAPILimit(3, 100, 12345000L), 0, null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito
-        .when(bitMarketAuthenticated.withdraw(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.eq(BigDecimal.TEN), Mockito.eq("address mock")))
+    PowerMockito.when(
+            bitMarketAuthenticated.withdraw(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.eq(BigDecimal.TEN),
+                Mockito.eq("address mock")))
         .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
@@ -126,12 +151,18 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulWithdrawFunds() throws IOException {
     // given
-    BitMarketWithdrawResponse response = new BitMarketWithdrawResponse(false, null, null, 502, "Invalid message hash");
+    BitMarketWithdrawResponse response =
+        new BitMarketWithdrawResponse(false, null, null, 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito
-        .when(bitMarketAuthenticated.withdraw(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-            Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()), Mockito.eq(BigDecimal.TEN), Mockito.eq("address mock")))
+    PowerMockito.when(
+            bitMarketAuthenticated.withdraw(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString()),
+                Mockito.eq(BigDecimal.TEN),
+                Mockito.eq("address mock")))
         .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
@@ -139,17 +170,26 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
     accountService.withdrawFunds(Currency.BTC, BigDecimal.TEN, "address mock");
 
     // then
-    fail("BitMarketAccountService should throw ExchangeException when withdraw funds request was unsuccessful");
+    fail(
+        "BitMarketAccountService should throw ExchangeException when withdraw funds request was"
+            + " unsuccessful");
   }
 
   @Test
   public void shouldRequestDepositAddress() throws IOException {
     // given
-    BitMarketDepositResponse response = new BitMarketDepositResponse(true, "BITMarket", new BitMarketAPILimit(3, 100, 12345000L), 0, null);
+    BitMarketDepositResponse response =
+        new BitMarketDepositResponse(
+            true, "BITMarket", new BitMarketAPILimit(3, 100, 12345000L), 0, null);
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.deposit(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.deposit(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString())))
+        .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
@@ -162,17 +202,25 @@ public class BitMarketAccountTest extends BitMarketTestSupport {
   @Test(expected = ExchangeException.class)
   public void shouldFailOnUnsuccessfulRequestDepositAddress() throws IOException {
     // given
-    BitMarketDepositResponse response = new BitMarketDepositResponse(false, null, null, 502, "Invalid message hash");
+    BitMarketDepositResponse response =
+        new BitMarketDepositResponse(false, null, null, 502, "Invalid message hash");
 
     BitMarketAuthenticated bitMarketAuthenticated = mock(BitMarketAuthenticated.class);
-    PowerMockito.when(bitMarketAuthenticated.deposit(Mockito.eq(SPECIFICATION_API_KEY), Mockito.any(ParamsDigest.class),
-        Mockito.any(SynchronizedValueFactory.class), Mockito.eq(Currency.BTC.toString()))).thenReturn(response);
+    PowerMockito.when(
+            bitMarketAuthenticated.deposit(
+                Mockito.eq(SPECIFICATION_API_KEY),
+                Mockito.any(ParamsDigest.class),
+                Mockito.any(SynchronizedValueFactory.class),
+                Mockito.eq(Currency.BTC.toString())))
+        .thenReturn(response);
     Whitebox.setInternalState(accountService, "bitMarketAuthenticated", bitMarketAuthenticated);
 
     // when
     accountService.requestDepositAddress(Currency.BTC);
 
     // then
-    fail("BitMarketAccountService should throw ExchangeException when deposit funds request was unsuccessful");
+    fail(
+        "BitMarketAccountService should throw ExchangeException when deposit funds request was"
+            + " unsuccessful");
   }
 }

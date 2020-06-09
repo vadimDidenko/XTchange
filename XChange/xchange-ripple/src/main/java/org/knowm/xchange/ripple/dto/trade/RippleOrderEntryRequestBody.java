@@ -10,8 +10,10 @@ public class RippleOrderEntryRequestBody {
 
   @JsonProperty("type")
   private String type;
+
   @JsonProperty("taker_pays")
   private RippleAmount takerPays = new RippleAmount();
+
   @JsonProperty("taker_gets")
   private RippleAmount takerGets = new RippleAmount();
 
@@ -41,6 +43,8 @@ public class RippleOrderEntryRequestBody {
 
   @Override
   public String toString() {
-    return String.format("%s [type=%s, taker_pays=%s, taker_gets=%s]", getClass().getSimpleName(), type, takerPays, takerGets);
+    return String.format(
+        "%s [type=%s, taker_pays=%s, taker_gets=%s]",
+        getClass().getSimpleName(), type, takerPays, takerGets);
   }
 }

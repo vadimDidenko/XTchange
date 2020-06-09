@@ -25,7 +25,7 @@ public class CoinbaseCurrencyData {
   }
 
   @JsonDeserialize(using = CoinbaseCurrencyDeserializer.class)
-  static public class CoinbaseCurrency {
+  public static class CoinbaseCurrency {
     private final String name;
     private final String id;
 
@@ -61,12 +61,13 @@ public class CoinbaseCurrencyData {
       return id + " (" + name + ")";
     }
   }
-  
+
   // [TODO] can we not do this with @JsonCreator
   static class CoinbaseCurrencyDeserializer extends JsonDeserializer<CoinbaseCurrency> {
 
     @Override
-    public CoinbaseCurrency deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public CoinbaseCurrency deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
       ObjectCodec oc = jp.getCodec();
       JsonNode node = oc.readTree(jp);
       String name = node.get("name").asText();
@@ -75,4 +76,3 @@ public class CoinbaseCurrencyData {
     }
   }
 }
-

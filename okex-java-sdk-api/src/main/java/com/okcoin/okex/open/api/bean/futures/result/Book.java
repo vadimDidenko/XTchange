@@ -11,28 +11,34 @@ import com.alibaba.fastjson.JSONArray;
  */
 public class Book {
 
-    /**
-     * asks book
-     */
-    JSONArray asks;
-    /**
-     * bids book
-     */
-    JSONArray bids;
-    /**
-     * time
-     */
-    String timestamp;
+  /** asks book */
+  JSONArray asks;
+  /** bids book */
+  JSONArray bids;
+  /** time */
+  String timestamp;
 
-    public JSONArray getAsks() { return asks; }
+  public JSONArray getAsks() {
+    return asks;
+  }
 
-    public void setAsks(JSONArray asks) { this.asks = asks; }
+  public void setAsks(JSONArray asks) {
+    this.asks = asks;
+  }
 
-    public JSONArray getBids() { return bids; }
+  public JSONArray getBids() {
+    return bids;
+  }
 
-    public void setBids(JSONArray bids) { this.bids = bids; }
+  public void setBids(JSONArray bids) {
+    this.bids = bids;
+  }
 
-    public String getTimestamp() { return timestamp; }
+  public String getTimestamp() {
+    return timestamp;
+  }
 
-    public void setTimestamp(String timestamp) { this.timestamp = timestamp; }
+  public void setTimestamp(String timestamp) {
+    this.timestamp = timestamp;
+  }
 }

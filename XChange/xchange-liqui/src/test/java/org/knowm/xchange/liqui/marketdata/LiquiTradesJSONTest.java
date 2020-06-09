@@ -19,10 +19,12 @@ public class LiquiTradesJSONTest {
 
   @Test
   public void testUnmarshall() throws Exception {
-    final InputStream is = LiquiTickerJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
+    final InputStream is =
+        LiquiTickerJSONTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
 
     final ObjectMapper mapper = new ObjectMapper();
-    final LiquiPublicTradesResult tradesResult = mapper.readValue(is, LiquiPublicTradesResult.class);
+    final LiquiPublicTradesResult tradesResult =
+        mapper.readValue(is, LiquiPublicTradesResult.class);
     final Map<String, LiquiPublicTrades> result = tradesResult.getResult();
 
     assertThat(result.get("eth_zec")).isEqualTo(null);

@@ -7,9 +7,7 @@ import javax.crypto.Mac;
 import java.io.UnsupportedEncodingException;
 import java.math.BigInteger;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitbayDigest extends BaseParamsDigest {
 
   private BitbayDigest(String secretKeyBase64) throws IllegalArgumentException {

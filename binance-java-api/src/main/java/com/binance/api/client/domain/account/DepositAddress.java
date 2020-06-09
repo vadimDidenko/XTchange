@@ -4,9 +4,7 @@ import com.binance.api.client.constant.BinanceApiConstants;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * A deposit address for a given asset.
- */
+/** A deposit address for a given asset. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DepositAddress {
 

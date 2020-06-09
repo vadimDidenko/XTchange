@@ -21,14 +21,16 @@ public class CCEXTradeDemo {
 
     generic(tradeService);
     raw((CCEXTradeServiceRaw) tradeService);
-
   }
 
   private static void generic(TradeService tradeService) throws IOException {
 
     CurrencyPair pair = new CurrencyPair("DASH", "BTC");
-    LimitOrder limitOrder = new LimitOrder.Builder(OrderType.BID, pair).limitPrice(new BigDecimal("0.00001000")).originalAmount(new BigDecimal("100"))
-        .build();
+    LimitOrder limitOrder =
+        new LimitOrder.Builder(OrderType.BID, pair)
+            .limitPrice(new BigDecimal("0.00001000"))
+            .originalAmount(new BigDecimal("100"))
+            .build();
 
     try {
       String uuid = tradeService.placeLimitOrder(limitOrder);
@@ -61,8 +63,11 @@ public class CCEXTradeDemo {
   private static void raw(CCEXTradeServiceRaw tradeService) throws IOException {
 
     CurrencyPair pair = new CurrencyPair("DASH", "BTC");
-    LimitOrder limitOrder = new LimitOrder.Builder(OrderType.BID, pair).limitPrice(new BigDecimal("0.00001000")).originalAmount(new BigDecimal("100"))
-        .build();
+    LimitOrder limitOrder =
+        new LimitOrder.Builder(OrderType.BID, pair)
+            .limitPrice(new BigDecimal("0.00001000"))
+            .originalAmount(new BigDecimal("100"))
+            .build();
 
     try {
       String uuid = tradeService.placeCCEXLimitOrder(limitOrder);

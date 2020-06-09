@@ -11,7 +11,8 @@ public class BitstampException extends HttpStatusExceptionSupport {
 
   private Map<String, Collection<String>> errors;
 
-  public BitstampException(@JsonProperty("error") Object error, @JsonProperty("reason") Object reason) {
+  public BitstampException(
+      @JsonProperty("error") Object error, @JsonProperty("reason") Object reason) {
     super(getMessage(error == null ? reason : error));
 
     if (error == null) {

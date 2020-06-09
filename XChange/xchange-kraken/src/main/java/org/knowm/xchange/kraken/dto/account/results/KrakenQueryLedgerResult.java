@@ -15,7 +15,9 @@ public class KrakenQueryLedgerResult extends KrakenResult<Map<String, KrakenLedg
    * @param result
    * @param error
    */
-  public KrakenQueryLedgerResult(@JsonProperty("result") Map<String, KrakenLedger> result, @JsonProperty("error") String[] error) {
+  public KrakenQueryLedgerResult(
+      @JsonProperty("result") Map<String, KrakenLedger> result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }

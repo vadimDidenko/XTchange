@@ -11,11 +11,15 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamPaging;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsAll;
 import org.knowm.xchange.service.trade.params.TradeHistoryParamsTimeSpan;
 
-/**
- * The complete set of parameters that a Ripple trade history query will consider.
- */
-public class RippleTradeHistoryParams implements TradeHistoryParamCurrencyPair, TradeHistoryParamPaging, TradeHistoryParamsTimeSpan,
-    RippleTradeHistoryAccount, RippleTradeHistoryHashLimit, RippleTradeHistoryCount, RippleTradeHistoryPreferredCurrencies {
+/** The complete set of parameters that a Ripple trade history query will consider. */
+public class RippleTradeHistoryParams
+    implements TradeHistoryParamCurrencyPair,
+        TradeHistoryParamPaging,
+        TradeHistoryParamsTimeSpan,
+        RippleTradeHistoryAccount,
+        RippleTradeHistoryHashLimit,
+        RippleTradeHistoryCount,
+        RippleTradeHistoryPreferredCurrencies {
 
   public static final int DEFAULT_PAGE_LENGTH = 20;
 
@@ -137,7 +141,8 @@ public class RippleTradeHistoryParams implements TradeHistoryParamCurrencyPair, 
   }
 
   /**
-   * @return the number of notifications to return in a single query, if not set the server assumes a default of 10.
+   * @return the number of notifications to return in a single query, if not set the server assumes
+   *     a default of 10.
    */
   @Override
   public Integer getPageLength() {

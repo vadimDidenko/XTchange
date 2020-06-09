@@ -20,7 +20,8 @@ public class CancelOrderJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = CancelOrderJSONTest.class.getResourceAsStream("/trade/example-cancel-order-pass.json");
+    InputStream is =
+        CancelOrderJSONTest.class.getResourceAsStream("/trade/example-cancel-order-pass.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

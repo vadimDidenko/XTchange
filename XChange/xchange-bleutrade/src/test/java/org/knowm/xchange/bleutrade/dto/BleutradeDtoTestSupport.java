@@ -36,5 +36,4 @@ public class BleutradeDtoTestSupport extends BleutradeTestData {
   protected static InputStream getStream(String baseName) {
     return BleutradeDtoTest.class.getResourceAsStream(String.format("/%s.json", baseName));
   }
-
 }

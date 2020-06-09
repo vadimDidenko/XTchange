@@ -9,9 +9,7 @@ import org.knowm.xchange.service.BaseParamsDigest;
 
 import si.mazi.rescu.RestInvocation;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketDigest extends BaseParamsDigest {
 
   private BitMarketDigest(String secretKeyBase64) throws IllegalArgumentException {

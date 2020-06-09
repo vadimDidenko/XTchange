@@ -42,9 +42,7 @@ import org.knowm.xchange.service.trade.params.TradeHistoryParamsSorted;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair;
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 public class CoinmateTradeService extends CoinmateTradeServiceRaw implements TradeService {
 
   public CoinmateTradeService(Exchange exchange) {
@@ -57,8 +55,7 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     CurrencyPair currencyPair = null;
     if (params instanceof OpenOrdersParamCurrencyPair) {
       currencyPair = ((OpenOrdersParamCurrencyPair) params).getCurrencyPair();
@@ -71,14 +68,19 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
   }
 
   @Override
-  public String placeMarketOrder(
-      MarketOrder marketOrder) throws IOException {
+  public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
     CoinmateTradeResponse response;
 
     if (marketOrder.getType().equals(Order.OrderType.ASK)) {
-      response = sellCoinmateInstant(marketOrder.getOriginalAmount(), CoinmateUtils.getPair(marketOrder.getCurrencyPair()));
+      response =
+          sellCoinmateInstant(
+              marketOrder.getOriginalAmount(),
+              CoinmateUtils.getPair(marketOrder.getCurrencyPair()));
     } else if (marketOrder.getType().equals(Order.OrderType.BID)) {
-      response = buyCoinmateInstant(marketOrder.getOriginalAmount(), CoinmateUtils.getPair(marketOrder.getCurrencyPair()));
+      response =
+          buyCoinmateInstant(
+              marketOrder.getOriginalAmount(),
+              CoinmateUtils.getPair(marketOrder.getCurrencyPair()));
     } else {
       throw new CoinmateException("Unknown order type");
     }
@@ -87,14 +89,21 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
   }
 
   @Override
-  public String placeLimitOrder(
-      LimitOrder limitOrder) throws IOException {
+  public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
     CoinmateTradeResponse response;
 
     if (limitOrder.getType().equals(Order.OrderType.ASK)) {
-      response = sellCoinmateLimit(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice(), CoinmateUtils.getPair(limitOrder.getCurrencyPair()));
+      response =
+          sellCoinmateLimit(
+              limitOrder.getOriginalAmount(),
+              limitOrder.getLimitPrice(),
+              CoinmateUtils.getPair(limitOrder.getCurrencyPair()));
     } else if (limitOrder.getType().equals(Order.OrderType.BID)) {
-      response = buyCoinmateLimit(limitOrder.getOriginalAmount(), limitOrder.getLimitPrice(), CoinmateUtils.getPair(limitOrder.getCurrencyPair()));
+      response =
+          buyCoinmateLimit(
+              limitOrder.getOriginalAmount(),
+              limitOrder.getLimitPrice(),
+              CoinmateUtils.getPair(limitOrder.getCurrencyPair()));
     } else {
       throw new CoinmateException("Unknown order type");
     }
@@ -108,8 +117,7 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
   }
 
   @Override
-  public boolean cancelOrder(
-      String orderId) throws IOException {
+  public boolean cancelOrder(String orderId) throws IOException {
     CoinmateCancelOrderResponse response = cancelCoinmateOrder(orderId);
 
     return response.getData();
@@ -142,7 +150,8 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
       order = ((TradeHistoryParamsSorted) params).getOrder();
     }
 
-    CoinmateTransactionHistory coinmateTradeHistory = getCoinmateTradeHistory(offset, limit, CoinmateAdapters.adaptSortOrder(order));
+    CoinmateTransactionHistory coinmateTradeHistory =
+        getCoinmateTradeHistory(offset, limit, CoinmateAdapters.adaptSortOrder(order));
     return CoinmateAdapters.adaptTransactionHistory(coinmateTradeHistory);
   }
 
@@ -157,12 +166,12 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 
-  public static class CoinmateTradeHistoryHistoryParams implements TradeHistoryParamOffset, TradeHistoryParamLimit, TradeHistoryParamsSorted {
+  public static class CoinmateTradeHistoryHistoryParams
+      implements TradeHistoryParamOffset, TradeHistoryParamLimit, TradeHistoryParamsSorted {
 
     private Integer limit;
     private Long offset;
@@ -208,5 +217,4 @@ public class CoinmateTradeService extends CoinmateTradeServiceRaw implements Tra
       this.order = order;
     }
   }
-
 }

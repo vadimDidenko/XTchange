@@ -12,8 +12,11 @@ public final class CryptopiaOrder {
   private final BigDecimal volume;
   private final BigDecimal total;
 
-  public CryptopiaOrder(@JsonProperty("TradePairId") long tradePairId, @JsonProperty("Label") String label,
-      @JsonProperty("Price") BigDecimal price, @JsonProperty("Volume") BigDecimal volume,
+  public CryptopiaOrder(
+      @JsonProperty("TradePairId") long tradePairId,
+      @JsonProperty("Label") String label,
+      @JsonProperty("Price") BigDecimal price,
+      @JsonProperty("Volume") BigDecimal volume,
       @JsonProperty("Total") BigDecimal total) {
     this.tradePairId = tradePairId;
     this.label = label;
@@ -44,12 +47,18 @@ public final class CryptopiaOrder {
 
   @Override
   public String toString() {
-    return "Order{" +
-        "tradePairId=" + tradePairId +
-        ", label='" + label + '\'' +
-        ", price=" + price +
-        ", volume=" + volume +
-        ", total=" + total +
-        '}';
+    return "Order{"
+        + "tradePairId="
+        + tradePairId
+        + ", label='"
+        + label
+        + '\''
+        + ", price="
+        + price
+        + ", volume="
+        + volume
+        + ", total="
+        + total
+        + '}';
   }
 }

@@ -4,9 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author kfonal
- */
+/** @author kfonal */
 public class BitMarketHistoryTrades {
 
   private final int total;
@@ -22,7 +20,10 @@ public class BitMarketHistoryTrades {
    * @param count
    * @param trades
    */
-  public BitMarketHistoryTrades(@JsonProperty("total") int total, @JsonProperty("start") int start, @JsonProperty("count") int count,
+  public BitMarketHistoryTrades(
+      @JsonProperty("total") int total,
+      @JsonProperty("start") int start,
+      @JsonProperty("count") int count,
       @JsonProperty("results") List<BitMarketHistoryTrade> trades) {
 
     this.total = total;

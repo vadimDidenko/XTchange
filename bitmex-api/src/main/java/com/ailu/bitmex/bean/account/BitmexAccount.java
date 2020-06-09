@@ -1,42 +1,54 @@
 package com.ailu.bitmex.bean.account;
 
-
 import com.alibaba.fastjson.annotation.JSONField;
 
 import java.util.HashMap;
 import java.util.Map;
 
-
 public final class BitmexAccount {
 
   @JSONField(name = "id")
   private Integer id;
+
   @JSONField(name = "ownerId")
   private Integer ownerId;
+
   @JSONField(name = "firstname")
   private String firstname;
+
   @JSONField(name = "lastname")
   private String lastname;
+
   @JSONField(name = "username")
   private String username;
+
   @JSONField(name = "email")
   private String email;
+
   @JSONField(name = "phone")
   private String phone;
+
   @JSONField(name = "created")
   private String created;
+
   @JSONField(name = "lastUpdated")
   private String lastUpdated;
+
   @JSONField(name = "preferences")
   private BitmexAccountPreferences preferences;
+
   @JSONField(name = "TFAEnabled")
   private String tFAEnabled;
+
   @JSONField(name = "affiliateID")
   private String affiliateID;
+
   @JSONField(name = "pgpPubKey")
   private String pgpPubKey;
+
   @JSONField(name = "country")
   private String country;
+
   @JSONField(serialize = false)
   private Map<String, Object> additionalProperties = new HashMap<>();
 

@@ -13,8 +13,13 @@ public class BTCTradeTicker {
   private final BigDecimal last;
   private final BigDecimal vol;
 
-  public BTCTradeTicker(@JsonProperty("high") BigDecimal high, @JsonProperty("low") BigDecimal low, @JsonProperty("buy") BigDecimal buy,
-      @JsonProperty("sell") BigDecimal sell, @JsonProperty("last") BigDecimal last, @JsonProperty("vol") BigDecimal vol) {
+  public BTCTradeTicker(
+      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("buy") BigDecimal buy,
+      @JsonProperty("sell") BigDecimal sell,
+      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("vol") BigDecimal vol) {
 
     this.high = high;
     this.low = low;
@@ -53,5 +58,4 @@ public class BTCTradeTicker {
 
     return vol;
   }
-
 }

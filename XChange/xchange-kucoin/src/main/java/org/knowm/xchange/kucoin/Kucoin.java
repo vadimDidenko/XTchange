@@ -20,18 +20,19 @@ public interface Kucoin {
 
   /**
    * Retrieves a ticker.
-   * 
+   *
    * @param symbol the currency pair
    * @return
    * @throws IOException
    */
   @GET
   @Path("open/tick")
-  KucoinResponse<KucoinTicker> tick(@QueryParam("symbol") String symbol) throws IOException, KucoinException;
+  KucoinResponse<KucoinTicker> tick(@QueryParam("symbol") String symbol)
+      throws IOException, KucoinException;
 
   /**
    * Retrieves all tickers.
-   * 
+   *
    * @return
    * @throws IOException
    */
@@ -41,7 +42,7 @@ public interface Kucoin {
 
   /**
    * Retrieves a list of all coins.
-   * 
+   *
    * @return
    * @throws IOException
    */
@@ -51,7 +52,7 @@ public interface Kucoin {
 
   /**
    * The call for order books
-   * 
+   *
    * @param symbol the currency pair
    * @param group ???
    * @param limit order book length limit
@@ -61,13 +62,14 @@ public interface Kucoin {
   @GET
   @Path("open/orders")
   KucoinResponse<KucoinOrderBook> orders(
-          @QueryParam("symbol") String symbol,
-          @QueryParam("group") Integer group,
-          @QueryParam("limit") Integer limit) throws IOException, KucoinException;
+      @QueryParam("symbol") String symbol,
+      @QueryParam("group") Integer group,
+      @QueryParam("limit") Integer limit)
+      throws IOException, KucoinException;
 
   /**
    * This is the call for recent trades.
-   * 
+   *
    * @param symbol the currency pair
    * @param limit limit list of trades to this length
    * @param since only retrieve trades since this datetime (couldnt get it to work tho)
@@ -77,8 +79,8 @@ public interface Kucoin {
   @GET
   @Path("open/deal-orders")
   KucoinResponse<List<KucoinDealOrder>> dealOrders(
-          @QueryParam("symbol") String symbol,
-          @QueryParam("limit") Integer limit,
-          @QueryParam("since") Long since) throws IOException, KucoinException;
-
+      @QueryParam("symbol") String symbol,
+      @QueryParam("limit") Integer limit,
+      @QueryParam("since") Long since)
+      throws IOException, KucoinException;
 }

@@ -48,7 +48,8 @@ public class GateioMarketInfoWrapper {
     private final BigDecimal minAmount;
     private final BigDecimal fee;
 
-    public GateioMarketInfo(CurrencyPair currencyPair, int decimalPlaces, BigDecimal minAmount, BigDecimal fee) {
+    public GateioMarketInfo(
+        CurrencyPair currencyPair, int decimalPlaces, BigDecimal minAmount, BigDecimal fee) {
 
       this.currencyPair = currencyPair;
       this.decimalPlaces = decimalPlaces;
@@ -79,15 +80,23 @@ public class GateioMarketInfoWrapper {
     @Override
     public String toString() {
 
-      return "BTERMarketInfo [currencyPair=" + currencyPair + ", decimalPlaces=" + decimalPlaces + ", minAmount=" + minAmount + ", fee=" + fee + "]";
+      return "BTERMarketInfo [currencyPair="
+          + currencyPair
+          + ", decimalPlaces="
+          + decimalPlaces
+          + ", minAmount="
+          + minAmount
+          + ", fee="
+          + fee
+          + "]";
     }
-
   }
 
   static class BTERMarketInfoWrapperDeserializer extends JsonDeserializer<GateioMarketInfoWrapper> {
 
     @Override
-    public GateioMarketInfoWrapper deserialize(JsonParser jp, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public GateioMarketInfoWrapper deserialize(JsonParser jp, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       Map<CurrencyPair, GateioMarketInfo> marketInfoMap = new HashMap<>();
 
@@ -105,15 +114,18 @@ public class GateioMarketInfoWrapper {
             int decimalPlaces = marketInfoData.path("decimal_places").asInt();
             BigDecimal minAmount = new BigDecimal(marketInfoData.path("min_amount").asText());
             BigDecimal fee = new BigDecimal(marketInfoData.path("fee").asText());
-            GateioMarketInfo marketInfoObject = new GateioMarketInfo(currencyPair, decimalPlaces, minAmount, fee);
+            GateioMarketInfo marketInfoObject =
+                new GateioMarketInfo(currencyPair, decimalPlaces, minAmount, fee);
 
             marketInfoMap.put(currencyPair, marketInfoObject);
           } else {
-            throw new ExchangeException("Invalid market info response received from Gateio." + marketsNodeWrapper);
+            throw new ExchangeException(
+                "Invalid market info response received from Gateio." + marketsNodeWrapper);
           }
         }
       } else {
-        throw new ExchangeException("Invalid market info response received from Gateio." + marketsNodeWrapper);
+        throw new ExchangeException(
+            "Invalid market info response received from Gateio." + marketsNodeWrapper);
       }
 
       return new GateioMarketInfoWrapper(marketInfoMap);

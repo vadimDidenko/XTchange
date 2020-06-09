@@ -22,7 +22,8 @@ public class HitbtcBaseService extends BaseExchangeService implements BaseServic
 
     ClientConfig config = getClientConfig();
     ClientConfigUtil.addBasicAuthCredentials(config, apiKey, secretKey);
-    hitbtc = RestProxyFactory.createProxy(HitbtcAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), config);
+    hitbtc =
+        RestProxyFactory.createProxy(
+            HitbtcAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), config);
   }
-
 }

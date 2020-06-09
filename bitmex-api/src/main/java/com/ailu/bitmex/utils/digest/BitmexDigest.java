@@ -13,7 +13,6 @@ public class BitmexDigest extends BaseParamsDigest {
    *
    * @param secretKeyBase64 the secret key to sign requests
    */
-
   private BitmexDigest(byte[] secretKeyBase64) {
 
     super(Base64.getUrlEncoder().withoutPadding().encodeToString(secretKeyBase64), HMAC_SHA_256);
@@ -35,7 +34,6 @@ public class BitmexDigest extends BaseParamsDigest {
     return null;
   }
 
-
   private BitmexDigest(String secretKeyBase64, String apiKey) {
 
     super(secretKeyBase64, HMAC_SHA_256);
@@ -46,5 +44,4 @@ public class BitmexDigest extends BaseParamsDigest {
 
     return secretKeyBase64 == null ? null : new BitmexDigest(secretKeyBase64, apiKey);
   }
-
 }

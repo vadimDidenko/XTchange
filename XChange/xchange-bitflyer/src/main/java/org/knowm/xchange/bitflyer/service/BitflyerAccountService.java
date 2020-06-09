@@ -30,7 +30,8 @@ public class BitflyerAccountService extends BitflyerAccountServiceRaw implements
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 

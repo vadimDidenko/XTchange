@@ -28,15 +28,33 @@ public class KrakenAssetPairsJSONTest {
     fees.add(new KrakenFee(new BigDecimal("0"), new BigDecimal("0.1")));
     List<String> leverage_buy = Arrays.asList("2", "3", "4", "5");
     List<String> leverage_sell = Arrays.asList("2", "3", "4", "5");
-    expectedAssetPairInfo = new KrakenAssetPair("XBTUSD", "currency", "XXBT", "currency", "ZUSD", "unit", 3, 8, new BigDecimal(1),
-        fees, fees_maker, "ZUSD", new BigDecimal(80), new BigDecimal(40), leverage_buy, leverage_sell);
+    expectedAssetPairInfo =
+        new KrakenAssetPair(
+            "XBTUSD",
+            "currency",
+            "XXBT",
+            "currency",
+            "ZUSD",
+            "unit",
+            3,
+            8,
+            new BigDecimal(1),
+            fees,
+            fees_maker,
+            "ZUSD",
+            new BigDecimal(80),
+            new BigDecimal(40),
+            leverage_buy,
+            leverage_sell);
   }
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = KrakenAssetPairsJSONTest.class.getResourceAsStream("/marketdata/example-assetpairs-data.json");
+    InputStream is =
+        KrakenAssetPairsJSONTest.class.getResourceAsStream(
+            "/marketdata/example-assetpairs-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -50,17 +68,26 @@ public class KrakenAssetPairsJSONTest {
     assertThat(krakenAssetPairInfo.getAltName()).isEqualTo(expectedAssetPairInfo.getAltName());
     assertThat(krakenAssetPairInfo.getBase()).isEqualTo(expectedAssetPairInfo.getBase());
     assertThat(krakenAssetPairInfo.getClassBase()).isEqualTo(expectedAssetPairInfo.getClassBase());
-    assertThat(krakenAssetPairInfo.getClassQuote()).isEqualTo(expectedAssetPairInfo.getClassQuote());
-    assertThat(krakenAssetPairInfo.getFeeVolumeCurrency()).isEqualTo(expectedAssetPairInfo.getFeeVolumeCurrency());
-    assertThat(krakenAssetPairInfo.getLeverage_buy()).isEqualTo(expectedAssetPairInfo.getLeverage_buy());
-    assertThat(krakenAssetPairInfo.getLeverage_sell()).isEqualTo(expectedAssetPairInfo.getLeverage_sell());
+    assertThat(krakenAssetPairInfo.getClassQuote())
+        .isEqualTo(expectedAssetPairInfo.getClassQuote());
+    assertThat(krakenAssetPairInfo.getFeeVolumeCurrency())
+        .isEqualTo(expectedAssetPairInfo.getFeeVolumeCurrency());
+    assertThat(krakenAssetPairInfo.getLeverage_buy())
+        .isEqualTo(expectedAssetPairInfo.getLeverage_buy());
+    assertThat(krakenAssetPairInfo.getLeverage_sell())
+        .isEqualTo(expectedAssetPairInfo.getLeverage_sell());
     assertThat(krakenAssetPairInfo.getQuote()).isEqualTo(expectedAssetPairInfo.getQuote());
-    assertThat(krakenAssetPairInfo.getVolumeLotSize()).isEqualTo(expectedAssetPairInfo.getVolumeLotSize());
+    assertThat(krakenAssetPairInfo.getVolumeLotSize())
+        .isEqualTo(expectedAssetPairInfo.getVolumeLotSize());
     assertThat(krakenAssetPairInfo.getPairScale()).isEqualTo(expectedAssetPairInfo.getPairScale());
-    assertThat(krakenAssetPairInfo.getVolumeLotScale()).isEqualTo(expectedAssetPairInfo.getVolumeLotScale());
-    assertThat(krakenAssetPairInfo.getMarginCall()).isEqualTo(expectedAssetPairInfo.getMarginCall());
-    assertThat(krakenAssetPairInfo.getMarginStop()).isEqualTo(expectedAssetPairInfo.getMarginStop());
-    assertThat(krakenAssetPairInfo.getVolumeMultiplier()).isEqualTo(expectedAssetPairInfo.getVolumeMultiplier());
+    assertThat(krakenAssetPairInfo.getVolumeLotScale())
+        .isEqualTo(expectedAssetPairInfo.getVolumeLotScale());
+    assertThat(krakenAssetPairInfo.getMarginCall())
+        .isEqualTo(expectedAssetPairInfo.getMarginCall());
+    assertThat(krakenAssetPairInfo.getMarginStop())
+        .isEqualTo(expectedAssetPairInfo.getMarginStop());
+    assertThat(krakenAssetPairInfo.getVolumeMultiplier())
+        .isEqualTo(expectedAssetPairInfo.getVolumeMultiplier());
     assertThat(krakenAssetPairInfo.getFees().size()).isEqualTo(9);
 
     KrakenFee deserializedFee = krakenAssetPairInfo.getFees().get(0);

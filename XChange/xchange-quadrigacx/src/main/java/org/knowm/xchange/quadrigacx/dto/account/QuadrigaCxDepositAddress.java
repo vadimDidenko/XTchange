@@ -35,10 +35,12 @@ public class QuadrigaCxDepositAddress extends QuadrigaCxBaseResponse {
     return "QuadrigaCxDepositAddress [depositAddress=" + depositAddress + "]";
   }
 
-  static class QuadrigaCxDepositAddressDeserializer extends JsonDeserializer<QuadrigaCxDepositAddress> {
+  static class QuadrigaCxDepositAddressDeserializer
+      extends JsonDeserializer<QuadrigaCxDepositAddress> {
 
     @Override
-    public QuadrigaCxDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public QuadrigaCxDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

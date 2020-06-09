@@ -30,7 +30,10 @@ public class TheRockDigest implements ParamsDigest {
 
   @Override
   public String digestParams(RestInvocation restInvocation) {
-    final String nonce = restInvocation.getParamValue(HeaderParam.class, TheRockAuthenticated.X_TRT_NONCE).toString();
+    final String nonce =
+        restInvocation
+            .getParamValue(HeaderParam.class, TheRockAuthenticated.X_TRT_NONCE)
+            .toString();
     mac.update(nonce.getBytes());
     mac.update(restInvocation.getInvocationUrl().getBytes());
 

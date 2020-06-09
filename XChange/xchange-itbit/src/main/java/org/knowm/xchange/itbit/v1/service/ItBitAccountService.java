@@ -38,7 +38,8 @@ public class ItBitAccountService extends ItBitAccountServiceRaw implements Accou
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
     return withdrawItBitFunds(currency.toString(), amount, address);
   }

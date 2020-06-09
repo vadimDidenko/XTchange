@@ -43,70 +43,103 @@ public interface ANXV2 {
 
   @GET
   @Path("{ident}{currency}/money/ticker")
-  ANXTickerWrapper getTicker(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency) throws ANXException, IOException;
+  ANXTickerWrapper getTicker(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws ANXException, IOException;
 
   @GET
   @Path("{ident}{currency}/money/ticker")
-  ANXTickersWrapper getTickers(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency,
-                               @QueryParam("extraCcyPairs") String extraCurrencyPairs) throws ANXException, IOException;
+  ANXTickersWrapper getTickers(
+      @PathParam("ident") String tradeableIdentifier,
+      @PathParam("currency") String currency,
+      @QueryParam("extraCcyPairs") String extraCurrencyPairs)
+      throws ANXException, IOException;
 
   @GET
   @Path("{ident}{currency}/money/depth/fetch")
-  ANXDepthWrapper getPartialDepth(@PathParam("ident") String tradeableIdentifier,
-                                  @PathParam("currency") String currency) throws ANXException, IOException;
+  ANXDepthWrapper getPartialDepth(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws ANXException, IOException;
 
   @GET
   @Path("{ident}{currency}/money/depth/full")
-  ANXDepthWrapper getFullDepth(@PathParam("ident") String tradeableIdentifier,
-                               @PathParam("currency") String currency) throws ANXException, IOException;
+  ANXDepthWrapper getFullDepth(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws ANXException, IOException;
 
   @GET
   @Path("{ident}{currency}/money/depth/full")
-  ANXDepthsWrapper getFullDepths(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency,
-                                 @QueryParam("extraCcyPairs") String extraCurrencyPairs) throws ANXException, IOException;
+  ANXDepthsWrapper getFullDepths(
+      @PathParam("ident") String tradeableIdentifier,
+      @PathParam("currency") String currency,
+      @QueryParam("extraCcyPairs") String extraCurrencyPairs)
+      throws ANXException, IOException;
 
   @GET
   @Path("{ident}{currency}/money/trade/fetch")
-  ANXTradesWrapper getTrades(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency,
-                             @QueryParam("since") long since) throws ANXException, IOException;
+  ANXTradesWrapper getTrades(
+      @PathParam("ident") String tradeableIdentifier,
+      @PathParam("currency") String currency,
+      @QueryParam("since") long since)
+      throws ANXException, IOException;
 
   // Account Info API
 
   @POST
   @Path("money/info")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXAccountInfoWrapper getAccountInfo(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                       @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws ANXException, IOException;
+  ANXAccountInfoWrapper getAccountInfo(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws ANXException, IOException;
 
   @POST
   @Path("money/{currency}/address")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXBitcoinDepositAddressWrapper requestDepositAddress(@HeaderParam("Rest-Key") String apiKey,
-                                                        @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator, @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                                        @PathParam("currency") String currency) throws ANXException, IOException;
+  ANXBitcoinDepositAddressWrapper requestDepositAddress(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @PathParam("currency") String currency)
+      throws ANXException, IOException;
 
   @POST
   @Path("money/{currency}/send_simple")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXWithdrawalResponseWrapper withdrawBtc(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                           @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @PathParam("currency") String currency, @FormParam("address") String address,
-                                           @FormParam("amount_int") int amount, @FormParam("fee_int") int fee, @FormParam("no_instant") boolean noInstant,
-                                           @FormParam("green") boolean green) throws ANXException, IOException;
+  ANXWithdrawalResponseWrapper withdrawBtc(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @PathParam("currency") String currency,
+      @FormParam("address") String address,
+      @FormParam("amount_int") int amount,
+      @FormParam("fee_int") int fee,
+      @FormParam("no_instant") boolean noInstant,
+      @FormParam("green") boolean green)
+      throws ANXException, IOException;
 
   // Trade API
   @POST
   @Path("{baseCurrency}{counterCurrency}/money/orders")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXOpenOrderWrapper getOpenOrders(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                    @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @PathParam("baseCurrency") String baseCurrency,
-                                    @PathParam("counterCurrency") String counterCurrency) throws ANXException, IOException;
+  ANXOpenOrderWrapper getOpenOrders(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @PathParam("baseCurrency") String baseCurrency,
+      @PathParam("counterCurrency") String counterCurrency)
+      throws ANXException, IOException;
 
   // Trade API
   @POST
   @Path("money/orders")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXOpenOrderWrapper getOpenOrders(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                    @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws ANXException, IOException;
+  ANXOpenOrderWrapper getOpenOrders(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws ANXException, IOException;
 
   /**
    * List of executed trades
@@ -123,9 +156,13 @@ public interface ANXV2 {
   @POST
   @Path("money/trade/list")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXTradeResultWrapper getExecutedTrades(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                          @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("from") Long from,
-                                          @FormParam("to") Long to) throws ANXException, IOException;
+  ANXTradeResultWrapper getExecutedTrades(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("from") Long from,
+      @FormParam("to") Long to)
+      throws ANXException, IOException;
 
   /**
    * Status of the order
@@ -142,10 +179,15 @@ public interface ANXV2 {
   @POST
   @Path("{baseCurrency}{counterCurrency}/money/order/result")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXOrderResultWrapper getOrderResult(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                       @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @PathParam("baseCurrency") String baseCurrency,
-                                       @PathParam("counterCurrency") String counterCurrency, @FormParam("order") String order,
-                                       @FormParam("type") String type) throws ANXException, IOException;
+  ANXOrderResultWrapper getOrderResult(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @PathParam("baseCurrency") String baseCurrency,
+      @PathParam("counterCurrency") String counterCurrency,
+      @FormParam("order") String order,
+      @FormParam("type") String type)
+      throws ANXException, IOException;
 
   /**
    * @param postBodySignatureCreator
@@ -154,13 +196,21 @@ public interface ANXV2 {
   @POST
   @Path("{baseCurrency}{counterCurrency}/money/order/add")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXGenericResponse placeOrder(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @PathParam("baseCurrency") String baseCurrency,
-                                @PathParam("counterCurrency") String counterCurrency, @FormParam("type") String type, @FormParam("amount") BigDecimal amount,
-                                @FormParam("price") BigDecimal price) throws ANXException, IOException;
+  ANXGenericResponse placeOrder(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @PathParam("baseCurrency") String baseCurrency,
+      @PathParam("counterCurrency") String counterCurrency,
+      @FormParam("type") String type,
+      @FormParam("amount") BigDecimal amount,
+      @FormParam("price") BigDecimal price)
+      throws ANXException, IOException;
 
   /**
-   * Note: I know it's weird to have BTCEUR hardcoded in the URL, but it really doesn't seems to matter. BTCUSD works too.
+   * Note: I know it's weird to have BTCEUR hardcoded in the URL, but it really doesn't seems to
+   * matter. BTCUSD works too.
+   *
    * <p>
    *
    * @param apiKey
@@ -172,9 +222,14 @@ public interface ANXV2 {
   @POST
   @Path("{baseCurrency}{counterCurrency}/money/order/cancel")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXGenericResponse cancelOrder(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                 @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("oid") String orderId, @PathParam("baseCurrency") String baseCurrency,
-                                 @PathParam("counterCurrency") String counterCurrency) throws ANXException, IOException;
+  ANXGenericResponse cancelOrder(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("oid") String orderId,
+      @PathParam("baseCurrency") String baseCurrency,
+      @PathParam("counterCurrency") String counterCurrency)
+      throws ANXException, IOException;
 
   /**
    * Returns the History of the selected wallet
@@ -192,7 +247,13 @@ public interface ANXV2 {
   @POST
   @Path("money/wallet/history")
   @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
-  ANXWalletHistoryWrapper getWalletHistory(@HeaderParam("Rest-Key") String apiKey, @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
-                                           @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("currency") String currency,
-                                           @FormParam("page") Integer page, @FormParam("from") Long from, @FormParam("to") Long to) throws ANXException, IOException;
+  ANXWalletHistoryWrapper getWalletHistory(
+      @HeaderParam("Rest-Key") String apiKey,
+      @HeaderParam("Rest-Sign") ParamsDigest postBodySignatureCreator,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("currency") String currency,
+      @FormParam("page") Integer page,
+      @FormParam("from") Long from,
+      @FormParam("to") Long to)
+      throws ANXException, IOException;
 }

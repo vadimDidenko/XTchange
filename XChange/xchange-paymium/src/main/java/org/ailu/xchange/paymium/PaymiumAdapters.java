@@ -20,12 +20,8 @@ import java.util.List;
 
 public class PaymiumAdapters {
 
-  /**
-   * Singleton
-   */
-  private PaymiumAdapters() {
-
-  }
+  /** Singleton */
+  private PaymiumAdapters() {}
 
   /**
    * Adapts a PaymiumTicker to a Ticker Object
@@ -44,7 +40,15 @@ public class PaymiumAdapters {
     BigDecimal volume = PaymiumTicker.getVolume();
     Date timestamp = new Date(PaymiumTicker.getAt() * 1000L);
 
-    return new Ticker.Builder().currencyPair(currencyPair).bid(bid).ask(ask).high(high).low(low).last(last).volume(volume).timestamp(timestamp)
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .last(last)
+        .volume(volume)
+        .timestamp(timestamp)
         .build();
   }
 
@@ -53,10 +57,13 @@ public class PaymiumAdapters {
    * @param currencyPair
    * @return new order book
    */
-  public static OrderBook adaptMarketDepth(PaymiumMarketDepth marketDepth, CurrencyPair currencyPair) {
+  public static OrderBook adaptMarketDepth(
+      PaymiumMarketDepth marketDepth, CurrencyPair currencyPair) {
 
-    List<LimitOrder> asks = adaptMarketOrderToLimitOrder(marketDepth.getAsks(), OrderType.ASK, currencyPair);
-    List<LimitOrder> bids = adaptMarketOrderToLimitOrder(marketDepth.getBids(), OrderType.BID, currencyPair);
+    List<LimitOrder> asks =
+        adaptMarketOrderToLimitOrder(marketDepth.getAsks(), OrderType.ASK, currencyPair);
+    List<LimitOrder> bids =
+        adaptMarketOrderToLimitOrder(marketDepth.getBids(), OrderType.BID, currencyPair);
     Collections.reverse(bids);
 
     return new OrderBook(null, asks, bids);
@@ -67,14 +74,22 @@ public class PaymiumAdapters {
    * @param orderType
    * @param currencyPair
    */
-  private static List<LimitOrder> adaptMarketOrderToLimitOrder(List<PaymiumMarketOrder> PaymiumMarketOrders, OrderType orderType,
+  private static List<LimitOrder> adaptMarketOrderToLimitOrder(
+      List<PaymiumMarketOrder> PaymiumMarketOrders,
+      OrderType orderType,
       CurrencyPair currencyPair) {
 
     List<LimitOrder> orders = new ArrayList<>(PaymiumMarketOrders.size());
 
     for (PaymiumMarketOrder PaymiumMarketOrder : PaymiumMarketOrders) {
-      LimitOrder limitOrder = new LimitOrder(orderType, PaymiumMarketOrder.getAmount(), currencyPair, null,
-          new Date(PaymiumMarketOrder.getTimestamp()), PaymiumMarketOrder.getPrice());
+      LimitOrder limitOrder =
+          new LimitOrder(
+              orderType,
+              PaymiumMarketOrder.getAmount(),
+              currencyPair,
+              null,
+              new Date(PaymiumMarketOrder.getTimestamp()),
+              PaymiumMarketOrder.getPrice());
       orders.add(limitOrder);
     }
 
@@ -86,8 +101,14 @@ public class PaymiumAdapters {
     List<Trade> trades = new ArrayList<>();
 
     for (PaymiumTrade PaymiumTrade : PaymiumTrades) {
-      Trade trade = new Trade(null, PaymiumTrade.getTraded_btc(), currencyPair, PaymiumTrade.getPrice(), new Date(PaymiumTrade.getCreated_at_int()),
-          PaymiumTrade.getUuid().toString());
+      Trade trade =
+          new Trade(
+              null,
+              PaymiumTrade.getTraded_btc(),
+              currencyPair,
+              PaymiumTrade.getPrice(),
+              new Date(PaymiumTrade.getCreated_at_int()),
+              PaymiumTrade.getUuid().toString());
 
       trades.add(trade);
     }

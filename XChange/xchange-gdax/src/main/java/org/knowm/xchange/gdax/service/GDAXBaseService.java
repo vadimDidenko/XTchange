@@ -24,10 +24,14 @@ public class GDAXBaseService extends BaseExchangeService implements BaseService 
   protected GDAXBaseService(Exchange exchange) {
 
     super(exchange);
-    this.gdax = RestProxyFactory.createProxy(GDAX.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.gdax =
+        RestProxyFactory.createProxy(
+            GDAX.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
     this.digest = GDAXDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.passphrase = (String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("passphrase");
+    this.passphrase =
+        (String)
+            exchange.getExchangeSpecification().getExchangeSpecificParametersItem("passphrase");
   }
 
   protected ExchangeException handleError(GDAXException exception) {

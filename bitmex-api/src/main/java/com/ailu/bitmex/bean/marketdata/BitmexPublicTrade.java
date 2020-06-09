@@ -18,9 +18,17 @@ public class BitmexPublicTrade {
   private final BigDecimal homeNotional;
   private final BigDecimal foreignNotional;
 
-  public BitmexPublicTrade(@JSONField(name = "price") BigDecimal price, @JSONField(name = "size") BigDecimal size, @JSONField(name = "timestamp") Date timestamp, @JSONField(name = "side") String side,
-                           @JSONField(name = "tickDirection") String tickDirection, @JSONField(name = "symbol") String symbol, @JSONField(name = "trdMatchID") String trdMatchID,
-                           @JSONField(name = "grossValue") BigDecimal grossValue, @JSONField(name = "homeNotional") BigDecimal homeNotional, @JSONField(name = "foreignNotional") BigDecimal foreignNotional) {
+  public BitmexPublicTrade(
+      @JSONField(name = "price") BigDecimal price,
+      @JSONField(name = "size") BigDecimal size,
+      @JSONField(name = "timestamp") Date timestamp,
+      @JSONField(name = "side") String side,
+      @JSONField(name = "tickDirection") String tickDirection,
+      @JSONField(name = "symbol") String symbol,
+      @JSONField(name = "trdMatchID") String trdMatchID,
+      @JSONField(name = "grossValue") BigDecimal grossValue,
+      @JSONField(name = "homeNotional") BigDecimal homeNotional,
+      @JSONField(name = "foreignNotional") BigDecimal foreignNotional) {
 
     this.price = price;
     this.size = size;
@@ -32,7 +40,6 @@ public class BitmexPublicTrade {
     this.homeNotional = homeNotional;
     this.foreignNotional = foreignNotional;
     this.grossValue = grossValue;
-
   }
 
   public BigDecimal getPrice() {
@@ -73,7 +80,18 @@ public class BitmexPublicTrade {
   @Override
   public String toString() {
 
-    return "BitmexPublicTrade [symbol=" + symbol + " price=" + price + ", size=" + size + ", time=" + timestamp + ", side=" + side + ", tickDirection=" + tickDirection + "]";
+    return "BitmexPublicTrade [symbol="
+        + symbol
+        + " price="
+        + price
+        + ", size="
+        + size
+        + ", time="
+        + timestamp
+        + ", side="
+        + side
+        + ", tickDirection="
+        + tickDirection
+        + "]";
   }
-
 }

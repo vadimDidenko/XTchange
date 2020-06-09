@@ -14,10 +14,7 @@ import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.RestProxyFactory;
 import si.mazi.rescu.serialization.jackson.DefaultJacksonObjectMapperFactory;
 
-/**
- * @author Zach Holmes
- */
-
+/** @author Zach Holmes */
 public class PoloniexBaseService extends BaseExchangeService implements BaseService {
 
   protected final String apiKey;
@@ -38,19 +35,25 @@ public class PoloniexBaseService extends BaseExchangeService implements BaseServ
     // TODO should this be fixed/added in rescu itself?
     // Fix for empty string array mapping exception
     ClientConfig rescuConfig = getClientConfig();
-    rescuConfig.setJacksonObjectMapperFactory(new DefaultJacksonObjectMapperFactory() {
-      @Override
-      public void configureObjectMapper(ObjectMapper objectMapper) {
-        super.configureObjectMapper(objectMapper);
-        objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
-      }
-    });
+    rescuConfig.setJacksonObjectMapperFactory(
+        new DefaultJacksonObjectMapperFactory() {
+          @Override
+          public void configureObjectMapper(ObjectMapper objectMapper) {
+            super.configureObjectMapper(objectMapper);
+            objectMapper.configure(DeserializationFeature.ACCEPT_EMPTY_ARRAY_AS_NULL_OBJECT, true);
+          }
+        });
 
-    this.poloniexAuthenticated = RestProxyFactory.createProxy(PoloniexAuthenticated.class, exchange.getExchangeSpecification().getSslUri(),
-        rescuConfig);
+    this.poloniexAuthenticated =
+        RestProxyFactory.createProxy(
+            PoloniexAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            rescuConfig);
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = PoloniexDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
-    this.poloniex = RestProxyFactory.createProxy(Poloniex.class, exchange.getExchangeSpecification().getSslUri(), rescuConfig);
+    this.signatureCreator =
+        PoloniexDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    this.poloniex =
+        RestProxyFactory.createProxy(
+            Poloniex.class, exchange.getExchangeSpecification().getSslUri(), rescuConfig);
   }
-
 }

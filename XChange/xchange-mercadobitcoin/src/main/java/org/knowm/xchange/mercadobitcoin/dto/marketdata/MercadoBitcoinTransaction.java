@@ -25,8 +25,12 @@ public class MercadoBitcoinTransaction {
    * @param amount BTC amount
    * @param type buy or sell
    */
-  public MercadoBitcoinTransaction(@JsonProperty("date") long date, @JsonProperty("tid") long tid, @JsonProperty("price") BigDecimal price,
-      @JsonProperty("amount") BigDecimal amount, @JsonProperty("type") String type) {
+  public MercadoBitcoinTransaction(
+      @JsonProperty("date") long date,
+      @JsonProperty("tid") long tid,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("type") String type) {
 
     this.date = date;
     this.tid = tid;
@@ -38,7 +42,18 @@ public class MercadoBitcoinTransaction {
   @Override
   public String toString() {
 
-    return "MercadoBitcoinTransaction [" + "date=" + date + ", tid=" + tid + ", price=" + price + ", amount=" + amount + ", type='" + type + '\''
+    return "MercadoBitcoinTransaction ["
+        + "date="
+        + date
+        + ", tid="
+        + tid
+        + ", price="
+        + price
+        + ", amount="
+        + amount
+        + ", type='"
+        + type
+        + '\''
         + ']';
   }
 

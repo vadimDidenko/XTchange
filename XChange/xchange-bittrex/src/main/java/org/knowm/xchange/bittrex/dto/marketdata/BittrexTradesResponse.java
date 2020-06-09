@@ -10,7 +10,9 @@ public class BittrexTradesResponse {
   private final String message;
   private final BittrexTrade[] trades;
 
-  public BittrexTradesResponse(@JsonProperty("success") boolean success, @JsonProperty("message") String message,
+  public BittrexTradesResponse(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("message") String message,
       @JsonProperty("result") BittrexTrade[] trades) {
 
     super();
@@ -37,7 +39,12 @@ public class BittrexTradesResponse {
   @Override
   public String toString() {
 
-    return "BittrexTradesResponse [success=" + success + ", message=" + message + ", trades=" + Arrays.toString(trades) + "]";
+    return "BittrexTradesResponse [success="
+        + success
+        + ", message="
+        + message
+        + ", trades="
+        + Arrays.toString(trades)
+        + "]";
   }
-
 }

@@ -12,24 +12,22 @@ import com.ailu.bitmex.config.APIConfiguration;
  */
 public class BaseTests {
 
-    //测试
-    public String appKey = "";
-    public String secert = "";
+  // 测试
+  public String appKey = "";
+  public String secert = "";
 
-    public APIConfiguration config() {
-        APIConfiguration config = new APIConfiguration();
-        //设置基础url
-        config.setEndpoint(Bitmex.baseUrl);
+  public APIConfiguration config() {
+    APIConfiguration config = new APIConfiguration();
+    // 设置基础url
+    config.setEndpoint(Bitmex.baseUrl);
 
-        config.setApiKey(appKey);
-        config.setSecretKey(secert);
-        //设置是否输出请求详细日志
-        config.setPrint(true);
-        config.setEnableProxy(true);
-        config.setProxyUrl("127.0.0.1");
-        config.setProxyPort(1087);
-        return config;
-    }
-
-
+    config.setApiKey(appKey);
+    config.setSecretKey(secert);
+    // 设置是否输出请求详细日志
+    config.setPrint(true);
+    config.setEnableProxy(true);
+    config.setProxyUrl("127.0.0.1");
+    config.setProxyPort(1087);
+    return config;
+  }
 }

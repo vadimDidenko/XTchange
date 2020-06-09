@@ -1,6 +1,5 @@
 package org.knowm.xchange.itbit.v1;
 
-import com.fasterxml.jackson.databind.exc.InvalidFormatException;
 import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.Order.OrderType;
@@ -44,7 +43,8 @@ import java.util.regex.Pattern;
 
 public final class ItBitAdapters {
 
-  private static final OpenOrders noOpenOrders = new OpenOrders(Collections.<LimitOrder>emptyList());
+  private static final OpenOrders noOpenOrders =
+      new OpenOrders(Collections.<LimitOrder>emptyList());
   private static final String DATE_FORMAT_STRING = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'";
   private static final DecimalFormatSymbols CUSTOM_SYMBOLS = new DecimalFormatSymbols();
   private static Pattern TIMESTAMP_PATTERN = Pattern.compile("(.*\\.[0-9]{3})0000Z$");
@@ -77,12 +77,8 @@ public final class ItBitAdapters {
     return fiatFormat;
   }
 
-  /**
-   * private Constructor
-   */
-  private ItBitAdapters() {
-
-  }
+  /** private Constructor */
+  private ItBitAdapters() {}
 
   private static Date parseDate(String date) {
 
@@ -96,26 +92,27 @@ public final class ItBitAdapters {
     return parse;
   }
 
-  public static Trades adaptTrades(ItBitTrades trades, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static Trades adaptTrades(ItBitTrades trades, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
 
     List<Trade> tradesList = new ArrayList<>(trades.getCount());
     long lastTradeId = 0;
     for (int i = 0; i < trades.getCount(); i++) {
       ItBitTrade trade = trades.getTrades()[i];
       long tradeId = trade.getTid();
-      if (tradeId > lastTradeId)
-        lastTradeId = tradeId;
+      if (tradeId > lastTradeId) lastTradeId = tradeId;
       tradesList.add(adaptTrade(trade, currencyPair));
     }
     return new Trades(tradesList, lastTradeId, TradeSortType.SortByID);
   }
 
-  public static Trade adaptTrade(ItBitTrade trade, CurrencyPair currencyPair) throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
+  public static Trade adaptTrade(ItBitTrade trade, CurrencyPair currencyPair)
+      throws com.fasterxml.jackson.databind.exc.InvalidFormatException {
     String timestamp = trade.getTimestamp();
 
-    //matcher instantiated each time for adaptTrade to be thread-safe
+    // matcher instantiated each time for adaptTrade to be thread-safe
     Matcher matcher = TIMESTAMP_PATTERN.matcher(timestamp);
-    //truncate sub-millisecond zeros
+    // truncate sub-millisecond zeros
     if (matcher.matches()) {
       timestamp = matcher.group(1) + "Z";
     }
@@ -125,23 +122,27 @@ public final class ItBitAdapters {
     return new Trade(null, trade.getAmount(), currencyPair, trade.getPrice(), date, tradeId);
   }
 
-  public static List<LimitOrder> adaptOrders(List<BigDecimal[]> orders, CurrencyPair currencyPair, OrderType orderType) {
+  public static List<LimitOrder> adaptOrders(
+      List<BigDecimal[]> orders, CurrencyPair currencyPair, OrderType orderType) {
 
     List<LimitOrder> limitOrders = new ArrayList<>();
 
-    if (orders == null)
-      return limitOrders;
+    if (orders == null) return limitOrders;
 
     for (BigDecimal[] level : orders) {
       limitOrders.add(adaptOrder(level[1], level[0], currencyPair, null, orderType, null));
     }
 
     return limitOrders;
-
   }
 
-  private static LimitOrder adaptOrder(BigDecimal amount, BigDecimal price, CurrencyPair currencyPair, String orderId, OrderType orderType,
-                                       Date timestamp) {
+  private static LimitOrder adaptOrder(
+      BigDecimal amount,
+      BigDecimal price,
+      CurrencyPair currencyPair,
+      String orderId,
+      OrderType orderType,
+      Date timestamp) {
 
     return new LimitOrder(orderType, amount, currencyPair, orderId, timestamp, price);
   }
@@ -163,11 +164,17 @@ public final class ItBitAdapters {
         ItBitAccountBalance itBitAccountBalance = balances[j];
 
         Currency currency = Currency.getInstance(itBitAccountBalance.getCurrency());
-        Balance balance = new Balance(currency, itBitAccountBalance.getTotalBalance(), itBitAccountBalance.getAvailableBalance());
+        Balance balance =
+            new Balance(
+                currency,
+                itBitAccountBalance.getTotalBalance(),
+                itBitAccountBalance.getAvailableBalance());
         walletContent.add(balance);
       }
 
-      Wallet wallet = new Wallet(itBitAccountInfoReturn.getId(), itBitAccountInfoReturn.getName(), walletContent);
+      Wallet wallet =
+          new Wallet(
+              itBitAccountInfoReturn.getId(), itBitAccountInfoReturn.getName(), walletContent);
       wallets.add(wallet);
     }
 
@@ -186,10 +193,18 @@ public final class ItBitAdapters {
       ItBitOrder itBitOrder = orders[i];
       String instrument = itBitOrder.getInstrument();
 
-      CurrencyPair currencyPair = new CurrencyPair(instrument.substring(0, 3), instrument.substring(3, 6));
+      CurrencyPair currencyPair =
+          new CurrencyPair(instrument.substring(0, 3), instrument.substring(3, 6));
       OrderType orderType = itBitOrder.getSide().equals("buy") ? OrderType.BID : OrderType.ASK;
       Date timestamp = parseDate(itBitOrder.getCreatedTime());
-      limitOrders.add(adaptOrder(itBitOrder.getAmount(), itBitOrder.getPrice(), currencyPair, itBitOrder.getId(), orderType, timestamp));
+      limitOrders.add(
+          adaptOrder(
+              itBitOrder.getAmount(),
+              itBitOrder.getPrice(),
+              currencyPair,
+              itBitOrder.getId(),
+              orderType,
+              timestamp));
     }
 
     return new OpenOrders(limitOrders);
@@ -203,11 +218,24 @@ public final class ItBitAdapters {
     for (ItBitUserTrade itBitTrade : itBitTrades) {
       String instrument = itBitTrade.getInstrument();
 
-      OrderType orderType = itBitTrade.getDirection().equals(ItBitUserTrade.Direction.buy) ? OrderType.BID : OrderType.ASK;
-      CurrencyPair currencyPair = new CurrencyPair(instrument.substring(0, 3), instrument.substring(3, 6));
+      OrderType orderType =
+          itBitTrade.getDirection().equals(ItBitUserTrade.Direction.buy)
+              ? OrderType.BID
+              : OrderType.ASK;
+      CurrencyPair currencyPair =
+          new CurrencyPair(instrument.substring(0, 3), instrument.substring(3, 6));
 
-      trades.add(new UserTrade(orderType, itBitTrade.getCurrency1Amount(), currencyPair, itBitTrade.getRate(), itBitTrade.getTimestamp(), null,
-          itBitTrade.getOrderId(), itBitTrade.getCommissionPaid(), new Currency(itBitTrade.getCommissionCurrency())));
+      trades.add(
+          new UserTrade(
+              orderType,
+              itBitTrade.getCurrency1Amount(),
+              currencyPair,
+              itBitTrade.getRate(),
+              itBitTrade.getTimestamp(),
+              null,
+              itBitTrade.getOrderId(),
+              itBitTrade.getCommissionPaid(),
+              new Currency(itBitTrade.getCommissionCurrency())));
     }
 
     return new UserTrades(trades, TradeSortType.SortByTimestamp);
@@ -221,9 +249,18 @@ public final class ItBitAdapters {
     BigDecimal low = itBitTicker.getLowToday();
     BigDecimal last = itBitTicker.getLastPrice();
     BigDecimal volume = itBitTicker.getVolume24h();
-    Date timestamp = itBitTicker.getTimestamp() != null ? parseDate(itBitTicker.getTimestamp()) : null;
+    Date timestamp =
+        itBitTicker.getTimestamp() != null ? parseDate(itBitTicker.getTimestamp()) : null;
 
-    return new Ticker.Builder().currencyPair(currencyPair).last(last).bid(bid).ask(ask).high(high).low(low).volume(volume).timestamp(timestamp)
+    return new Ticker.Builder()
+        .currencyPair(currencyPair)
+        .last(last)
+        .bid(bid)
+        .ask(ask)
+        .high(high)
+        .low(low)
+        .volume(volume)
+        .timestamp(timestamp)
         .build();
   }
 
@@ -236,7 +273,8 @@ public final class ItBitAdapters {
   }
 
   public static CurrencyPair adaptCurrencyPairToExchange(CurrencyPair currencyPair) {
-    return new CurrencyPair(adaptCurrencyToExchange(currencyPair.base), adaptCurrencyToExchange(currencyPair.counter));
+    return new CurrencyPair(
+        adaptCurrencyToExchange(currencyPair.base), adaptCurrencyToExchange(currencyPair.counter));
   }
 
   public static Currency adaptCurrencyToExchange(Currency currency) {
@@ -247,18 +285,20 @@ public final class ItBitAdapters {
   }
 
   public static FundingRecord adapt(ItBitFunding itBitFunding) {
-    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS");//"2015-02-18T23:43:37.1230000"
+    SimpleDateFormat dateFormat =
+        new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSS"); // "2015-02-18T23:43:37.1230000"
 
     try {
       Date date = dateFormat.parse(itBitFunding.time);
 
-      FundingRecord.Type type = itBitFunding.transactionType.equalsIgnoreCase("Deposit") ? FundingRecord.Type.DEPOSIT : FundingRecord.Type.WITHDRAWAL;
+      FundingRecord.Type type =
+          itBitFunding.transactionType.equalsIgnoreCase("Deposit")
+              ? FundingRecord.Type.DEPOSIT
+              : FundingRecord.Type.WITHDRAWAL;
 
       FundingRecord.Status status = FundingRecord.Status.PROCESSING;
-      if (itBitFunding.status.equals("cancelled"))
-        status = FundingRecord.Status.CANCELLED;
-      if (itBitFunding.status.equals("completed"))
-        status = FundingRecord.Status.COMPLETE;
+      if (itBitFunding.status.equals("cancelled")) status = FundingRecord.Status.CANCELLED;
+      if (itBitFunding.status.equals("completed")) status = FundingRecord.Status.COMPLETE;
 
       Currency currency = Currency.getInstance(itBitFunding.currency);
 
@@ -273,8 +313,7 @@ public final class ItBitAdapters {
           status,
           null,
           null,
-          null
-      );
+          null);
     } catch (ParseException e) {
       throw new IllegalStateException("Cannot parse " + itBitFunding, e);
     }

@@ -20,9 +20,16 @@ public class QuadrigaCxTicker {
   private final BigDecimal ask;
   private final Date timestamp;
 
-  public QuadrigaCxTicker(@JsonProperty("last") BigDecimal last, @JsonProperty("high") BigDecimal high, @JsonProperty("low") BigDecimal low,
-      @JsonProperty("vwap") BigDecimal vwap, @JsonProperty("volume") BigDecimal volume, @JsonProperty("bid") BigDecimal bid,
-      @JsonProperty("ask") BigDecimal ask, @JsonProperty("timestamp") @JsonDeserialize(using = TimestampDeserializer.class) Date timestamp) {
+  public QuadrigaCxTicker(
+      @JsonProperty("last") BigDecimal last,
+      @JsonProperty("high") BigDecimal high,
+      @JsonProperty("low") BigDecimal low,
+      @JsonProperty("vwap") BigDecimal vwap,
+      @JsonProperty("volume") BigDecimal volume,
+      @JsonProperty("bid") BigDecimal bid,
+      @JsonProperty("ask") BigDecimal ask,
+      @JsonProperty("timestamp") @JsonDeserialize(using = TimestampDeserializer.class)
+          Date timestamp) {
 
     if (last == null) {
       throw new ExceptionalReturnContentException("No last in response.");
@@ -35,7 +42,6 @@ public class QuadrigaCxTicker {
     this.bid = bid;
     this.ask = ask;
     this.timestamp = timestamp;
-
   }
 
   public BigDecimal getLast() {
@@ -81,8 +87,22 @@ public class QuadrigaCxTicker {
   @Override
   public String toString() {
 
-    return "QuadrigaCxTicker [last=" + last + ", high=" + high + ", low=" + low + ", vwap=" + vwap + ", volume=" + volume + ", bid=" + bid + ", ask="
-        + ask + ", timestamp=" + timestamp + "]";
+    return "QuadrigaCxTicker [last="
+        + last
+        + ", high="
+        + high
+        + ", low="
+        + low
+        + ", vwap="
+        + vwap
+        + ", volume="
+        + volume
+        + ", bid="
+        + bid
+        + ", ask="
+        + ask
+        + ", timestamp="
+        + timestamp
+        + "]";
   }
-
 }

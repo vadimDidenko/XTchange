@@ -10,10 +10,7 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Author: brox Since: 2/6/14
- */
-
+/** Author: brox Since: 2/6/14 */
 public class TradesDemo {
 
   public static void main(String[] args) throws IOException {
@@ -25,9 +22,9 @@ public class TradesDemo {
     MarketDataService marketDataService = exchange.getMarketDataService();
 
     // Get the latest trade data for GHs/BTC since tid=5635556
-    Trades trades = marketDataService.getTrades(new CurrencyPair(Currency.GHs, Currency.BTC), 5909107);
+    Trades trades =
+        marketDataService.getTrades(new CurrencyPair(Currency.GHs, Currency.BTC), 5909107);
     System.out.println("Trades Size= " + trades.getTrades().size());
     System.out.println(trades.toString());
   }
-
 }

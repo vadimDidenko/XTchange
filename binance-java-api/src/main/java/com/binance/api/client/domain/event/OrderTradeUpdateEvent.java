@@ -14,7 +14,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 /**
  * Order or trade report update event.
  *
- * This event is embedded as part of a user data update event.
+ * <p>This event is embedded as part of a user data update event.
  *
  * @see UserDataUpdateEvent
  */
@@ -33,99 +33,67 @@ public class OrderTradeUpdateEvent {
   @JsonProperty("c")
   private String newClientOrderId;
 
-  /**
-   * Buy/Sell order side.
-   */
+  /** Buy/Sell order side. */
   @JsonProperty("S")
   private OrderSide side;
 
-  /**
-   * Type of order.
-   */
+  /** Type of order. */
   @JsonProperty("o")
   private OrderType type;
 
-  /**
-   * Time in force to indicate how long will the order remain active.
-   */
+  /** Time in force to indicate how long will the order remain active. */
   @JsonProperty("f")
   private TimeInForce timeInForce;
 
-  /**
-   * Original quantity in the order.
-   */
+  /** Original quantity in the order. */
   @JsonProperty("q")
   private String originalQuantity;
 
-  /**
-   * Price.
-   */
+  /** Price. */
   @JsonProperty("p")
   private String price;
 
-  /**
-   * Type of execution.
-   */
+  /** Type of execution. */
   @JsonProperty("x")
   private ExecutionType executionType;
 
-  /**
-   * Status of the order.
-   */
+  /** Status of the order. */
   @JsonProperty("X")
   private OrderStatus orderStatus;
 
-  /**
-   * Reason why the order was rejected.
-   */
+  /** Reason why the order was rejected. */
   @JsonProperty("r")
   private OrderRejectReason orderRejectReason;
 
-  /**
-   * Order id.
-   */
+  /** Order id. */
   @JsonProperty("i")
   private Long orderId;
 
-  /**
-   * Quantity of the last filled trade.
-   */
+  /** Quantity of the last filled trade. */
   @JsonProperty("l")
   private String quantityLastFilledTrade;
 
-  /**
-   * Accumulated quantity of filled trades on this order.
-   */
+  /** Accumulated quantity of filled trades on this order. */
   @JsonProperty("z")
   private String accumulatedQuantity;
 
-  /**
-   * Price of last filled trade.
-   */
+  /** Price of last filled trade. */
   @JsonProperty("L")
   private String priceOfLastFilledTrade;
 
-  /**
-   * Commission.
-   */
+  /** Commission. */
   @JsonProperty("n")
   private String commission;
 
-  /**
-   * Asset on which commission is taken
-   */
+  /** Asset on which commission is taken */
   @JsonProperty("N")
   private String commissionAsset;
 
-  /**
-   * Order/trade time.
-   */
+  /** Order/trade time. */
   @JsonProperty("T")
   private Long orderTradeTime;
 
-  /**
-   * Trade id.
-   */
+  /** Trade id. */
   @JsonProperty("t")
   private Long tradeId;
 
@@ -288,7 +256,6 @@ public class OrderTradeUpdateEvent {
   public void setTradeId(Long tradeId) {
     this.tradeId = tradeId;
   }
-
 
   @Override
   public String toString() {

@@ -6,7 +6,7 @@ import com.binance.api.client.BinanceApiWebSocketClient;
 /**
  * All market tickers channel examples.
  *
- * It illustrates how to create a stream to obtain all market tickers.
+ * <p>It illustrates how to create a stream to obtain all market tickers.
  */
 public class AllMarketTickersExample {
 
@@ -14,8 +14,9 @@ public class AllMarketTickersExample {
     BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
     BinanceApiWebSocketClient client = factory.newWebSocketClient();
 
-    client.onAllMarketTickersEvent(event -> {
-      System.out.println(event);
-    });
+    client.onAllMarketTickersEvent(
+        event -> {
+          System.out.println(event);
+        });
   }
 }

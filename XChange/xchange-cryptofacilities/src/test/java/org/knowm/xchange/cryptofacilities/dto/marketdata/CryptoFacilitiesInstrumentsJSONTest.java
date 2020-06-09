@@ -14,21 +14,21 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author Neil Panchen
- */
-
+/** @author Neil Panchen */
 public class CryptoFacilitiesInstrumentsJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException, ParseException {
 
     // Read in the JSON from the example resources
-    InputStream is = CryptoFacilitiesInstrumentsJSONTest.class.getResourceAsStream("/marketdata/example-instruments-data.json");
+    InputStream is =
+        CryptoFacilitiesInstrumentsJSONTest.class.getResourceAsStream(
+            "/marketdata/example-instruments-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    CryptoFacilitiesInstruments cryptoFacilitiesInstruments = mapper.readValue(is, CryptoFacilitiesInstruments.class);
+    CryptoFacilitiesInstruments cryptoFacilitiesInstruments =
+        mapper.readValue(is, CryptoFacilitiesInstruments.class);
 
     // Verify that the example data was unmarshalled correctly
     assertThat(cryptoFacilitiesInstruments.isSuccess()).isTrue();
@@ -46,10 +46,8 @@ public class CryptoFacilitiesInstrumentsJSONTest {
     assertThat(ct.getType()).isEqualTo("futures");
     assertThat(ct.getTickSize()).isEqualTo(new BigDecimal("0.01"));
 
-    //2016-04-29 17:00:00
+    // 2016-04-29 17:00:00
     SimpleDateFormat DATE_FORMAT = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm:ss.SSSX");
     assertThat(ct.getLastTradingTime()).isEqualTo(DATE_FORMAT.parse("2016-04-29T16:00:00.000Z"));
-
   }
-
 }

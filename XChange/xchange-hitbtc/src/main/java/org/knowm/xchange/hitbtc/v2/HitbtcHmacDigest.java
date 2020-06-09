@@ -28,7 +28,8 @@ public class HitbtcHmacDigest implements ParamsDigest {
     } catch (InvalidKeyException e) {
       throw new IllegalArgumentException("Invalid key for hmac initialization.", e);
     } catch (NoSuchAlgorithmException e) {
-      throw new RuntimeException("Illegal algorithm for post body digest. Check the implementation.");
+      throw new RuntimeException(
+          "Illegal algorithm for post body digest. Check the implementation.");
     }
   }
 
@@ -52,5 +53,4 @@ public class HitbtcHmacDigest implements ParamsDigest {
 
     return DigestUtils.bytesToHex(mac.doFinal()).toLowerCase();
   }
-
 }

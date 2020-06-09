@@ -46,7 +46,7 @@ public class AllIntegration {
         continue;
       }
 
-      exchangeClasses.add(new Object[]{exchangeClass, exchangeClass.getSimpleName()});
+      exchangeClasses.add(new Object[] {exchangeClass, exchangeClass.getSimpleName()});
     }
 
     return exchangeClasses;
@@ -60,7 +60,7 @@ public class AllIntegration {
 
   private Exchange exchange;
 
-  final static Logger logger = LoggerFactory.getLogger(AllIntegration.class);
+  static final Logger logger = LoggerFactory.getLogger(AllIntegration.class);
 
   @Before
   public void createExchange() {
@@ -85,19 +85,26 @@ public class AllIntegration {
   }
 
   // Predicate specifies which exceptions indicate to retry the request
-  public static final IPredicate<Exception> RETRYABLE_REQUEST = new IPredicate<Exception>() {
-    @Override
-    public boolean test(Exception e) {
-      return (e.getMessage() != null && e.getMessage().contains("{code=200, message=Too many requests}"))
-          || e instanceof SocketTimeoutException /*
+  public static final IPredicate<Exception> RETRYABLE_REQUEST =
+      new IPredicate<Exception>() {
+        @Override
+        public boolean test(Exception e) {
+          return (e.getMessage() != null
+                  && e.getMessage().contains("{code=200, message=Too many requests}"))
+              || e instanceof SocketTimeoutException /*
                                                   * || e instanceof HttpStatusIOException
                                                   */;
-    }
-  };
+        }
+      };
 
-  // Test some service method for a collection of first arguments, catching for example NotYetImplementedForExchangeException
-  private <R, A> Collection<R> testExchangeMethod(final Object service, final Method method, Collection<A> firstArgumentOptions,
-      Object... restStaticArguments) throws Throwable {
+  // Test some service method for a collection of first arguments, catching for example
+  // NotYetImplementedForExchangeException
+  private <R, A> Collection<R> testExchangeMethod(
+      final Object service,
+      final Method method,
+      Collection<A> firstArgumentOptions,
+      Object... restStaticArguments)
+      throws Throwable {
 
     Assume.assumeNotNull(service);
 
@@ -113,20 +120,21 @@ public class AllIntegration {
 
     for (final A firstArgument : firstArgumentOptions) {
 
-      Callable<R> callMethod = new Callable<R>() {
+      Callable<R> callMethod =
+          new Callable<R>() {
 
-        @Override
-        @SuppressWarnings("unchecked")
-        public R call() throws Exception {
+            @Override
+            @SuppressWarnings("unchecked")
+            public R call() throws Exception {
 
-          try {
-            arguments.set(0, firstArgument);
-            return (R) method.invoke(service, arguments.toArray());
-          } catch (InvocationTargetException invocationTargetException) {
-            throw ((Exception) invocationTargetException.getCause());
-          }
-        }
-      };
+              try {
+                arguments.set(0, firstArgument);
+                return (R) method.invoke(service, arguments.toArray());
+              } catch (InvocationTargetException invocationTargetException) {
+                throw ((Exception) invocationTargetException.getCause());
+              }
+            }
+          };
 
       try {
 
@@ -152,7 +160,6 @@ public class AllIntegration {
       } catch (NotYetImplementedForExchangeException e) {
 
         logger.warn(methodName + " unimplemented");
-
       }
     }
 
@@ -170,29 +177,36 @@ public class AllIntegration {
     Assume.assumeNotNull(exchange.getExchangeMetaData().getCurrencyPairs());
 
     // uncomment to test every single currencypair
-    //return exchange.getMetaData().getMarketMetaDataMap().keySet();
+    // return exchange.getMetaData().getMarketMetaDataMap().keySet();
 
-    return Collections.singletonList(exchange.getExchangeMetaData().getCurrencyPairs().keySet().iterator().next());
+    return Collections.singletonList(
+        exchange.getExchangeMetaData().getCurrencyPairs().keySet().iterator().next());
   }
 
   @Test
   public void testGetTicker() throws Throwable {
 
-    Method method = MarketDataService.class.getMethod("getTicker", CurrencyPair.class, Object[].class);
-    testExchangeMethod(exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[]{});
+    Method method =
+        MarketDataService.class.getMethod("getTicker", CurrencyPair.class, Object[].class);
+    testExchangeMethod(
+        exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[] {});
   }
 
   @Test
   public void testGetOrderBook() throws Throwable {
 
-    Method method = MarketDataService.class.getMethod("getOrderBook", CurrencyPair.class, Object[].class);
-    testExchangeMethod(exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[]{});
+    Method method =
+        MarketDataService.class.getMethod("getOrderBook", CurrencyPair.class, Object[].class);
+    testExchangeMethod(
+        exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[] {});
   }
 
   @Test
   public void testGetTrades() throws Throwable {
 
-    Method method = MarketDataService.class.getMethod("getTrades", CurrencyPair.class, Object[].class);
-    testExchangeMethod(exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[]{});
+    Method method =
+        MarketDataService.class.getMethod("getTrades", CurrencyPair.class, Object[].class);
+    testExchangeMethod(
+        exchange.getMarketDataService(), method, getCurrencyPairs(), (Object) new Object[] {});
   }
 }

@@ -7,21 +7,24 @@ import com.fasterxml.jackson.databind.JsonSerializer;
 import java.io.IOException;
 
 /**
- * Custom serializer for a candlestick stream event, since the structure of the candlestick json differ from the one in the REST API.
+ * Custom serializer for a candlestick stream event, since the structure of the candlestick json
+ * differ from the one in the REST API.
  *
  * @see CandlestickEvent
  */
 public class CandlestickEventSerializer extends JsonSerializer<CandlestickEvent> {
 
   @Override
-  public void serialize(CandlestickEvent candlestickEvent, JsonGenerator gen, SerializerProvider serializers) throws IOException {
+  public void serialize(
+      CandlestickEvent candlestickEvent, JsonGenerator gen, SerializerProvider serializers)
+      throws IOException {
     gen.writeStartObject();
-    
+
     // Write header
     gen.writeStringField("e", candlestickEvent.getEventType());
     gen.writeNumberField("E", candlestickEvent.getEventTime());
     gen.writeStringField("s", candlestickEvent.getSymbol());
-    
+
     // Write candlestick data
     gen.writeObjectFieldStart("k");
     gen.writeNumberField("t", candlestickEvent.getOpenTime());

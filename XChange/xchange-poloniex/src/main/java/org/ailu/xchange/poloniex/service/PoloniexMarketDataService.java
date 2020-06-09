@@ -14,11 +14,9 @@ import org.knowm.xchange.poloniex.dto.marketdata.PoloniexPublicTrade;
 import org.knowm.xchange.poloniex.dto.marketdata.PoloniexTicker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author Zach Holmes
- */
-
-public class PoloniexMarketDataService extends PoloniexMarketDataServiceRaw implements MarketDataService {
+/** @author Zach Holmes */
+public class PoloniexMarketDataService extends PoloniexMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -38,7 +36,8 @@ public class PoloniexMarketDataService extends PoloniexMarketDataServiceRaw impl
   }
 
   @Override
-  public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args) throws ExchangeException, IOException {
+  public OrderBook getOrderBook(CurrencyPair currencyPair, Object... args)
+      throws ExchangeException, IOException {
 
     PoloniexDepth depth = null;
 
@@ -59,7 +58,8 @@ public class PoloniexMarketDataService extends PoloniexMarketDataServiceRaw impl
   }
 
   @Override
-  public Trades getTrades(CurrencyPair currencyPair, Object... args) throws ExchangeException, IOException {
+  public Trades getTrades(CurrencyPair currencyPair, Object... args)
+      throws ExchangeException, IOException {
 
     Long startTime = null;
     Long endTime = null;
@@ -84,5 +84,4 @@ public class PoloniexMarketDataService extends PoloniexMarketDataServiceRaw impl
     }
     return PoloniexAdapters.adaptPoloniexPublicTrades(poloniexPublicTrades, currencyPair);
   }
-
 }

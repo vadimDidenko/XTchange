@@ -14,9 +14,7 @@ import java.math.BigDecimal;
 import java.util.List;
 import java.util.Map;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 @Path("api/v1")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Coinbase {
@@ -31,20 +29,26 @@ public interface Coinbase {
 
   @GET
   @Path("prices/buy")
-  CoinbasePrice getBuyPrice(@QueryParam("qty") BigDecimal quantity, @QueryParam("currency") String currency) throws IOException, CoinbaseException;
+  CoinbasePrice getBuyPrice(
+      @QueryParam("qty") BigDecimal quantity, @QueryParam("currency") String currency)
+      throws IOException, CoinbaseException;
 
   @GET
   @Path("prices/sell")
-  CoinbasePrice getSellPrice(@QueryParam("qty") BigDecimal quantity, @QueryParam("currency") String currency) throws IOException, CoinbaseException;
+  CoinbasePrice getSellPrice(
+      @QueryParam("qty") BigDecimal quantity, @QueryParam("currency") String currency)
+      throws IOException, CoinbaseException;
 
   @GET
   @Path("prices/spot_rate")
-  CoinbaseMoney getSpotRate(@QueryParam("currency") String currency) throws IOException, CoinbaseException;
+  CoinbaseMoney getSpotRate(@QueryParam("currency") String currency)
+      throws IOException, CoinbaseException;
 
   @GET
   @Produces(MediaType.TEXT_PLAIN)
   @Path("prices/historical")
-  String getHistoricalSpotRates(@QueryParam("page") Integer page) throws IOException, CoinbaseException;
+  String getHistoricalSpotRates(@QueryParam("page") Integer page)
+      throws IOException, CoinbaseException;
 
   @POST
   @Consumes(MediaType.APPLICATION_JSON)
@@ -54,5 +58,4 @@ public interface Coinbase {
   @POST
   @Path("tokens")
   CoinbaseToken createToken() throws IOException, CoinbaseException;
-
 }

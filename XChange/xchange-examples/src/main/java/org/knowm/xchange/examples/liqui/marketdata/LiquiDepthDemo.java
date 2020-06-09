@@ -26,12 +26,14 @@ public class LiquiDepthDemo {
     final OrderBook orderBook = marketDataService.getOrderBook(CurrencyPair.LTC_BTC);
 
     System.out.println(orderBook.toString());
-    System.out.println("full orderbook size: " + (orderBook.getAsks().size() + orderBook.getBids().size()));
+    System.out.println(
+        "full orderbook size: " + (orderBook.getAsks().size() + orderBook.getBids().size()));
   }
 
   private static void raw(final Exchange liquiExchange) throws IOException {
 
-    final LiquiMarketDataServiceRaw liquiMarketDataServiceRaw = (LiquiMarketDataServiceRaw) liquiExchange.getMarketDataService();
+    final LiquiMarketDataServiceRaw liquiMarketDataServiceRaw =
+        (LiquiMarketDataServiceRaw) liquiExchange.getMarketDataService();
 
     final LiquiDepth depth = liquiMarketDataServiceRaw.getDepth(CurrencyPair.LTC_BTC, 5);
 

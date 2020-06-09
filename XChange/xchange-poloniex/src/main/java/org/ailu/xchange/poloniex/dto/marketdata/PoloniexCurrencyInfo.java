@@ -15,9 +15,15 @@ public class PoloniexCurrencyInfo {
   private final boolean frozen;
   private final boolean delisted;
 
-  public PoloniexCurrencyInfo(@JsonProperty("id") int id, @JsonProperty("name") String name, @JsonProperty("txFee") BigDecimal txFee,
-      @JsonProperty("minConf") int minConf, @JsonProperty("depositAddress") String depositAddress, @JsonProperty("disabled") boolean disabled,
-      @JsonProperty("frozen") boolean frozen, @JsonProperty("delisted") boolean delisted) {
+  public PoloniexCurrencyInfo(
+      @JsonProperty("id") int id,
+      @JsonProperty("name") String name,
+      @JsonProperty("txFee") BigDecimal txFee,
+      @JsonProperty("minConf") int minConf,
+      @JsonProperty("depositAddress") String depositAddress,
+      @JsonProperty("disabled") boolean disabled,
+      @JsonProperty("frozen") boolean frozen,
+      @JsonProperty("delisted") boolean delisted) {
 
     this.id = id;
     this.name = name;
@@ -72,8 +78,22 @@ public class PoloniexCurrencyInfo {
   @Override
   public String toString() {
 
-    return "PoloniexCurrencyInfo [id=" + id + ", name=" + name + ", txFee=" + txFee + ", minConf=" + minConf + ", depositAddress=" + depositAddress
-        + ", disabled=" + disabled + ", frozen=" + frozen + ", delisted=" + delisted + "]";
+    return "PoloniexCurrencyInfo [id="
+        + id
+        + ", name="
+        + name
+        + ", txFee="
+        + txFee
+        + ", minConf="
+        + minConf
+        + ", depositAddress="
+        + depositAddress
+        + ", disabled="
+        + disabled
+        + ", frozen="
+        + frozen
+        + ", delisted="
+        + delisted
+        + "]";
   }
-
 }

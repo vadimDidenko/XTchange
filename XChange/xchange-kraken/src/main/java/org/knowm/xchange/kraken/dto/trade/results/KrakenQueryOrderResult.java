@@ -15,9 +15,10 @@ public class KrakenQueryOrderResult extends KrakenResult<Map<String, KrakenOrder
    * @param result
    * @param error
    */
-  public KrakenQueryOrderResult(@JsonProperty("result") Map<String, KrakenOrder> result, @JsonProperty("error") String[] error) {
+  public KrakenQueryOrderResult(
+      @JsonProperty("result") Map<String, KrakenOrder> result,
+      @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
-
 }

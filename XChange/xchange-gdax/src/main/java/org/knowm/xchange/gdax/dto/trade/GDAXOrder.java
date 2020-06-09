@@ -20,12 +20,21 @@ public class GDAXOrder {
   private final String doneReason;
   private final BigDecimal executedvalue;
 
-
-  public GDAXOrder(@JsonProperty("id") String id, @JsonProperty("price") BigDecimal price, @JsonProperty("size") BigDecimal size,
-      @JsonProperty("product_id") String productId, @JsonProperty("side") String side, @JsonProperty("created_at") String createdAt,
-      @JsonProperty("done_at") String doneAt, @JsonProperty("filled_size") BigDecimal filledSize, @JsonProperty("fill_fees") BigDecimal fillFees,
-      @JsonProperty("status") String status, @JsonProperty("settled") boolean settled, @JsonProperty("type") String type,
-                   @JsonProperty("done_reason") String doneReason, @JsonProperty("executed_value")  BigDecimal executedValue) {
+  public GDAXOrder(
+      @JsonProperty("id") String id,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("size") BigDecimal size,
+      @JsonProperty("product_id") String productId,
+      @JsonProperty("side") String side,
+      @JsonProperty("created_at") String createdAt,
+      @JsonProperty("done_at") String doneAt,
+      @JsonProperty("filled_size") BigDecimal filledSize,
+      @JsonProperty("fill_fees") BigDecimal fillFees,
+      @JsonProperty("status") String status,
+      @JsonProperty("settled") boolean settled,
+      @JsonProperty("type") String type,
+      @JsonProperty("done_reason") String doneReason,
+      @JsonProperty("executed_value") BigDecimal executedValue) {
     this.id = id;
     this.price = price;
     this.size = size;
@@ -126,5 +135,4 @@ public class GDAXOrder {
     builder.append("]");
     return builder.toString();
   }
-
 }

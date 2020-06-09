@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitcurexTicker JSON parsing
- */
+/** Test BitcurexTicker JSON parsing */
 public class BitcurexTickerJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = BitcurexTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        BitcurexTickerJSONTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -31,5 +30,4 @@ public class BitcurexTickerJSONTest {
     assertThat(BitcurexTicker.getLow()).isEqualTo(new BigDecimal("1538"));
     assertThat(BitcurexTicker.getVolume()).isEqualTo(new BigDecimal("42.67895867"));
   }
-
 }

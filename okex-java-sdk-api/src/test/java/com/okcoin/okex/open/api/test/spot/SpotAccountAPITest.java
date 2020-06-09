@@ -1,7 +1,5 @@
 package com.okcoin.okex.open.api.test.spot;
 
-
-import com.alibaba.fastjson.JSONArray;
 import com.okcoin.okex.open.api.bean.spot.result.Account;
 import com.okcoin.okex.open.api.bean.spot.result.Ledger;
 import com.okcoin.okex.open.api.bean.spot.result.ServerTimeDto;
@@ -17,56 +15,49 @@ import java.util.Map;
 
 public class SpotAccountAPITest extends SpotAPIBaseTests {
 
-    private static final Logger LOG = LoggerFactory.getLogger(SpotAccountAPITest.class);
+  private static final Logger LOG = LoggerFactory.getLogger(SpotAccountAPITest.class);
 
-    private SpotAccountAPIService spotAccountAPIService;
+  private SpotAccountAPIService spotAccountAPIService;
 
-    @Before
-    public void before() {
-        this.config = this.config();
-        this.spotAccountAPIService = new SpotAccountAPIServiceImpl(this.config);
-    }
+  @Before
+  public void before() {
+    this.config = this.config();
+    this.spotAccountAPIService = new SpotAccountAPIServiceImpl(this.config);
+  }
 
-    @Test
-    public void time() {
-        final ServerTimeDto serverTimeDto = this.spotAccountAPIService.time();
-        this.toResultString(SpotAccountAPITest.LOG, "time", serverTimeDto);
-        System.out.println(serverTimeDto.getEpoch());
-        System.out.println(serverTimeDto.getIso());
-    }
+  @Test
+  public void time() {
+    final ServerTimeDto serverTimeDto = this.spotAccountAPIService.time();
+    this.toResultString(SpotAccountAPITest.LOG, "time", serverTimeDto);
+    System.out.println(serverTimeDto.getEpoch());
+    System.out.println(serverTimeDto.getIso());
+  }
 
-    @Test
-    public void getMiningData() {
-        final Map<String, Object> miningdata = this.spotAccountAPIService.getMiningData();
-        this.toResultString(SpotAccountAPITest.LOG, "miningdata", miningdata);
-    }
+  @Test
+  public void getMiningData() {
+    final Map<String, Object> miningdata = this.spotAccountAPIService.getMiningData();
+    this.toResultString(SpotAccountAPITest.LOG, "miningdata", miningdata);
+  }
 
-    /**
-     * 账户信息
-     */
-    @Test
-    public void getAccounts() {
-        final List<Account> accounts = this.spotAccountAPIService.getAccounts();
-        this.toResultString(SpotAccountAPITest.LOG, "accounts", accounts);
-    }
+  /** 账户信息 */
+  @Test
+  public void getAccounts() {
+    final List<Account> accounts = this.spotAccountAPIService.getAccounts();
+    this.toResultString(SpotAccountAPITest.LOG, "accounts", accounts);
+  }
 
-    /**
-     * 单一账户信息
-     */
-    @Test
-    public void getAccountByCurrency() {
-        final Account account = this.spotAccountAPIService.getAccountByCurrency("btc");
-        this.toResultString(SpotAccountAPITest.LOG, "account", account);
-    }
+  /** 单一账户信息 */
+  @Test
+  public void getAccountByCurrency() {
+    final Account account = this.spotAccountAPIService.getAccountByCurrency("btc");
+    this.toResultString(SpotAccountAPITest.LOG, "account", account);
+  }
 
-    /**
-     * 账单流水
-     */
-    @Test
-    public void getLedgersByCurrency() {
-        final List<Ledger> ledgers = this.spotAccountAPIService.getLedgersByCurrency("eos", null, null, "50");
-        this.toResultString(SpotAccountAPITest.LOG, "ledges", ledgers);
-    }
-
-
+  /** 账单流水 */
+  @Test
+  public void getLedgersByCurrency() {
+    final List<Ledger> ledgers =
+        this.spotAccountAPIService.getLedgersByCurrency("eos", null, null, "50");
+    this.toResultString(SpotAccountAPITest.LOG, "ledges", ledgers);
+  }
 }

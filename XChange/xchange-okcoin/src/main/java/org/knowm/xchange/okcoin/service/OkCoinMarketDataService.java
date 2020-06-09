@@ -11,7 +11,8 @@ import org.knowm.xchange.okcoin.OkCoinAdapters;
 import org.knowm.xchange.okcoin.dto.marketdata.OkCoinTrade;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-public class OkCoinMarketDataService extends OkCoinMarketDataServiceRaw implements MarketDataService {
+public class OkCoinMarketDataService extends OkCoinMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor

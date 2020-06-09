@@ -21,43 +21,76 @@ public interface GateioAuthenticated extends Gateio {
 
   @POST
   @Path("private/balances")
-  GateioFunds getFunds(@HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                       @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioFunds getFunds(
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/cancelorder")
-  GateioBaseResponse cancelOrder(@FormParam("orderNumber") String orderNumber, @HeaderParam("KEY") String apiKey,
-                                 @HeaderParam("SIGN") ParamsDigest signer, @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioBaseResponse cancelOrder(
+      @FormParam("orderNumber") String orderNumber,
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/cancelAllOrders")
-  GateioBaseResponse cancelAllOrders(@FormParam("type") String type, @FormParam("currencyPair") String currencyPair, @HeaderParam("KEY") String apiKey,
-                                     @HeaderParam("SIGN") ParamsDigest signer, @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioBaseResponse cancelAllOrders(
+      @FormParam("type") String type,
+      @FormParam("currencyPair") String currencyPair,
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/buy")
-  GateioPlaceOrderReturn buy(@FormParam("currencyPair") String currencyPair, @FormParam("rate") BigDecimal rate,
-                             @FormParam("amount") BigDecimal amount, @HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                             @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioPlaceOrderReturn buy(
+      @FormParam("currencyPair") String currencyPair,
+      @FormParam("rate") BigDecimal rate,
+      @FormParam("amount") BigDecimal amount,
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/sell")
-  GateioPlaceOrderReturn sell(@FormParam("currencyPair") String currencyPair, @FormParam("rate") BigDecimal rate,
-                              @FormParam("amount") BigDecimal amount, @HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                              @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioPlaceOrderReturn sell(
+      @FormParam("currencyPair") String currencyPair,
+      @FormParam("rate") BigDecimal rate,
+      @FormParam("amount") BigDecimal amount,
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/openOrders")
-  GateioOpenOrders getOpenOrders(@HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                                 @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioOpenOrders getOpenOrders(
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 
   @POST
   @Path("private/tradeHistory")
-  GateioTradeHistoryReturn getUserTradeHistory(@HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                                               @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("pair") String pair) throws IOException;
+  GateioTradeHistoryReturn getUserTradeHistory(
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("pair") String pair)
+      throws IOException;
 
   @POST
   @Path("private/getorder")
-  GateioOrderStatus getOrderStatus(@FormParam("order_id") String orderId, @HeaderParam("KEY") String apiKey, @HeaderParam("SIGN") ParamsDigest signer,
-                                   @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws IOException;
+  GateioOrderStatus getOrderStatus(
+      @FormParam("order_id") String orderId,
+      @HeaderParam("KEY") String apiKey,
+      @HeaderParam("SIGN") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws IOException;
 }

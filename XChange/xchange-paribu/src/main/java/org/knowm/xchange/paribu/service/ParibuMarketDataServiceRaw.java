@@ -8,9 +8,7 @@ import org.knowm.xchange.paribu.dto.marketdata.ParibuTicker;
 
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * Created by semihunaldi on 27/11/2017
- */
+/** Created by semihunaldi on 27/11/2017 */
 public class ParibuMarketDataServiceRaw extends ParibuBaseService {
 
   private final Paribu paribu;
@@ -18,7 +16,9 @@ public class ParibuMarketDataServiceRaw extends ParibuBaseService {
   public ParibuMarketDataServiceRaw(Exchange exchange) {
 
     super(exchange);
-    this.paribu = RestProxyFactory.createProxy(Paribu.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.paribu =
+        RestProxyFactory.createProxy(
+            Paribu.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 
   public ParibuTicker getParibuTicker() throws IOException {

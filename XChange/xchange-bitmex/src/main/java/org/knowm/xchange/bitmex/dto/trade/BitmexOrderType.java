@@ -16,8 +16,18 @@ import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 
 @JsonDeserialize(using = BitmexOrderTypeDeserializer.class)
 public enum BitmexOrderType {
-
-  MARKET, LIMIT, STOP_LOSS, TAKE_PROFIT, STOP_LOSS_PROFIT, STOP_LOSS_PROFIT_LIMIT, STOP_LOSS_LIMIT, TAKE_PROFIT_LIMIT, TRAILING_STOP, TRAILING_STOP_LIMIT, STOP_LOSS_AND_LIMIT, SETTLE_POSITION;
+  MARKET,
+  LIMIT,
+  STOP_LOSS,
+  TAKE_PROFIT,
+  STOP_LOSS_PROFIT,
+  STOP_LOSS_PROFIT_LIMIT,
+  STOP_LOSS_LIMIT,
+  TAKE_PROFIT_LIMIT,
+  TRAILING_STOP,
+  TRAILING_STOP_LIMIT,
+  STOP_LOSS_AND_LIMIT,
+  SETTLE_POSITION;
 
   @Override
   public String toString() {
@@ -38,8 +48,7 @@ public enum BitmexOrderType {
   private static final Map<String, BitmexOrderType> fromString = new HashMap<>();
 
   static {
-    for (BitmexOrderType orderType : values())
-      fromString.put(orderType.toString(), orderType);
+    for (BitmexOrderType orderType : values()) fromString.put(orderType.toString(), orderType);
 
     fromString.put("l", LIMIT);
     fromString.put("m", MARKET);
@@ -48,7 +57,8 @@ public enum BitmexOrderType {
   static class BitmexOrderTypeDeserializer extends JsonDeserializer<BitmexOrderType> {
 
     @Override
-    public BitmexOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitmexOrderType deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

@@ -12,7 +12,10 @@ public final class BinanceBalance {
   private final BigDecimal free;
   private final BigDecimal locked;
 
-  public BinanceBalance(@JsonProperty("asset") String asset, @JsonProperty("free") BigDecimal free, @JsonProperty("locked") BigDecimal locked) {
+  public BinanceBalance(
+      @JsonProperty("asset") String asset,
+      @JsonProperty("free") BigDecimal free,
+      @JsonProperty("locked") BigDecimal locked) {
     this.currency = Currency.getInstance(asset);
     this.locked = locked;
     this.free = free;

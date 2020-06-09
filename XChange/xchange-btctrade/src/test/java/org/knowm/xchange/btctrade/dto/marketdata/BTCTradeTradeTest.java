@@ -16,7 +16,8 @@ public class BTCTradeTradeTest {
   @Test
   public void testBTCTradeTrade() throws IOException {
 
-    BTCTradeTrade[] trades = mapper.readValue(getClass().getResource("trades.json"), BTCTradeTrade[].class);
+    BTCTradeTrade[] trades =
+        mapper.readValue(getClass().getResource("trades.json"), BTCTradeTrade[].class);
 
     assertEquals(1403397140L, trades[0].getDate());
     assertEquals(new BigDecimal("3703"), trades[0].getPrice());
@@ -42,5 +43,4 @@ public class BTCTradeTradeTest {
     assertEquals(2896239L, trades[trades.length - 1].getTid());
     assertEquals("buy", trades[trades.length - 1].getType());
   }
-
 }

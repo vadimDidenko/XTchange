@@ -17,14 +17,14 @@ import org.knowm.xchange.empoex.dto.marketdata.EmpoExTrade;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * <p>
  * Implementation of the market data service for EmpoEx
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class EmpoExMarketDataService extends EmpoExMarketDataServiceRaw implements MarketDataService {
+public class EmpoExMarketDataService extends EmpoExMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -60,5 +60,4 @@ public class EmpoExMarketDataService extends EmpoExMarketDataServiceRaw implemen
 
     return EmpoExAdapters.adaptEmpoExTrades(trades, currencyPair);
   }
-
 }

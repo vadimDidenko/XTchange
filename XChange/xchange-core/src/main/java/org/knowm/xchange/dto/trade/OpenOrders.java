@@ -4,12 +4,10 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * <p>
  * DTO representing open orders
- * </p>
- * <p>
- * Open orders are orders that you have placed with the exchange that have not yet been matched to a counter-party.
- * </p>
+ *
+ * <p>Open orders are orders that you have placed with the exchange that have not yet been matched
+ * to a counter-party.
  */
 public final class OpenOrders implements Serializable {
 
@@ -46,5 +44,4 @@ public final class OpenOrders implements Serializable {
     }
     return sb.toString();
   }
-
 }

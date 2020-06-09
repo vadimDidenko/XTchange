@@ -12,7 +12,8 @@ import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * Demonstrate requesting Ticker at Bitstamp. You can access both the raw data from Bitstamp or the XChange generic DTO data format.
+ * Demonstrate requesting Ticker at Bitstamp. You can access both the raw data from Bitstamp or the
+ * XChange generic DTO data format.
  */
 public class BitstampTickerDemo {
 
@@ -41,5 +42,4 @@ public class BitstampTickerDemo {
 
     System.out.println(bitstampTicker.toString());
   }
-
 }

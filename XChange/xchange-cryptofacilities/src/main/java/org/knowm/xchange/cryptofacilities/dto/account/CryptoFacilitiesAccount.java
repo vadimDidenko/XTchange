@@ -7,16 +7,16 @@ import org.knowm.xchange.cryptofacilities.dto.CryptoFacilitiesResult;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Panchen
- */
-
+/** @author Panchen */
 public class CryptoFacilitiesAccount extends CryptoFacilitiesResult {
 
   private final CryptoFacilitiesAccountInfo accountInfo;
 
-  public CryptoFacilitiesAccount(@JsonProperty("result") String result, @JsonProperty("serverTime") String strServerTime,
-      @JsonProperty("error") String error, @JsonProperty("account") CryptoFacilitiesAccountInfo accountInfo) {
+  public CryptoFacilitiesAccount(
+      @JsonProperty("result") String result,
+      @JsonProperty("serverTime") String strServerTime,
+      @JsonProperty("error") String error,
+      @JsonProperty("account") CryptoFacilitiesAccountInfo accountInfo) {
 
     super(result, error);
 

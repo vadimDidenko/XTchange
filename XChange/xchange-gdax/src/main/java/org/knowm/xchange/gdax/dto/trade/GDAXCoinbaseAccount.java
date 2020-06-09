@@ -14,7 +14,8 @@ public class GDAXCoinbaseAccount {
   private final String type;
   private final String id;
 
-  public GDAXCoinbaseAccount(@JsonProperty("name") String name,
+  public GDAXCoinbaseAccount(
+      @JsonProperty("name") String name,
       @JsonProperty("primary") boolean primaryAccount,
       @JsonProperty("currency") String currency,
       @JsonProperty("active") boolean active,
@@ -57,5 +58,4 @@ public class GDAXCoinbaseAccount {
   public String getId() {
     return id;
   }
-
 }

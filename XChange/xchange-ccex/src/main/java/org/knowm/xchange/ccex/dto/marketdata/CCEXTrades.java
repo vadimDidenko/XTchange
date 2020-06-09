@@ -15,30 +15,26 @@ public class CCEXTrades {
    * @param result
    * @param success
    */
-  public CCEXTrades(@JsonProperty("success") Boolean success, @JsonProperty("message") String message,
+  public CCEXTrades(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("message") String message,
       @JsonProperty("result") List<CCEXTrade> result) {
     this.success = success;
     this.message = message;
     this.result = result;
   }
 
-  /**
-   * @return The success
-   */
+  /** @return The success */
   public Boolean getSuccess() {
     return success;
   }
 
-  /**
-   * @return The message
-   */
+  /** @return The message */
   public String getMessage() {
     return message;
   }
 
-  /**
-   * @return The message
-   */
+  /** @return The message */
   public List<CCEXTrade> getResult() {
     return result;
   }

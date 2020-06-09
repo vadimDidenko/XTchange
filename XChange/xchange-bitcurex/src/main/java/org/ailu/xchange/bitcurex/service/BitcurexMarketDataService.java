@@ -17,14 +17,14 @@ import org.knowm.xchange.dto.trade.LimitOrder;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
 /**
- * <p>
  * Implementation of the generic market data service for Bitcurex
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
-public class BitcurexMarketDataService extends BitcurexMarketDataServiceRaw implements MarketDataService {
+public class BitcurexMarketDataService extends BitcurexMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -53,8 +53,10 @@ public class BitcurexMarketDataService extends BitcurexMarketDataServiceRaw impl
     BitcurexDepth bitcurexDepth = getBitcurexOrderBook(currencyPair.counter.getCurrencyCode());
 
     // Adapt to XChange DTOs
-    List<LimitOrder> asks = BitcurexAdapters.adaptOrders(bitcurexDepth.getAsks(), currencyPair, OrderType.ASK, "");
-    List<LimitOrder> bids = BitcurexAdapters.adaptOrders(bitcurexDepth.getBids(), currencyPair, OrderType.BID, "");
+    List<LimitOrder> asks =
+        BitcurexAdapters.adaptOrders(bitcurexDepth.getAsks(), currencyPair, OrderType.ASK, "");
+    List<LimitOrder> bids =
+        BitcurexAdapters.adaptOrders(bitcurexDepth.getBids(), currencyPair, OrderType.BID, "");
 
     return new OrderBook(null, asks, bids);
   }
@@ -68,5 +70,4 @@ public class BitcurexMarketDataService extends BitcurexMarketDataServiceRaw impl
     // Adapt to XChange DTOs
     return BitcurexAdapters.adaptTrades(bitcurexTrades, currencyPair);
   }
-
 }

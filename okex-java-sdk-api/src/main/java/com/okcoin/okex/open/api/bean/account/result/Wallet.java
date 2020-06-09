@@ -4,43 +4,43 @@ import java.math.BigDecimal;
 
 public class Wallet {
 
-    private String currency;
+  private String currency;
 
-    private BigDecimal balance;
+  private BigDecimal balance;
 
-    private BigDecimal frozen;
+  private BigDecimal frozen;
 
-    private BigDecimal available;
+  private BigDecimal available;
 
-    public String getCurrency() {
-        return currency;
-    }
+  public String getCurrency() {
+    return currency;
+  }
 
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
+  public void setCurrency(String currency) {
+    this.currency = currency;
+  }
 
-    public BigDecimal getBalance() {
-        return balance;
-    }
+  public BigDecimal getBalance() {
+    return balance;
+  }
 
-    public void setBalance(BigDecimal balance) {
-        this.balance = balance;
-    }
+  public void setBalance(BigDecimal balance) {
+    this.balance = balance;
+  }
 
-    public BigDecimal getFrozen() {
-        return frozen;
-    }
+  public BigDecimal getFrozen() {
+    return frozen;
+  }
 
-    public void setFrozen(BigDecimal frozen) {
-        this.frozen = frozen;
-    }
+  public void setFrozen(BigDecimal frozen) {
+    this.frozen = frozen;
+  }
 
-    public BigDecimal getAvailable() {
-        return available;
-    }
+  public BigDecimal getAvailable() {
+    return available;
+  }
 
-    public void setAvailable(BigDecimal available) {
-        this.available = available;
-    }
+  public void setAvailable(BigDecimal available) {
+    this.available = available;
+  }
 }

@@ -14,9 +14,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.math.BigDecimal;
 
-/**
- * @author Benedikt Bünz See https://www.bitso.net/api/ for up-to-date docs., Piotr Ładyżyński
- */
+/** @author Benedikt Bünz See https://www.bitso.net/api/ for up-to-date docs., Piotr Ładyżyński */
 @Path("v2")
 @Consumes(MediaType.APPLICATION_FORM_URLENCODED)
 @Produces(MediaType.APPLICATION_JSON)
@@ -24,60 +22,96 @@ public interface BitsoAuthenticated {
 
   @POST
   @Path("open_orders/")
-  BitsoOrder[] getOpenOrders(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                             @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws BitsoException, IOException;
+  BitsoOrder[] getOpenOrders(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws BitsoException, IOException;
 
   @POST
   @Path("buy/")
-  BitsoOrder buy(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                 @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("amount") BigDecimal amount,
-                 @FormParam("price") BigDecimal price) throws BitsoException, IOException;
+  BitsoOrder buy(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("amount") BigDecimal amount,
+      @FormParam("price") BigDecimal price)
+      throws BitsoException, IOException;
 
   @POST
   @Path("sell/")
-  BitsoOrder sell(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                  @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("amount") BigDecimal amount,
-                  @FormParam("price") BigDecimal price) throws BitsoException, IOException;
+  BitsoOrder sell(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("amount") BigDecimal amount,
+      @FormParam("price") BigDecimal price)
+      throws BitsoException, IOException;
 
-  /**
-   * @return true if order has been canceled.
-   */
+  /** @return true if order has been canceled. */
   @POST
   @Path("cancel_order/")
-  boolean cancelOrder(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                      @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("id") String orderId) throws BitsoException, IOException;
+  boolean cancelOrder(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("id") String orderId)
+      throws BitsoException, IOException;
 
   @POST
   @Path("user_transactions/")
-  BitsoUserTransaction[] getUserTransactions(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                                             @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("limit") long numberOfTransactions) throws BitsoException, IOException;
+  BitsoUserTransaction[] getUserTransactions(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("limit") long numberOfTransactions)
+      throws BitsoException, IOException;
 
   @POST
   @Path("user_transactions/")
-  BitsoUserTransaction[] getUserTransactions(@FormParam("key") String apiKey, @FormParam("signature") ParamsDigest signer,
-                                             @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("limit") long numberOfTransactions, @FormParam("offset") long offset,
-                                             @FormParam("sort") String sort) throws BitsoException, IOException;
+  BitsoUserTransaction[] getUserTransactions(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") ParamsDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("limit") long numberOfTransactions,
+      @FormParam("offset") long offset,
+      @FormParam("sort") String sort)
+      throws BitsoException, IOException;
 
   @POST
   @Path("balance/")
-  BitsoBalance getBalance(@FormParam("key") String apiKey, @FormParam("signature") BitsoDigest signer,
-                          @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws BitsoException, IOException;
+  BitsoBalance getBalance(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") BitsoDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws BitsoException, IOException;
 
   @POST
   @Path("bitcoin_deposit_address/")
-  BitsoDepositAddress getBitcoinDepositAddress(@FormParam("key") String apiKey, @FormParam("signature") BitsoDigest signer,
-                                               @FormParam("nonce") SynchronizedValueFactory<Long> nonce) throws BitsoException, IOException;
+  BitsoDepositAddress getBitcoinDepositAddress(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") BitsoDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce)
+      throws BitsoException, IOException;
 
   @POST
   @Path("bitcoin_withdrawal/")
-  String withdrawBitcoin(@FormParam("key") String apiKey, @FormParam("signature") BitsoDigest signer,
-                         @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("amount") BigDecimal amount,
-                         @FormParam("address") String address) throws BitsoException, IOException;
+  String withdrawBitcoin(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") BitsoDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("amount") BigDecimal amount,
+      @FormParam("address") String address)
+      throws BitsoException, IOException;
 
   @POST
   @Path("ripple_withdrawal/")
-  String withdrawToRipple(@FormParam("key") String apiKey, @FormParam("signature") BitsoDigest signer,
-                          @FormParam("nonce") SynchronizedValueFactory<Long> nonce, @FormParam("amount") BigDecimal amount, @FormParam("currency") String currency,
-                          @FormParam("address") String rippleAddress) throws BitsoException, IOException;
-
+  String withdrawToRipple(
+      @FormParam("key") String apiKey,
+      @FormParam("signature") BitsoDigest signer,
+      @FormParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @FormParam("amount") BigDecimal amount,
+      @FormParam("currency") String currency,
+      @FormParam("address") String rippleAddress)
+      throws BitsoException, IOException;
 }

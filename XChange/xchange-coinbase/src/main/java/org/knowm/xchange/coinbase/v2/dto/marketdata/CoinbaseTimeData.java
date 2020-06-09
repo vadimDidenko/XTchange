@@ -17,7 +17,7 @@ public class CoinbaseTimeData {
     return data;
   }
 
-  static public class CoinbaseTime {
+  public static class CoinbaseTime {
 
     private final BigDecimal epoch;
     private final String iso;
@@ -42,4 +42,3 @@ public class CoinbaseTimeData {
     }
   }
 }
-

@@ -19,7 +19,9 @@ public class PoloniexMoveResponse {
   private Map<String, List<PoloniexPublicTrade>> resultingTrades;
 
   @JsonCreator
-  public PoloniexMoveResponse(@JsonProperty("success") Boolean success, @JsonProperty("orderNumber") Long orderNumber,
+  public PoloniexMoveResponse(
+      @JsonProperty("success") Boolean success,
+      @JsonProperty("orderNumber") Long orderNumber,
       @JsonProperty("resultingTrades") Map<String, List<PoloniexPublicTrade>> resultingTrades) {
 
     if (orderNumber == null) {

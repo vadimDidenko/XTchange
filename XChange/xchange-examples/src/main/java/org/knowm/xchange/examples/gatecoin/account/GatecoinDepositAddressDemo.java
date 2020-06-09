@@ -10,9 +10,7 @@ import org.knowm.xchange.gatecoin.dto.account.Results.GatecoinDepositAddressResu
 import org.knowm.xchange.gatecoin.service.GatecoinAccountServiceRaw;
 import org.knowm.xchange.service.account.AccountService;
 
-/**
- * @author sumedha
- */
+/** @author sumedha */
 public class GatecoinDepositAddressDemo {
   public static void main(String[] args) throws IOException {
 
@@ -32,7 +30,8 @@ public class GatecoinDepositAddressDemo {
   private static void raw(GatecoinAccountServiceRaw accountService) throws IOException {
 
     // Get the account information
-    GatecoinDepositAddressResult gatecoinDepositAddressResult = accountService.getGatecoinDepositAddress();
+    GatecoinDepositAddressResult gatecoinDepositAddressResult =
+        accountService.getGatecoinDepositAddress();
 
     for (GatecoinDepositAddress depositAddress : gatecoinDepositAddressResult.getAddresses()) {
       System.out.println("GatecoinDepositAddess: " + depositAddress.getAddress());

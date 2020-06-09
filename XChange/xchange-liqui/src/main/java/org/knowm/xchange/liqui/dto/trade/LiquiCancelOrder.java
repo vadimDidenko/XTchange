@@ -11,9 +11,13 @@ public class LiquiCancelOrder {
   private final long orderId;
   private final Map<String, BigDecimal> funds;
 
-  public LiquiCancelOrder(@JsonProperty("order_id") final long orderId, @JsonProperty("funds") final Map<String, String> funds) {
+  public LiquiCancelOrder(
+      @JsonProperty("order_id") final long orderId,
+      @JsonProperty("funds") final Map<String, String> funds) {
     this.orderId = orderId;
-    this.funds = funds.entrySet().stream().collect(Collectors.toMap((Map.Entry::getKey), (e -> new BigDecimal(e.getValue()))));
+    this.funds =
+        funds.entrySet().stream()
+            .collect(Collectors.toMap((Map.Entry::getKey), (e -> new BigDecimal(e.getValue()))));
   }
 
   public long getOrderId() {
@@ -26,9 +30,6 @@ public class LiquiCancelOrder {
 
   @Override
   public String toString() {
-    return "LiquiCancelOrder{" +
-        "orderId=" + orderId +
-        ", funds=" + funds +
-        '}';
+    return "LiquiCancelOrder{" + "orderId=" + orderId + ", funds=" + funds + '}';
   }
 }

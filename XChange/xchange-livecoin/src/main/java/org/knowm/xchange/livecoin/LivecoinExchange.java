@@ -26,11 +26,13 @@ public class LivecoinExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.livecoin.net");
     exchangeSpecification.setHost("api.livecoin.net");
     exchangeSpecification.setExchangeName("Livecoin");
-    exchangeSpecification.setExchangeDescription("Livecoin - A convenient way to buy and sell Bitcoin");
+    exchangeSpecification.setExchangeDescription(
+        "Livecoin - A convenient way to buy and sell Bitcoin");
     return exchangeSpecification;
   }
 
@@ -43,7 +45,8 @@ public class LivecoinExchange extends BaseExchange implements Exchange {
 
   @Override
   public void remoteInit() throws IOException {
-    List<LivecoinRestriction> products = ((LivecoinMarketDataServiceRaw) marketDataService).getRestrictions();
+    List<LivecoinRestriction> products =
+        ((LivecoinMarketDataServiceRaw) marketDataService).getRestrictions();
     exchangeMetaData = LivecoinAdapters.adaptToExchangeMetaData(exchangeMetaData, products);
   }
 }

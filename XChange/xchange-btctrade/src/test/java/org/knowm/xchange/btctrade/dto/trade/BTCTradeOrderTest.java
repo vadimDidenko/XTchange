@@ -16,7 +16,8 @@ public class BTCTradeOrderTest {
   @Test
   public void test() throws IOException {
 
-    BTCTradeOrder order = mapper.readValue(getClass().getResource("fetch_order.json"), BTCTradeOrder.class);
+    BTCTradeOrder order =
+        mapper.readValue(getClass().getResource("fetch_order.json"), BTCTradeOrder.class);
     assertEquals("16622499", order.getId());
     assertEquals("2014-09-14 11:08:31", order.getDatetime());
     assertEquals("sell", order.getType());
@@ -34,5 +35,4 @@ public class BTCTradeOrderTest {
     assertEquals("2014-09-14 11:08:31", trades[0].getDatetime());
     assertEquals(new BigDecimal("0"), trades[0].getFee());
   }
-
 }

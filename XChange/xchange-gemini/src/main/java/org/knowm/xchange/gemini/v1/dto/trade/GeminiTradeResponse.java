@@ -29,10 +29,16 @@ public class GeminiTradeResponse {
    * @param feeAmount
    * @param feeCurrency
    */
-  public GeminiTradeResponse(@JsonProperty("price") final BigDecimal price, @JsonProperty("amount") final BigDecimal amount,
-      @JsonProperty("timestamp") final BigDecimal timestamp, @JsonProperty("exchange") final String exchange, @JsonProperty("type") final String type,
-      @JsonProperty("tid") final String tradeId, @JsonProperty("order_id") final String orderId,
-      @JsonProperty("fee_amount") final BigDecimal feeAmount, @JsonProperty("fee_currency") String feeCurrency) {
+  public GeminiTradeResponse(
+      @JsonProperty("price") final BigDecimal price,
+      @JsonProperty("amount") final BigDecimal amount,
+      @JsonProperty("timestamp") final BigDecimal timestamp,
+      @JsonProperty("exchange") final String exchange,
+      @JsonProperty("type") final String type,
+      @JsonProperty("tid") final String tradeId,
+      @JsonProperty("order_id") final String orderId,
+      @JsonProperty("fee_amount") final BigDecimal feeAmount,
+      @JsonProperty("fee_currency") String feeCurrency) {
 
     this.price = price;
     this.amount = amount;

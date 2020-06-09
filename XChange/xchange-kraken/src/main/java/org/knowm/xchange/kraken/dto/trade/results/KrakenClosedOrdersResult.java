@@ -16,7 +16,8 @@ public class KrakenClosedOrdersResult extends KrakenResult<KrakenClosedOrders> {
    * @param result
    * @param error
    */
-  public KrakenClosedOrdersResult(@JsonProperty("result") KrakenClosedOrders result, @JsonProperty("error") String[] error) {
+  public KrakenClosedOrdersResult(
+      @JsonProperty("result") KrakenClosedOrders result, @JsonProperty("error") String[] error) {
 
     super(result, error);
   }

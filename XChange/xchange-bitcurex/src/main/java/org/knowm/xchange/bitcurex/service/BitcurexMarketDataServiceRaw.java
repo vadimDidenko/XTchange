@@ -9,11 +9,10 @@ import org.knowm.xchange.bitcurex.dto.marketdata.BitcurexTrade;
 import org.knowm.xchange.exceptions.ExchangeException;
 
 /**
- * <p>
  * Implementation of the raw market data service for Bitcurex
- * </p>
+ *
  * <ul>
- * <li>Provides access to various market data values</li>
+ *   <li>Provides access to various market data values
  * </ul>
  */
 public class BitcurexMarketDataServiceRaw extends BitcurexBaseService {
@@ -42,5 +41,4 @@ public class BitcurexMarketDataServiceRaw extends BitcurexBaseService {
 
     return bitcurex.getTrades(currency);
   }
-
 }

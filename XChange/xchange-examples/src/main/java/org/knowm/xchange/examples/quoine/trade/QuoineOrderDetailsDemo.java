@@ -21,9 +21,8 @@ public class QuoineOrderDetailsDemo {
   private static void raw(QuoineTradeServiceRaw tradeServiceRaw) throws IOException {
 
     // get order details
-    QuoineOrderDetailsResponse QuoineOrderDetailsResponse = tradeServiceRaw.getQuoineOrderDetails("52364");
+    QuoineOrderDetailsResponse QuoineOrderDetailsResponse =
+        tradeServiceRaw.getQuoineOrderDetails("52364");
     System.out.println(QuoineOrderDetailsResponse.toString());
-
   }
-
 }

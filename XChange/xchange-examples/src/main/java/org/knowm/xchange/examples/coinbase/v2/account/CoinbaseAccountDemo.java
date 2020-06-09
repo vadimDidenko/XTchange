@@ -38,11 +38,11 @@ public class CoinbaseAccountDemo {
   public static void raw(CoinbaseAccountService accountService) throws IOException {
 
     demoAccounts(accountService);
-    
+
     demoPaymentMethods(accountService);
-    
+
     // [TODO] CoinbaseMoney balance = accountService.getCoinbaseBalance();
-    //System.out.println(balance);
+    // System.out.println(balance);
 
     // [TODO] demoUsers(accountService);
 

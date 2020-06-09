@@ -16,18 +16,17 @@ public class CoinbaseExchangeRateData {
     return data;
   }
 
-  static public class CoinbaseExchangeRates {
-    
+  public static class CoinbaseExchangeRates {
+
     private String currency;
     private Map<String, BigDecimal> rates;
-    
+
     public String getCurrency() {
       return currency;
     }
-    
+
     public Map<String, BigDecimal> getRates() {
       return Collections.unmodifiableMap(rates);
     }
   }
 }
-

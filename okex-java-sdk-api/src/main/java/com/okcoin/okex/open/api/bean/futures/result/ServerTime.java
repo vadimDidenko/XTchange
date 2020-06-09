@@ -8,22 +8,22 @@ package com.okcoin.okex.open.api.bean.futures.result;
  * @date 2018/3/8 20:58
  */
 public class ServerTime {
-    private String iso;
-    private String epoch;
+  private String iso;
+  private String epoch;
 
-    public String getIso() {
-        return iso;
-    }
+  public String getIso() {
+    return iso;
+  }
 
-    public void setIso(String iso) {
-        this.iso = iso;
-    }
+  public void setIso(String iso) {
+    this.iso = iso;
+  }
 
-    public String getEpoch() {
-        return epoch;
-    }
+  public String getEpoch() {
+    return epoch;
+  }
 
-    public void setEpoch(String epoch) {
-        this.epoch = epoch;
-    }
+  public void setEpoch(String epoch) {
+    this.epoch = epoch;
+  }
 }

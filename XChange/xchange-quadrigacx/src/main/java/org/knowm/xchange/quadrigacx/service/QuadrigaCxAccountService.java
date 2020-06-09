@@ -17,7 +17,8 @@ import org.knowm.xchange.service.trade.params.DefaultWithdrawFundsParams;
 import org.knowm.xchange.service.trade.params.TradeHistoryParams;
 import org.knowm.xchange.service.trade.params.WithdrawFundsParams;
 
-public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw implements AccountService {
+public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw
+    implements AccountService {
 
   public QuadrigaCxAccountService(Exchange exchange) {
 
@@ -28,19 +29,19 @@ public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw implem
   public AccountInfo getAccountInfo() throws IOException {
 
     QuadrigaCxBalance quadrigaCxBalance = getQuadrigaCxBalance();
-    return new AccountInfo(exchange.getExchangeSpecification().getUserName(), quadrigaCxBalance.getFee(),
+    return new AccountInfo(
+        exchange.getExchangeSpecification().getUserName(),
+        quadrigaCxBalance.getFee(),
         QuadrigaCxAdapters.adaptWallet(quadrigaCxBalance));
   }
 
   @Override
-  public String withdrawFunds(Currency currency, BigDecimal amount, String address) throws IOException {
+  public String withdrawFunds(Currency currency, BigDecimal amount, String address)
+      throws IOException {
 
-    if (currency.equals(Currency.BTC))
-      return withdrawBitcoin(amount, address);
-    else if (currency.equals(Currency.ETH))
-      return withdrawEther(amount, address);
-    else
-      throw new IllegalStateException("unsupported ccy " + currency);
+    if (currency.equals(Currency.BTC)) return withdrawBitcoin(amount, address);
+    else if (currency.equals(Currency.ETH)) return withdrawEther(amount, address);
+    else throw new IllegalStateException("unsupported ccy " + currency);
   }
 
   @Override
@@ -53,7 +54,8 @@ public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw implem
   }
 
   /**
-   * This returns the currently set deposit address. It will not generate a new address (ie. repeated calls will return the same address).
+   * This returns the currently set deposit address. It will not generate a new address (ie.
+   * repeated calls will return the same address).
    */
   @Override
   public String requestDepositAddress(Currency currency, String... arguments) throws IOException {
@@ -61,8 +63,7 @@ public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw implem
       return getQuadrigaCxBitcoinDepositAddress().getDepositAddress();
     else if (currency.equals(Currency.ETH))
       return getQuadrigaCxEtherDepositAddress().getDepositAddress();
-    else
-      throw new IllegalStateException("unsupported ccy " + currency);
+    else throw new IllegalStateException("unsupported ccy " + currency);
   }
 
   @Override
@@ -71,8 +72,7 @@ public class QuadrigaCxAccountService extends QuadrigaCxAccountServiceRaw implem
   }
 
   @Override
-  public List<FundingRecord> getFundingHistory(
-      TradeHistoryParams params) throws IOException {
+  public List<FundingRecord> getFundingHistory(TradeHistoryParams params) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
 }

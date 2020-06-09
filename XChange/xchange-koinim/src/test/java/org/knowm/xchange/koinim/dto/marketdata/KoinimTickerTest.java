@@ -10,16 +10,15 @@ import org.junit.Test;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author ahmetoz
- */
+/** @author ahmetoz */
 public class KoinimTickerTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = KoinimTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        KoinimTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
     ObjectMapper mapper = new ObjectMapper();
     KoinimTicker koinimTicker = mapper.readValue(is, KoinimTicker.class);
 
@@ -35,6 +34,5 @@ public class KoinimTickerTest {
     assertThat(koinimTicker.getWavg()).isEqualTo(new BigDecimal("57614.15626747679543045561326"));
     assertThat(koinimTicker.getLastOrder()).isEqualTo(new BigDecimal("63500.02000000"));
     assertThat(koinimTicker.getAvg()).isEqualTo(new BigDecimal("58281.67839967173"));
-
   }
 }

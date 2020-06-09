@@ -20,22 +20,29 @@ public class PoloniexUserTrade {
 
   @JsonProperty("tradeID")
   private String tradeID;
+
   @JsonProperty("date")
   private String date;
+
   @JsonProperty("rate")
   private BigDecimal rate;
+
   @JsonProperty("amount")
   private BigDecimal amount;
+
   @JsonProperty("total")
   private BigDecimal total;
+
   @JsonProperty("fee")
   private BigDecimal fee;
+
   @JsonProperty("orderNumber")
   private String orderNumber;
+
   @JsonProperty("type")
   private String type;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("tradeID")
   public String getTradeID() {
@@ -148,8 +155,24 @@ public class PoloniexUserTrade {
   @Override
   public String toString() {
 
-    return "PoloniexUserTrade [tradeID= " + tradeID + ", date=" + date + ", rate=" + rate + ", amount=" + amount + ", total=" + total + ", fee=" + fee
-        + ", orderNumber=" + orderNumber + ", type=" + type + ", additionalProperties=" + additionalProperties + "]";
+    return "PoloniexUserTrade [tradeID= "
+        + tradeID
+        + ", date="
+        + date
+        + ", rate="
+        + rate
+        + ", amount="
+        + amount
+        + ", total="
+        + total
+        + ", fee="
+        + fee
+        + ", orderNumber="
+        + orderNumber
+        + ", type="
+        + type
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

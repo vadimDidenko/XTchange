@@ -17,13 +17,18 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 public class PoloniexMarketDataTest {
 
   @Test
-  public void testUnmarshallAllTickers() throws JsonParseException, JsonMappingException, IOException {
+  public void testUnmarshallAllTickers()
+      throws JsonParseException, JsonMappingException, IOException {
 
-    final InputStream is = PoloniexMarketDataTest.class.getResourceAsStream("/marketdata/currency-info.json");
+    final InputStream is =
+        PoloniexMarketDataTest.class.getResourceAsStream("/marketdata/currency-info.json");
 
     final ObjectMapper mapper = new ObjectMapper();
 
-    final JavaType currencyInfoType = mapper.getTypeFactory().constructMapType(HashMap.class, String.class, PoloniexCurrencyInfo.class);
+    final JavaType currencyInfoType =
+        mapper
+            .getTypeFactory()
+            .constructMapType(HashMap.class, String.class, PoloniexCurrencyInfo.class);
     final Map<String, PoloniexCurrencyInfo> currencyInfo = mapper.readValue(is, currencyInfoType);
 
     assertThat(currencyInfo).hasSize(2);

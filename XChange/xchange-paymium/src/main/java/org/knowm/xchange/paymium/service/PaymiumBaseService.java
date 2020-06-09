@@ -20,6 +20,8 @@ public class PaymiumBaseService extends BaseExchangeService implements BaseServi
 
     super(exchange);
 
-    this.Paymium = RestProxyFactory.createProxy(Paymium.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.Paymium =
+        RestProxyFactory.createProxy(
+            Paymium.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
   }
 }

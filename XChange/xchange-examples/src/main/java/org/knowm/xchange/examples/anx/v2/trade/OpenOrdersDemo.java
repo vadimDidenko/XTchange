@@ -7,9 +7,7 @@ import org.knowm.xchange.dto.trade.OpenOrders;
 import org.knowm.xchange.examples.anx.v2.ANXExamplesUtils;
 import org.knowm.xchange.service.trade.TradeService;
 
-/**
- * Test requesting all open orders at MtGox
- */
+/** Test requesting all open orders at MtGox */
 public class OpenOrdersDemo {
 
   public static void main(String[] args) throws IOException {
@@ -23,5 +21,4 @@ public class OpenOrdersDemo {
     OpenOrders openOrders = tradeService.getOpenOrders();
     System.out.println(openOrders.toString());
   }
-
 }

@@ -32,7 +32,10 @@ public class CoinbaseAccountData {
     private final CoinbaseAmount balance;
 
     @JsonCreator
-    CoinbaseAccount(@JsonProperty("id") String id, @JsonProperty("name") String name, @JsonProperty("balance") CoinbaseAmount balance) {
+    CoinbaseAccount(
+        @JsonProperty("id") String id,
+        @JsonProperty("name") String name,
+        @JsonProperty("balance") CoinbaseAmount balance) {
       this.id = id;
       this.name = name;
       this.balance = balance;

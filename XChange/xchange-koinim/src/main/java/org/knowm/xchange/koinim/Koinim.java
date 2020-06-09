@@ -8,10 +8,7 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * @author ahmetoz
- */
-
+/** @author ahmetoz */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Koinim {
@@ -19,5 +16,4 @@ public interface Koinim {
   @GET
   @Path("ticker")
   KoinimTicker getTicker() throws IOException;
-
 }

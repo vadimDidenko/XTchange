@@ -2,9 +2,7 @@ package com.binance.api.client.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
-/**
- * Order reject reason values.
- */
+/** Order reject reason values. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public enum OrderRejectReason {
   NONE,

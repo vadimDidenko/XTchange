@@ -20,17 +20,13 @@ import java.io.IOException;
 import java.math.BigDecimal;
 import java.util.List;
 
-/**
- * @author gnandiga
- */
+/** @author gnandiga */
 public class QuoineTradeServiceRaw extends QuoineBaseService {
 
   private boolean useMargin;
   private int leverageLevel;
 
-  /**
-   * @param exchange
-   */
+  /** @param exchange */
   public QuoineTradeServiceRaw(Exchange exchange, boolean useMargin) {
 
     super(exchange);
@@ -38,35 +34,67 @@ public class QuoineTradeServiceRaw extends QuoineBaseService {
     this.useMargin = useMargin;
 
     if (useMargin) {
-      leverageLevel = Integer.valueOf((String) exchange.getExchangeSpecification().getExchangeSpecificParametersItem("Leverage_Level"));
+      leverageLevel =
+          Integer.valueOf(
+              (String)
+                  exchange
+                      .getExchangeSpecification()
+                      .getExchangeSpecificParametersItem("Leverage_Level"));
     } else {
       leverageLevel = 0;
     }
   }
 
-  public QuoineOrderResponse placeLimitOrder(CurrencyPair currencyPair, String type, BigDecimal originalAmount, BigDecimal price) throws IOException {
+  public QuoineOrderResponse placeLimitOrder(
+      CurrencyPair currencyPair, String type, BigDecimal originalAmount, BigDecimal price)
+      throws IOException {
 
     int productId = productId(currencyPair);
 
-    QuoineNewOrderRequest quoineNewOrderRequest = useMargin
-        ? new QuoineNewMarginOrderRequest("limit", productId, type, originalAmount, price, leverageLevel, currencyPair.counter.getCurrencyCode())
-        : new QuoineNewOrderRequest("limit", productId, type, originalAmount, price);
+    QuoineNewOrderRequest quoineNewOrderRequest =
+        useMargin
+            ? new QuoineNewMarginOrderRequest(
+                "limit",
+                productId,
+                type,
+                originalAmount,
+                price,
+                leverageLevel,
+                currencyPair.counter.getCurrencyCode())
+            : new QuoineNewOrderRequest("limit", productId, type, originalAmount, price);
     try {
-      return quoine.placeOrder(QUOINE_API_VERSION, signatureCreator, contentType, new QuoineNewOrderRequestWrapper(quoineNewOrderRequest));
+      return quoine.placeOrder(
+          QUOINE_API_VERSION,
+          signatureCreator,
+          contentType,
+          new QuoineNewOrderRequestWrapper(quoineNewOrderRequest));
     } catch (HttpStatusIOException e) {
       throw handleHttpError(e);
     }
   }
 
-  public QuoineOrderResponse placeMarketOrder(CurrencyPair currencyPair, String type, BigDecimal originalAmount) throws IOException {
+  public QuoineOrderResponse placeMarketOrder(
+      CurrencyPair currencyPair, String type, BigDecimal originalAmount) throws IOException {
 
     int productId = productId(currencyPair);
 
-    QuoineNewOrderRequest quoineNewOrderRequest = useMargin
-        ? new QuoineNewMarginOrderRequest("market", productId, type, originalAmount, null, leverageLevel, currencyPair.counter.getCurrencyCode())
-        : new QuoineNewOrderRequest("market", productId, type, originalAmount, null);
+    QuoineNewOrderRequest quoineNewOrderRequest =
+        useMargin
+            ? new QuoineNewMarginOrderRequest(
+                "market",
+                productId,
+                type,
+                originalAmount,
+                null,
+                leverageLevel,
+                currencyPair.counter.getCurrencyCode())
+            : new QuoineNewOrderRequest("market", productId, type, originalAmount, null);
     try {
-      return quoine.placeOrder(QUOINE_API_VERSION, signatureCreator, contentType, new QuoineNewOrderRequestWrapper(quoineNewOrderRequest));
+      return quoine.placeOrder(
+          QUOINE_API_VERSION,
+          signatureCreator,
+          contentType,
+          new QuoineNewOrderRequestWrapper(quoineNewOrderRequest));
     } catch (HttpStatusIOException e) {
       throw handleHttpError(e);
     }
@@ -99,20 +127,40 @@ public class QuoineTradeServiceRaw extends QuoineBaseService {
     }
   }
 
-  public List<QuoineExecution> executions(CurrencyPair currencyPair, Integer limit, Integer page) throws IOException {
+  public List<QuoineExecution> executions(CurrencyPair currencyPair, Integer limit, Integer page)
+      throws IOException {
     int productId = productId(currencyPair);
-    QuoineExecutionsResponse response = quoine.executions(QUOINE_API_VERSION, signatureCreator, contentType, productId, limit, page, 1);
+    QuoineExecutionsResponse response =
+        quoine.executions(
+            QUOINE_API_VERSION, signatureCreator, contentType, productId, limit, page, 1);
     return response.models;
   }
 
-  public List<QuoineTrade> trades(Currency fundingCurrency, Integer limit, Integer page) throws IOException {
-    QuoineTradesResponse response = quoine.trades(QUOINE_API_VERSION, signatureCreator, contentType, fundingCurrency == null ? null : fundingCurrency.getCurrencyCode(), "null", limit, page);
+  public List<QuoineTrade> trades(Currency fundingCurrency, Integer limit, Integer page)
+      throws IOException {
+    QuoineTradesResponse response =
+        quoine.trades(
+            QUOINE_API_VERSION,
+            signatureCreator,
+            contentType,
+            fundingCurrency == null ? null : fundingCurrency.getCurrencyCode(),
+            "null",
+            limit,
+            page);
     return response.models;
   }
 
-  public List<QuoineTransaction> transactions(Currency currency, Integer limit, Integer page) throws IOException {
-    QuoineTransactionsResponse transactions = quoine.transactions(QUOINE_API_VERSION, signatureCreator, contentType, currency == null ? null : currency.getCurrencyCode(), null, limit, page);
+  public List<QuoineTransaction> transactions(Currency currency, Integer limit, Integer page)
+      throws IOException {
+    QuoineTransactionsResponse transactions =
+        quoine.transactions(
+            QUOINE_API_VERSION,
+            signatureCreator,
+            contentType,
+            currency == null ? null : currency.getCurrencyCode(),
+            null,
+            limit,
+            page);
     return transactions.models;
   }
-
 }

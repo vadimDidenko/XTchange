@@ -11,14 +11,10 @@ import org.knowm.xchange.koineks.dto.marketdata.KoineksTicker;
 import java.math.BigDecimal;
 import java.util.Date;
 
-/**
- * @author semihunaldi
- * Various adapters for converting from Koineks DTOs to XChange DTOs
- */
+/** @author semihunaldi Various adapters for converting from Koineks DTOs to XChange DTOs */
 public final class KoineksAdapters {
 
-  private KoineksAdapters() {
-  }
+  private KoineksAdapters() {}
 
   /**
    * Adapts a KoineksTicker to a Ticker Object
@@ -62,7 +58,8 @@ public final class KoineksAdapters {
           .high(high24hr)
           .low(low24hr)
           .timestamp(timestamp)
-          .volume(volume).build();
+          .volume(volume)
+          .build();
     }
     return null;
   }

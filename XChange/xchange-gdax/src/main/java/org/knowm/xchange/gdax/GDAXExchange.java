@@ -34,9 +34,7 @@ public class GDAXExchange extends BaseExchange {
     this.tradeService = new GDAXTradeService(this);
   }
 
-  /**
-   * Adjust host parameters depending on exchange specific parameters
-   */
+  /** Adjust host parameters depending on exchange specific parameters */
   private static void concludeHostParams(ExchangeSpecification exchangeSpecification) {
 
     if (exchangeSpecification.getExchangeSpecificParameters() != null) {
@@ -44,7 +42,6 @@ public class GDAXExchange extends BaseExchange {
 
         exchangeSpecification.setSslUri("https://api-public.sandbox.gdax.com");
         exchangeSpecification.setHost("api-public.sandbox.gdax.com");
-
       }
     }
   }
@@ -52,12 +49,14 @@ public class GDAXExchange extends BaseExchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://api.gdax.com");
     exchangeSpecification.setHost("api.gdax.com");
     exchangeSpecification.setPort(80);
     exchangeSpecification.setExchangeName("GDAX");
-    exchangeSpecification.setExchangeDescription("GDAX Exchange is a Bitcoin exchange recently launched in January 2015");
+    exchangeSpecification.setExchangeDescription(
+        "GDAX Exchange is a Bitcoin exchange recently launched in January 2015");
 
     exchangeSpecification.setExchangeSpecificParametersItem("Use_Sandbox", false);
 

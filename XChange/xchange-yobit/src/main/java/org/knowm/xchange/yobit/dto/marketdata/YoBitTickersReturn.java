@@ -13,5 +13,3 @@ public class YoBitTickersReturn {
     this.tickers = tickers;
   }
 }
-
-

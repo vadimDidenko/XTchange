@@ -21,8 +21,12 @@ public class GeminiLendLevel {
    * @param timestamp
    * @param frr
    */
-  public GeminiLendLevel(@JsonProperty("rate") BigDecimal rate, @JsonProperty("amount") BigDecimal amount, @JsonProperty("period") int period,
-      @JsonProperty("timestamp") float timestamp, @JsonProperty("frr") String frr) {
+  public GeminiLendLevel(
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("period") int period,
+      @JsonProperty("timestamp") float timestamp,
+      @JsonProperty("frr") String frr) {
 
     this.rate = rate;
     this.amount = amount;
@@ -59,6 +63,16 @@ public class GeminiLendLevel {
   @Override
   public String toString() {
 
-    return "GeminiLendLevel [rate=" + rate + ", amount=" + amount + ", period=" + period + ", timestamp=" + timestamp + ", frr=" + frr + "]";
+    return "GeminiLendLevel [rate="
+        + rate
+        + ", amount="
+        + amount
+        + ", period="
+        + period
+        + ", timestamp="
+        + timestamp
+        + ", frr="
+        + frr
+        + "]";
   }
 }

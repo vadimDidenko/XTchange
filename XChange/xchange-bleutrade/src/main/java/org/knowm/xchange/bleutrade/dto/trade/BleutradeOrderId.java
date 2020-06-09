@@ -19,21 +19,17 @@ public class BleutradeOrderId {
 
   @JsonProperty("orderid")
   private String orderid;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The orderid
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The orderid */
   @JsonProperty("orderid")
   public String getOrderid() {
 
     return orderid;
   }
 
-  /**
-   * @param orderid The orderid
-   */
+  /** @param orderid The orderid */
   @JsonProperty("orderid")
   public void setOrderid(String orderid) {
 
@@ -55,7 +51,10 @@ public class BleutradeOrderId {
   @Override
   public String toString() {
 
-    return "BleutradeOrderId [orderid=" + orderid + ", additionalProperties=" + additionalProperties + "]";
+    return "BleutradeOrderId [orderid="
+        + orderid
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

@@ -19,6 +19,8 @@ public final class RippleOrderCancelResponse extends RippleCommon {
 
   @Override
   public String toString() {
-    return String.format("%s [success=%b, hash=%s, ledger=%s, state=%s, order=%s]", getClass().getSimpleName(), success, hash, ledger, state, order);
+    return String.format(
+        "%s [success=%b, hash=%s, ledger=%s, state=%s, order=%s]",
+        getClass().getSimpleName(), success, hash, ledger, state, order);
   }
 }

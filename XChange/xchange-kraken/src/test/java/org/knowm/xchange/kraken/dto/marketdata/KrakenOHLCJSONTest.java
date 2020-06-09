@@ -17,7 +17,8 @@ public class KrakenOHLCJSONTest {
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = KrakenOHLCJSONTest.class.getResourceAsStream("/marketdata/example-ohlc-data.json");
+    InputStream is =
+        KrakenOHLCJSONTest.class.getResourceAsStream("/marketdata/example-ohlc-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -25,12 +26,18 @@ public class KrakenOHLCJSONTest {
 
     // Verify that the example data was unmarshalled correctly
     assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getTime()).isEqualTo(1502402520L);
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getOpen()).isEqualTo(new BigDecimal("3449.992"));
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getHigh()).isEqualTo(new BigDecimal("3449.999"));
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getLow()).isEqualTo(new BigDecimal("3449.992"));
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getClose()).isEqualTo(new BigDecimal("3449.999"));
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getVwap()).isEqualTo(new BigDecimal("3449.997"));
-    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getVolume()).isEqualTo(new BigDecimal("1.01200000"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getOpen())
+        .isEqualTo(new BigDecimal("3449.992"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getHigh())
+        .isEqualTo(new BigDecimal("3449.999"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getLow())
+        .isEqualTo(new BigDecimal("3449.992"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getClose())
+        .isEqualTo(new BigDecimal("3449.999"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getVwap())
+        .isEqualTo(new BigDecimal("3449.997"));
+    assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getVolume())
+        .isEqualTo(new BigDecimal("1.01200000"));
     assertThat(krakenOHLCs.getResult().getOHLCs().get(0).getCount()).isEqualTo(new Long("7"));
     long lastId = krakenOHLCs.getResult().getLast();
     assertThat(lastId).isEqualTo(1502445600L);

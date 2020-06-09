@@ -22,7 +22,8 @@ public class TheRockAccountDemo {
   }
 
   private static void raw(Exchange loyalbitExchange) throws IOException {
-    TheRockAccountServiceRaw rawTheRockAcctService = (TheRockAccountServiceRaw) loyalbitExchange.getAccountService();
+    TheRockAccountServiceRaw rawTheRockAcctService =
+        (TheRockAccountServiceRaw) loyalbitExchange.getAccountService();
     System.out.println("Balance Info: " + rawTheRockAcctService.balances());
   }
 }

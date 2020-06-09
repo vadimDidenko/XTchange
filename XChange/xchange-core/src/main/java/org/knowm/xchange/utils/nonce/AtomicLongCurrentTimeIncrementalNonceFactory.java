@@ -4,7 +4,8 @@ import java.util.concurrent.atomic.AtomicLong;
 
 import si.mazi.rescu.SynchronizedValueFactory;
 
-public class AtomicLongCurrentTimeIncrementalNonceFactory implements SynchronizedValueFactory<Long> {
+public class AtomicLongCurrentTimeIncrementalNonceFactory
+    implements SynchronizedValueFactory<Long> {
 
   private final AtomicLong incremental = new AtomicLong(System.currentTimeMillis());
 

@@ -18,14 +18,13 @@ import org.knowm.xchange.currency.CurrencyPair;
 import org.knowm.xchange.dto.marketdata.Ticker;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseMarketDataDemo {
 
   public static void main(String[] args) throws IOException {
 
-    Exchange coinbaseExchange = ExchangeFactory.INSTANCE.createExchange(CoinbaseExchange.class.getName());
+    Exchange coinbaseExchange =
+        ExchangeFactory.INSTANCE.createExchange(CoinbaseExchange.class.getName());
     MarketDataService marketDataService = coinbaseExchange.getMarketDataService();
 
     generic(marketDataService);
@@ -57,7 +56,8 @@ public class CoinbaseMarketDataDemo {
     System.out.println("Spot Rate: " + spotRate);
 
     int page = 2;
-    CoinbaseSpotPriceHistory spotPriceHistory = marketDataService.getCoinbaseHistoricalSpotRates(page);
+    CoinbaseSpotPriceHistory spotPriceHistory =
+        marketDataService.getCoinbaseHistoricalSpotRates(page);
     List<CoinbaseHistoricalSpotPrice> spotPriceHistoryList = spotPriceHistory.getSpotPriceHistory();
     for (CoinbaseHistoricalSpotPrice coinbaseHistoricalSpotPrice : spotPriceHistoryList) {
       System.out.println(coinbaseHistoricalSpotPrice);

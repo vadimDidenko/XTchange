@@ -19,7 +19,8 @@ public class BitcurexExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://bitcurex.com");
     exchangeSpecification.setPort(8080);
     exchangeSpecification.setHost("bitcurex.com");

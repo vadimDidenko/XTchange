@@ -21,14 +21,19 @@ public class CoinfloorAuthenticatedService extends CoinfloorService {
     ExchangeSpecification specification = exchange.getExchangeSpecification();
 
     if (specification.getUserName() == null || specification.getPassword() == null) {
-      logger.info("Authenticated endpoints are not available - username and password have not been configured");
+      logger.info(
+          "Authenticated endpoints are not available - username and password have not been"
+              + " configured");
       coinfloor = null;
       return;
     }
 
     ClientConfig config = getClientConfig();
-    ClientConfigUtil.addBasicAuthCredentials(config, specification.getUserName(), specification.getPassword());
+    ClientConfigUtil.addBasicAuthCredentials(
+        config, specification.getUserName(), specification.getPassword());
 
-    coinfloor = RestProxyFactory.createProxy(CoinfloorAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), config);
+    coinfloor =
+        RestProxyFactory.createProxy(
+            CoinfloorAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), config);
   }
 }

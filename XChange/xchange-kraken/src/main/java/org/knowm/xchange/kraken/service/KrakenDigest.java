@@ -12,16 +12,15 @@ import org.knowm.xchange.service.BaseParamsDigest;
 import net.iharder.Base64;
 import si.mazi.rescu.RestInvocation;
 
-/**
- * @author Benedikt Bünz
- */
+/** @author Benedikt Bünz */
 public class KrakenDigest extends BaseParamsDigest {
 
   /**
    * Constructor
    *
    * @param secretKeyBase64
-   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded key is invalid).
+   * @throws IllegalArgumentException if key is invalid (cannot be base-64-decoded or the decoded
+   *     key is invalid).
    */
   private KrakenDigest(byte[] secretKeyBase64) {
 
@@ -46,7 +45,8 @@ public class KrakenDigest extends BaseParamsDigest {
     try {
       sha256 = MessageDigest.getInstance("SHA-256");
     } catch (NoSuchAlgorithmException e) {
-      throw new RuntimeException("Illegal algorithm for post body digest. Check the implementation.");
+      throw new RuntimeException(
+          "Illegal algorithm for post body digest. Check the implementation.");
     }
     sha256.update(restInvocation.getParamValue(FormParam.class, "nonce").toString().getBytes());
     sha256.update(restInvocation.getRequestBody().getBytes());
@@ -56,6 +56,5 @@ public class KrakenDigest extends BaseParamsDigest {
     mac512.update(sha256.digest());
 
     return Base64.encodeBytes(mac512.doFinal()).trim();
-
   }
 }

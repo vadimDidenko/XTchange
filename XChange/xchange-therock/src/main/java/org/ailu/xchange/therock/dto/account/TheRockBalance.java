@@ -28,6 +28,8 @@ public class TheRockBalance {
 
   @Override
   public String toString() {
-    return String.format("TheRockBalance{currency='%s', balance=%s, trandingBalance=%s}", currency, balance, tradingBalance);
+    return String.format(
+        "TheRockBalance{currency='%s', balance=%s, trandingBalance=%s}",
+        currency, balance, tradingBalance);
   }
 }

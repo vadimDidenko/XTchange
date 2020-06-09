@@ -19,27 +19,25 @@ import org.slf4j.LoggerFactory;
  */
 public class GeneralAPITests extends FuturesAPIBaseTests {
 
-    private static final Logger LOG = LoggerFactory.getLogger(GeneralAPITests.class);
+  private static final Logger LOG = LoggerFactory.getLogger(GeneralAPITests.class);
 
-    private GeneralAPIService generalAPIService;
+  private GeneralAPIService generalAPIService;
 
+  @Before
+  public void before() {
+    config = config();
+    generalAPIService = new GeneralAPIServiceImpl(config);
+  }
 
-    @Before
-    public void before() {
-        config = config();
-        generalAPIService = new GeneralAPIServiceImpl(config);
-    }
+  @Test
+  public void testServerTime() {
+    ServerTime time = generalAPIService.getServerTime();
+    toResultString(LOG, "ServerTime", time);
+  }
 
-
-    @Test
-    public void testServerTime() {
-         ServerTime time = generalAPIService.getServerTime();
-        toResultString(LOG, "ServerTime", time);
-    }
-
-    @Test
-    public void testExchangeRate() {
-        ExchangeRate exchangeRate = generalAPIService.getExchangeRate();
-        toResultString(LOG, "ExchangeRate", exchangeRate);
-    }
+  @Test
+  public void testExchangeRate() {
+    ExchangeRate exchangeRate = generalAPIService.getExchangeRate();
+    toResultString(LOG, "ExchangeRate", exchangeRate);
+  }
 }

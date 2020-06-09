@@ -1,7 +1,6 @@
 package org.knowm.xchange.okcoin.dto.trade;
 
 import java.math.BigDecimal;
-import java.util.Date;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
@@ -9,22 +8,19 @@ public class OkCoinPriceLimit {
 
   private final BigDecimal high;
   private final BigDecimal low;
- 
+
   /**
    * Constructor
    *
    * @param high
    * @param low
-
    */
-  public OkCoinPriceLimit(@JsonProperty("high") final BigDecimal high,@JsonProperty("low") final BigDecimal low) {
+  public OkCoinPriceLimit(
+      @JsonProperty("high") final BigDecimal high, @JsonProperty("low") final BigDecimal low) {
 
     this.high = high;
     this.low = low;
-
   }
-
-
 
   public BigDecimal getHigh() {
 
@@ -36,11 +32,9 @@ public class OkCoinPriceLimit {
     return low;
   }
 
-
   @Override
   public String toString() {
 
     return "OkCoinPriceLimit [high=" + high + ", low=" + low + "]";
   }
-
 }

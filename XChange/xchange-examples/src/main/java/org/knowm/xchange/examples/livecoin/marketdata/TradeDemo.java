@@ -10,14 +10,13 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.livecoin.LivecoinExchange;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * Demonstrate requesting Trade from Livecoin.
- */
+/** Demonstrate requesting Trade from Livecoin. */
 public class TradeDemo {
 
   public static void main(String[] args) throws IOException {
 
-    Exchange livecoinExchange = ExchangeFactory.INSTANCE.createExchange(LivecoinExchange.class.getName());
+    Exchange livecoinExchange =
+        ExchangeFactory.INSTANCE.createExchange(LivecoinExchange.class.getName());
 
     // Interested in the public market data feed (no authentication)
     MarketDataService marketDataService = livecoinExchange.getMarketDataService();
@@ -29,8 +28,14 @@ public class TradeDemo {
     System.out.println("received data.");
 
     for (Trade trade : trades.getTrades()) {
-      System.out.println(trade.getType() + " " + trade.getCurrencyPair() + " Price: " + trade.getPrice() + " Amount: " + trade.getOriginalAmount());
+      System.out.println(
+          trade.getType()
+              + " "
+              + trade.getCurrencyPair()
+              + " Price: "
+              + trade.getPrice()
+              + " Amount: "
+              + trade.getOriginalAmount());
     }
   }
-
 }

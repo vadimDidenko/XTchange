@@ -7,10 +7,7 @@ import org.knowm.xchange.dto.account.AccountInfo;
 import org.knowm.xchange.examples.cexio.CexIODemoUtils;
 import org.knowm.xchange.service.account.AccountService;
 
-/**
- * Author: brox Since: 2/6/14
- */
-
+/** Author: brox Since: 2/6/14 */
 public class AccountInfoDemo {
 
   public static void main(String[] args) throws IOException {
@@ -22,5 +19,4 @@ public class AccountInfoDemo {
     AccountInfo accountInfo = accountService.getAccountInfo();
     System.out.println("AccountInfo as String: " + accountInfo.toString());
   }
-
 }

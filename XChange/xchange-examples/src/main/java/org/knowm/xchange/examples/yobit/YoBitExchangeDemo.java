@@ -13,9 +13,8 @@ public class YoBitExchangeDemo {
     Exchange exchange = ExchangeFactory.INSTANCE.createExchange(YoBitExchange.class.getName());
 
     System.out.println("ExchangeMetaData toString(): " + exchange.getExchangeMetaData().toString());
-    System.out.println("ExchangeMetaData toJSONString(): " + exchange.getExchangeMetaData().toJSONString());
+    System.out.println(
+        "ExchangeMetaData toJSONString(): " + exchange.getExchangeMetaData().toJSONString());
     System.out.println("Currency Pairs: " + exchange.getExchangeSymbols());
-
   }
-
 }

@@ -30,14 +30,12 @@ public class CCEXTradeService extends CCEXTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     return new OpenOrders(CCEXAdapters.adaptOpenOrders(getCCEXOpenOrders()));
   }
 
   @Override
-  public String placeMarketOrder(
-      MarketOrder marketOrder) throws IOException {
+  public String placeMarketOrder(MarketOrder marketOrder) throws IOException {
     throw new NotAvailableFromExchangeException();
   }
 
@@ -69,7 +67,8 @@ public class CCEXTradeService extends CCEXTradeServiceRaw implements TradeServic
 
   @Override
   public UserTrades getTradeHistory(TradeHistoryParams params) throws IOException {
-    return new UserTrades(CCEXAdapters.adaptUserTrades(getCCEXTradeHistory()), TradeSortType.SortByTimestamp);
+    return new UserTrades(
+        CCEXAdapters.adaptUserTrades(getCCEXTradeHistory()), TradeSortType.SortByTimestamp);
   }
 
   @Override
@@ -83,9 +82,7 @@ public class CCEXTradeService extends CCEXTradeServiceRaw implements TradeServic
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

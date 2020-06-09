@@ -40,8 +40,7 @@ public class ItBitTradeService extends ItBitTradeServiceRaw implements TradeServ
   }
 
   @Override
-  public OpenOrders getOpenOrders(
-      OpenOrdersParams params) throws IOException {
+  public OpenOrders getOpenOrders(OpenOrdersParams params) throws IOException {
     CurrencyPair currencyPair = null;
     if (params instanceof OpenOrdersParamCurrencyPair) {
       currencyPair = ((OpenOrdersParamCurrencyPair) params).getCurrencyPair();
@@ -50,11 +49,15 @@ public class ItBitTradeService extends ItBitTradeServiceRaw implements TradeServ
     // In case of no currency pair - return all currency pairs.
     if (currencyPair == null) {
       List<ItBitOrder> orders = new ArrayList<>();
-      for (CurrencyPair tmpCurrencyPair : this.exchange.getExchangeMetaData().getCurrencyPairs().keySet()) {
+      for (CurrencyPair tmpCurrencyPair :
+          this.exchange.getExchangeMetaData().getCurrencyPairs().keySet()) {
         orders.addAll(Arrays.asList(getItBitOpenOrders(tmpCurrencyPair)));
       }
       ItBitOrder[] empty = {};
-      return ItBitAdapters.adaptPrivateOrders(orders.isEmpty() ? empty : Arrays.copyOf(orders.toArray(), orders.size(), ItBitOrder[].class));
+      return ItBitAdapters.adaptPrivateOrders(
+          orders.isEmpty()
+              ? empty
+              : Arrays.copyOf(orders.toArray(), orders.size(), ItBitOrder[].class));
     } else {
       ItBitOrder[] itBitOpenOrders = getItBitOpenOrders(currencyPair);
       return ItBitAdapters.adaptPrivateOrders(itBitOpenOrders);
@@ -102,9 +105,13 @@ public class ItBitTradeService extends ItBitTradeServiceRaw implements TradeServ
       ++page;
     }
 
-    ItBitTradeHistory userTradeHistory = getUserTradeHistory(((TradeHistoryParamTransactionId) params).getTransactionId(), page,
-        ((TradeHistoryParamPaging) params).getPageLength(), ((TradeHistoryParamsTimeSpan) params).getStartTime(),
-        ((TradeHistoryParamsTimeSpan) params).getEndTime());
+    ItBitTradeHistory userTradeHistory =
+        getUserTradeHistory(
+            ((TradeHistoryParamTransactionId) params).getTransactionId(),
+            page,
+            ((TradeHistoryParamPaging) params).getPageLength(),
+            ((TradeHistoryParamsTimeSpan) params).getStartTime(),
+            ((TradeHistoryParamsTimeSpan) params).getEndTime());
     return ItBitAdapters.adaptTradeHistory(userTradeHistory);
   }
 
@@ -119,13 +126,16 @@ public class ItBitTradeService extends ItBitTradeServiceRaw implements TradeServ
   }
 
   public static class ItBitTradeHistoryParams extends DefaultTradeHistoryParamPaging
-      implements TradeHistoryParamsTimeSpan, TradeHistoryParamTransactionId, TradeHistoryParamPaging {
+      implements TradeHistoryParamsTimeSpan,
+          TradeHistoryParamTransactionId,
+          TradeHistoryParamPaging {
 
     private String txId;
     private Date startTime;
     private Date endTime;
 
-    public ItBitTradeHistoryParams(Integer pageLength, Integer pageNumber, String txId, Date startTime, Date endTime) {
+    public ItBitTradeHistoryParams(
+        Integer pageLength, Integer pageNumber, String txId, Date startTime, Date endTime) {
       super(pageLength, pageNumber);
       this.txId = txId;
       this.startTime = startTime;
@@ -164,9 +174,7 @@ public class ItBitTradeService extends ItBitTradeServiceRaw implements TradeServ
   }
 
   @Override
-  public Collection<Order> getOrder(
-      String... orderIds) throws IOException {
+  public Collection<Order> getOrder(String... orderIds) throws IOException {
     throw new NotYetImplementedForExchangeException();
   }
-
 }

@@ -46,7 +46,11 @@ public class CryptopiaTradeService extends CryptopiaTradeServiceRaw implements T
 
   @Override
   public String placeLimitOrder(LimitOrder limitOrder) throws IOException {
-    return submitTrade(limitOrder.getCurrencyPair(), limitOrder.getType(), limitOrder.getLimitPrice(), limitOrder.getOriginalAmount());
+    return submitTrade(
+        limitOrder.getCurrencyPair(),
+        limitOrder.getType(),
+        limitOrder.getLimitPrice(),
+        limitOrder.getOriginalAmount());
   }
 
   @Override
@@ -110,7 +114,8 @@ public class CryptopiaTradeService extends CryptopiaTradeServiceRaw implements T
     throw new NotAvailableFromExchangeException();
   }
 
-  public static class CryptopiaTradeHistoryParams implements TradeHistoryParamCurrencyPair, TradeHistoryParamLimit {
+  public static class CryptopiaTradeHistoryParams
+      implements TradeHistoryParamCurrencyPair, TradeHistoryParamLimit {
 
     private CurrencyPair currencyPair;
     private Integer limit;
@@ -120,8 +125,7 @@ public class CryptopiaTradeService extends CryptopiaTradeServiceRaw implements T
       this.limit = limit;
     }
 
-    public CryptopiaTradeHistoryParams() {
-    }
+    public CryptopiaTradeHistoryParams() {}
 
     @Override
     public void setCurrencyPair(CurrencyPair currencyPair) {

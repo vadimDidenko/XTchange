@@ -10,9 +10,7 @@ import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 import java.util.Map;
 
-/**
- * @author Dat Bui
- */
+/** @author Dat Bui */
 @Path("/v2")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Kuna {

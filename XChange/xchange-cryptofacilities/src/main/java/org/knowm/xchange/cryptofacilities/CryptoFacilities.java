@@ -12,10 +12,7 @@ import org.knowm.xchange.cryptofacilities.dto.marketdata.CryptoFacilitiesInstrum
 import org.knowm.xchange.cryptofacilities.dto.marketdata.CryptoFacilitiesOrderBook;
 import org.knowm.xchange.cryptofacilities.dto.marketdata.CryptoFacilitiesTickers;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
+/** @author Jean-Christophe Laruelle */
 @Path("/api/v3")
 @Produces(MediaType.APPLICATION_JSON)
 public interface CryptoFacilities {
@@ -31,5 +28,4 @@ public interface CryptoFacilities {
   @GET
   @Path("/instruments")
   CryptoFacilitiesInstruments getInstruments() throws IOException;
-
 }

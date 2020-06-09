@@ -10,31 +10,21 @@ import com.binance.api.client.domain.market.*;
 
 import java.util.List;
 
-/**
- * Binance API façade, supporting asynchronous/non-blocking access Binance's REST API.
- */
+/** Binance API façade, supporting asynchronous/non-blocking access Binance's REST API. */
 public interface BinanceApiAsyncRestClient {
 
   // General endpoints
 
-  /**
-   * Test connectivity to the Rest API.
-   */
+  /** Test connectivity to the Rest API. */
   void ping(BinanceApiCallback<Void> callback);
 
-  /**
-   * Check server time.
-   */
+  /** Check server time. */
   void getServerTime(BinanceApiCallback<ServerTime> callback);
 
-  /**
-   * Current exchange trading rules and symbol information
-   */
+  /** Current exchange trading rules and symbol information */
   void getExchangeInfo(BinanceApiCallback<ExchangeInfo> callback);
 
-  /**
-   * ALL supported assets and whether or not they can be withdrawn.
-   */
+  /** ALL supported assets and whether or not they can be withdrawn. */
   void getAllAssets(BinanceApiCallback<List<Asset>> callback);
 
   // Market Data endpoints
@@ -65,14 +55,19 @@ public interface BinanceApiAsyncRestClient {
    * @param fromId TradeId to fetch from. Default gets most recent trades.
    * @param callback the callback that handles the response
    */
-  void getHistoricalTrades(String symbol, Integer limit, Long fromId, BinanceApiCallback<List<TradeHistoryItem>> callback);
+  void getHistoricalTrades(
+      String symbol,
+      Integer limit,
+      Long fromId,
+      BinanceApiCallback<List<TradeHistoryItem>> callback);
 
   /**
-   * Get compressed, aggregate trades. Trades that fill at the time, from the same order, with
-   * the same price will have the quantity aggregated.
+   * Get compressed, aggregate trades. Trades that fill at the time, from the same order, with the
+   * same price will have the quantity aggregated.
    *
-   * If both <code>startTime</code> and <code>endTime</code> are sent, <code>limit</code>should not
-   * be sent AND the distance between <code>startTime</code> and <code>endTime</code> must be less than 24 hours.
+   * <p>If both <code>startTime</code> and <code>endTime</code> are sent, <code>limit</code>should
+   * not be sent AND the distance between <code>startTime</code> and <code>endTime</code> must be
+   * less than 24 hours.
    *
    * @param symbol symbol to aggregate (mandatory)
    * @param fromId ID to get aggregate trades from INCLUSIVE (optional)
@@ -82,7 +77,13 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response
    * @return a list of aggregate trades for the given symbol
    */
-  void getAggTrades(String symbol, String fromId, Integer limit, Long startTime, Long endTime, BinanceApiCallback<List<AggTrade>> callback);
+  void getAggTrades(
+      String symbol,
+      String fromId,
+      Integer limit,
+      Long startTime,
+      Long endTime,
+      BinanceApiCallback<List<AggTrade>> callback);
 
   /**
    * Return the most recent aggregate trades for <code>symbol</code>
@@ -99,16 +100,24 @@ public interface BinanceApiAsyncRestClient {
    * @param limit Default 500; max 1000 (optional)
    * @param startTime Timestamp in ms to get candlestick bars from INCLUSIVE (optional).
    * @param endTime Timestamp in ms to get candlestick bars until INCLUSIVE (optional).
-   * @param callback the callback that handles the response containing a candlestick bar for the given symbol and interval
+   * @param callback the callback that handles the response containing a candlestick bar for the
+   *     given symbol and interval
    */
-  void getCandlestickBars(String symbol, CandlestickInterval interval, Integer limit, Long startTime, Long endTime, BinanceApiCallback<List<Candlestick>> callback);
+  void getCandlestickBars(
+      String symbol,
+      CandlestickInterval interval,
+      Integer limit,
+      Long startTime,
+      Long endTime,
+      BinanceApiCallback<List<Candlestick>> callback);
 
   /**
    * Kline/candlestick bars for a symbol. Klines are uniquely identified by their open time.
    *
    * @see #getCandlestickBars(String, CandlestickInterval, BinanceApiCallback)
    */
-  void getCandlestickBars(String symbol, CandlestickInterval interval, BinanceApiCallback<List<Candlestick>> callback);
+  void getCandlestickBars(
+      String symbol, CandlestickInterval interval, BinanceApiCallback<List<Candlestick>> callback);
 
   /**
    * Get 24 hour price change statistics (asynchronous).
@@ -117,13 +126,13 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response
    */
   void get24HrPriceStatistics(String symbol, BinanceApiCallback<TickerStatistics> callback);
-  
+
   /**
    * Get 24 hour price change statistics for all symbols (asynchronous).
-   * 
+   *
    * @param callback the callback that handles the response
    */
-   void getAll24HrPriceStatistics(BinanceApiCallback<List<TickerStatistics>> callback);
+  void getAll24HrPriceStatistics(BinanceApiCallback<List<TickerStatistics>> callback);
 
   /**
    * Get Latest price for all symbols (asynchronous).
@@ -131,14 +140,14 @@ public interface BinanceApiAsyncRestClient {
    * @param callback the callback that handles the response
    */
   void getAllPrices(BinanceApiCallback<List<TickerPrice>> callback);
-  
+
   /**
    * Get latest price for <code>symbol</code> (asynchronous).
-   * 
+   *
    * @param symbol ticker symbol (e.g. ETHBTC)
    * @param callback the callback that handles the response
    */
-   void getPrice(String symbol , BinanceApiCallback<TickerPrice> callback);
+  void getPrice(String symbol, BinanceApiCallback<TickerPrice> callback);
 
   /**
    * Get best price/qty on the order book for all symbols (asynchronous).
@@ -158,7 +167,8 @@ public interface BinanceApiAsyncRestClient {
   void newOrder(NewOrder order, BinanceApiCallback<NewOrderResponse> callback);
 
   /**
-   * Test new order creation and signature/recvWindow long. Creates and validates a new order but does not send it into the matching engine.
+   * Test new order creation and signature/recvWindow long. Creates and validates a new order but
+   * does not send it into the matching engine.
    *
    * @param order the new TEST order to submit.
    * @param callback the callback that handles the response
@@ -179,7 +189,8 @@ public interface BinanceApiAsyncRestClient {
    * @param cancelOrderRequest order status request parameters
    * @param callback the callback that handles the response
    */
-  void cancelOrder(CancelOrderRequest cancelOrderRequest, BinanceApiCallback<CancelOrderResponse> callback);
+  void cancelOrder(
+      CancelOrderRequest cancelOrderRequest, BinanceApiCallback<CancelOrderResponse> callback);
 
   /**
    * Get all open orders on a symbol (asynchronous).
@@ -197,14 +208,10 @@ public interface BinanceApiAsyncRestClient {
    */
   void getAllOrders(AllOrdersRequest orderRequest, BinanceApiCallback<List<Order>> callback);
 
-  /**
-   * Get current account information (async).
-   */
+  /** Get current account information (async). */
   void getAccount(Long recvWindow, Long timestamp, BinanceApiCallback<Account> callback);
 
-  /**
-   * Get current account information using default parameters (async).
-   */
+  /** Get current account information using default parameters (async). */
   void getAccount(BinanceApiCallback<Account> callback);
 
   /**
@@ -215,7 +222,13 @@ public interface BinanceApiAsyncRestClient {
    * @param fromId TradeId to fetch from. Default gets most recent trades.
    * @param callback the callback that handles the response with a list of trades
    */
-  void getMyTrades(String symbol, Integer limit, Long fromId, Long recvWindow, Long timestamp, BinanceApiCallback<List<Trade>> callback);
+  void getMyTrades(
+      String symbol,
+      Integer limit,
+      Long fromId,
+      Long recvWindow,
+      Long timestamp,
+      BinanceApiCallback<List<Trade>> callback);
 
   /**
    * Get trades for a specific account and symbol.
@@ -237,7 +250,7 @@ public interface BinanceApiAsyncRestClient {
   /**
    * Submit a withdraw request.
    *
-   * Enable Withdrawals option has to be active in the API settings.
+   * <p>Enable Withdrawals option has to be active in the API settings.
    *
    * @param asset asset symbol to withdraw
    * @param address address to withdraw to
@@ -245,7 +258,13 @@ public interface BinanceApiAsyncRestClient {
    * @param name description/alias of the address
    * @param addressTag Secondary address identifier for coins like XRP,XMR etc.
    */
-  void withdraw(String asset, String address, String amount, String name, String addressTag, BinanceApiCallback<WithdrawResult> callback);
+  void withdraw(
+      String asset,
+      String address,
+      String amount,
+      String name,
+      String addressTag,
+      BinanceApiCallback<WithdrawResult> callback);
 
   /**
    * Fetch account deposit history.
@@ -266,7 +285,7 @@ public interface BinanceApiAsyncRestClient {
    *
    * @param callback the callback that handles the response and returns the deposit address
    */
-   void getDepositAddress(String asset, BinanceApiCallback<DepositAddress> callback);
+  void getDepositAddress(String asset, BinanceApiCallback<DepositAddress> callback);
 
   // User stream endpoints
 

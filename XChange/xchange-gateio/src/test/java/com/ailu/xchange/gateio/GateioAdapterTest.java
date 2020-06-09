@@ -37,7 +37,8 @@ public class GateioAdapterTest {
   public void before() throws JsonParseException, JsonMappingException, IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = GateioAdapterTest.class.getResourceAsStream("/marketdata/example-pairs-data.json");
+    InputStream is =
+        GateioAdapterTest.class.getResourceAsStream("/marketdata/example-pairs-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -50,7 +51,8 @@ public class GateioAdapterTest {
   public void testAdaptOpenOrders() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = GateioAdapterTest.class.getResourceAsStream("/trade/example-order-list-data.json");
+    InputStream is =
+        GateioAdapterTest.class.getResourceAsStream("/trade/example-order-list-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -72,7 +74,8 @@ public class GateioAdapterTest {
   @Test
   public void testAdaptTrades() throws IOException {
 
-    InputStream is = GateioAdapterTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
+    InputStream is =
+        GateioAdapterTest.class.getResourceAsStream("/marketdata/example-trades-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -96,7 +99,8 @@ public class GateioAdapterTest {
   public void testAdaptAccountInfo() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = GateioAdapterTest.class.getResourceAsStream("/account/example-funds-data.json");
+    InputStream is =
+        GateioAdapterTest.class.getResourceAsStream("/account/example-funds-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
@@ -106,12 +110,15 @@ public class GateioAdapterTest {
 
     assertThat(wallet.getBalances()).hasSize(5);
     assertThat(wallet.getBalance(Currency.BTC).getTotal()).isEqualTo("0.83357671");
-    assertThat(wallet.getBalance(Currency.BTC).getAvailable()).isEqualTo(new BigDecimal("0.83337671"));
+    assertThat(wallet.getBalance(Currency.BTC).getAvailable())
+        .isEqualTo(new BigDecimal("0.83337671"));
     assertThat(wallet.getBalance(Currency.BTC).getFrozen()).isEqualTo(new BigDecimal("0.0002"));
     assertThat(wallet.getBalance(Currency.LTC).getAvailable()).isEqualTo(new BigDecimal("94.364"));
     assertThat(wallet.getBalance(Currency.LTC).getFrozen()).isEqualTo(BigDecimal.ZERO);
-    assertThat(wallet.getBalance(new Currency("YAC")).getFrozen()).isEqualTo(new BigDecimal("10.01"));
-    assertThat(wallet.getBalance(new Currency("YAC")).getTotal()).isEqualTo(new BigDecimal("10.01"));
+    assertThat(wallet.getBalance(new Currency("YAC")).getFrozen())
+        .isEqualTo(new BigDecimal("10.01"));
+    assertThat(wallet.getBalance(new Currency("YAC")).getTotal())
+        .isEqualTo(new BigDecimal("10.01"));
     assertThat(wallet.getBalance(new Currency("YAC")).getAvailable()).isEqualTo(BigDecimal.ZERO);
   }
 
@@ -119,7 +126,8 @@ public class GateioAdapterTest {
   public void testAdaptOrderBook() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = GateioAdapterTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
+    InputStream is =
+        GateioAdapterTest.class.getResourceAsStream("/marketdata/example-depth-data.json");
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();

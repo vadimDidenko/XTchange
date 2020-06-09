@@ -24,7 +24,13 @@ public class GeminiNewOrder {
   @JsonProperty("price")
   protected BigDecimal price;
 
-  public GeminiNewOrder(String symbol, String exchange, String side, String type, BigDecimal amount, BigDecimal price) {
+  public GeminiNewOrder(
+      String symbol,
+      String exchange,
+      String side,
+      String type,
+      BigDecimal amount,
+      BigDecimal price) {
 
     this.symbol = symbol;
     this.exchange = exchange;
@@ -93,5 +99,4 @@ public class GeminiNewOrder {
 
     this.price = price;
   }
-
 }

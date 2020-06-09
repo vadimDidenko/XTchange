@@ -9,9 +9,7 @@ import javax.ws.rs.core.MediaType;
 
 import org.knowm.xchange.bitcoincharts.dto.marketdata.BitcoinChartsTicker;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 @Path("/")
 public interface BitcoinCharts {
 
@@ -19,5 +17,4 @@ public interface BitcoinCharts {
   @Path("v1/markets.json")
   @Produces(MediaType.APPLICATION_JSON)
   BitcoinChartsTicker[] getMarketData() throws IOException;
-
 }

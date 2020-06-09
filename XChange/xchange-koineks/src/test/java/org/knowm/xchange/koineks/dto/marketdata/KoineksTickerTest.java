@@ -11,16 +11,15 @@ import org.knowm.xchange.currency.Currency;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * @author semihunaldi
- */
+/** @author semihunaldi */
 public class KoineksTickerTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
     // Read in the JSON from the example resources
-    InputStream is = KoineksTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
+    InputStream is =
+        KoineksTickerTest.class.getResourceAsStream("/marketdata/example-ticker-data.json");
     ObjectMapper mapper = new ObjectMapper();
     KoineksTicker koineksTicker = mapper.readValue(is, KoineksTicker.class);
 

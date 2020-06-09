@@ -13,9 +13,9 @@ public class KrakenOrderResult extends KrakenResult<KrakenOrderResponse> {
    * @param result
    * @param error
    */
-  public KrakenOrderResult(@JsonProperty("result") KrakenOrderResponse result, @JsonProperty("error") String[] error) {
+  public KrakenOrderResult(
+      @JsonProperty("result") KrakenOrderResponse result, @JsonProperty("error") String[] error) {
 
     super(result, error);
   }
-
 }

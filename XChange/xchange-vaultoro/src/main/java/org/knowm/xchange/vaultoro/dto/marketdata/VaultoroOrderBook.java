@@ -21,41 +21,34 @@ public class VaultoroOrderBook {
 
   @JsonProperty("b")
   private List<VaultoroOrder> b = new ArrayList<VaultoroOrder>();
+
   @JsonProperty("s")
   private List<VaultoroOrder> s = new ArrayList<VaultoroOrder>();
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
-  /**
-   * @return The b
-   */
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  /** @return The b */
   @JsonProperty("b")
   public List<VaultoroOrder> getBuys() {
 
     return b;
   }
 
-  /**
-   * @param b The b
-   */
+  /** @param b The b */
   @JsonProperty("b")
   public void setB(List<VaultoroOrder> b) {
 
     this.b = b;
   }
 
-  /**
-   * @return The s
-   */
+  /** @return The s */
   @JsonProperty("s")
   public List<VaultoroOrder> getSells() {
 
     return s;
   }
 
-  /**
-   * @param s The s
-   */
+  /** @param s The s */
   @JsonProperty("s")
   public void setS(List<VaultoroOrder> s) {
 
@@ -77,7 +70,12 @@ public class VaultoroOrderBook {
   @Override
   public String toString() {
 
-    return "VaultoroOrderBook [b=" + b + ", s=" + s + ", additionalProperties=" + additionalProperties + "]";
+    return "VaultoroOrderBook [b="
+        + b
+        + ", s="
+        + s
+        + ", additionalProperties="
+        + additionalProperties
+        + "]";
   }
-
 }

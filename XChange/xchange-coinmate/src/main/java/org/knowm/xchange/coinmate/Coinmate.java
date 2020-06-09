@@ -34,9 +34,7 @@ import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * @author Martin Stachon
- */
+/** @author Martin Stachon */
 @Path("api")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Coinmate {
@@ -47,13 +45,15 @@ public interface Coinmate {
 
   @GET
   @Path("orderBook")
-  CoinmateOrderBook getOrderBook(@QueryParam("currencyPair") String currencyPair,
-                                 @QueryParam("groupByPriceLimit") boolean groupByPriceLimit) throws IOException;
+  CoinmateOrderBook getOrderBook(
+      @QueryParam("currencyPair") String currencyPair,
+      @QueryParam("groupByPriceLimit") boolean groupByPriceLimit)
+      throws IOException;
 
   @GET
   @Path("transactions")
   CoinmateTransactions getTransactions(
-          @QueryParam("minutesIntoHistory") int minutesIntoHistory,
-          @QueryParam("currencyPair") String currencyPair) throws IOException;
-
+      @QueryParam("minutesIntoHistory") int minutesIntoHistory,
+      @QueryParam("currencyPair") String currencyPair)
+      throws IOException;
 }

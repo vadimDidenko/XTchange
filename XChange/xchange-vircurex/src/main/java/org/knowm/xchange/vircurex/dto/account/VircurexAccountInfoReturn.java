@@ -20,7 +20,9 @@ public class VircurexAccountInfoReturn {
    * @param anAccount
    * @param someBalances
    */
-  public VircurexAccountInfoReturn(@JsonProperty("status") int aStatus, @JsonProperty("account") String anAccount,
+  public VircurexAccountInfoReturn(
+      @JsonProperty("status") int aStatus,
+      @JsonProperty("account") String anAccount,
       @JsonProperty("balances") Map<String, Map<String, BigDecimal>> someBalances) {
 
     availableFunds = someBalances;
@@ -42,5 +44,4 @@ public class VircurexAccountInfoReturn {
 
     return availableFunds;
   }
-
 }

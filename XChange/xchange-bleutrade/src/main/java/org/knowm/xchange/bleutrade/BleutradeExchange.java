@@ -18,8 +18,9 @@ import si.mazi.rescu.SynchronizedValueFactory;
 
 public class BleutradeExchange extends BaseExchange implements Exchange {
 
-  //until bluetrade offer more than one api key, it is invalid to create more than one nonce
-  private static SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2013NonceFactory();
+  // until bluetrade offer more than one api key, it is invalid to create more than one nonce
+  private static SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2013NonceFactory();
 
   @Override
   protected void initServices() {
@@ -31,7 +32,8 @@ public class BleutradeExchange extends BaseExchange implements Exchange {
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
 
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://bleutrade.com/api/");
     exchangeSpecification.setHost("bleutrade.com");
     exchangeSpecification.setPort(80);
@@ -49,8 +51,10 @@ public class BleutradeExchange extends BaseExchange implements Exchange {
 
   @Override
   public void remoteInit() throws IOException {
-    List<BleutradeCurrency> currencies = ((BleutradeMarketDataServiceRaw) marketDataService).getBleutradeCurrencies();
-    List<BleutradeMarket> markets = ((BleutradeMarketDataServiceRaw) marketDataService).getBleutradeMarkets();
+    List<BleutradeCurrency> currencies =
+        ((BleutradeMarketDataServiceRaw) marketDataService).getBleutradeCurrencies();
+    List<BleutradeMarket> markets =
+        ((BleutradeMarketDataServiceRaw) marketDataService).getBleutradeMarkets();
     exchangeMetaData = BleutradeAdapters.adaptToExchangeMetaData(currencies, markets);
   }
 }

@@ -8,9 +8,7 @@ import org.knowm.xchange.currency.Currency;
 import org.knowm.xchange.examples.anx.v2.ANXExamplesUtils;
 import org.knowm.xchange.service.account.AccountService;
 
-/**
- * Demo requesting account info at ANX
- */
+/** Demo requesting account info at ANX */
 public class WithdrawalFundsDemo {
 
   public static void main(String[] args) throws IOException {
@@ -26,5 +24,4 @@ public class WithdrawalFundsDemo {
     String success = accountService.withdrawFunds(Currency.BTC, new BigDecimal("0.001"), "XXX");
     System.out.println("result= " + success);
   }
-
 }

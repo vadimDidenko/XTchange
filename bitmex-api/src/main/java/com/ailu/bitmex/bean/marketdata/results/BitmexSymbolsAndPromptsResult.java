@@ -15,8 +15,8 @@ public class BitmexSymbolsAndPromptsResult<V> {
    * @param intervals
    * @param symbols
    */
-
-  public BitmexSymbolsAndPromptsResult(@JSONField(name = "intervals") V intervals, @JSONField(name = "symbols") V symbols) {
+  public BitmexSymbolsAndPromptsResult(
+      @JSONField(name = "intervals") V intervals, @JSONField(name = "symbols") V symbols) {
 
     this.intervals = intervals;
     this.symbols = symbols;
@@ -30,7 +30,6 @@ public class BitmexSymbolsAndPromptsResult<V> {
   public List<V> getIntervals() {
 
     return (List<V>) intervals;
-
   }
 
   public List<V> getSymbols() {
@@ -41,7 +40,9 @@ public class BitmexSymbolsAndPromptsResult<V> {
   @Override
   public String toString() {
 
-    return String.format("BitmexSymbolsAndPromptsResult[%s: %s]", isSuccess() ? "OK" : "error", isSuccess() ? intervals.toString() + " / " + symbols.toString() : "error");
+    return String.format(
+        "BitmexSymbolsAndPromptsResult[%s: %s]",
+        isSuccess() ? "OK" : "error",
+        isSuccess() ? intervals.toString() + " / " + symbols.toString() : "error");
   }
-
 }

@@ -19,8 +19,11 @@ public class BitfinexMarketDataJSONTest {
   @Test
   public void testLendbookMarketData() throws IOException {
 
-    InputStream resourceAsStream = BitfinexMarketDataJSONTest.class.getResourceAsStream("/v1/marketdata/example-marketdepth-lendbook-data.json");
-    BitfinexLendDepth lendDepth = new ObjectMapper().readValue(resourceAsStream, BitfinexLendDepth.class);
+    InputStream resourceAsStream =
+        BitfinexMarketDataJSONTest.class.getResourceAsStream(
+            "/v1/marketdata/example-marketdepth-lendbook-data.json");
+    BitfinexLendDepth lendDepth =
+        new ObjectMapper().readValue(resourceAsStream, BitfinexLendDepth.class);
 
     assertEquals(lendDepth.getAsks().length, 50);
     assertEquals(lendDepth.getBids().length, 50);
@@ -29,16 +32,21 @@ public class BitfinexMarketDataJSONTest {
   @Test
   public void testMarketDepth() throws Exception {
 
-    InputStream resourceAsStream = BitfinexMarketDataJSONTest.class.getResourceAsStream("/v1/marketdata/example-marketdepth-data.json");
+    InputStream resourceAsStream =
+        BitfinexMarketDataJSONTest.class.getResourceAsStream(
+            "/v1/marketdata/example-marketdepth-data.json");
     BitfinexDepth depthRaw = new ObjectMapper().readValue(resourceAsStream, BitfinexDepth.class);
-    BitfinexAdapters.OrdersContainer asksOrdersContainer = BitfinexAdapters.adaptOrders(depthRaw.getAsks(), CurrencyPair.BTC_EUR, OrderType.ASK);
-    BitfinexAdapters.OrdersContainer bidsOrdersContainer = BitfinexAdapters.adaptOrders(depthRaw.getBids(), CurrencyPair.BTC_EUR, OrderType.BID);
+    BitfinexAdapters.OrdersContainer asksOrdersContainer =
+        BitfinexAdapters.adaptOrders(depthRaw.getAsks(), CurrencyPair.BTC_EUR, OrderType.ASK);
+    BitfinexAdapters.OrdersContainer bidsOrdersContainer =
+        BitfinexAdapters.adaptOrders(depthRaw.getBids(), CurrencyPair.BTC_EUR, OrderType.BID);
 
-    assertEquals(new BigDecimal("851.87"), asksOrdersContainer.getLimitOrders().get(0).getLimitPrice());
-    assertEquals(new BigDecimal("849.59"), bidsOrdersContainer.getLimitOrders().get(0).getLimitPrice());
+    assertEquals(
+        new BigDecimal("851.87"), asksOrdersContainer.getLimitOrders().get(0).getLimitPrice());
+    assertEquals(
+        new BigDecimal("849.59"), bidsOrdersContainer.getLimitOrders().get(0).getLimitPrice());
 
     assertThat(asksOrdersContainer.getTimestamp()).isEqualTo(1387060950000L);
     assertThat(bidsOrdersContainer.getTimestamp()).isEqualTo(1387060435000L);
-
   }
 }

@@ -8,12 +8,11 @@ import org.knowm.xchange.examples.lakebtc.LakeBTCExamplesUtils;
 import org.knowm.xchange.lakebtc.service.LakeBTCAccountServiceRaw;
 
 /**
- * <p>
  * Example showing the following:
- * </p>
+ *
  * <ul>
- * <li>Connect to LakeBTC exchange with authentication</li>
- * <li>View account balance</li>
+ *   <li>Connect to LakeBTC exchange with authentication
+ *   <li>View account balance
  * </ul>
  */
 public class LakeBTCAccountDemo {
@@ -30,7 +29,8 @@ public class LakeBTCAccountDemo {
   }
 
   private static void raw(Exchange lakeBtcExchange) throws IOException {
-    LakeBTCAccountServiceRaw rawLakeBTCAcctService = (LakeBTCAccountServiceRaw) lakeBtcExchange.getAccountService();
+    LakeBTCAccountServiceRaw rawLakeBTCAcctService =
+        (LakeBTCAccountServiceRaw) lakeBtcExchange.getAccountService();
     System.out.println("Balance Info: " + rawLakeBTCAcctService.getLakeBTCAccountInfo());
   }
 }

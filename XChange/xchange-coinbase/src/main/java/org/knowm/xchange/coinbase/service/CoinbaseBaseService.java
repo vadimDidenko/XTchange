@@ -16,9 +16,7 @@ import org.knowm.xchange.service.BaseService;
 import si.mazi.rescu.ParamsDigest;
 import si.mazi.rescu.RestProxyFactory;
 
-/**
- * @author jamespedwards42
- */
+/** @author jamespedwards42 */
 public class CoinbaseBaseService extends BaseExchangeService implements BaseService {
 
   protected final CoinbaseAuthenticated coinbase;
@@ -33,8 +31,13 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
 
     super(exchange);
 
-    coinbase = RestProxyFactory.createProxy(CoinbaseAuthenticated.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
-    signatureCreator = CoinbaseDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
+    coinbase =
+        RestProxyFactory.createProxy(
+            CoinbaseAuthenticated.class,
+            exchange.getExchangeSpecification().getSslUri(),
+            getClientConfig());
+    signatureCreator =
+        CoinbaseDigest.createInstance(exchange.getExchangeSpecification().getSecretKey());
   }
 
   /**
@@ -54,8 +57,10 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
    * @param user New Coinbase User information.
    * @return Information for the newly created user.
    * @throws IOException
-   * @see <a href="https://coinbase.com/api/doc/1.0/users/create.html">coinbase.com/api/doc/1.0/users/create.html</a>
-   * @see {@link CoinbaseUser#createNewCoinbaseUser} and {@link CoinbaseUser#createCoinbaseNewUserWithReferrerId}
+   * @see <a
+   *     href="https://coinbase.com/api/doc/1.0/users/create.html">coinbase.com/api/doc/1.0/users/create.html</a>
+   * @see {@link CoinbaseUser#createNewCoinbaseUser} and {@link
+   *     CoinbaseUser#createCoinbaseNewUserWithReferrerId}
    */
   public CoinbaseUser createCoinbaseUser(CoinbaseUser user) throws IOException {
 
@@ -68,12 +73,16 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
    *
    * @param user New Coinbase User information.
    * @param oAuthClientId Optional client id that corresponds to your OAuth2 application.
-   * @return Information for the newly created user, including information to perform future OAuth requests for the user.
+   * @return Information for the newly created user, including information to perform future OAuth
+   *     requests for the user.
    * @throws IOException
-   * @see <a href="https://coinbase.com/api/doc/1.0/users/create.html">coinbase.com/api/doc/1.0/users/create.html</a>
-   * @see {@link CoinbaseUser#createNewCoinbaseUser} and {@link CoinbaseUser#createCoinbaseNewUserWithReferrerId}
+   * @see <a
+   *     href="https://coinbase.com/api/doc/1.0/users/create.html">coinbase.com/api/doc/1.0/users/create.html</a>
+   * @see {@link CoinbaseUser#createNewCoinbaseUser} and {@link
+   *     CoinbaseUser#createCoinbaseNewUserWithReferrerId}
    */
-  public CoinbaseUser createCoinbaseUser(CoinbaseUser user, final String oAuthClientId) throws IOException {
+  public CoinbaseUser createCoinbaseUser(CoinbaseUser user, final String oAuthClientId)
+      throws IOException {
 
     final CoinbaseUser createdUser = coinbase.createUser(user.withoAuthClientId(oAuthClientId));
     return handleResponse(createdUser);
@@ -82,10 +91,12 @@ public class CoinbaseBaseService extends BaseExchangeService implements BaseServ
   /**
    * Creates tokens redeemable for Bitcoin.
    *
-   * @return The returned Bitcoin address can be used to send money to the token, and will be credited to the account of the token redeemer if money
-   * is sent both before or after redemption.
+   * @return The returned Bitcoin address can be used to send money to the token, and will be
+   *     credited to the account of the token redeemer if money is sent both before or after
+   *     redemption.
    * @throws IOException
-   * @see <a href="https://coinbase.com/api/doc/1.0/tokens/create.html">coinbase.com/api/doc/1.0/tokens/create.html</a>
+   * @see <a
+   *     href="https://coinbase.com/api/doc/1.0/tokens/create.html">coinbase.com/api/doc/1.0/tokens/create.html</a>
    */
   public CoinbaseToken createCoinbaseToken() throws IOException {
 

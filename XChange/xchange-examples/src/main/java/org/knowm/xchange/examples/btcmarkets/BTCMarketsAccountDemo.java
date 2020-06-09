@@ -21,7 +21,8 @@ public class BTCMarketsAccountDemo {
   }
 
   private static void raw(Exchange btcMarketsExchange) throws IOException {
-    BTCMarketsAccountServiceRaw rawBTCMarketsAcctService = (BTCMarketsAccountServiceRaw) btcMarketsExchange.getAccountService();
+    BTCMarketsAccountServiceRaw rawBTCMarketsAcctService =
+        (BTCMarketsAccountServiceRaw) btcMarketsExchange.getAccountService();
     System.out.println("Balance Info: " + rawBTCMarketsAcctService.getBTCMarketsBalance());
   }
 }

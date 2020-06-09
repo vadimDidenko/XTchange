@@ -22,22 +22,29 @@ public class GateioTrade {
 
   @JsonProperty("id")
   private String id;
+
   @JsonProperty("orderid")
   private String orderid;
+
   @JsonProperty("pair")
   private String pair;
+
   @JsonProperty("type")
   private GateioOrderType type;
+
   @JsonProperty("rate")
   private BigDecimal rate;
+
   @JsonProperty("amount")
   private BigDecimal amount;
+
   @JsonProperty("time")
   private String time;
+
   @JsonProperty("time_unix")
   private long timeUnix;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("id")
   public String getId() {
@@ -146,5 +153,4 @@ public class GateioTrade {
 
     this.additionalProperties.put(name, value);
   }
-
 }

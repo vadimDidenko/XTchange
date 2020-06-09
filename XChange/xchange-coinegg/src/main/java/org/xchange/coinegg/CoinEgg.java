@@ -18,13 +18,12 @@ public interface CoinEgg {
   @GET
   @Path("ticker?coin={symbol}")
   CoinEggTicker getTicker(@PathParam("symbol") String symbol) throws IOException;
-  
+
   @GET
   @Path("orders?coin={symbol}")
   CoinEggTrade[] getTrades(@PathParam("symbol") String symbol) throws IOException;
-  
+
   @GET
   @Path("depth?coin={symbol}")
   CoinEggOrders getOrders(@PathParam("symbol") String symbol) throws IOException;
-  
 }

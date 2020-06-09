@@ -8,9 +8,7 @@ import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.io.IOException;
 
-/**
- * @author kpysniak
- */
+/** @author kpysniak */
 @Path("/Public")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Bitbay {
@@ -25,9 +23,14 @@ public interface Bitbay {
 
   @GET
   @Path("{currencyPair}/orderbook.json")
-  BitbayOrderBook getBitbayOrderBook(@PathParam("currencyPair") String currencyPair) throws IOException;
+  BitbayOrderBook getBitbayOrderBook(@PathParam("currencyPair") String currencyPair)
+      throws IOException;
 
   @GET
   @Path("{currencyPair}/trades.json")
-  BitbayTrade[] getBitbayTrades(@PathParam("currencyPair") String currencyPair, @QueryParam("since") long sinceId, @QueryParam("sort") String sort) throws IOException;
+  BitbayTrade[] getBitbayTrades(
+      @PathParam("currencyPair") String currencyPair,
+      @QueryParam("since") long sinceId,
+      @QueryParam("sort") String sort)
+      throws IOException;
 }

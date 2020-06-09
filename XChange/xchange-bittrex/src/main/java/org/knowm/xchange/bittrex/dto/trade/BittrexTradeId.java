@@ -19,8 +19,8 @@ public class BittrexTradeId {
 
   @JsonProperty("uuid")
   private String uuid;
-  @JsonIgnore
-  private Map<String, Object> additionalProperties = new HashMap<String, Object>();
+
+  @JsonIgnore private Map<String, Object> additionalProperties = new HashMap<String, Object>();
 
   @JsonProperty("uuid")
   public String getUuid() {
@@ -51,5 +51,4 @@ public class BittrexTradeId {
 
     return "BittrexTradeId [uuid=" + uuid + ", additionalProperties=" + additionalProperties + "]";
   }
-
 }

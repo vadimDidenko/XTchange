@@ -14,10 +14,9 @@ import org.knowm.xchange.lakebtc.dto.marketdata.LakeBTCTicker;
 import org.knowm.xchange.lakebtc.dto.marketdata.LakeBTCTickers;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author kpysniak
- */
-public class LakeBTCMarketDataService extends LakeBTCMarketDataServiceRaw implements MarketDataService {
+/** @author kpysniak */
+public class LakeBTCMarketDataService extends LakeBTCMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -59,5 +58,4 @@ public class LakeBTCMarketDataService extends LakeBTCMarketDataServiceRaw implem
 
     throw new NotAvailableFromExchangeException();
   }
-
 }

@@ -28,10 +28,14 @@ public class BitflyerBaseService extends BaseExchangeService implements BaseServ
 
     super(exchange);
 
-    this.bitflyer = RestProxyFactory.createProxy(Bitflyer.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
+    this.bitflyer =
+        RestProxyFactory.createProxy(
+            Bitflyer.class, exchange.getExchangeSpecification().getSslUri(), getClientConfig());
     this.apiKey = exchange.getExchangeSpecification().getApiKey();
-    this.signatureCreator = BitflyerDigest.createInstance(exchange.getExchangeSpecification().getSecretKey(),
-        exchange.getExchangeSpecification().getApiKey());
+    this.signatureCreator =
+        BitflyerDigest.createInstance(
+            exchange.getExchangeSpecification().getSecretKey(),
+            exchange.getExchangeSpecification().getApiKey());
   }
 
   protected ExchangeException handleError(BitflyerException exception) {

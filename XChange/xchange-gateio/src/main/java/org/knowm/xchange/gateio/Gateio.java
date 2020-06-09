@@ -32,18 +32,27 @@ public interface Gateio {
 
   @GET
   @Path("ticker/{ident}_{currency}")
-  GateioTicker getTicker(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency) throws IOException;
+  GateioTicker getTicker(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws IOException;
 
   @GET
   @Path("orderBook/{ident}_{currency}")
-  GateioDepth getFullDepth(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency) throws IOException;
+  GateioDepth getFullDepth(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws IOException;
 
   @GET
   @Path("trade/{ident}_{currency}")
-  GateioTradeHistory getTradeHistory(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency) throws IOException;
+  GateioTradeHistory getTradeHistory(
+      @PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency)
+      throws IOException;
 
   @GET
   @Path("trade/{ident}_{currency}/{tradeId}")
-  GateioTradeHistory getTradeHistorySince(@PathParam("ident") String tradeableIdentifier, @PathParam("currency") String currency,
-                                          @PathParam("tradeId") String tradeId) throws IOException;
+  GateioTradeHistory getTradeHistorySince(
+      @PathParam("ident") String tradeableIdentifier,
+      @PathParam("currency") String currency,
+      @PathParam("tradeId") String tradeId)
+      throws IOException;
 }

@@ -4,9 +4,7 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * Data object representing depth from Kraken
- */
+/** Data object representing depth from Kraken */
 public class KrakenDepth {
 
   private final List<KrakenPublicOrder> asks;
@@ -18,11 +16,12 @@ public class KrakenDepth {
    * @param asks
    * @param bids
    */
-  public KrakenDepth(@JsonProperty("asks") List<KrakenPublicOrder> asks, @JsonProperty("bids") List<KrakenPublicOrder> bids) {
+  public KrakenDepth(
+      @JsonProperty("asks") List<KrakenPublicOrder> asks,
+      @JsonProperty("bids") List<KrakenPublicOrder> bids) {
 
     this.asks = asks;
     this.bids = bids;
-
   }
 
   public List<KrakenPublicOrder> getAsks() {

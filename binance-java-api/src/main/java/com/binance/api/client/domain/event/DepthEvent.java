@@ -8,9 +8,7 @@ import org.apache.commons.lang3.builder.ToStringBuilder;
 
 import java.util.List;
 
-/**
- * Depth delta event for a symbol.
- */
+/** Depth delta event for a symbol. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class DepthEvent {
 
@@ -26,21 +24,15 @@ public class DepthEvent {
   @JsonProperty("U")
   private long firstUpdateId;
 
-  /**
-   * updateId to sync up with updateid in /api/v1/depth
-   */
+  /** updateId to sync up with updateid in /api/v1/depth */
   @JsonProperty("u")
   private long finalUpdateId;
 
-  /**
-   * Bid depth delta.
-   */
+  /** Bid depth delta. */
   @JsonProperty("b")
   private List<OrderBookEntry> bids;
 
-  /**
-   * Ask depth delta.
-   */
+  /** Ask depth delta. */
   @JsonProperty("a")
   private List<OrderBookEntry> asks;
 
@@ -84,17 +76,13 @@ public class DepthEvent {
     this.finalUpdateId = finalUpdateId;
   }
 
-  /**
-   * @deprecated Use {@link #getFinalUpdateId}
-   */
+  /** @deprecated Use {@link #getFinalUpdateId} */
   @Deprecated
   public long getUpdateId() {
     return finalUpdateId;
   }
 
-  /**
-   * @deprecated Use {@link #setFinalUpdateId}
-   */
+  /** @deprecated Use {@link #setFinalUpdateId} */
   @Deprecated
   public void setUpdateId(long updateId) {
     this.finalUpdateId = updateId;

@@ -73,7 +73,20 @@ public class BitfinexFundingTradeResponse {
 
   @Override
   public String toString() {
-    return "BitfinexFundingTradeResponse [rate=" + rate + ", period=" + period + ", amount=" + amount + ", timestamp="
-        + timestamp + ", type=" + type + ", tradeId=" + tradeId + ", offerId=" + offerId + "]";
+    return "BitfinexFundingTradeResponse [rate="
+        + rate
+        + ", period="
+        + period
+        + ", amount="
+        + amount
+        + ", timestamp="
+        + timestamp
+        + ", type="
+        + type
+        + ", tradeId="
+        + tradeId
+        + ", offerId="
+        + offerId
+        + "]";
   }
 }

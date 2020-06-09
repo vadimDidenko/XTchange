@@ -13,7 +13,9 @@ public class PaymiumMarketDepth {
    * @param bids
    * @param asks
    */
-  public PaymiumMarketDepth(@JsonProperty("bids") List<PaymiumMarketOrder> bids, @JsonProperty("asks") List<PaymiumMarketOrder> asks) {
+  public PaymiumMarketDepth(
+      @JsonProperty("bids") List<PaymiumMarketOrder> bids,
+      @JsonProperty("asks") List<PaymiumMarketOrder> asks) {
 
     this.bids = bids;
     this.asks = asks;

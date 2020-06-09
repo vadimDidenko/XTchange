@@ -15,7 +15,8 @@ import java.io.IOException;
 
 public class YoBitExchange extends BaseExchange implements Exchange {
 
-  private SynchronizedValueFactory<Long> nonceFactory = new AtomicLongIncrementalTime2014NonceFactory();
+  private SynchronizedValueFactory<Long> nonceFactory =
+      new AtomicLongIncrementalTime2014NonceFactory();
 
   @Override
   public SynchronizedValueFactory<Long> getNonceFactory() {
@@ -24,7 +25,8 @@ public class YoBitExchange extends BaseExchange implements Exchange {
 
   @Override
   public ExchangeSpecification getDefaultExchangeSpecification() {
-    ExchangeSpecification exchangeSpecification = new ExchangeSpecification(this.getClass().getCanonicalName());
+    ExchangeSpecification exchangeSpecification =
+        new ExchangeSpecification(this.getClass().getCanonicalName());
     exchangeSpecification.setSslUri("https://yobit.net");
     exchangeSpecification.setHost("yobit.net");
     exchangeSpecification.setPort(80);

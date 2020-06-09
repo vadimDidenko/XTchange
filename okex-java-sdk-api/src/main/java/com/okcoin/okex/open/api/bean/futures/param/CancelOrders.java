@@ -11,13 +11,13 @@ import java.util.List;
  */
 public class CancelOrders {
 
-    public List<Long> getOrder_ids() {
-        return order_ids;
-    }
+  public List<Long> getOrder_ids() {
+    return order_ids;
+  }
 
-    public void setOrder_ids(List<Long> order_ids) {
-        this.order_ids = order_ids;
-    }
+  public void setOrder_ids(List<Long> order_ids) {
+    this.order_ids = order_ids;
+  }
 
-    List<Long> order_ids;
+  List<Long> order_ids;
 }

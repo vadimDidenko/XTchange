@@ -15,9 +15,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.util.List;
 
-/**
- * Tests the BitbayAdapter class
- */
+/** Tests the BitbayAdapter class */
 public class BitbayAdapterTest {
 
   @Test
@@ -31,14 +29,18 @@ public class BitbayAdapterTest {
 
     AccountInfo accountInfo = BitbayAdapters.adaptAccountInfo("Joe Mama", balances);
     assertThat(accountInfo.getUsername()).isEqualTo("Joe Mama");
-    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getCurrency()).isEqualTo(Currency.USD);
+    assertThat(accountInfo.getWallet().getBalance(Currency.USD).getCurrency())
+        .isEqualTo(Currency.USD);
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getTotal()).isEqualTo("2.20");
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getAvailable()).isEqualTo("2.00");
     assertThat(accountInfo.getWallet().getBalance(Currency.USD).getFrozen()).isEqualTo("0.20");
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency()).isEqualTo(Currency.BTC);
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getCurrency())
+        .isEqualTo(Currency.BTC);
     assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getTotal()).isEqualTo("1.10000000");
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getAvailable()).isEqualTo("1.00000000");
-    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getFrozen()).isEqualTo("0.10000000");
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getAvailable())
+        .isEqualTo("1.00000000");
+    assertThat(accountInfo.getWallet().getBalance(Currency.BTC).getFrozen())
+        .isEqualTo("0.10000000");
   }
 
   @Test
@@ -48,8 +50,7 @@ public class BitbayAdapterTest {
 
     // Use Jackson to parse it
     ObjectMapper mapper = new ObjectMapper();
-    List<BitbayOrder> orders = mapper.readValue(is, new TypeReference<List<BitbayOrder>>() {
-    });
+    List<BitbayOrder> orders = mapper.readValue(is, new TypeReference<List<BitbayOrder>>() {});
 
     OpenOrders openOrders = BitbayAdapters.adaptOpenOrders(orders);
 

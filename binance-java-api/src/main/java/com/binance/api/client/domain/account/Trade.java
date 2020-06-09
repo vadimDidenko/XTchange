@@ -6,45 +6,29 @@ import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonSetter;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 
-/**
- * Represents an executed trade.
- */
+/** Represents an executed trade. */
 @JsonIgnoreProperties(ignoreUnknown = true)
 public class Trade {
 
-  /**
-   * Trade id.
-   */
+  /** Trade id. */
   private Long id;
 
-  /**
-   * Price.
-   */
+  /** Price. */
   private String price;
 
-  /**
-   * Quantity.
-   */
+  /** Quantity. */
   private String qty;
 
-  /**
-   * Commission.
-   */
+  /** Commission. */
   private String commission;
 
-  /**
-   * Asset on which commission is taken
-   */
+  /** Asset on which commission is taken */
   private String commissionAsset;
 
-  /**
-   * Trade execution time.
-   */
+  /** Trade execution time. */
   private long time;
 
-  /**
-   * The symbol of the trade.
-   */
+  /** The symbol of the trade. */
   private String symbol;
 
   @JsonProperty("isBuyer")

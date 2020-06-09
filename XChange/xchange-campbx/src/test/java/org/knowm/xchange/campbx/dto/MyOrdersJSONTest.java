@@ -11,15 +11,17 @@ import org.knowm.xchange.campbx.dto.trade.MyOpenOrders;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-/**
- * Test BitStamp Full Depth JSON parsing
- */
+/** Test BitStamp Full Depth JSON parsing */
 public class MyOrdersJSONTest {
 
   @Test
   public void testUnmarshal() throws IOException {
 
-    MyOpenOrders orderBook = new ObjectMapper().readValue(MyOrdersJSONTest.class.getResourceAsStream("/trade/open-orders.json"), MyOpenOrders.class);
+    MyOpenOrders orderBook =
+        new ObjectMapper()
+            .readValue(
+                MyOrdersJSONTest.class.getResourceAsStream("/trade/open-orders.json"),
+                MyOpenOrders.class);
 
     // Verify that the example data was unmarshalled correctly
     List<CampBXOrder> buy = orderBook.getBuy();

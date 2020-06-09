@@ -38,7 +38,8 @@ public class BitsoDepositAddress extends BitsoBaseResponse {
   static class BitsoDepositAddressDeserializer extends JsonDeserializer<BitsoDepositAddress> {
 
     @Override
-    public BitsoDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt) throws IOException, JsonProcessingException {
+    public BitsoDepositAddress deserialize(JsonParser jsonParser, DeserializationContext ctxt)
+        throws IOException, JsonProcessingException {
 
       ObjectCodec oc = jsonParser.getCodec();
       JsonNode node = oc.readTree(jsonParser);

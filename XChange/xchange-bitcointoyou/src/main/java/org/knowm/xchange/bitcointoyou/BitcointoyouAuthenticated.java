@@ -32,38 +32,62 @@ public interface BitcointoyouAuthenticated {
 
   @GET
   @Path("balance.aspx")
-  BitcointoyouBalance returnBalances(@HeaderParam("key") String apiKey, @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                     @HeaderParam("signature") ParamsDigest signature);
+  BitcointoyouBalance returnBalances(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature);
 
   @POST
   @Path("getorders.aspx")
-  BitcointoyouOrderResponse returnOrderById(@HeaderParam("key") String apiKey, @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                            @HeaderParam("signature") ParamsDigest signature, @QueryParam("id") String orderId) throws IOException;
+  BitcointoyouOrderResponse returnOrderById(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature,
+      @QueryParam("id") String orderId)
+      throws IOException;
 
   @GET
   @Path("getorders.aspx?status=OPEN")
-  BitcointoyouOrderResponse returnOpenOrders(@HeaderParam("key") String apiKey,
-                                             @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce, @HeaderParam("signature") ParamsDigest signature) throws IOException;
+  BitcointoyouOrderResponse returnOpenOrders(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature)
+      throws IOException;
 
   @GET
   @Path("getorders.aspx?status=CANCELED")
-  HashMap<String, BitcointoyouOrderResponse[]> returnCanceledOrders(@HeaderParam("key") String apiKey,
-                                                                    @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce, @HeaderParam("signature") ParamsDigest signature) throws IOException;
+  HashMap<String, BitcointoyouOrderResponse[]> returnCanceledOrders(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature)
+      throws IOException;
 
   @GET
   @Path("getorders.aspx?status=EXECUTED")
-  HashMap<String, BitcointoyouOrderResponse[]> returnExecutedOrders(@HeaderParam("key") String apiKey,
-                                                                    @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce, @HeaderParam("signature") ParamsDigest signature) throws IOException;
+  HashMap<String, BitcointoyouOrderResponse[]> returnExecutedOrders(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature)
+      throws IOException;
 
   @POST
   @Path("createorder.aspx")
-  BitcointoyouOrderResponse createOrder(@HeaderParam("key") String apiKey, @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                        @HeaderParam("signature") ParamsDigest signature, @QueryParam("asset") String currency, @QueryParam("action") String action,
-                                        @QueryParam("amount") BigDecimal amount, @QueryParam("price") BigDecimal price) throws BitcointoyouException, IOException;
+  BitcointoyouOrderResponse createOrder(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature,
+      @QueryParam("asset") String currency,
+      @QueryParam("action") String action,
+      @QueryParam("amount") BigDecimal amount,
+      @QueryParam("price") BigDecimal price)
+      throws BitcointoyouException, IOException;
 
   @POST
   @Path("deleteorders.aspx")
-  HashMap<String, String> deleteOrder(@HeaderParam("key") String apiKey, @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
-                                      @HeaderParam("signature") ParamsDigest signature, @QueryParam("id") String orderNumber) throws IOException;
-
+  HashMap<String, String> deleteOrder(
+      @HeaderParam("key") String apiKey,
+      @HeaderParam("nonce") SynchronizedValueFactory<Long> nonce,
+      @HeaderParam("signature") ParamsDigest signature,
+      @QueryParam("id") String orderNumber)
+      throws IOException;
 }

@@ -8,21 +8,15 @@ import java.util.Map;
 import com.fasterxml.jackson.annotation.JsonAnySetter;
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public final class BitstampBalance {
 
   private final BigDecimal fee;
   private final String error;
 
-  /**
-   * map with currency -> Balance
-   */
+  /** map with currency -> Balance */
   private final Map<String, Balance> balances = new HashMap<>();
-  /**
-   * map with pair -> fee
-   */
+  /** map with pair -> fee */
   private final Map<String, BigDecimal> fees = new HashMap<>();
 
   /**
@@ -59,7 +53,6 @@ public final class BitstampBalance {
       default:
         break;
     }
-
   }
 
   private Balance getBalance(String currency) {
@@ -113,5 +106,4 @@ public final class BitstampBalance {
       return available;
     }
   }
-
 }

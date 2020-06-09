@@ -17,9 +17,15 @@ public class BTCTradeOrder {
   private final String status;
   private final BTCTradeTrade[] trades;
 
-  public BTCTradeOrder(@JsonProperty("id") String id, @JsonProperty("datetime") String datetime, @JsonProperty("type") String type,
-      @JsonProperty("coin") String coin, @JsonProperty("price") BigDecimal price, @JsonProperty("amount_original") BigDecimal amountOriginal,
-      @JsonProperty("amount_outstanding") BigDecimal amountOutstanding, @JsonProperty("status") String status,
+  public BTCTradeOrder(
+      @JsonProperty("id") String id,
+      @JsonProperty("datetime") String datetime,
+      @JsonProperty("type") String type,
+      @JsonProperty("coin") String coin,
+      @JsonProperty("price") BigDecimal price,
+      @JsonProperty("amount_original") BigDecimal amountOriginal,
+      @JsonProperty("amount_outstanding") BigDecimal amountOutstanding,
+      @JsonProperty("status") String status,
       @JsonProperty("trades") BTCTradeTrade[] trades) {
 
     this.id = id;
@@ -78,5 +84,4 @@ public class BTCTradeOrder {
 
     return trades;
   }
-
 }

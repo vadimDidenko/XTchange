@@ -25,9 +25,7 @@ public class AggTradesCacheExample {
     startAggTradesEventStreaming(symbol);
   }
 
-  /**
-   * Initializes the aggTrades cache by using the REST API.
-   */
+  /** Initializes the aggTrades cache by using the REST API. */
   private void initializeAggTradesCache(String symbol) {
     BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
     BinanceApiRestClient client = factory.newRestClient();
@@ -39,36 +37,36 @@ public class AggTradesCacheExample {
     }
   }
 
-  /**
-   * Begins streaming of agg trades events.
-   */
+  /** Begins streaming of agg trades events. */
   private void startAggTradesEventStreaming(String symbol) {
     BinanceApiClientFactory factory = BinanceApiClientFactory.newInstance();
     BinanceApiWebSocketClient client = factory.newWebSocketClient();
 
-    client.onAggTradeEvent(symbol.toLowerCase(), response -> {
-      Long aggregatedTradeId = response.getAggregatedTradeId();
-      AggTrade updateAggTrade = aggTradesCache.get(aggregatedTradeId);
-      if (updateAggTrade == null) {
-        // new agg trade
-        updateAggTrade = new AggTrade();
-      }
-      updateAggTrade.setAggregatedTradeId(aggregatedTradeId);
-      updateAggTrade.setPrice(response.getPrice());
-      updateAggTrade.setQuantity(response.getQuantity());
-      updateAggTrade.setFirstBreakdownTradeId(response.getFirstBreakdownTradeId());
-      updateAggTrade.setLastBreakdownTradeId(response.getLastBreakdownTradeId());
-      updateAggTrade.setBuyerMaker(response.isBuyerMaker());
+    client.onAggTradeEvent(
+        symbol.toLowerCase(),
+        response -> {
+          Long aggregatedTradeId = response.getAggregatedTradeId();
+          AggTrade updateAggTrade = aggTradesCache.get(aggregatedTradeId);
+          if (updateAggTrade == null) {
+            // new agg trade
+            updateAggTrade = new AggTrade();
+          }
+          updateAggTrade.setAggregatedTradeId(aggregatedTradeId);
+          updateAggTrade.setPrice(response.getPrice());
+          updateAggTrade.setQuantity(response.getQuantity());
+          updateAggTrade.setFirstBreakdownTradeId(response.getFirstBreakdownTradeId());
+          updateAggTrade.setLastBreakdownTradeId(response.getLastBreakdownTradeId());
+          updateAggTrade.setBuyerMaker(response.isBuyerMaker());
 
-      // Store the updated agg trade in the cache
-      aggTradesCache.put(aggregatedTradeId, updateAggTrade);
-      System.out.println(updateAggTrade);
-    });
+          // Store the updated agg trade in the cache
+          aggTradesCache.put(aggregatedTradeId, updateAggTrade);
+          System.out.println(updateAggTrade);
+        });
   }
 
   /**
-   * @return an aggTrades cache, containing the aggregated trade id as the key,
-   * and the agg trade data as the value.
+   * @return an aggTrades cache, containing the aggregated trade id as the key, and the agg trade
+   *     data as the value.
    */
   public Map<Long, AggTrade> getAggTradesCache() {
     return aggTradesCache;

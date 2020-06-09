@@ -13,9 +13,7 @@ import org.knowm.xchange.examples.dsx.DSXExamplesUtils;
 import org.knowm.xchange.exceptions.ExchangeException;
 import org.knowm.xchange.service.trade.TradeService;
 
-/**
- * @author Mikhail Wall
- */
+/** @author Mikhail Wall */
 public class DSXUserTradeHistoryDemo {
 
   public static void main(String[] args) throws IOException {

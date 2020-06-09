@@ -11,11 +11,9 @@ import org.knowm.xchange.dto.marketdata.Trades;
 import org.knowm.xchange.exceptions.NotAvailableFromExchangeException;
 import org.knowm.xchange.service.marketdata.MarketDataService;
 
-/**
- * @author Jean-Christophe Laruelle
- */
-
-public class CryptoFacilitiesMarketDataService extends CryptoFacilitiesMarketDataServiceRaw implements MarketDataService {
+/** @author Jean-Christophe Laruelle */
+public class CryptoFacilitiesMarketDataService extends CryptoFacilitiesMarketDataServiceRaw
+    implements MarketDataService {
 
   /**
    * Constructor
@@ -30,7 +28,8 @@ public class CryptoFacilitiesMarketDataService extends CryptoFacilitiesMarketDat
   @Override
   public Ticker getTicker(CurrencyPair currencyPair, Object... args) throws IOException {
 
-    return CryptoFacilitiesAdapters.adaptTicker(getCryptoFacilitiesTicker(currencyPair), currencyPair);
+    return CryptoFacilitiesAdapters.adaptTicker(
+        getCryptoFacilitiesTicker(currencyPair), currencyPair);
   }
 
   @Override
@@ -43,7 +42,5 @@ public class CryptoFacilitiesMarketDataService extends CryptoFacilitiesMarketDat
   public Trades getTrades(CurrencyPair currencyPair, Object... args) throws IOException {
 
     throw new NotAvailableFromExchangeException();
-
   }
-
 }

@@ -5,24 +5,20 @@ import retrofit2.http.GET;
 
 /**
  * file:spider
- * <p>
- * 文件简要说明
  *
- * @author 9:22  王楷
+ * <p>文件简要说明
+ *
+ * @author 9:22 王楷
  * @version 9:22 V1.0
- * @par 版权信息：
- * 2018 Copyright 河南艾鹿网络科技有限公司 All Rights Reserved.
+ * @par 版权信息： 2018 Copyright 河南艾鹿网络科技有限公司 All Rights Reserved.
  */
 public interface Gate {
 
-
-    /**
-     *
-     *  Returns the ticker for all markets.
-     *
-     * @return
-     */
-    @GET("api2/1/tickers")
-    Call<String> getTickerAll();
-
+  /**
+   * Returns the ticker for all markets.
+   *
+   * @return
+   */
+  @GET("api2/1/tickers")
+  Call<String> getTickerAll();
 }

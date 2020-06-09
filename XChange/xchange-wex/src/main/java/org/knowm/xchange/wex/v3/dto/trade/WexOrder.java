@@ -5,9 +5,7 @@ import java.text.MessageFormat;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Matija Mazi
- */
+/** @author Matija Mazi */
 public class WexOrder {
 
   private final String pair;
@@ -27,8 +25,12 @@ public class WexOrder {
    * @param type
    * @param pair
    */
-  public WexOrder(@JsonProperty("status") int status, @JsonProperty("timestamp_created") Long timestampCreated,
-      @JsonProperty("rate") BigDecimal rate, @JsonProperty("amount") BigDecimal amount, @JsonProperty("type") Type type,
+  public WexOrder(
+      @JsonProperty("status") int status,
+      @JsonProperty("timestamp_created") Long timestampCreated,
+      @JsonProperty("rate") BigDecimal rate,
+      @JsonProperty("amount") BigDecimal amount,
+      @JsonProperty("type") Type type,
       @JsonProperty("pair") String pair) {
 
     this.status = status;
@@ -73,11 +75,13 @@ public class WexOrder {
   @Override
   public String toString() {
 
-    return MessageFormat.format("WexOrder[pair=''{0}'', type={1}, amount={2}, rate={3}, timestampCreated={4}, status={5}]", pair, type, amount, rate,
-        timestampCreated, status);
+    return MessageFormat.format(
+        "WexOrder[pair=''{0}'', type={1}, amount={2}, rate={3}, timestampCreated={4}, status={5}]",
+        pair, type, amount, rate, timestampCreated, status);
   }
 
   public enum Type {
-    buy, sell
+    buy,
+    sell
   }
 }

@@ -12,9 +12,7 @@ import javax.ws.rs.core.MediaType;
 import org.knowm.xchange.blockchain.dto.BitcoinAddress;
 import org.knowm.xchange.blockchain.dto.BitcoinAddresses;
 
-/**
- * @author Tim Molter
- */
+/** @author Tim Molter */
 @Path("/")
 @Produces(MediaType.APPLICATION_JSON)
 public interface Blockchain {

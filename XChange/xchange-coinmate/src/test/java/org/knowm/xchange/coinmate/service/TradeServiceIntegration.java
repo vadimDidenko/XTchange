@@ -19,8 +19,8 @@ import org.knowm.xchange.service.trade.params.orders.OpenOrdersParamCurrencyPair
 import org.knowm.xchange.service.trade.params.orders.OpenOrdersParams;
 
 /**
- * Integration tests for TradeService. For these tests to function, a file 'exchangeConfiguration.json' must be on the classpath and contain valid api
- * and secret keys.
+ * Integration tests for TradeService. For these tests to function, a file
+ * 'exchangeConfiguration.json' must be on the classpath and contain valid api and secret keys.
  */
 public class TradeServiceIntegration {
 
@@ -69,7 +69,8 @@ public class TradeServiceIntegration {
     assertNotNull(exchange);
     TradeService service = exchange.getTradeService();
     assertNotNull(service);
-    OpenOrdersParamCurrencyPair params = (OpenOrdersParamCurrencyPair) service.createOpenOrdersParams();
+    OpenOrdersParamCurrencyPair params =
+        (OpenOrdersParamCurrencyPair) service.createOpenOrdersParams();
     assertNotNull(params);
     params.setCurrencyPair(CurrencyPair.BTC_CZK);
     OpenOrders orders = service.getOpenOrders(params);
@@ -96,7 +97,8 @@ public class TradeServiceIntegration {
     assertNotNull(exchange);
     TradeService service = exchange.getTradeService();
     assertNotNull(service);
-    service.placeMarketOrder(new MarketOrder(Order.OrderType.ASK, new BigDecimal("0.001"), CurrencyPair.BTC_EUR));
+    service.placeMarketOrder(
+        new MarketOrder(Order.OrderType.ASK, new BigDecimal("0.001"), CurrencyPair.BTC_EUR));
   }
 
   /*

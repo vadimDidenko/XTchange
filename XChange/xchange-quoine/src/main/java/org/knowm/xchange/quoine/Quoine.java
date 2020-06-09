@@ -16,7 +16,8 @@ public interface Quoine {
 
   @GET
   @Path("products/code/CASH/{currency_pair_code}")
-  QuoineProduct getQuoineProduct(@PathParam("currency_pair_code") String currencyPairCode) throws IOException;
+  QuoineProduct getQuoineProduct(@PathParam("currency_pair_code") String currencyPairCode)
+      throws IOException;
 
   @GET
   @Path("products")

@@ -34,7 +34,9 @@ public class BitMarketDataServiceTest extends BitMarketTestSupport {
 
   @Before
   public void setUp() {
-    BitMarketExchange exchange = (BitMarketExchange) ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
+    BitMarketExchange exchange =
+        (BitMarketExchange)
+            ExchangeFactory.INSTANCE.createExchange(BitMarketExchange.class.getCanonicalName());
     ExchangeSpecification specification = exchange.getExchangeSpecification();
     specification.setUserName(SPECIFICATION_USERNAME);
     specification.setApiKey(SPECIFICATION_API_KEY);
@@ -45,7 +47,8 @@ public class BitMarketDataServiceTest extends BitMarketTestSupport {
 
   @Test
   public void constructor() {
-    assertThat((String) Whitebox.getInternalState(dataService, "apiKey")).isEqualTo(SPECIFICATION_API_KEY);
+    assertThat((String) Whitebox.getInternalState(dataService, "apiKey"))
+        .isEqualTo(SPECIFICATION_API_KEY);
   }
 
   @Test
@@ -88,7 +91,8 @@ public class BitMarketDataServiceTest extends BitMarketTestSupport {
   @Test
   public void shouldGetOrderBook() throws IOException {
     // given
-    BitMarketOrderBook response = parse("marketdata/example-order-book-data", BitMarketOrderBook.class);
+    BitMarketOrderBook response =
+        parse("marketdata/example-order-book-data", BitMarketOrderBook.class);
 
     BitMarket bitMarket = mock(BitMarket.class);
     PowerMockito.when(bitMarket.getOrderBook("BTCAUD")).thenReturn(response);

@@ -6,13 +6,12 @@ import org.knowm.xchange.dsx.dto.DSXReturn;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Mikhail Wall
- */
-
+/** @author Mikhail Wall */
 public class DSXTransHistoryReturn extends DSXReturn<Map<Long, DSXTransHistoryResult>> {
 
-  public DSXTransHistoryReturn(@JsonProperty("success") boolean success, @JsonProperty("return") Map<Long, DSXTransHistoryResult> value,
+  public DSXTransHistoryReturn(
+      @JsonProperty("success") boolean success,
+      @JsonProperty("return") Map<Long, DSXTransHistoryResult> value,
       @JsonProperty("error") String error) {
 
     super(success, value, error);

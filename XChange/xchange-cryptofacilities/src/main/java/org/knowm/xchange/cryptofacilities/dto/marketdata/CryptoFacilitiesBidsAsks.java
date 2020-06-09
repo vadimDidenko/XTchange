@@ -5,16 +5,15 @@ import java.util.List;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 
-/**
- * @author Panchen
- */
-
+/** @author Panchen */
 public class CryptoFacilitiesBidsAsks {
 
   private final List<List<BigDecimal>> bids;
   private final List<List<BigDecimal>> asks;
 
-  public CryptoFacilitiesBidsAsks(@JsonProperty("asks") List<List<BigDecimal>> asks, @JsonProperty("bids") List<List<BigDecimal>> bids) {
+  public CryptoFacilitiesBidsAsks(
+      @JsonProperty("asks") List<List<BigDecimal>> asks,
+      @JsonProperty("bids") List<List<BigDecimal>> bids) {
 
     this.bids = bids;
     this.asks = asks;
@@ -33,5 +32,4 @@ public class CryptoFacilitiesBidsAsks {
 
     return "[bids=" + bids + ", asks=" + asks + "]";
   }
-
 }
